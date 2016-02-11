@@ -173,5 +173,12 @@ class PartidaTest < ActiveSupport::TestCase
     assert_equal ['El valor no corresponde a la diferencia entre kilogramos brutos y tara'],
       partida.errors[:kilogramos_netos]
   end
+  
+  test "should order by identificador ascendente" do
+    partidas = entradas(:one).partidas.identificador_ascendente
+    
+    assert_equal partidas[0].identificador, 1 
+    assert_equal partidas[1].identificador, 2
+  end
 
 end

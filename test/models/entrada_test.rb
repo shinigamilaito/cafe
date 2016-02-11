@@ -87,4 +87,19 @@ class EntradaTest < ActiveSupport::TestCase
     assert_equal entrada.total_partidas, 2 
   end
   
+  test "should order by numero entrada ascendente" do
+    entradas = Entrada.numero_entrada_ascendente
+    
+    assert_equal entradas[0].numero_entrada, 1 
+    assert_equal entradas[1].numero_entrada, 2
+    assert_equal entradas[2].numero_entrada, 3  
+  end
+  
+  test "obtain total partidas" do
+    entrada = entradas(:one)
+    
+    assert_equal entrada.total_partidas, 2
+    assert_equal entrada.partidas.size, 2    
+  end
+  
 end

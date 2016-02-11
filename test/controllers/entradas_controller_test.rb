@@ -4,7 +4,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
   setup do
     @entrada = Entrada.new({
       date: Time.now,
-      numero_entrada: 3,
+      numero_entrada: 4,
       numero_entrada_cliente: 2,
       driver: 'driver',
       client_id: clients(:pedro).id,
@@ -116,4 +116,14 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to entradas_url
   end
+  
+  test "should get reporte" do
+    @entrada = Entrada.last
+    
+    get reporte_entrada_url(@entrada)
+    assert File.exist?("#{Rails.root}/reports/entradas.pdf")
+    assert_response :success
+    assert File.delete("#{Rails.root}/reports/entradas.pdf")
+  end
+  
 end

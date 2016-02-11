@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  identificador: 1
   entrada: one
   kilogramos_brutos: 9.99
   numero_sacos: 1
@@ -12,6 +13,7 @@ one:
   calidad_cafe: MyString  
 
 two:
+  identificador: 1
   entrada: two
   kilogramos_brutos: 19.99
   numero_sacos: 10
@@ -23,6 +25,7 @@ two:
   calidad_cafe: MyString
 
 three:
+  identificador: 2
   entrada: one
   kilogramos_brutos: 17.88
   numero_sacos: 10

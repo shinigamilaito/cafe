@@ -23,4 +23,12 @@ class ClientTest < ActiveSupport::TestCase
     assert_equal ['ya existe'],
       another_client.errors[:legal_representative]
   end
+  
+  test "obtain total entradas" do
+    client = new_client
+    
+    assert_equal client.total_entradas, 1
+    assert_equal client.entradas.size, 2    
+  end
+  
 end
