@@ -1,70 +1,60 @@
-$(function() {
+//<editor-fold desc="Administra el formulario para el registro de clientes">
+
+function Cliente(options) {
+    this.$personaFisica = options.$personaFisica;
+    this.$noPersonaFisica = options.$noPersonaFisica;
+    this.$representanteLegal = options.$representanteLegal;
+    this.$organizacion = options.$organizacion;
     
-    if($('#formulario-clientes').length) {        
-        /**
-         * Objeto que almacena persona fisica, representante legal y organizacion
-         * @type type
-         */    
-        var cliente = {
-            $personaFisica: $("input:radio[value='true']"),
+    $(this.$personaFisica).on('click', this.enabledOrganization.bind(this));       
+    $(this.$noPersonaFisica).on('click', this.disabledOrganization.bind(this));       
+    $(this.$representanteLegal).on('keyup', this.actualizarOrganizacionTeclado.bind(this));     
+}
+    
+Cliente.prototype.actualizarOrganizacion = function(text) { 
+    this.$organizacion.val(text);
+    return;
+};
 
-            $representanteLegal: $('#client_legal_representative'),
+Cliente.prototype.enabledOrganization = function() {
+    this.$organizacion.attr('readonly', 'readonly');
+    this.actualizarOrganizacion(this.$representanteLegal.val());
+    return;
+};
 
-            $organizacion: $('#client_organization'),
+Cliente.prototype.disabledOrganization = function() {
+    this.$organizacion.attr('readonly', null);
+    this.actualizarOrganizacion("");
 
-            actualizarOrganizacion: function() {             
-                if(this.esPersonaFisica()) {
-                    this.$organizacion.val(this.$representanteLegal.val());
-                }
-                return;
-            },
-            
-            enabledDisabledOrganization: function() {
-                if(this.esPersonaFisica()) {
-                    this.$organizacion.attr('readonly', 'readonly');
-                } else {
-                    this.$organizacion.attr('readonly', null);
-                }
-            },
-            
-            esPersonaFisica: function() {
-                return this.$personaFisica.prop("checked");
-            }
-        };
-        
-        cliente.enabledDisabledOrganization();
-        
-        /**
-         * Funcion que observa por cambios en el campo representante legal
-         */
-        $(document).on('keyup', '#client_legal_representative', cliente, function() {     
-            cliente.actualizarOrganizacion();
-            return;
-        });
+    return;
+};
 
-        /**
-         * Funcion que observa por cambios en el campo persona fisica
-         */
-        $(document).on('click', "input:radio[name='client[persona_fisica]']", cliente, function() {       
+Cliente.prototype.esPersonaFisica = function() {
+    return this.$personaFisica.prop("checked");
+};
 
-            cliente.enabledDisabledOrganization();
-            cliente.actualizarOrganizacion();
-            
-            return;
-        });
-
+Cliente.prototype.actualizarOrganizacionTeclado = function() {    
+    if (this.esPersonaFisica()) {
+        this.actualizarOrganizacion(this.$representanteLegal.val());        
     }
-    
+    return;
+};
+
+var cliente = new Cliente({
+    $personaFisica: $("input:radio#client_persona_fisica_true"),
+    $noPersonaFisica: $("input:radio#client_persona_fisica_false"),
+    $representanteLegal: $('#client_legal_representative'),
+    $organizacion: $('#client_organization')
 });
 
-/**
- * Agrega el elemento al carrito de salidas
- */
+//</editor-fold>
+
+//<editor-fold desc="Agrega las salidas de las partidas al proceso">
 
 $(function() {
     if($('.menu-cart-salidas').length) {
-        $('.add-to-cart').on('click', function() {
-            var cart = $('#span_total_partidas');
+        $('.add-to-cart').on('click', function() {            
+            var cart = $('.span_total_partidas');
             var imgtodrag = $(this).prev().eq(0);
             var inputwithposition = imgtodrag.prev().eq(0).find('input').eq(0);
             
@@ -107,20 +97,17 @@ $(function() {
                     $(this).detach();
                 });
             }
-        });        
-    }    
+        });
+    }
 });
+//</editor-fold>
 
-/**
- * Agrega el effecto flip al retiro de salidas
- */
-
+//<editor-fold desc="Agrega el efecto flip al retiro de salidas">
 $(function() {
     if($('.menu-cart-salidas').length) {
        $(".card").flip({
            trigger: 'manual'
        });     
-       
        
        /**
         * Realiza el cambio de tarjeta para realizar la salida
@@ -131,6 +118,5 @@ $(function() {
            $card.flip(true);
        });
     }
-    
-    
 });
+//</editor-fold>

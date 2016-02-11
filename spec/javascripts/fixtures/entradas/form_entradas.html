@@ -1,0 +1,213 @@
+<div class="row" id="formulario-entradas">
+  <div class="row">  
+    <form class="simple_form form-horizontal" novalidate="novalidate" id="new_entrada" 
+          action="/entradas" accept-charset="UTF-8" method="post">
+        
+        <input name="utf8" value="✓" type="hidden">
+        <input name="authenticity_token" 
+               value="DPtIuTCBmtmyB8ys8KHu8SrwMsyjVeuRT0HBFWIXxQOgRQ25LcGCfMmX/u8adQD4I0Ch6/SCbaxNSxKK2iCzbA==" 
+               type="hidden">
+    
+        <div class="form-group hidden entrada_id">
+            <div class="col-sm-9">
+                <input class="form-control hidden" name="entrada[id]" 
+                       id="entrada_id" type="hidden">
+            </div>
+        </div>
+
+        <div class="form-group integer required readonly entrada_numero_entrada">
+            <label class="col-sm-3 control-label integer required" 
+                   for="entrada_numero_entrada">
+                <abbr title="Campo Obligatorio">*</abbr> 
+                Número:
+            </label>
+            <div class="col-sm-9">
+                <input class="form-control numeric integer required readonly" 
+                       readonly="readonly" step="1" value="5" 
+                       name="entrada[numero_entrada]" id="entrada_numero_entrada" 
+                       type="number">
+                <p class="help-block">Proporciona el número de entrada.</p>
+            </div>
+        </div>
+    
+        <div class="form-group datetime required entrada_date">
+            <label class="col-sm-3 control-label datetime required" for="entrada_date">
+                <abbr title="Campo Obligatorio">*</abbr>
+                Fecha:
+            </label>
+            <div class="col-sm-9">
+                <div id="datetimepicker_for_date" class="input-group col-sm-12">
+                    <span class="input-group-addon text-info">
+                        <span class="glyphicon glyphicon-calendar text-info"></span>                            
+                    </span>
+                    <input class="string required readonly form-control" readonly="readonly" 
+                           name="entrada[date]" id="entrada_date" type="text">      
+                </div>
+                <p class="help-block">Proporciona la fecha-hora de entrada.</p>
+            </div>
+        </div>
+        <div class="form-group string required entrada_entregado_por">
+            <label class="col-sm-3 control-label string required" for="entrada_entregado_por">
+                <abbr title="Campo Obligatorio">*</abbr> Entregado por:
+            </label>
+            <div class="col-sm-9">
+                <input class="form-control string required" name="entrada[entregado_por]" 
+                       id="entrada_entregado_por" type="text">
+            </div>
+        </div>
+    
+        <div class="form-group select required entrada_client_id">
+            <label class="col-sm-3 control-label select required" for="entrada_client_id">
+                <abbr title="Campo Obligatorio">*</abbr>
+                Organización:
+            </label>
+            <div class="col-sm-9">
+                <select class="form-control select required" name="entrada[client_id]" id="entrada_client_id"><option value="">Selecciona una opción</option>
+<option value="17">Edgar Eduardo Espindola</option>
+<option value="18">Test Salidas</option></select></div></div>
+    
+    <div class="form-group integer optional entrada_numero_entrada_cliente"><label class="col-sm-3 control-label integer optional" for="entrada_numero_entrada_cliente">Número de Entrada por Organización:</label><div class="col-sm-9"><input class="form-control numeric integer optional" readonly="readonly" step="1" value="0" name="entrada[numero_entrada_cliente]" id="entrada_numero_entrada_cliente" type="number"></div></div>
+      
+    <div class="form-group string required entrada_driver"><label class="col-sm-3 control-label string required" for="entrada_driver"><abbr title="Campo Obligatorio">*</abbr> Chofer:</label><div class="col-sm-9"><input class="form-control string required" name="entrada[driver]" id="entrada_driver" type="text"></div></div>
+    
+    <div class="row add-partidas">        
+      <div class="col-sm-7 col-sm-offset-3">
+        <h3 class="title-md hr-before mb-30 mt-20">
+          Partidas         
+          <span class="badge badge-partidas">1</span>
+        </h3>                    
+      </div>
+      <div class="col-sm-2">
+         <a data-association-insertion-node="#partidas" data-association-insertion-method="prepend" class="btn btn-rounded btn-blue pull-right add_fields" data-association="partida" data-associations="partidas" data-association-insertion-template="<div class='nested-fields'>  
+    <hr class=&quot;hr-divider-xs&quot;>
+        <div class=&quot;form-group integer optional entrada_partidas_identificador&quot;><label class=&quot;col-sm-3 control-label integer optional&quot; for=&quot;entrada_partidas_attributes_new_partidas_identificador&quot;>Número:</label><div class=&quot;col-sm-9&quot;><input class=&quot;form-control numeric integer optional identificador&quot; readonly=&quot;readonly&quot; type=&quot;number&quot; step=&quot;1&quot; value=&quot;1&quot; name=&quot;entrada[partidas_attributes][new_partidas][identificador]&quot; id=&quot;entrada_partidas_attributes_new_partidas_identificador&quot; /></div></div>  
+    
+	<div class=&quot;form-group string required entrada_partidas_kilogramos_brutos&quot;><label class=&quot;col-sm-3 control-label string required&quot; for=&quot;entrada_partidas_attributes_new_partidas_kilogramos_brutos&quot;><abbr title=&quot;Campo Obligatorio&quot;>*</abbr> Kilogramos Brutos:</label><div class=&quot;col-sm-9&quot;><div id=&quot;input_group_span_id&quot; class=&quot;input-group col-sm-12&quot;>    	
+          <input class=&quot;string required form-control kilogramos-brutos&quot; type=&quot;text&quot; name=&quot;entrada[partidas_attributes][new_partidas][kilogramos_brutos]&quot; id=&quot;entrada_partidas_attributes_new_partidas_kilogramos_brutos&quot; />    
+          <span class=&quot;input-group-addon&quot;>Kgs</span>
+</div><p class=&quot;help-block&quot;>Introduce los kilogramos brutos.</p></div></div>	
+        <h3 class=&quot;title-md text-center title-striped no-margin text-info&quot;>Bultos</h3>  
+        
+            <div class=&quot;form-group integer required entrada_partidas_numero_sacos&quot;><label class=&quot;col-sm-3 control-label integer required&quot; for=&quot;entrada_partidas_attributes_new_partidas_numero_sacos&quot;><abbr title=&quot;Campo Obligatorio&quot;>*</abbr> Numero sacos</label><div class=&quot;col-sm-9&quot;><div id=&quot;input_group_span_id&quot; class=&quot;input-group col-sm-12&quot;>    	
+              <input class=&quot;string required form-control numero-sacos&quot; type=&quot;text&quot; name=&quot;entrada[partidas_attributes][new_partidas][numero_sacos]&quot; id=&quot;entrada_partidas_attributes_new_partidas_numero_sacos&quot; />
+              <span class=&quot;input-group-addon&quot;>Sacos</span>
+</div></div></div>
+            <div class=&quot;form-group integer required entrada_partidas_numero_bolsas&quot;><label class=&quot;col-sm-3 control-label integer required&quot; for=&quot;entrada_partidas_attributes_new_partidas_numero_bolsas&quot;><abbr title=&quot;Campo Obligatorio&quot;>*</abbr> Numero bolsas</label><div class=&quot;col-sm-9&quot;><div id=&quot;input_group_span_id&quot; class=&quot;input-group col-sm-12&quot;>    	
+              <input class=&quot;string required form-control numero-bolsas&quot; type=&quot;text&quot; name=&quot;entrada[partidas_attributes][new_partidas][numero_bolsas]&quot; id=&quot;entrada_partidas_attributes_new_partidas_numero_bolsas&quot; />
+              <span class=&quot;input-group-addon&quot;>Bolsas</span>
+</div></div></div>        
+         <h3 class=&quot;title-md text-center title-striped no-margin&quot;></h3> 
+         
+        <div class=&quot;form-group string required entrada_partidas_tara&quot;><label class=&quot;col-sm-3 control-label string required&quot; for=&quot;entrada_partidas_attributes_new_partidas_tara&quot;><abbr title=&quot;Campo Obligatorio&quot;>*</abbr> Tara:</label><div class=&quot;col-sm-9&quot;><div id=&quot;input_group_span_id&quot; class=&quot;input-group col-sm-12&quot;>
+          <input class=&quot;string required readonly form-control tara&quot; readonly=&quot;readonly&quot; type=&quot;text&quot; name=&quot;entrada[partidas_attributes][new_partidas][tara]&quot; id=&quot;entrada_partidas_attributes_new_partidas_tara&quot; />
+          <span class=&quot;input-group-addon&quot;>Kgs</span>
+</div></div></div>
+	<div class=&quot;form-group string required entrada_partidas_kilogramos_netos&quot;><label class=&quot;col-sm-3 control-label string required&quot; for=&quot;entrada_partidas_attributes_new_partidas_kilogramos_netos&quot;><abbr title=&quot;Campo Obligatorio&quot;>*</abbr> Kilogramos Netos:</label><div class=&quot;col-sm-9&quot;><div id=&quot;input_group_span_id&quot; class=&quot;input-group col-sm-12&quot;>
+		<input class=&quot;string required readonly form-control kilogramos-netos&quot; readonly=&quot;readonly&quot; type=&quot;text&quot; name=&quot;entrada[partidas_attributes][new_partidas][kilogramos_netos]&quot; id=&quot;entrada_partidas_attributes_new_partidas_kilogramos_netos&quot; />
+		<span class=&quot;input-group-addon&quot;>Kgs</span>
+</div></div></div>
+        <div class=&quot;form-group string required entrada_partidas_humedad&quot;><label class=&quot;col-sm-3 control-label string required&quot; for=&quot;entrada_partidas_attributes_new_partidas_humedad&quot;><abbr title=&quot;Campo Obligatorio&quot;>*</abbr> Húmedad:</label><div class=&quot;col-sm-9&quot;><div id=&quot;input_group_span_id&quot; class=&quot;input-group col-sm-12&quot;>
+          <input class=&quot;string required form-control humedad&quot; type=&quot;text&quot; name=&quot;entrada[partidas_attributes][new_partidas][humedad]&quot; id=&quot;entrada_partidas_attributes_new_partidas_humedad&quot; />
+          <span class=&quot;input-group-addon&quot;>%</span>          
+</div><p class=&quot;help-block&quot;>Introduce un valor entre 10 y 20.</p></div></div>          
+	<div class=&quot;form-group select required entrada_partidas_type_coffee_id&quot;><label class=&quot;col-sm-3 control-label select required&quot; for=&quot;entrada_partidas_attributes_new_partidas_type_coffee_id&quot;><abbr title=&quot;Campo Obligatorio&quot;>*</abbr> Tipo de Cafe:</label><div class=&quot;col-sm-9&quot;><select class=&quot;form-control select required&quot; name=&quot;entrada[partidas_attributes][new_partidas][type_coffee_id]&quot; id=&quot;entrada_partidas_attributes_new_partidas_type_coffee_id&quot;><option value=&quot;&quot;>Selecciona una opción</option>
+<option value=&quot;2&quot;>Cerezo</option>
+<option value=&quot;3&quot;>Honney</option>
+<option value=&quot;5&quot;>De Pergamino a Prueba</option>
+<option value=&quot;6&quot;>Testing</option></select></div></div>  
+	<div class=&quot;form-group string required entrada_partidas_calidad_cafe&quot;><label class=&quot;col-sm-3 control-label string required&quot; for=&quot;entrada_partidas_attributes_new_partidas_calidad_cafe&quot;><abbr title=&quot;Campo Obligatorio&quot;>*</abbr> Calidad del Cafe:</label><div class=&quot;col-sm-9&quot;><input class=&quot;form-control string required&quot; type=&quot;text&quot; name=&quot;entrada[partidas_attributes][new_partidas][calidad_cafe]&quot; id=&quot;entrada_partidas_attributes_new_partidas_calidad_cafe&quot; /></div></div>  	          
+        <div class=&quot;form-group text optional entrada_partidas_observaciones&quot;><label class=&quot;col-sm-3 control-label text optional&quot; for=&quot;entrada_partidas_attributes_new_partidas_observaciones&quot;>Observaciones:</label><div class=&quot;col-sm-9&quot;><textarea class=&quot;form-control text optional&quot; name=&quot;entrada[partidas_attributes][new_partidas][observaciones]&quot; id=&quot;entrada_partidas_attributes_new_partidas_observaciones&quot;>
+</textarea></div></div>
+                
+        <div class=&quot;row&quot;>
+          <div class=&quot;col-sm-9 col-sm-offset-3&quot;>
+              <input type=&quot;hidden&quot; name=&quot;entrada[partidas_attributes][new_partidas][_destroy]&quot; id=&quot;entrada_partidas_attributes_new_partidas__destroy&quot; value=&quot;false&quot; /><a class=&quot;btn btn-rounded btn-red pull-right remove_fields dynamic&quot; href=&quot;#&quot;>
+                <i class=&quot;fa fa-trash&quot;  aria-hidden=&quot;true&quot;></i>
+                Quitar
+</a>          </div>                
+        </div>
+</div>" href="#"> 
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Añadir
+</a>      </div>
+    </div>
+
+    <div id="partidas">          
+        <div class="nested-fields">  
+            <hr class="hr-divider-xs">
+        <div class="form-group integer optional entrada_partidas_identificador">
+            <label class="col-sm-3 control-label integer optional" 
+                   for="entrada_partidas_attributes_0_identificador">
+                Número:
+            </label>
+            <div class="col-sm-9">
+                <input class="form-control numeric integer optional identificador" 
+                       readonly="readonly" step="1" value="1" 
+                       name="entrada[partidas_attributes][0][identificador]" 
+                       id="entrada_partidas_attributes_0_identificador" type="number">
+            </div>
+        </div>  
+    
+	<div class="form-group string required entrada_partidas_kilogramos_brutos"><label class="col-sm-3 control-label string required" for="entrada_partidas_attributes_0_kilogramos_brutos"><abbr title="Campo Obligatorio">*</abbr> Kilogramos Brutos:</label><div class="col-sm-9"><div id="input_group_span_id" class="input-group col-sm-12">    	
+          <input class="string required form-control kilogramos-brutos" name="entrada[partidas_attributes][0][kilogramos_brutos]" id="entrada_partidas_attributes_0_kilogramos_brutos" type="text">    
+          <span class="input-group-addon">Kgs</span>
+</div><p class="help-block">Introduce los kilogramos brutos.</p></div></div>	
+        <h3 class="title-md text-center title-striped no-margin text-info">Bultos</h3>  
+        
+            <div class="form-group integer required entrada_partidas_numero_sacos"><label class="col-sm-3 control-label integer required" for="entrada_partidas_attributes_0_numero_sacos"><abbr title="Campo Obligatorio">*</abbr> Numero sacos</label><div class="col-sm-9"><div id="input_group_span_id" class="input-group col-sm-12">    	
+              <input class="string required form-control numero-sacos" name="entrada[partidas_attributes][0][numero_sacos]" id="entrada_partidas_attributes_0_numero_sacos" type="text">
+              <span class="input-group-addon">Sacos</span>
+</div></div></div>
+            <div class="form-group integer required entrada_partidas_numero_bolsas"><label class="col-sm-3 control-label integer required" for="entrada_partidas_attributes_0_numero_bolsas"><abbr title="Campo Obligatorio">*</abbr> Numero bolsas</label><div class="col-sm-9"><div id="input_group_span_id" class="input-group col-sm-12">    	
+              <input class="string required form-control numero-bolsas" name="entrada[partidas_attributes][0][numero_bolsas]" id="entrada_partidas_attributes_0_numero_bolsas" type="text">
+              <span class="input-group-addon">Bolsas</span>
+</div></div></div>        
+         <h3 class="title-md text-center title-striped no-margin"></h3> 
+         
+        <div class="form-group string required entrada_partidas_tara"><label class="col-sm-3 control-label string required" for="entrada_partidas_attributes_0_tara"><abbr title="Campo Obligatorio">*</abbr> Tara:</label><div class="col-sm-9"><div id="input_group_span_id" class="input-group col-sm-12">
+          <input class="string required readonly form-control tara" readonly="readonly" name="entrada[partidas_attributes][0][tara]" id="entrada_partidas_attributes_0_tara" type="text">
+          <span class="input-group-addon">Kgs</span>
+</div></div></div>
+	<div class="form-group string required entrada_partidas_kilogramos_netos"><label class="col-sm-3 control-label string required" for="entrada_partidas_attributes_0_kilogramos_netos"><abbr title="Campo Obligatorio">*</abbr> Kilogramos Netos:</label><div class="col-sm-9"><div id="input_group_span_id" class="input-group col-sm-12">
+		<input class="string required readonly form-control kilogramos-netos" readonly="readonly" name="entrada[partidas_attributes][0][kilogramos_netos]" id="entrada_partidas_attributes_0_kilogramos_netos" type="text">
+		<span class="input-group-addon">Kgs</span>
+</div></div></div>
+        <div class="form-group string required entrada_partidas_humedad"><label class="col-sm-3 control-label string required" for="entrada_partidas_attributes_0_humedad"><abbr title="Campo Obligatorio">*</abbr> Húmedad:</label><div class="col-sm-9"><div id="input_group_span_id" class="input-group col-sm-12">
+          <input class="string required form-control humedad" name="entrada[partidas_attributes][0][humedad]" id="entrada_partidas_attributes_0_humedad" type="text">
+          <span class="input-group-addon">%</span>          
+</div><p class="help-block">Introduce un valor entre 10 y 20.</p></div></div>          
+	<div class="form-group select required entrada_partidas_type_coffee_id"><label class="col-sm-3 control-label select required" for="entrada_partidas_attributes_0_type_coffee_id"><abbr title="Campo Obligatorio">*</abbr> Tipo de Cafe:</label><div class="col-sm-9"><select class="form-control select required" name="entrada[partidas_attributes][0][type_coffee_id]" id="entrada_partidas_attributes_0_type_coffee_id"><option value="">Selecciona una opción</option>
+<option value="2">Cerezo</option>
+<option value="3">Honney</option>
+<option value="5">De Pergamino a Prueba</option>
+<option value="6">Testing</option></select></div></div>  
+	<div class="form-group string required entrada_partidas_calidad_cafe"><label class="col-sm-3 control-label string required" for="entrada_partidas_attributes_0_calidad_cafe"><abbr title="Campo Obligatorio">*</abbr> Calidad del Cafe:</label><div class="col-sm-9"><input class="form-control string required" name="entrada[partidas_attributes][0][calidad_cafe]" id="entrada_partidas_attributes_0_calidad_cafe" type="text"></div></div>  	          
+        <div class="form-group text optional entrada_partidas_observaciones"><label class="col-sm-3 control-label text optional" for="entrada_partidas_attributes_0_observaciones">Observaciones:</label><div class="col-sm-9"><textarea class="form-control text optional" name="entrada[partidas_attributes][0][observaciones]" id="entrada_partidas_attributes_0_observaciones"></textarea></div></div>
+         <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+              <input name="entrada[partidas_attributes][0][_destroy]" id="entrada_partidas_attributes_0__destroy" value="false" type="hidden"><a class="btn btn-rounded btn-red pull-right remove_fields dynamic" href="#">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+                Quitar
+</a>          </div>                
+        </div>       
+      
+</div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-3">
+         <button name="button" type="submit" class="btn btn-primary">
+        <i class="fa fa-check" aria-hidden="true"></i>    
+        Crear
+</button>        <a role="button" class="btn btn-default" href="/entradas"> 
+        <i class="fa fa-remove" aria-hidden="true"></i> 
+        Cancelar
+</a>      </div>    
+    </div>  
+      
+</form></div>
+
+      
+</div>
+
+<script src="assets/entradas.js" type="text/javascript"></script>

@@ -1,0 +1,21 @@
+<form class="simple_form form-horizontal" novalidate="novalidate" id="new_client" action="/clients" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="NELN9JRzGQiBymcVp/098c1vhxAG54bT3Rz+DHNBWIaicvRmUoH7rMKzPuSpR+f/mvvaKy13K4ZOKlGHHPwe3Q==">
+
+  <div class="form-group radio_buttons optional client_persona_fisica"><label class="col-sm-3 control-label radio_buttons optional">¿Persona Fisica?:</label><div class="col-sm-9"><input type="hidden" name="client[persona_fisica]" value=""><label class="radio-inline" for="client_persona_fisica_true"><input class="radio_buttons optional" type="radio" value="true" name="client[persona_fisica]" id="client_persona_fisica_true">Si</label><label class="radio-inline" for="client_persona_fisica_false"><input class="radio_buttons optional" readonly="readonly" type="radio" value="false" checked="checked" name="client[persona_fisica]" id="client_persona_fisica_false">No</label></div></div>    
+
+  <div class="form-group string required client_legal_representative"><label class="col-sm-3 control-label string required" for="client_legal_representative"><abbr title="Campo Obligatorio">*</abbr> Representante Legal:</label><div class="col-sm-9"><input class="form-control string required" type="text" name="client[legal_representative]" id="client_legal_representative"></div></div>    
+ 
+
+  <div class="form-group string required client_organization"><label class="col-sm-3 control-label string required" for="client_organization"><abbr title="Campo Obligatorio">*</abbr> Organización:</label><div class="col-sm-9"><input class="form-control string required" type="text" name="client[organization]" id="client_organization"><p class="help-block">Proporciona el nombre de la organización.</p></div></div>
+
+  <div class="row">
+    <div class="col-sm-9 col-sm-offset-3">      
+      <button name="button" type="submit" class="btn btn-primary">
+        <i class="fa fa-check" aria-hidden="true"></i>    
+        Crear
+</button>        
+      <a role="button" class="btn btn-default" href="/clients"> 
+        <i class="fa fa-remove" aria-hidden="true"></i> 
+        Cancelar
+</a>    </div>    
+  </div>
+</form>
