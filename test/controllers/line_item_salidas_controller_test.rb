@@ -15,11 +15,22 @@ class LineItemSalidasControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create line_item_salida" do
+  test "should create line_item_salida" do   
+    sacos = {total: 8}
+    bolsas = {total: 10}
+    kilogramos_netos = {total: 34.56}
     assert_difference('LineItemSalida.count') do
-      post line_item_salidas_url, params: { partida_id: partidas(:one).id }
+      post line_item_salidas_url, params: { 
+        partida_id: partidas(:one).id,
+        sacos_salida: sacos,        
+        bolsas_salida: bolsas,        
+        kilogramos_netos_salida: kilogramos_netos
+      }
     end
 
+    assert_equal(LineItemSalida.last.total_sacos, 8)
+    assert_equal(LineItemSalida.last.total_bolsas, 0)
+    assert_equal(LineItemSalida.last.total_kilogramos_netos, '0.0')
     follow_redirect!
     assert_select 'h1', 'Datos del Cliente'
     assert_select 'ul.nav li a', 'Información Personal'

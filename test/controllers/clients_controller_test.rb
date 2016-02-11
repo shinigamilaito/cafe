@@ -44,7 +44,7 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", 'Información Personal'
     assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", /Entradas/
     assert_select "div.tab-content div.tab-pane#specifications", 1
-    assert_select "div.tab-content div.tab-pane#comments", 1
+    assert_select "div.tab-content div.tab-pane#comments", 1    
   end
 
   test "should get edit" do
@@ -79,7 +79,8 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Client.count', 0) do
       delete client_url(@client)
     end
-
+    
+    assert(Client.last.delete_logical)
     assert_redirected_to clients_url
   end
   

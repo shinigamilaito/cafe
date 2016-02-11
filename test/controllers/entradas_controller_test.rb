@@ -160,6 +160,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
       delete entrada_url(@entrada)
     end
 
+    assert(Entrada.last.delete_logical)
     assert_redirected_to entradas_url
   end
   

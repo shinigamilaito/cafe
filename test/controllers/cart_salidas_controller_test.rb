@@ -49,4 +49,10 @@ class CartSalidasControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to client_url(@client)
   end
+  
+  test "debe regresar los datos del carrito a proceso" do
+    get current_cart_salida_cart_salidas_path, params: {}, xhr: true
+    
+    assert_response :success
+  end
 end
