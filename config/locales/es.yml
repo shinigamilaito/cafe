@@ -255,7 +255,7 @@ es:
                 less_than_or_equal_to: No es menor ó igual a 20
                 greater_than_or_equal_to: No es mayor ó igual a 10
                 
-        line_item_salida:
+        line_item_salida_proceso:
           attributes:
             total_kilogramos_netos:
               greater_than_or_equal_to: Debe ser mayor a 0.1

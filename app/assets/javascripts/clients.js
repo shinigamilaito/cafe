@@ -52,7 +52,7 @@ var cliente = new Cliente({
 //<editor-fold desc="Agrega las salidas de las partidas al proceso">
 
 $(function() {
-    if($('.menu-cart-salidas').length) {
+    if($('.menu-cart-salidas-proceso').length) {
         $('.add-to-cart').on('click', function() {            
             var cart = $(this).parents('.wrapper_partida_tabs').prev().find('.span_total_partidas');            
             var imgtodrag = $(this).prev().eq(0);
@@ -105,7 +105,7 @@ $(function() {
 
 //<editor-fold desc="Agrega el efecto flip al retiro de salidas">
 $(function() {
-    if($('.menu-cart-salidas').length) {
+    if($('.menu-cart-salidas-proceso').length) {
        $(".card").flip({
            trigger: 'manual'
        });     

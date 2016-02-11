@@ -1,5 +1,5 @@
-if ($('.cart_salida tr').length == 1) { $('.cart_salida').show('blind', 1000); }
-$('.cart_salida').html("<%=j render(@cart_salida_proceso) %>");
-$('.span_total_partidas').html("<%= "A proceso (#{@cart_salida_proceso.line_item_salida_procesos.size})" %>");
+if ($('.menu-cart-salidas-proceso .cart_salida tr').length == 1) { $('.menu-cart-salidas-proceso .cart_salida').show('blind', 1000); }
+$('.menu-cart-salidas-proceso .cart_salida').html("<%=j render(@cart_salida_proceso) %>");
+$('.menu-cart-salidas-proceso .span_total_partidas').html("<%= "A proceso (#{@cart_salida_proceso.line_item_salida_procesos.size})" %>");
 $('.card').flip(false);
 $('.card').find('.back').css({display: 'none'});

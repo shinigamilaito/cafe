@@ -92,13 +92,13 @@ describe("Salida a proceso", function() {
     });
     
     it("el div que agrupa las salidas a proceso debe estar presente", function() {
-        expect($('.menu-cart-salidas')).toBeInDOM(); 
+        expect($('.menu-cart-salidas-proceso')).toBeInDOM(); 
     });
     
     it("debe agregar a salida los kilos netos, sacos y bolsas", function() {
       var spyEvent = spyOnEvent($('.add-to-cart'), 'click');
       
-      expect($('.span_total_partidas')[0]).toBeInDOM();  
+      expect($('.menu-cart-salidas-proceso .span_total_partidas')[0]).toBeInDOM();  
 
        $('.add-to-cart').click();
       
@@ -125,7 +125,7 @@ describe("Cuando se realize una salida a proceso", function() {
     
     it("debe estar presente el enlace para realizar la salida", function() {
         expect($('.realizar_salida_proceso_link')[0]).toBeInDOM();
-        expect($('.cart_salida')[0]).toBeInDOM();
+        expect($('.menu-cart-salidas-proceso .cart_salida')[0]).toBeInDOM();
         expect($('.alert')[0]).toBeInDOM();
     });
     
