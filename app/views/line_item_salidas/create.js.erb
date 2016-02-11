@@ -1,5 +1,0 @@
-if ($('.cart_salida tr').length == 1) { $('.cart_salida').show('blind', 1000); }
-$('.cart_salida').html("<%=j render(@cart_salida) %>");
-$('.span_total_partidas').html("<%= "A proceso (#{@cart_salida.line_item_salidas.size})" %>");
-$('.card').flip(false);
-$('.card').find('.back').css({display: 'none'});
