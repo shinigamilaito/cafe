@@ -9,6 +9,7 @@
       <table class="table">
         <thead>
           <tr>
+            <th>No. Entrada</th>
             <th>No. Partida</th>
             <th>Tipo de Cafe</th>
             <th>No. Sacos</th>
@@ -19,10 +20,11 @@
           </tr>
         </thead>
         <tbody>
-          <%= render cart_salida.line_item_salidas %>
+          <%= render cart_salida.line_item_salidas.order("id DESC") %>
         </tbody>
         <tbody>
           <tr>
+              <th></th>
               <th></th>
               <th>Total:</th>
               <th><%= "#{cart_salida.total_sacos} Sacos" %></th>
