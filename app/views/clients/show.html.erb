@@ -1,5 +1,9 @@
 <div class="row">
-    <div class='col-sm-12'><h1 class='title-md hr text-center text-uppercase'><%= t('.title') %></h1></div>
+    <div class='col-sm-12'>
+        <h1 class='title-md hr text-center text-uppercase'>
+          <%= t('.title') %>
+        </h1>
+    </div>
 </div>
 
 <div class="row mt-20 mb-30">
@@ -30,7 +34,11 @@
                           <% else %>
                             <li role="presentation">
                           <% end %>
-                              <a href="#entrada<%= entrada.id %>" aria-controls="entrada<%= entrada.id%>" role="tab" data-toggle="tab"><%= "Entrada - #{padded_zeros_numero_entrada(entrada.numero_entrada)}" %></a>
+                              <a href="#entrada<%= entrada.id %>" 
+                                 aria-controls="entrada<%= entrada.id%>" role="tab" 
+                                 data-toggle="tab" data-entrada-index="<%= index %>">
+                                  <%= "Entrada - #{padded_zeros_numero_entrada(entrada.numero_entrada)}" %>
+                              </a>
                           </li>
                         <% end %>                      
                     </ul>
@@ -40,10 +48,10 @@
                           <% @client.entradas.validas.numero_entrada_ascendente.each_with_index do |entrada, index| %>
                             <% if index.zero? %>
                             <div role="tabpanel" class="tab-pane fade in active" id="entrada<%= entrada.id %>">
-                          <% else %>
+                            <% else %>
                             <div role="tabpanel" class="tab-pane fade in" id="entrada<%= entrada.id %>">
-                          <% end %>
-                          <%= render entrada %>
+                            <% end %>
+                              <%= render entrada %>
                             </div>
                           <% end %>                        
                       </div>
