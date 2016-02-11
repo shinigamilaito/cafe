@@ -172,4 +172,18 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
     assert File.delete("#{Rails.root}/reports/entradas.pdf")
   end
   
+  test "should obtain numero_entrada_cliente for new entrada via json" do    
+    get numero_entrada_cliente_entradas_url, params: { id: "", idCliente: clients(:pedro).id },
+    xhr: true
+    
+    assert_response :success
+  end
+  
+  test "should obtain numero_entrada_cliente for edit entrada via json" do    
+    get numero_entrada_cliente_entradas_url, params: { id: entradas(:one).id, idCliente: clients(:pedro).id },
+    xhr: true
+    
+    assert_response :success
+  end
+  
 end
