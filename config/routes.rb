@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :salida_procesos
-  resources :line_item_salidas
+  resources :line_item_salidas, only: :create
   resources :cart_salidas, only: :destroy
   resources :partidas
   resources :entradas do

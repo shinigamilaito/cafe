@@ -9,12 +9,6 @@ class LineItemSalida < ApplicationRecord
   validates :total_kilogramos_netos, allow_blank: true, numericality: {
     greater_than_or_equal_to: 0.01 }
   
-  def total_tara    
-    valor_tara = self.total_sacos + self.total_bolsas*0.100
-    
-    return valor_tara
-  end
-  
   def cliente
     self.partida.entrada.client
   end
