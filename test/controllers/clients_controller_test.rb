@@ -8,11 +8,16 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get clients_url
     assert_response :success
+    assert_select ".row .col-sm-12 h1.title-md", 1
+    assert_select ".pull-right a.btn-ghost.btn-primary", 1
+    assert_select "h1.text-uppercase", I18n.t('clients.index.title')
   end
 
   test "should get new" do
     get new_client_url
     assert_response :success
+    assert_select "h1.title-md", I18n.t('clients.new.title')
+    assert_select "div#formulario-clientes", 1
   end
 
   test "should create client" do
@@ -30,11 +35,18 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
   test "should show client" do
     get client_url(@client)
     assert_response :success
+    assert_select "h1.title-md", I18n.t('clients.show.title')
+    assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", 'Informacion Personal'
+    assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", /Entradas/
+    assert_select "div.tab-content div.tab-pane#specifications", 1
+    assert_select "div.tab-content div.tab-pane#comments", 1
   end
 
   test "should get edit" do
     get edit_client_url(@client)
     assert_response :success
+    assert_select "h1.title-md", I18n.t('clients.edit.title')
+    assert_select "div#formulario-clientes", 1
   end
 
   test "should update client" do
