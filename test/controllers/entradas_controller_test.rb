@@ -26,11 +26,36 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get entradas_url
     assert_response :success
+    
+    assert_select ".row .col-sm-12 h1.title-md", 1
+    assert_select ".pull-right a.btn-ghost.btn-primary", 1
+    assert_select "h1.text-uppercase", I18n.t('entradas.index.title')
+    assert_select ".table-responsive table.table", 1
+    assert_select "table tbody tr", minimum: 2
+    
   end
 
   test "should get new" do
     get new_entrada_url
     assert_response :success
+    
+    assert_select "h1.title-md", I18n.t('entradas.new.title')
+    assert_select "div#formulario-entradas", 1
+    assert_select "a.add_fields", 1
+    assert_select "div#partidas", 1
+    assert_select "div.nested-fields", 1
+    assert_select "input[type=text].numero-bolsas", 1
+    assert_select "input[type=text].numero-sacos", 1
+    assert_select "input[type=text].tara", 1
+    assert_select "input[type=text].kilogramos-brutos", 1
+    assert_select "input[type=text].kilogramos-netos", 1
+    assert_select "div#datetimepicker_for_date", 1
+    assert_select "input[type=text]#entrada_date", 1
+    assert_select "input[type=text].humedad", 1
+    assert_select "input[type=hidden]#entrada_id", 1
+    assert_select "select#entrada_client_id", 1
+    assert_select "input[type=number]#entrada_numero_entrada_cliente", 1
+    
   end
 
   test "should create entrada" do        
@@ -67,13 +92,34 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
     
     get entrada_url(@entrada)
     assert_response :success
+    assert_select "h1.title-md", I18n.t('entradas.show.title')
+    assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", 'Información Entrada'
+    assert_select "div.tab-content div.tab-pane#specifications", 1
+    assert_select "table.table", 3
+    assert_select "table tbody tr", minimum: 11
   end
 
   test "should get edit" do
-    @entrada = Entrada.last
+    @entrada = entradas(:one)
     
     get edit_entrada_url(@entrada)
     assert_response :success
+    assert_select "h1.title-md", I18n.t('entradas.edit.title')
+    assert_select "div#formulario-entradas", 1
+    assert_select "a.add_fields", 1
+    assert_select "div#partidas", 1
+    assert_select "div.nested-fields", minimum: 1
+    assert_select "input[type=text].numero-bolsas", minimum: 1
+    assert_select "input[type=text].numero-sacos", minimum: 1
+    assert_select "input[type=text].tara", minimum: 1
+    assert_select "input[type=text].kilogramos-brutos", minimum: 1
+    assert_select "input[type=text].kilogramos-netos", minimum: 1
+    assert_select "div#datetimepicker_for_date", minimum: 1
+    assert_select "input[type=text]#entrada_date", minimum: 1
+    assert_select "input[type=text].humedad", minimum: 1
+    assert_select "input[type=hidden]#entrada_id", minimum: 1
+    assert_select "select#entrada_client_id", minimum: 1
+    assert_select "input[type=number]#entrada_numero_entrada_cliente", minimum: 1
   end
 
   test "should update entrada" do

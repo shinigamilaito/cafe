@@ -11,6 +11,8 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     assert_select ".row .col-sm-12 h1.title-md", 1
     assert_select ".pull-right a.btn-ghost.btn-primary", 1
     assert_select "h1.text-uppercase", I18n.t('clients.index.title')
+    assert_select ".table-responsive table.table", 1
+    assert_select "table tbody tr", minimum: 2
   end
 
   test "should get new" do
@@ -18,6 +20,9 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "h1.title-md", I18n.t('clients.new.title')
     assert_select "div#formulario-clientes", 1
+    assert_select "input[type=radio]", 2
+    assert_select "input[type=text]#client_legal_representative", 1
+    assert_select "input[type=text]#client_organization", 1
   end
 
   test "should create client" do
@@ -47,6 +52,9 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "h1.title-md", I18n.t('clients.edit.title')
     assert_select "div#formulario-clientes", 1
+    assert_select "input[type=radio]", 2
+    assert_select "input[type=text]#client_legal_representative", 1
+    assert_select "input[type=text]#client_organization", 1
   end
 
   test "should update client" do
