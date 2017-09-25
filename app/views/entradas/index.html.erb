@@ -18,22 +18,22 @@
 
 <% if @entradas.blank? %>
     <p class='lead'>Aún no tienes entradas registradas.</p>    
-  <% else %>        
+<% else %>        
     <div class="table-responsive">
       <table class="table table-striped table-hover table-condensed">
-      <thead>
-        <tr scope="row">
-          <th><%= t('.entradas.numero_entrada') %></th>
-          <th><%= t('.entradas.date') %></th>
-          <th><%= t('.entradas.driver') %></th>
-          <th><%= t('.entradas.total_partidas') %></th>          
-          <th><%= t('.entradas.updated_at') %></th>
+        <thead>
+          <tr scope="row">
+            <th><%= t('.entradas.numero_entrada') %></th>
+            <th><%= t('.entradas.date') %></th>
+            <th><%= t('.entradas.driver') %></th>
+            <th><%= t('.entradas.total_partidas') %></th>          
+            <th><%= t('.entradas.updated_at') %></th>
           
-          <th colspan="3"><%= t('.entradas.options') %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @entradas.each_with_index do |entrada, index| %>
+            <th colspan="3"><%= t('.entradas.options') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @entradas.each_with_index do |entrada, index| %>
           <tr>
             <td><%= padded_zeros_numero_entrada(entrada.numero_entrada) %></td>
             <td><%= l entrada.date, format: :medium %></td>
@@ -62,8 +62,8 @@
               <% end %>
             </td>        
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+          <% end %>
+        </tbody>
+      </table>
     </div>
 <% end %>
