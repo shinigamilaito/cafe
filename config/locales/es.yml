@@ -1,0 +1,218 @@
+es:
+  helpers:
+      submit:
+        client:
+          create: Crear
+          update: Actualizar
+
+        entrada:
+          create: Crear
+          update: Actualizar
+  date:
+    abbr_day_names:
+    - dom
+    - lun
+    - mar
+    - mié
+    - jue
+    - vie
+    - sáb
+    abbr_month_names:
+    - 
+    - ene
+    - feb
+    - mar
+    - abr
+    - may
+    - jun
+    - jul
+    - ago
+    - sep
+    - oct
+    - nov
+    - dic
+    day_names:
+    - Domingo
+    - Lunes
+    - Martes
+    - Miércoles
+    - Jueves
+    - Viernes
+    - Sábado
+    formats:
+      default: "%d/%m/%Y"
+      long: "%m, %d de %Y"
+      short: "%d de %b"
+      full_month: "%d de %B"
+    month_names:
+    - 
+    - Enero
+    - Febrero
+    - Marzo
+    - Abril
+    - Mayo
+    - Junio
+    - Julio
+    - Agosto
+    - Septiembre
+    - Octubre
+    - Noviembre
+    - Diciembre
+    order:
+    - :day
+    - :month
+    - :year
+
+  time:
+    am: am
+    formats:
+      default: "%a, %d de %b de %Y a las %H:%M:%S %Z"
+      long: "%A, %d de %B de %Y a las %I:%M %p"
+      short: "%d de %b a las %H:%M Hrs"
+      medium: "%d/%m/%Y - %H:%M Hrs"
+    pm: pm
+    
+  clients:
+    created: Cliente creado exitosamente.
+    updated: Cliente actualizado exitosamente.
+    destroyed: Cliente eliminado exitosamente.
+    blank: Para continuar, es necesario tener un Perfíl.
+    invalid: El perfíl al que desea acceder no es valido.
+    index:
+      new_client_link: Registrar
+      title: Clientes
+      clients:
+        formal_name: Nombre Completo
+        address: Dirección
+        organization: Organización
+        created_at: Creado
+        updated_at: Actualizado
+        show_link: 'Ver Detalles'
+        edit_link: 'Editar'
+        options: Opciones
+    new:
+      title: Nuevo Cliente
+      registration_profile_title: Creación de Perfíl - Formulario de Registro
+    edit:
+      title: Editar Cliente
+    show:
+      title: Datos del Cliente
+      formal_name: 'Nombre Completo:'
+      address: 'Dirección:'
+      organization: 'Organización:'
+      created_at: 'Creado el:'
+      updated_at: 'Actualizado el:'
+      back_link: 'Regresar'
+      edit_link: 'Editar'
+      delete_link: 'Eliminar'
+      
+  devise:
+    sessions:
+      new:
+        log_in: Ingresar
+        button_log_in: Acceder
+        button_log_in_facebook: Acceder con Facebook
+        not_account: ¿No tienes una cuenta?
+        create_account: Crea una desde aqui
+
+    registrations:
+      new:
+        sign_up: Registrarse
+        log_in: Acceder
+        button_log_in_facebook: Acceder con Facebook
+        or: o
+
+  entradas:
+    created: Entrada creada exitosamente.
+    updated: Entrada actualizada exitosamente.    
+    destroyed: Entrada eliminada exitosamente.    
+    index:
+      new_entrada_link: Registrar
+      title: Entradas
+      entradas:      
+        date: Fecha de Registro        
+        numero_entrada: Número de Entrada
+        driver: Chofer
+        total_partidas: Total de Partidas
+        created_at: Creado el
+        updated_at: Actualizado el
+        requested_amount: Cantidad Solicitada
+        company_name: Nombre de la Compañia
+        options: Opciones
+        create_link: empieza aquí
+        show_link: 'Ver Detalles'
+        edit_link: 'Editar'
+
+    new:
+      title: Nueva Entrada
+    edit:
+      title: Editar Entrada
+    form:
+      partidas_title: Partidas
+
+    show:
+      title: Datos de la Entrada
+      date: 'Fecha-Hora de Ingreso:'
+      numero_entrada: 'Número de Entrada:'
+      driver: 'Chofer:'        
+      entregado_por: 'Entregado por:'
+      created_at: 'Fecha-Hora de creación:'
+      updated_at: 'Fecha-Hora de última actualización:'
+      partidas_title: Datos de las Partidas
+      edit_link: 'Editar'
+      delete_link: 'Eliminar'
+      back_link: 'Regresar'
+
+  partidas: 
+    partida:
+      kilogramos_brutos: 'Kilogramos Brutos:'
+      numero_bultos: 'Número de Bultos:'
+      tara: 'Tara:'
+      kilogramos_netos: 'Kilogramos Netos:'
+      humedad: 'Húmedad:'
+      tipo_cafe: 'Tipo de Café:'
+      calidad_cafe: 'Calidad del Café:'
+      cliente: 'Nombre del Cliente:'
+      observaciones: 'Observaciones:'
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: Proporciona tu nombre.
+              uniqueness: Al parecer este nombre y el correo ya existen.
+            email: 
+              blank: Introduce una cuenta de correo valida.
+              taken: Esta cuenta de correo ya esta registrada.
+              invalid: Introduce una cuenta de correo valida.
+            password:
+              blank: Proporciona tu contraseña.
+              too_short: "Demasiado corta, minimo %{count} carácteres."
+            password_confirmation:
+              blank: Confirma la contraseña.
+              confirmation: Al parecer las contraseñas no son iguales.
+
+        partida:
+          attributes:
+            kilogramos_brutos:
+              greater_than_or_equal_to: Los kilogramos brutos deben ser mayor a 0.1
+            tara:
+              greater_than_or_equal_to: Los kilogramos de la tara deben ser mayor a 0.1
+            kilogramos_netos:
+              greater_than_or_equal_to: Los kilogramos netos deben ser mayor a 0.1
+            humedad:
+                less_than_or_equal_to: No es menor ó igual a 20
+                greater_than_or_equal_to: No es mayor ó igual a 10
+
+      messages:
+        blank: no puede estar vacio
+        invalid: no es valido
+        taken: ya existe
+        too_short: 'es demasiado corto, por lo menos %{count} números'
+        inclusion: 'no se encuentra en el rango correcto'
+
+  password:
+    minimum:
+      length: Introduce por lo menos seis carácteres.

@@ -1,0 +1,18 @@
+<div class="row">
+    <div class='col-sm-6'><h1 class='title-show'><%= t('.title') %></h1></div>
+    <div class='col-sm-6'>
+      <div class="pull-right">
+        <%= link_to t('.edit_link'), edit_client_path(@client), class: "btn btn-default" %>
+        <%= link_to t('.delete_link'), @client, method: :delete, class: "btn btn-default", data: {confirm: '¿Está usted seguro?'} %>
+        <%= link_to t('.back_link'), clients_path, class: "btn btn-default" %>
+      </div>         
+    </div>
+</div>
+
+<ul class='list-group cliente-info-list'>
+    <%= render 'attributes', title: t('.formal_name'), value: @client.formal_name %>             
+    <%= render 'attributes', title: t('.address'), value: @client.address %>             
+    <%= render 'attributes', title: t('.organization'), value: @client.organization %>             
+    <%= render 'attributes', title: t('.created_at'), value: l(@client.created_at, format: :medium) %>             
+    <%= render 'attributes', title: t('.updated_at'), value: l(@client.updated_at, format: :medium) %>             
+</ul>

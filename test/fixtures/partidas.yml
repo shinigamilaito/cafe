@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entrada: one
+  kilogramos_brutos: 9.99
+  numero_bultos: 1
+  tara: 3.99
+  kilogramos_netos: 6.00
+  humedad: 9.99
+  type_coffee: pergamino
+  calidad_cafe: MyString
+  client: pedro
+
+two:
+  entrada: two
+  kilogramos_brutos: 19.99
+  numero_bultos: 10
+  tara: 9.00
+  kilogramos_netos: 10.99
+  humedad: 9.99
+  type_coffee: cerezo
+  calidad_cafe: MyString
+  client: juan

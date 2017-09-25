@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+pedro:
+  name: Pedro
+  first_name: Martinez
+  last_name: Garcia
+  address: MyString
+  organization: Pluma
+
+juan:
+  name: Juan
+  first_name: Rodriguez
+  last_name: Mendez
+  address: MyString
+  organization: Loxicha

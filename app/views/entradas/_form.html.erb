@@ -1,0 +1,51 @@
+<div>  
+  <%= simple_form_for entrada, html: { class: 'form-horizontal' }, wrapper: :horizontal_form,
+    wrapper_mappings: {
+      check_boxes: :horizontal_radio_and_checkboxes,
+      radio_buttons: :horizontal_radio_and_checkboxes,
+      file: :horizontal_file_input,
+      boolean: :horizontal_boolean
+      #date: :multi_select_horizontal,
+      #datetime: :multi_select_horizontal
+    } do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.input :numero_entrada, readonly: true %>
+    
+    <%= f.input :date, wrapper: :horizontal_input_group, input_group_span_html: { id: "datetimepicker_for_date" } do %>
+      <span class="input-group-addon text-info"><span class="glyphicon glyphicon-calendar text-info"></span></span>
+      <%= f.input_field :date, as: :string, class: "form-control", readonly: true %>
+      <span class="input-group-addon text-info">Hrs</span>
+    <% end %>
+
+    <%= f.input :entregado_por %>
+      
+    <%= f.input :driver %>
+    
+    <div class="row add-partidas">        
+      <div class="col-sm-7 col-sm-offset-3">
+        <h2>
+          <%= t('.partidas_title') %>         
+        </h2>                    
+      </div>
+      <div class="col-sm-2">
+         <%= link_to_add_association 'Añadir', f, :partidas, 'data-association-insertion-node': '#partidas', 'data-association-insertion-method': :prepend, class: 'btn btn-primary pull-right' %> 
+      </div>
+    </div>
+
+    <div id='partidas'>          
+      <%= f.simple_fields_for :partidas do |partida| %>
+        <%= render 'partida_fields', f: partida %>
+      <% end %>    
+    </div>
+
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-3">
+        <%= f.button :submit, class: 'btn btn-primary' %>                
+        <%= link_to 'Cancelar', entradas_path, role: 'button', class: 'btn btn-default' %>        
+      </div>    
+    </div>  
+      
+  <% end %>
+</div>
+

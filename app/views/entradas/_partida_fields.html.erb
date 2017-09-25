@@ -1,0 +1,39 @@
+<div class='nested-fields'>        
+	<%= f.input :kilogramos_brutos, wrapper: :horizontal_input_group do %>    	
+          <%= f.input_field :kilogramos_brutos, class: 'form-control kilogramos-brutos' %>    
+          <span class="input-group-addon">Kgs</span>
+  	<% end %>
+	
+        <%= f.input :numero_bultos, wrapper: :horizontal_input_group do %>    	
+          <%= f.input_field :numero_bultos, as: :string, class: 'form-control numero-bultos' %>
+          <span class="input-group-addon">Bultos</span>
+  	<% end %>  
+        
+        <%= f.input :tara, wrapper: :horizontal_input_group do %>
+          <%= f.input_field :tara, class: 'form-control tara' %>
+          <span class="input-group-addon">Kgs</span>
+        <% end %>
+
+	<%= f.input :kilogramos_netos, wrapper: :horizontal_input_group do %>
+		<%= f.input_field :kilogramos_netos, class: "form-control kilogramos-netos", readonly: true %>
+		<span class="input-group-addon">Kgs</span>
+	<% end %>
+
+        <%= f.input :humedad, wrapper: :horizontal_input_group do %>
+          <%= f.input_field :humedad, class: "form-control humedad" %>
+          <span class="input-group-addon">%</span>          
+	<% end %>        
+          
+	<%= f.input :type_coffee_id, collection: TypeCoffee.all, prompt: :translate %>  
+	<%= f.input :calidad_cafe %>  
+	<%= f.input :client_id, collection: Client.all.map {|client| [client.formal_name, client.id]},           
+          prompt: :translate %>
+          
+        <%= f.input :observaciones %>
+                
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+              <%= link_to_remove_association "Eliminar", f, class: 'btn btn-warning pull-right' %>
+          </div>                
+        </div>
+</div>

@@ -1,0 +1,4 @@
+<%= show_messages_flash(msg.blank?, class_name: class_name) do %>
+  <a class="close" data-dismiss="alert" href="#">&times;</a>      
+  <strong class="center-block text-center"><%= sanitize msg %></strong>  
+<% end %>

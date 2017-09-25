@@ -1,0 +1,3 @@
+<% flash.each do |name, msg| %>
+  <%= render "shared/messages", msg: msg, class_name: name %>
+<% end %>

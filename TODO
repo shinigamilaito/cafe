@@ -1,0 +1,35 @@
+TODO
+
+Colocar la leyenda Kgs a elemento de formulario -> Realizado
+Crear tabla para los tipos de cafe -> Realizado
+Llenar los datos de tipos de cafe: Pergamino, Cerezo, Honney -> Realizado
+Hacer la resta entre los kilogramos brutos y tara y asignar a klogramos netos -> Realizado
+colocar el nombre del chofer un campo opcional -> Realizado
+Colocar la precision de 8 y 2 decimales para los campos que apliquen -> Realizado
+Validar los attributos de las clases
+Agregar mas de una partida a las entradas -> Realizado
+Agregar texto de internacionalización ->Realizado
+Generar la impresión de la entrada
+Corregir estilos -> Realizado.
+Realizar pruebas a diversos modulos -> Realizado
+Cambiar el campo de address a text en clientes -> Realizado
+Verificar que no se editen ni elimine un cliente que ya esta registrado en partidas
+Colocar el nombre completo del cliente en los select de entradas -> Realizado
+Colocar mascara en los input de las entradas -> Realizado
+Validar que los campos kilogramos brutos, tara y kilogramos netos sean númericos y mayor a 0.01 -> Realizado
+Colocar grupo de botones para editar, eliminar, en vista show de clientes y en vista show de entradas -> Realizado
+Validar el formato de la fecha en el modelo
+Agregar mascara para la fecha en el formlario de entrada -> Realizado
+Pregutnar por las unidades de tara, humedad -> Realizado
+Al eliminar la entrada solo hacerlo de manera logica
+Obtener el numero de entrada automaticamente, verificar si existe una entrada y tomar la ultima en caso contrario empezar desde cero -> Realizado
+Agregarle zeros al numero de entrada -> Realizado
+Validar porcentaje de humedad -> Realizado
+Realizar una mejora en los estilos
+Agregar campo entregado por a las entradas -> Realizado
+Aumentar la cobertura de las pruebas verificar las vistas
+Remover el margin inferior para la ultima partida en el formulario
+Verificar porque no regresa la fecha despues de un error, primero realizar la prueba
+Registrar el numero de partida en el formulario y mostrar en la vista
+Colocar el campo total de partidas en la entrada
+Buscar otros iconos para la vista

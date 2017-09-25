@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Partidas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Entrada</th>
+      <th>Kilogramosbrutos</th>
+      <th>Numerobultos</th>
+      <th>Tara</th>
+      <th>Kilogramosnetos</th>
+      <th>Humedad</th>
+      <th>Tipocafe</th>
+      <th>Calidadcafe</th>
+      <th>Client</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @partidas.each do |partida| %>
+      <tr>
+        <td><%= partida.entrada %></td>
+        <td><%= partida.kilogramosBrutos %></td>
+        <td><%= partida.numeroBultos %></td>
+        <td><%= partida.tara %></td>
+        <td><%= partida.kilogramosNetos %></td>
+        <td><%= partida.humedad %></td>
+        <td><%= partida.tipoCafe %></td>
+        <td><%= partida.calidadCafe %></td>
+        <td><%= partida.client %></td>
+        <td><%= link_to 'Show', partida %></td>
+        <td><%= link_to 'Edit', edit_partida_path(partida) %></td>
+        <td><%= link_to 'Destroy', partida, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Partida', new_partida_path %>

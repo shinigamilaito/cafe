@@ -1,0 +1,11 @@
+<ul class='list-group partida-info-list'>
+    <%= render 'partidas/attributes', title: t('.kilogramos_brutos'), value: "#{partida.kilogramos_brutos} Kgs", collapse: "partida1-#{partida_counter}" %>       
+    <%= render 'partidas/attributes', title: t('.numero_bultos'), value: "#{partida.numero_bultos} Bultos", collapse: "partida2-#{partida_counter}" %>       
+    <%= render 'partidas/attributes', title: t('.tara'), value: "#{partida.tara} Kgs", collapse: "partida3-#{partida_counter}" %>       
+    <%= render 'partidas/attributes', title: t('.kilogramos_netos'), value: "#{partida.kilogramos_netos} Kgs", collapse: "partida4-#{partida_counter}" %>       
+    <%= render 'partidas/attributes', title: t('.humedad'), value: "#{number_with_precision(partida.humedad, precision: 2)} %", collapse: "partida5-#{partida_counter}" %>       
+    <%= render 'partidas/attributes', title: t('.tipo_cafe'), value: "#{partida.type_coffee.name}", collapse: "partida6-#{partida_counter}" %>       
+    <%= render 'partidas/attributes', title: t('.calidad_cafe'), value: "#{partida.calidad_cafe}", collapse: "partida7-#{partida_counter}" %>       
+    <%= render 'partidas/attributes', title: t('.cliente'), value: "#{partida.client.formal_name}", collapse: "partida8-#{partida_counter}" %>       
+    <%= render 'partidas/attributes', title: t('.observaciones'), value: "#{partida.observaciones}", collapse: "partida9-#{partida_counter}" %>                    
+</ul>

@@ -1,0 +1,60 @@
+<div class="row">
+    <div class='col-sm-6'><h1 class='title-show'><%= t('.title') %></h1></div>
+    <div class='col-sm-6'>
+      <div class="pull-right">
+          <%= link_to t('.new_client_link'), new_client_path, class: "btn btn-default" %>        
+      </div>         
+    </div>
+</div>
+
+<% if @clients.blank? %>
+    <p class='lead'>Aún no tienes clientes registrados.</p>    
+  <% else %>        
+    <div class="table-responsive">
+      <table class="table table-striped table-hover table-condensed">
+        <thead>
+          <tr scope="row">
+            <th><%= t('.clients.formal_name') %></th>
+            <th><%= t('.clients.address') %></th>
+            <th><%= t('.clients.organization') %></th>
+            <th><%= t('.clients.created_at') %></th>
+            <th><%= t('.clients.updated_at') %></th>
+
+            <th colspan="3"><%= t('.clients.options') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @clients.each_with_index do |client, index| %>
+            <tr>
+              <td><%= client.formal_name %></td>
+              <td><%= client.address %></td>
+              <td><%= client.organization %></td>
+              <td><%= l client.created_at, format: :medium  %></td>
+              <td><%= l client.updated_at, format: :medium %></td>
+              <td>
+                <%= link_to client do %>
+                   <button type="button" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>                    
+                  </button>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to edit_client_path(client) do %>
+                  <button type="button" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>                    
+                  </button>
+                <% end %>
+              </td>  
+              <td>
+                <%= link_to client, method: :delete, data: { confirm: '¿Está usted seguro?' } do %>
+                  <button type="button" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>                    
+                  </button>
+                <% end %>
+              </td>        
+            </tr>
+          <% end %>
+        </tbody>
+      </table>      
+    </div>
+<% end %>
