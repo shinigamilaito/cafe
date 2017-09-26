@@ -19,9 +19,8 @@ class Entrada < ApplicationRecord
     end
   end
   
-  def actualiza_numero_partidas
-    self.total_partidas = self.partidas.size    
-    self.save
+  def actualiza_numero_partidas        
+    self.update_columns(total_partidas: self.partidas.size)
   end
   
 end
