@@ -165,7 +165,7 @@ es:
 
   partidas: 
     partida:
-      identificador: 'Número de Partida'
+      identificador: 'Número de Partida:'
       kilogramos_brutos: 'Kilogramos Brutos:'
       numero_bultos: 'Número de Bultos:'
       tara: 'Tara:'
