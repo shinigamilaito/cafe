@@ -33,6 +33,7 @@ es:
         entregado_por: 'Entregado por:'
 
       partidas:
+        identificador: 'Número:'
         kilogramos_brutos: 'Kilogramos Brutos:'
         numero_bultos: 'Número de Bultos:'
         tara: 'Tara:'

@@ -1,4 +1,6 @@
-<div class='nested-fields'>        
+<div class='nested-fields'>     
+        <%= f.input :identificador, input_html: {readonly: true, class: 'identificador'} %>  
+    
 	<%= f.input :kilogramos_brutos, wrapper: :horizontal_input_group do %>    	
           <%= f.input_field :kilogramos_brutos, class: 'form-control kilogramos-brutos' %>    
           <span class="input-group-addon">Kgs</span>

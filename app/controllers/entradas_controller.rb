@@ -9,7 +9,7 @@ class EntradasController < ApplicationController
 
   # GET /entradas/1
   # GET /entradas/1.json
-  def show
+  def show     
   end
 
   # GET /entradas/new
@@ -28,7 +28,7 @@ class EntradasController < ApplicationController
   # POST /entradas.json
   def create
     @entrada = Entrada.new(entrada_params)
-    
+        
     respond_to do |format|
       if @entrada.save
         flash[:success] = I18n.t('.entradas.created')
@@ -75,8 +75,8 @@ class EntradasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entrada_params
-      params.require(:entrada).permit(:date, :numero_entrada, :driver, :entregado_por, partidas_attributes: [
-          :id, :kilogramos_brutos, :numero_bultos, :tara, :kilogramos_netos, :humedad,
+      params.require(:entrada).permit(:total_partidas, :date, :numero_entrada, :driver, :entregado_por, partidas_attributes: [
+          :id, :identificador, :kilogramos_brutos, :numero_bultos, :tara, :kilogramos_netos, :humedad,
           :type_coffee_id, :observaciones, :calidad_cafe, :client_id, :_destroy])
     end
 end

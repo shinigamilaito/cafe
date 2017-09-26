@@ -7,6 +7,7 @@ class Entrada < ApplicationRecord
   validates :numero_entrada, uniqueness: true
   
   before_create :siguiente_numero_entrada
+  after_save :actualiza_numero_partidas
     
   def siguiente_numero_entrada
     ultima_entrada = Entrada.order("created_at DESC").last
@@ -16,6 +17,11 @@ class Entrada < ApplicationRecord
     else
       self.numero_entrada = 1
     end
+  end
+  
+  def actualiza_numero_partidas
+    self.total_partidas = self.partidas.size    
+    self.save
   end
   
 end

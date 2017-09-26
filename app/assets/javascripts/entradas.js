@@ -1,70 +1,118 @@
 $(function () {    
-    /**
-    ** Se agregan las partidas a las entradas
-    */
-    var $partidasLink = $('.add_fields');
-    var partidas = {
+    
+    if($('#formulario-entradas').length) {
+        /**
+        ** Se agregan las partidas a las entradas
+        */
+        var $partidasLink = $('.add_fields');
+        var $totalPartidasBadge = $('.badge');
+        var partidas = {
 
-        minimum: 1,
+            minimum: 1,
 
-        maximum: 30,
+            maximum: 30,
 
-        $partidas: [],
+            $partidas: [],
 
-        initialize: function() {
-            this.$partidas = [];
-            var $partidaDiv = $('.nested-fields');            
-            var that = this;
-            $partidaDiv.each(function(index, partida) {                
-                that.$partidas.push($(partida));
-            });
-            
-            return;
-        },
-
-        add: function($partida) {            
-            this.$partidas.push($partida);
-            return;
-        },      
-
-        show: function() {            
-            this.$partidas.forEach(function($partida) {
-                console.log($partida);
-            });
-
-            return;
-        },
-
-        remove: function($partidaToDestroy) {
-            var that = this;
-            that.$partidas.forEach(function($partida, index) {
-                if ($partida.is($partidaToDestroy)) {
-                    that.$partidas.splice(index, 1);
-                    return;
+            initialize: function() {
+                this.$partidas = [];
+                var $partidaDiv = $('.nested-fields');            
+                var that = this;
+                for(var i = $partidaDiv.length - 1, j = 0; i >= 0; i--, j++) {
+                    that.$partidas[j] = $($partidaDiv[i]);
                 }
+
+                this.actualizarTotalPartidas();
                 return;
-            });
-            return;
-        },
+            },
 
-        notDeleteFirst: function() {
-            if (this.$partidas.length !== 0) {
-                $removePartidaLink = this.$partidas[0].find('.remove_fields');        
+            add: function($partida) {            
+                this.$partidas.push($partida);
+                this.asignarNumero($partida);
+                this.actualizarTotalPartidas();
+                return;
+            },      
+
+            show: function() {            
+                this.$partidas.forEach(function($partida) {
+                    console.log($partida);
+                });
+
+                return;
+            },
+
+            remove: function($partidaToDestroy) {
+                var that = this;
+                that.$partidas.forEach(function($partida, index) {
+                    if ($partida.is($partidaToDestroy)) {
+                        that.$partidas.splice(index, 1);
+                        return;
+                    }
+                    return;
+                });
+
+                this.reordenarNumeros();
+                this.actualizarTotalPartidas();
+                return;
+            },
+
+            notDeleteFirst: function() {
+                var $removePartidaLink = this.$partidas[0].find('.remove_fields');        
                 $removePartidaLink.remove();
-            }
-            return;
-        },
+                return;
+            },
 
-        size: function() {
-            return this.$partidas.length;
-        }       
+            size: function() {
+                return this.$partidas.length;
+            },
+
+            /**
+             * Asigna el número correspondiente a la partida
+             * @param {type} $partida
+             * @returns {undefined}
+             */
+            asignarNumero: function($partida) {
+                var $identificadorInput = this.obtenerIdentificadorInput($partida);
+                $identificadorInput.val(this.size());
+                return;
+            },
+
+            /**
+             * Ordena los números de las partidas de acuerdo a su posición en el arreglo
+             * de partidas, usado al momento de eliminar una partida
+             * @returns {undefined}
+             */
+            reordenarNumeros: function() {
+                var that = this;
+                that.$partidas.forEach(function($partida, index) {
+                    var $identificadorInput = that.obtenerIdentificadorInput($partida);
+                    $identificadorInput.val(index + 1);                
+                    return;
+                });
+                return;
+            },
+
+            obtenerIdentificadorInput: function($partida) {
+                return $partida.find('.identificador');
+            },
+
+            /**
+             * Actualiza el total de las partidas que se muestran en la interfaz
+             * @returns {undefined}
+             */
+            actualizarTotalPartidas: function() {            
+                $totalPartidasBadge.text(this.size());            
+                return;
+            }        
     };
 
-    partidas.initialize();
-    partidas.show();
-    partidas.notDeleteFirst();
-    disableAddPartidaLink();
+        partidas.initialize();
+        partidas.show();
+        partidas.notDeleteFirst();
+        disableAddPartidaLink();
 
+    }
+    
     $('#partidas').on('cocoon:after-insert', function(e, insertedPartida) {
 
         partidas.add(insertedPartida);

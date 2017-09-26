@@ -30,11 +30,13 @@ ActiveRecord::Schema.define(version: 20170902195416) do
     t.bigint   "numero_entrada"
     t.string   "driver"
     t.string   "entregado_por"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.bigint   "total_partidas", default: 1
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "partidas", force: :cascade do |t|
+    t.bigint   "identificador",     default: 1
     t.integer  "entrada_id"
     t.string   "kilogramos_brutos"
     t.bigint   "numero_bultos"
@@ -45,8 +47,8 @@ ActiveRecord::Schema.define(version: 20170902195416) do
     t.string   "calidad_cafe"
     t.integer  "client_id"
     t.text     "observaciones"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.index ["client_id"], name: "index_partidas_on_client_id", using: :btree
     t.index ["entrada_id"], name: "index_partidas_on_entrada_id", using: :btree
     t.index ["type_coffee_id"], name: "index_partidas_on_type_coffee_id", using: :btree

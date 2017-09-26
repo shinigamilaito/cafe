@@ -1,12 +1,18 @@
 .nested-fields {
-    border-bottom: 1px solid #e1e4e8;
-    margin-bottom: 5px;
+    border-top: 1px solid #e1e4e8;
+    padding-top: 5px;
 }
 
 .add-partidas {
     h2, a {
         margin-top: 5px;
-    }
+    }    
+}
+
+.badge-partidas {
+    font-size: 24px !important;
+    border-radius: 5px !important;
+    background-color: #a67c52 !important;
 }
 
 .entrada-info-list {

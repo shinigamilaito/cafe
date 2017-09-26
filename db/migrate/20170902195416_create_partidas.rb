@@ -1,6 +1,7 @@
 class CreatePartidas < ActiveRecord::Migration[5.0]
   def change
     create_table :partidas do |t|
+      t.integer :identificador, limit: 8, default: 1
       t.references :entrada, foreign_key: true
       t.string :kilogramos_brutos
       t.integer :numero_bultos, limit: 8
