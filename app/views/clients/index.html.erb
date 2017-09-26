@@ -14,7 +14,7 @@
       <table class="table table-striped table-hover table-condensed">
         <thead>
           <tr scope="row">
-            <th><%= t('.clients.formal_name') %></th>
+            <th><%= t('.clients.legal_representative') %></th>
             <th><%= t('.clients.address') %></th>
             <th><%= t('.clients.organization') %></th>
             <th><%= t('.clients.created_at') %></th>
@@ -26,7 +26,7 @@
         <tbody>
           <% @clients.each_with_index do |client, index| %>
             <tr>
-              <td><%= client.formal_name %></td>
+              <td><%= client.legal_representative %></td>
               <td><%= client.address %></td>
               <td><%= client.organization %></td>
               <td><%= l client.created_at, format: :medium  %></td>

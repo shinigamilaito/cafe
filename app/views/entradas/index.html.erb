@@ -36,7 +36,7 @@
           <% @entradas.each_with_index do |entrada, index| %>
           <tr>
             <td><%= padded_zeros_numero_entrada(entrada.numero_entrada) %></td>
-            <td><%= l entrada.date, format: :medium %></td>
+            <td><%= l entrada.date, format: :medium_date %></td>
             <td><%= entrada.driver %></td>
             <td><%= entrada.partidas.size %></td>            
             <td><%= l entrada.updated_at, format: :medium %></td>

@@ -8,9 +8,7 @@ class ClientTest < ActiveSupport::TestCase
   test "client attributes must not be empty" do
     client = Client.new
     assert client.invalid?
-    assert client.errors[:name].any?	
-    assert client.errors[:first_name].any?
-    assert client.errors[:last_name].any?
+    assert client.errors[:legal_representative].any?	
     assert client.errors[:address].any?
     assert client.errors[:organization].any?    
   end
@@ -23,6 +21,6 @@ class ClientTest < ActiveSupport::TestCase
     assert another_client.invalid?  
     
     assert_equal ['ya existe'],
-      another_client.errors[:name]
+      another_client.errors[:legal_representative]
   end
 end

@@ -70,6 +70,7 @@ es:
       long: "%A, %d de %B de %Y a las %I:%M %p"
       short: "%d de %b a las %H:%M Hrs"
       medium: "%d/%m/%Y - %H:%M Hrs"
+      medium_date: "%d/%m/%Y"
     pm: pm
     
   clients:
@@ -82,7 +83,7 @@ es:
       new_client_link: Registrar
       title: Clientes
       clients:
-        formal_name: Nombre Completo
+        legal_representative: Representante Legal
         address: Dirección
         organization: Organización
         created_at: Creado
@@ -97,7 +98,7 @@ es:
       title: Editar Cliente
     show:
       title: Datos del Cliente
-      formal_name: 'Nombre Completo:'
+      legal_representative: 'Representante Legal:'
       address: 'Dirección:'
       organization: 'Organización:'
       created_at: 'Creado el:'
@@ -153,9 +154,10 @@ es:
 
     show:
       title: Datos de la Entrada
-      date: 'Fecha-Hora de Ingreso:'
+      date: 'Fecha de Ingreso:'
       numero_entrada: 'Número de Entrada:'
       driver: 'Chofer:'        
+      total_partidas: 'Total de Partidas:'
       entregado_por: 'Entregado por:'
       created_at: 'Fecha-Hora de creación:'
       updated_at: 'Fecha-Hora de última actualización:'
@@ -174,7 +176,7 @@ es:
       humedad: 'Húmedad:'
       tipo_cafe: 'Tipo de Café:'
       calidad_cafe: 'Calidad del Café:'
-      cliente: 'Nombre del Cliente:'
+      legal_representative: 'Representante Legal:'
       observaciones: 'Observaciones:'
 
   activerecord:

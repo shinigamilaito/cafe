@@ -222,8 +222,9 @@ $(function() {
      * Configuración de picker hora-fecha
      */
     $('#datetimepicker_for_date').datetimepicker({
+        format: "DD/MM/YYYY",
         sideBySide: true,
-        ignoreReadonly: true
+        ignoreReadonly: true        
     });
     $('#entrada_date').mask('00/00/0000 00:00');
     

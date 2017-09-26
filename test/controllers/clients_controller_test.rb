@@ -19,9 +19,7 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Client.count') do
       post clients_url, params: { client: { 
           address: @client.address, 
-          first_name: @client.first_name, 
-          last_name: @client.last_name, 
-          name: 'AAAAA', 
+          legal_representative: 'AAAAA', 
           organization: 'AAAAA' } 
         }
     end
@@ -42,9 +40,7 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
   test "should update client" do
     patch client_url(@client), params: { client: { 
         address: @client.address, 
-        first_name: @client.first_name, 
-        last_name: @client.last_name, 
-        name: @client.name, 
+        legal_representative: @client.legal_representative, 
         organization: @client.organization } 
       }
       
@@ -53,9 +49,7 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy client" do
     @client = Client.new({
-        name: 'AAAA',
-        first_name: 'BBBB',
-        last_name: 'CCCC',
+        legal_representative: 'AAAA',
         address: 'DDDD',
         organization: 'EEEE'
       })

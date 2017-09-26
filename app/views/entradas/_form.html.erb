@@ -14,8 +14,7 @@
     
     <%= f.input :date, wrapper: :horizontal_input_group, input_group_span_html: { id: "datetimepicker_for_date" } do %>
       <span class="input-group-addon text-info"><span class="glyphicon glyphicon-calendar text-info"></span></span>
-      <%= f.input_field :date, as: :string, class: "form-control", readonly: true %>
-      <span class="input-group-addon text-info">Hrs</span>
+      <%= f.input_field :date, as: :string, class: "form-control", readonly: true %>      
     <% end %>
 
     <%= f.input :entregado_por %>

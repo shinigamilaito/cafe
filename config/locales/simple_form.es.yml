@@ -13,9 +13,7 @@ es:
       
     labels:
       client:
-        name: "Nombre:"
-        first_name: 'Apellido Paterno:'
-        last_name: 'Apellido Materno:'
+        legal_representative: "Representante Legal:"
         address: "Dirección:"
         organization: "Organización:"        
 
@@ -27,7 +25,7 @@ es:
         remember_me: ¿Recordar la sesión?
 
       entrada:
-        date: 'Fecha/Hora:'
+        date: 'Fecha:'
         numero_entrada: 'Número:'
         driver: 'Chofer:' 
         entregado_por: 'Entregado por:'
@@ -41,7 +39,7 @@ es:
         humedad: 'Húmedad:'
         type_coffee_id: 'Tipo de Cafe:'
         calidad_cafe: 'Calidad del Cafe:'
-        client_id: 'Cliente:'
+        client_id: 'Organización:'
         observaciones: 'Observaciones:'
         
     hints:
