@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170902195416) do
+ActiveRecord::Schema.define(version: 20170926153825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,9 @@ ActiveRecord::Schema.define(version: 20170902195416) do
     t.string   "driver"
     t.string   "entregado_por"
     t.bigint   "total_partidas", default: 1
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "delete_logical", default: false
   end
 
   create_table "partidas", force: :cascade do |t|

@@ -125,7 +125,8 @@ es:
   entradas:
     created: Entrada creada exitosamente.
     updated: Entrada actualizada exitosamente.    
-    destroyed: Entrada eliminada exitosamente.    
+    destroyed: Entrada eliminada exitosamente.   
+    not_destroyed: Entrada no pudo ser eliminada.
     index:
       new_entrada_link: Registrar
       title: Entradas

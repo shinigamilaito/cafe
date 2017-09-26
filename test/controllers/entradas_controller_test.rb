@@ -104,7 +104,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy entrada" do
     @entrada = Entrada.last
-    assert_difference('Entrada.count', -1) do
+    assert_difference('Entrada.count', 0) do
       delete entrada_url(@entrada)
     end
 

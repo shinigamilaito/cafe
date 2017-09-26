@@ -4,7 +4,7 @@ class EntradasController < ApplicationController
   # GET /entradas
   # GET /entradas.json
   def index
-    @entradas = Entrada.order("updated_at DESC")
+    @entradas = Entrada.validas.order("updated_at DESC")
   end
 
   # GET /entradas/1
@@ -59,9 +59,12 @@ class EntradasController < ApplicationController
   # DELETE /entradas/1
   # DELETE /entradas/1.json
   def destroy
-    @entrada.destroy
-    flash[:success] = I18n.t('.entradas.destroyed')
     respond_to do |format|
+      if @entrada.destroyed_logical
+        flash[:success] = I18n.t('.entradas.destroyed')
+      else 
+        flash[:error] = I18n.t('.entradas.not_destroyed')
+      end
       format.html { redirect_to entradas_url }
       format.json { head :no_content }
     end

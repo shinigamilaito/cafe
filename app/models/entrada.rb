@@ -1,4 +1,6 @@
 class Entrada < ApplicationRecord
+  scope :validas, -> { where(delete_logical: false) }
+  
   has_many :partidas, dependent: :destroy, inverse_of: :entrada
   accepts_nested_attributes_for :partidas, allow_destroy: true
 
@@ -21,6 +23,11 @@ class Entrada < ApplicationRecord
   
   def actualiza_numero_partidas        
     self.update_columns(total_partidas: self.partidas.size)
+  end
+  
+  def destroyed_logical
+    self.update_columns(delete_logical: true)
+    return true
   end
   
 end

@@ -41,4 +41,22 @@ class EntradaTest < ActiveSupport::TestCase
     assert_equal ['ya existe'],
       another_entrada.errors[:date]
   end
+  
+  test "destroyed logical" do
+    entrada = entradas(:one)
+    
+    assert_difference('Entrada.count', 0) do      
+      assert_not entrada.delete_logical
+      entrada.destroyed_logical
+      assert entrada.delete_logical
+    end
+  end
+  
+  test "obtain only validas" do
+    entradas_scope = Entrada.validas
+    entradas_consult = Entrada.where(delete_logical: false)
+    
+    assert_equal(entradas_scope, entradas_consult, "Las entradas no coinciden")
+  end
+  
 end
