@@ -10,9 +10,12 @@
 </div>
 
 <ul class='list-group cliente-info-list'>
-    <%= render 'attributes', title: t('.formal_name'), value: @client.formal_name %>             
-    <%= render 'attributes', title: t('.address'), value: @client.address %>             
-    <%= render 'attributes', title: t('.organization'), value: @client.organization %>             
-    <%= render 'attributes', title: t('.created_at'), value: l(@client.created_at, format: :medium) %>             
-    <%= render 'attributes', title: t('.updated_at'), value: l(@client.updated_at, format: :medium) %>             
+    <%= render 'attributes', title1: t('.formal_name'), value1: @client.formal_name,
+      title2: t('.address'), value2: @client.address %>             
+    
+    <%= render 'attributes', title1: t('.organization'), value1: @client.organization,
+      title2: t('.created_at'), value2: l(@client.created_at, format: :medium)%>             
+           
+    <%= render 'attributes', title1: t('.updated_at'), value1: l(@client.updated_at, format: :medium),
+      title2: nil, value2: nil%>             
 </ul>

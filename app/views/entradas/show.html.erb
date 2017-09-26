@@ -10,14 +10,26 @@
 </div>
 
 <ul class='list-group entrada-info-list'>
-    <%= render 'attributes', title: t('.numero_entrada'), value: padded_zeros_numero_entrada(@entrada.numero_entrada) %>             
-    <%= render 'attributes', title: t('.date'), value: l(@entrada.date, format: :medium) %>             
-    <%= render 'attributes', title: t('.entregado_por'), value: @entrada.entregado_por %>             
-    <%= render 'attributes', title: t('.driver'), value: @entrada.driver %>             
-    <%= render 'attributes', title: t('.created_at'), value: l(@entrada.created_at, format: :medium) %>             
-    <%= render 'attributes', title: t('.updated_at'), value: l(@entrada.updated_at, format: :medium) %>                       
+    <%= render 'attributes', title1: t('.numero_entrada'), 
+      value1: padded_zeros_numero_entrada(@entrada.numero_entrada),
+      title2: t('.date'), value2: l(@entrada.date, format: :medium)%>             
+    
+    <%= render 'attributes', title1: t('.entregado_por'), 
+      value1: @entrada.entregado_por, title2: t('.driver'), value2: @entrada.driver %>             
+    
+    <%= render 'attributes', title1: t('.created_at'), 
+      value1: l(@entrada.created_at, format: :medium), title2: t('.updated_at'), 
+      value2: l(@entrada.updated_at, format: :medium) %>   
+    
+    <%= render 'attributes', title1: t('.total_partidas'), 
+      value1: @entrada.total_partidas, title2: nil, 
+      value2: nil %>   
+    
 </ul>
 
-<h2><%= t('.partidas_title') %></h2>
+<h2>
+  <%= t('.partidas_title') %>
+  <span class="badge badge-partidas"><%= @entrada.total_partidas %></span>
+</h2>
 
-<%= render @entrada.partidas %>
+<%= render @entrada.partidas.order('identificador ASC') %>
