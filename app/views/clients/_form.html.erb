@@ -9,6 +9,9 @@
   } do |f| %>
   <%= f.error_notification %>
 
+  
+  <%= f.input :persona_fisica, as: :radio_buttons, item_label_class: 'radio-inline', item_wrapper_tag: false %>    
+
   <%= f.input :legal_representative %>    
  
   <%= f.input :address %>

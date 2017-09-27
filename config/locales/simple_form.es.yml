@@ -13,6 +13,7 @@ es:
       
     labels:
       client:
+        persona_fisica: '¿Persona Fisica?:'
         legal_representative: "Representante Legal:"
         address: "Dirección:"
         organization: "Organización:"        

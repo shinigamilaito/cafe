@@ -84,6 +84,7 @@ es:
       title: Clientes
       clients:
         legal_representative: Representante Legal
+        persona_fisica: Persona Fisica
         address: Dirección
         organization: Organización
         created_at: Creado
@@ -100,6 +101,7 @@ es:
       title: Datos del Cliente
       legal_representative: 'Representante Legal:'
       address: 'Dirección:'
+      persona_fisica: '¿Persona Fisica?:'
       organization: 'Organización:'
       created_at: 'Creado el:'
       updated_at: 'Actualizado el:'

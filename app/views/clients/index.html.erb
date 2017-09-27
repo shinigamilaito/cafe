@@ -17,8 +17,8 @@
             <th><%= t('.clients.legal_representative') %></th>
             <th><%= t('.clients.address') %></th>
             <th><%= t('.clients.organization') %></th>
+            <th><%= t('.clients.persona_fisica') %></th>
             <th><%= t('.clients.created_at') %></th>
-            <th><%= t('.clients.updated_at') %></th>
 
             <th colspan="3"><%= t('.clients.options') %></th>
           </tr>
@@ -29,8 +29,8 @@
               <td><%= client.legal_representative %></td>
               <td><%= client.address %></td>
               <td><%= client.organization %></td>
-              <td><%= l client.created_at, format: :medium  %></td>
-              <td><%= l client.updated_at, format: :medium %></td>
+              <td><%= client.es_persona_fisica  %></td>
+              <td><%= l client.created_at, format: :medium  %></td>              
               <td>
                 <%= link_to client do %>
                    <button type="button" class="btn btn-default btn-xs">

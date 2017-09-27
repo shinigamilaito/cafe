@@ -11,11 +11,11 @@
 
 <ul class='list-group cliente-info-list'>
     <%= render 'attributes', title1: t('.legal_representative'), value1: @client.legal_representative,
-      title2: t('.address'), value2: @client.address %>             
+      title2: t('.persona_fisica'), value2: @client.es_persona_fisica %>             
     
     <%= render 'attributes', title1: t('.organization'), value1: @client.organization,
-      title2: t('.created_at'), value2: l(@client.created_at, format: :medium)%>             
+      title2: t('.address'), value2: @client.address%>             
            
-    <%= render 'attributes', title1: t('.updated_at'), value1: l(@client.updated_at, format: :medium),
-      title2: nil, value2: nil%>             
+    <%= render 'attributes', title1: t('.created_at'), value1: l(@client.created_at, format: :medium),
+      title2: t('.updated_at'), value2: l(@client.updated_at, format: :medium)%>             
 </ul>
