@@ -14,7 +14,7 @@ class Entrada < ApplicationRecord
   after_save :actualiza_numero_partidas
     
   def siguiente_numero_entrada
-    ultima_entrada = Entrada.order("created_at DESC").last
+    ultima_entrada = Entrada.order("created_at DESC").first
     
     if ultima_entrada
       self.numero_entrada = ultima_entrada.numero_entrada + 1
