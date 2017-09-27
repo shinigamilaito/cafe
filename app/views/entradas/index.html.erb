@@ -25,7 +25,7 @@
           <tr scope="row">
             <th><%= t('.entradas.numero_entrada') %></th>
             <th><%= t('.entradas.date') %></th>
-            <th><%= t('.entradas.driver') %></th>
+            <th><%= t('.entradas.organization') %></th>
             <th><%= t('.entradas.total_partidas') %></th>          
             <th><%= t('.entradas.updated_at') %></th>
           
@@ -37,7 +37,7 @@
           <tr>
             <td><%= padded_zeros_numero_entrada(entrada.numero_entrada) %></td>
             <td><%= l entrada.date, format: :medium_date %></td>
-            <td><%= entrada.driver %></td>
+            <td><%= entrada.client.organization %></td>
             <td><%= entrada.partidas.size %></td>            
             <td><%= l entrada.updated_at, format: :medium %></td>
             <td>

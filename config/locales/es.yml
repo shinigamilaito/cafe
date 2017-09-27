@@ -136,7 +136,7 @@ es:
       entradas:      
         date: Fecha de Registro        
         numero_entrada: Número de Entrada
-        driver: Chofer
+        organization: Organización
         total_partidas: Total de Partidas
         created_at: Creado el
         updated_at: Actualizado el

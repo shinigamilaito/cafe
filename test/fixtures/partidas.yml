@@ -8,8 +8,7 @@ one:
   kilogramos_netos: 6.00
   humedad: 9.99
   type_coffee: pergamino
-  calidad_cafe: MyString
-  client: pedro
+  calidad_cafe: MyString  
 
 two:
   entrada: two
@@ -20,4 +19,4 @@ two:
   humedad: 9.99
   type_coffee: cerezo
   calidad_cafe: MyString
-  client: juan
+  

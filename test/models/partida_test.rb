@@ -10,8 +10,7 @@ class PartidaTest < ActiveSupport::TestCase
    		kilogramos_netos: 90.00,
    		humedad: 15,
    		type_coffee: type_coffees(:pergamino),
-   		calidad_cafe: 'Oro',
-   		client: clients(:pedro)   		
+   		calidad_cafe: 'Oro'   		
 		)
   end
 
@@ -92,8 +91,7 @@ class PartidaTest < ActiveSupport::TestCase
     assert partida.errors[:kilogramos_netos].any?
     assert partida.errors[:humedad].any?
     assert partida.errors[:type_coffee_id].any?
-    assert partida.errors[:calidad_cafe].any?
-    assert partida.errors[:client_id].any?    
+    assert partida.errors[:calidad_cafe].any?    
   end
 
 end

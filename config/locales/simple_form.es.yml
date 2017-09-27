@@ -28,6 +28,7 @@ es:
       entrada:
         date: 'Fecha:'
         numero_entrada: 'Número:'
+        client_id: 'Organización:'
         driver: 'Chofer:' 
         entregado_por: 'Entregado por:'
 
@@ -51,7 +52,7 @@ es:
 
       entrada:
         date: Proporciona la fecha-hora de entrada.
-        numero_entrada: Proporciona el número de entrada.
+        numero_entrada: Proporciona el número de entrada.        
         driver_id: Proporciona el nombre del chofer.
         
       partidas:
@@ -68,8 +69,9 @@ es:
         name: 'Nombre del cliente'
         
     prompts:
+      entrada:
+        client_id: Selecciona una opción          
       partidas:
-        client_id: Selecciona una opción
         type_coffee_id: Selecciona una opción
 
     # Examples

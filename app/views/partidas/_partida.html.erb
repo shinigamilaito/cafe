@@ -15,8 +15,7 @@
       value1: "#{partida.type_coffee.name}", title2: t('.calidad_cafe'), 
       value2: "#{partida.calidad_cafe}" %>       
     
-    <%= render 'partidas/attributes', title1: t('.organization'), 
-      value1: "#{partida.client.organization}", title2: t('.observaciones'), 
-      value2: "#{partida.observaciones}" %>       
+    <%= render 'partidas/attributes', title1: t('.observaciones'), 
+      value1: partida.observaciones, title2: nil, value2: nil %>       
     
 </ul>

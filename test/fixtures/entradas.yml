@@ -5,9 +5,11 @@ one:
   numero_entrada: 1
   driver: Edgar Espindola
   entregado_por: AAAA
+  client: pedro
 
 two:
   date: 2017-09-02 14:52:42
   numero_entrada: 2
   driver: Alan Espindola
   entregado_por: AAAA
+  client: juan

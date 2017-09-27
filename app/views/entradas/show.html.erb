@@ -15,15 +15,15 @@
       title2: t('.date'), value2: l(@entrada.date, format: :medium_date)%>             
     
     <%= render 'attributes', title1: t('.entregado_por'), 
-      value1: @entrada.entregado_por, title2: t('.driver'), value2: @entrada.driver %>             
+      value1: @entrada.entregado_por, title2: t('.organization'), value2: @entrada.client.organization %>             
+    
+    <%= render 'attributes', title1: t('.total_partidas'), 
+      value1: @entrada.total_partidas, title2: t('.driver'), 
+      value2: @entrada.driver %>   
     
     <%= render 'attributes', title1: t('.created_at'), 
       value1: l(@entrada.created_at, format: :medium), title2: t('.updated_at'), 
       value2: l(@entrada.updated_at, format: :medium) %>   
-    
-    <%= render 'attributes', title1: t('.total_partidas'), 
-      value1: @entrada.total_partidas, title2: nil, 
-      value2: nil %>   
     
 </ul>
 

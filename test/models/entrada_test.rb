@@ -6,7 +6,8 @@ class EntradaTest < ActiveSupport::TestCase
 			date: '24/09/2017 12:05',
 			numero_entrada: '1',
    		driver: 'MyString',
-   		entregado_por: 'MyString',   		
+   		entregado_por: 'MyString',  
+      client: clients(:pedro)   		      
 		)
   end
 
@@ -16,7 +17,8 @@ class EntradaTest < ActiveSupport::TestCase
     assert entrada.errors[:date].any?	
     assert entrada.errors[:numero_entrada].any?
     assert entrada.errors[:driver].any?
-    assert entrada.errors[:entregado_por].any?    
+    assert entrada.errors[:entregado_por].any? 
+    assert entrada.errors[:client_id].any?    
   end
   
   test "numero entrada" do

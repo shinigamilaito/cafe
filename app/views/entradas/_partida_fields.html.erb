@@ -27,10 +27,7 @@
 	<% end %>        
           
 	<%= f.input :type_coffee_id, collection: TypeCoffee.all, prompt: :translate %>  
-	<%= f.input :calidad_cafe %>  
-	<%= f.input :client_id, collection: Client.all.map {|client| [client.organization, client.id]},           
-          prompt: :translate %>
-          
+	<%= f.input :calidad_cafe %>  	          
         <%= f.input :observaciones %>
                 
         <div class="row">

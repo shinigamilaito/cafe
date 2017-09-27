@@ -78,8 +78,8 @@ class EntradasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entrada_params
-      params.require(:entrada).permit(:total_partidas, :date, :numero_entrada, :driver, :entregado_por, partidas_attributes: [
+      params.require(:entrada).permit(:client_id,:total_partidas, :date, :numero_entrada, :driver, :entregado_por, partidas_attributes: [
           :id, :identificador, :kilogramos_brutos, :numero_bultos, :tara, :kilogramos_netos, :humedad,
-          :type_coffee_id, :observaciones, :calidad_cafe, :client_id, :_destroy])
+          :type_coffee_id, :observaciones, :calidad_cafe, :_destroy])
     end
 end

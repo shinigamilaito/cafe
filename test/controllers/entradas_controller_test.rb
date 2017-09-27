@@ -6,6 +6,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
       date: Time.now,
       numero_entrada: 3,
       driver: 'driver',
+      client_id: clients(:pedro).id,
       entregado_por: 'entragado por'     
     })
     
@@ -16,8 +17,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
       kilogramos_netos: 50.00,
       humedad: 15.00,
       type_coffee_id: type_coffees(:pergamino).id,
-      calidad_cafe: 'Oro',
-      client_id: clients(:pedro).id      
+      calidad_cafe: 'Oro'      
     })
   end
 
@@ -37,6 +37,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
           numero_entrada: @entrada.numero_entrada, 
           date: @entrada.date, 
           entregado_por: @entrada.entregado_por, 
+          client_id: @entrada.client_id,
           driver: @entrada.driver, 
           partidas_attributes: {
             "0"=>{
@@ -46,8 +47,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
               kilogramos_netos: @partida.kilogramos_netos, 
               humedad: @partida.humedad, 
               type_coffee_id: @partida.type_coffee_id, 
-              calidad_cafe: @partida.calidad_cafe, 
-              client_id: @partida.client_id, 
+              calidad_cafe: @partida.calidad_cafe,              
               observaciones: @partida.observaciones, 
               _destroy: "false"}
           }
@@ -80,6 +80,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
       numero_entrada: @entrada.numero_entrada, 
       date: @entrada.date, 
       entregado_por: @entrada.entregado_por, 
+      client_id: @entrada.client_id,
       driver: @entrada.driver, 
       partidas_attributes: {
         "0"=>{
@@ -90,7 +91,6 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
           humedad: @partida.humedad, 
           type_coffee_id: @partida.type_coffee_id, 
           calidad_cafe: @partida.calidad_cafe, 
-          client_id: @partida.client_id, 
           observaciones: @partida.observaciones, 
           _destroy: "false",
           id: @partida.id

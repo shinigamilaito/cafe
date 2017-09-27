@@ -1,12 +1,14 @@
 class Entrada < ApplicationRecord
   scope :validas, -> { where(delete_logical: false) }
   
-  has_many :partidas, dependent: :destroy, inverse_of: :entrada
+  has_many :partidas, dependent: :destroy, inverse_of: :entrada  
   accepts_nested_attributes_for :partidas, allow_destroy: true
+  belongs_to :client
 
   validates :date, :numero_entrada, :driver, :entregado_por, presence: :true
   validates :date, uniqueness: {scope: [:numero_entrada]} 
   validates :numero_entrada, uniqueness: true
+  validates :client_id, presence: true
   
   before_create :siguiente_numero_entrada
   after_save :actualiza_numero_partidas

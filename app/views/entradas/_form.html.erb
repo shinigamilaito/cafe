@@ -18,6 +18,9 @@
     <% end %>
 
     <%= f.input :entregado_por %>
+    
+    <%= f.input :client_id, collection: Client.all.map {|client| [client.organization, client.id]},           
+          prompt: :translate %>
       
     <%= f.input :driver %>
     

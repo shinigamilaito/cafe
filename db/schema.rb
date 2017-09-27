@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170926222327) do
+ActiveRecord::Schema.define(version: 20170927202234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20170926222327) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.boolean  "delete_logical", default: false
+    t.integer  "client_id"
+    t.index ["client_id"], name: "index_entradas_on_client_id", using: :btree
   end
 
   create_table "partidas", force: :cascade do |t|
@@ -45,11 +47,9 @@ ActiveRecord::Schema.define(version: 20170926222327) do
     t.string   "humedad"
     t.integer  "type_coffee_id"
     t.string   "calidad_cafe"
-    t.integer  "client_id"
     t.text     "observaciones"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.index ["client_id"], name: "index_partidas_on_client_id", using: :btree
     t.index ["entrada_id"], name: "index_partidas_on_entrada_id", using: :btree
     t.index ["type_coffee_id"], name: "index_partidas_on_type_coffee_id", using: :btree
   end
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20170926222327) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "partidas", "clients"
+  add_foreign_key "entradas", "clients"
   add_foreign_key "partidas", "entradas"
   add_foreign_key "partidas", "type_coffees"
 end
