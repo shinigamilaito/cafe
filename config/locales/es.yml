@@ -178,7 +178,7 @@ es:
       humedad: 'Húmedad:'
       tipo_cafe: 'Tipo de Café:'
       calidad_cafe: 'Calidad del Café:'
-      legal_representative: 'Representante Legal:'
+      organization: 'Organización:'
       observaciones: 'Observaciones:'
 
   activerecord:
