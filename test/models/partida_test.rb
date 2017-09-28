@@ -5,8 +5,9 @@ class PartidaTest < ActiveSupport::TestCase
 		Partida.new(
 			entrada: entradas(:one),
 			kilogramos_brutos: 150.00,
-      numero_bultos: 50,
-   		tara: 60.00,
+      numero_bolsas: 50,
+      numero_sacos: 5,
+   		tara: 50 + 5*0.100,
    		kilogramos_netos: 90.00,
    		humedad: 15,
    		type_coffee: type_coffees(:pergamino),
@@ -86,12 +87,35 @@ class PartidaTest < ActiveSupport::TestCase
     partida = Partida.new
     assert partida.invalid?
     assert partida.errors[:kilogramos_brutos].any?	
-    assert partida.errors[:numero_bultos].any?
+    assert partida.errors[:numero_sacos].any?
+    assert partida.errors[:numero_bolsas].any?
     assert partida.errors[:tara].any?
     assert partida.errors[:kilogramos_netos].any?
     assert partida.errors[:humedad].any?
     assert partida.errors[:type_coffee_id].any?
     assert partida.errors[:calidad_cafe].any?    
+  end
+  
+  test "valor tara es correcto" do
+    partida = new_partida
+    partida.numero_sacos = 50
+    partida.numero_bolsas = 3
+    partida.tara = "50.3"
+    partida.save
+    
+    assert_equal partida.tara, "50.3"
+  end
+  
+  test "valor tara no es correcto" do
+    partida = new_partida
+    partida.numero_sacos = 50
+    partida.numero_bolsas = 3
+    partida.tara = "50.1"
+    
+    partida.save
+    
+    assert_equal ['El valor no corresponde a la diferencia entre sacos y bolsas'],
+      partida.errors[:tara]
   end
 
 end

@@ -154,6 +154,80 @@ $(function () {
 $(function() {
     
     /**
+     * Objeto que almacena el numero de sacos, numero de bolsas y el valor de la tara
+     * @type type
+     */        
+    var partida = {
+        $numeroSacos: null,
+        
+        $numeroBolsas: null,
+        
+        $tara: null,
+        
+        obtenerValorTara: function() {    
+          var totalSacos = parseFloat(this.$numeroSacos.val());
+          var totalBolsas = parseFloat(this.$numeroBolsas.val()) * 0.100;          
+          var valor_tara = (totalSacos + totalBolsas);  
+          
+          if (isNaN(totalSacos) || isNaN(totalBolsas)) {
+              return;
+          }
+          
+          this.$tara.val(valor_tara.toFixed(2));  
+          this.$tara.change(); // Trick to trigger change event and update input kilogramos netos
+          return;
+        }
+    };
+    
+    /**
+     * Funcion que observa por cambios en el campo numero de sacos
+     */
+    $(document).on('keyup', '.numero-sacos', partida, function() {       
+        
+        var $numeroSacosInput = $(this);
+        var $padre = $numeroSacosInput.closest('.nested-fields');
+        
+        partida.$numeroSacos = $numeroSacosInput;
+        partida.$numeroBolsas = findNumeroBolsas($padre);
+        partida.$tara = findTara($padre);
+        
+        return partida.obtenerValorTara();
+    });
+    
+    /**
+     * Funcion que observa por cambios en el campo numero de bolsas
+     */
+    $(document).on('keyup', '.numero-bolsas', partida, function() {       
+        
+        var $numeroBolsasInput = $(this);
+        var $padre = $numeroBolsasInput.closest('.nested-fields');
+        
+        partida.$numeroBolsas = $numeroBolsasInput;
+        partida.$numeroSacos = findNumeroSacos($padre);
+        partida.$tara = findTara($padre);
+        
+        return partida.obtenerValorTara();
+    });
+    
+    function findNumeroSacos($padre) {
+        var $numeroSacosInput = $padre.find('.numero-sacos');
+        return $numeroSacosInput;
+    }
+    
+    function findTara($padre) {
+        var $taraInput = $padre.find('.tara');        
+        return $taraInput;
+    }
+    
+    function findNumeroBolsas($padre) {
+        var $numeroBolsasInput = $padre.find('.numero-bolsas');        
+        return $numeroBolsasInput;
+    }
+});
+
+$(function() {
+    
+    /**
      * Objeto que almacena los kilogramos brutos, tara y kilogramos netos
      * @type type
      */    
@@ -165,8 +239,16 @@ $(function() {
         $kilogramosNetos: null,
         
         obtenerValorKilogramosNetos: function() {             
-          var difference = this.$kilogramosBrutos.val() - this.$tara.val();  
-          return this.$kilogramosNetos.val(difference.toFixed(2));  
+          var kilogramosBrutos = parseFloat(this.$kilogramosBrutos.val());
+          var tara = parseFloat(this.$tara.val());          
+          var difference = kilogramosBrutos - tara;  
+          
+          if (isNaN(kilogramosBrutos) || isNaN(tara)) {
+              return;
+          }
+          
+          this.$kilogramosNetos.val(difference.toFixed(2));  
+          return;
         }
     };
     
@@ -188,7 +270,7 @@ $(function() {
     /**
      * Funcion que observa por cambios en el campo tara
      */
-    $(document).on('keyup', '.tara', partida, function() {       
+    $(document).on('change', '.tara', partida, function() {       
         
         var $taraInput = $(this);
         var $padre = $taraInput.closest('.nested-fields');
@@ -216,6 +298,7 @@ $(function() {
     }
 });
 
+
 $(function() {
     
     /**
@@ -233,7 +316,7 @@ $(function() {
      * kilogramos netos, numero bultos
      */
     var formatKilogramos = "##0.00";
-    var formatBultos = "##0";
+    var formatBultos = "##0";    
     var formatHumedad = "00.00";
     
     $('.kilogramos-brutos').mask(formatKilogramos, {reverse: true});
@@ -245,8 +328,11 @@ $(function() {
     $('.kilogramos-netos').mask(formatKilogramos, {reverse: true});
     addMask($('.container'), ".kilogramos-netos", formatKilogramos);
         
-    $('.numero-bultos').mask(formatBultos, {reverse: true});
-    addMask($('.container'), ".numero-bultos", formatBultos);
+    $('.numero-sacos').mask(formatBultos, {reverse: true});
+    addMask($('.container'), ".numero-sacos", formatBultos);
+    
+    $('.numero-bolsas').mask(formatBultos, {reverse: true});
+    addMask($('.container'), ".numero-bolsas", formatBultos);
     
     $('.humedad').mask(formatHumedad, {reverse: true});
     addMask($('.container'), ".humedad", formatHumedad);

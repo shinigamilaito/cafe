@@ -1,21 +1,21 @@
 <ul class='list-group partida-info-list'>
     <%= render 'partidas/attributes', title1: t('.identificador'), 
-      value1: partida.identificador, title2: t('.kilogramos_brutos'), 
-      value2: "#{number_with_precision(partida.kilogramos_brutos, precision: 2)} Kgs"  %>       
+      value1: partida.identificador, title2: t('.calidad_cafe'), 
+      value2: partida.calidad_cafe  %>       
     
-    <%= render 'partidas/attributes', title1: t('.numero_bultos'), 
-      value1: "#{partida.numero_bultos} Bultos", title2: t('.tara'), 
-      value2: "#{partida.tara} Kgs" %>       
+    <%= render 'partidas/attributes', title1: t('.sacos'), 
+      value1: "#{partida.numero_sacos} Sacos", title2: t('.humedad'), 
+      value2: "#{number_with_precision(partida.humedad, precision: 2)} %" %>       
     
-    <%= render 'partidas/attributes',  title1: t('.humedad'), 
-      value1: "#{number_with_precision(partida.humedad, precision: 2)} %", 
-      title2: t('.kilogramos_netos'), value2: "#{number_with_precision(partida.kilogramos_netos, precision: 2)} Kgs" %>       
+    <%= render 'partidas/attributes',  title1: t('.bolsas'), 
+      value1: "#{partida.numero_bolsas} Bolsas", 
+      title2: t('.kilogramos_brutos'), value2: "#{number_with_precision(partida.kilogramos_brutos, precision: 2)} Kgs" %>       
+    
+    <%= render 'partidas/attributes', title1: t('.tara'), 
+      value1: "#{number_with_precision(partida.tara, precision: 2)} Kgs", title2: t('.kilogramos_netos'), 
+      value2: "#{number_with_precision(partida.kilogramos_netos, precision: 2)} Kgs" %>       
     
     <%= render 'partidas/attributes', title1: t('.tipo_cafe'), 
-      value1: "#{partida.type_coffee.name}", title2: t('.calidad_cafe'), 
-      value2: "#{partida.calidad_cafe}" %>       
-    
-    <%= render 'partidas/attributes', title1: t('.observaciones'), 
-      value1: partida.observaciones, title2: nil, value2: nil %>       
+      value1: partida.type_coffee.name, title2: t('.observaciones'), value2: partida.observaciones %>       
     
 </ul>

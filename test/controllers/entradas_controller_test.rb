@@ -12,8 +12,9 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
     
     @partida = Partida.new({
       kilogramos_brutos: 100.00,
-      numero_bultos: 5,
-      tara: 50.00,
+      numero_sacos: 5,
+      numero_bolsas: 5,
+      tara: 5 + 5*0.100,
       kilogramos_netos: 50.00,
       humedad: 15.00,
       type_coffee_id: type_coffees(:pergamino).id,
@@ -42,7 +43,8 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
           partidas_attributes: {
             "0"=>{
               kilogramos_brutos: @partida.kilogramos_brutos, 
-              numero_bultos: @partida.numero_bultos, 
+              numero_sacos: @partida.numero_sacos, 
+              numero_bolsas: @partida.numero_bolsas, 
               tara: @partida.tara, 
               kilogramos_netos: @partida.kilogramos_netos, 
               humedad: @partida.humedad, 
@@ -85,7 +87,8 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
       partidas_attributes: {
         "0"=>{
           kilogramos_brutos: @partida.kilogramos_brutos, 
-          numero_bultos: @partida.numero_bultos, 
+          numero_sacos: @partida.numero_sacos, 
+          numero_bolsas: @partida.numero_bolsas, 
           tara: @partida.tara, 
           kilogramos_netos: @partida.kilogramos_netos, 
           humedad: @partida.humedad, 

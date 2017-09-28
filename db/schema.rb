@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927202234) do
+ActiveRecord::Schema.define(version: 20170927210940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170927202234) do
     t.bigint   "identificador",     default: 1
     t.integer  "entrada_id"
     t.string   "kilogramos_brutos"
-    t.bigint   "numero_bultos"
+    t.bigint   "numero_sacos"
     t.string   "tara"
     t.string   "kilogramos_netos"
     t.string   "humedad"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170927202234) do
     t.text     "observaciones"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.bigint   "numero_bolsas"
     t.index ["entrada_id"], name: "index_partidas_on_entrada_id", using: :btree
     t.index ["type_coffee_id"], name: "index_partidas_on_type_coffee_id", using: :btree
   end
