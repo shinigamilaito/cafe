@@ -5,6 +5,7 @@ class Partida < ApplicationRecord
   validates :kilogramos_brutos, :numero_bolsas, :numero_sacos, presence: true
   validates :tara, :kilogramos_netos, :humedad, presence: true
   validates :type_coffee_id, :calidad_cafe, presence: true
+  validates :numero_bolsas, :numero_sacos, numericality: { only_integer: true }, format:{with: /\A\d+\z/ }  
   validates :kilogramos_brutos, allow_blank: true, numericality: {
     greater_than_or_equal_to: 0.01 }
   validates :tara, allow_blank: true, numericality: {
@@ -15,6 +16,7 @@ class Partida < ApplicationRecord
     greater_than_or_equal_to: 10, less_than_or_equal_to: 20 }  
   
   before_save :verificar_valor_tara
+  before_save :verificar_valor_kilogramos_netos  
   
   private
   
@@ -27,4 +29,14 @@ class Partida < ApplicationRecord
       end
       
     end
+    
+    def verificar_valor_kilogramos_netos
+      valor_real_kilogramos_netos = self.kilogramos_brutos.to_f - self.tara.to_f
+      valor_actual_kilogramos_netos = self.kilogramos_netos
+      
+      if (valor_real_kilogramos_netos != valor_actual_kilogramos_netos) 
+        self.errors.add(:kilogramos_netos, 'El valor no corresponde a la diferencia entre kilogramos brutos y tara')
+      end
+    end
+    
 end

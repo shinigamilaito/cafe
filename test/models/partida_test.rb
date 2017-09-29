@@ -82,6 +82,40 @@ class PartidaTest < ActiveSupport::TestCase
 	 	 assert partida.invalid?, "#{humedad} shouldn't be valid"
    end
   end
+  
+  test "numero bolsas" do
+	 ok = [19, 875, 156, 3,  14, 10, 21, 0] 
+	 bad = [0.001, -5679834520, "4567abc7895", 9.99, 20.01]
+	
+	 ok.each do |numero_bolsas|
+	 	partida = new_partida
+    partida.numero_bolsas = numero_bolsas    
+    assert partida.save, "#{numero_bolsas} shouldn't be invalid"
+	 end
+	
+	 bad.each do |numero_bolsas|
+     partida = new_partida
+     partida.numero_bolsas = numero_bolsas     
+	 	 assert_not partida.save, "#{numero_bolsas} shouldn't be valid"
+   end
+  end
+  
+  test "numero sacos" do
+	 ok = [19, 875, 156, 3,  14, 10, 21.0, 0] 
+	 bad = [0.001, -5679834520, "4567abc7895", 9.99, 21.01, 20.01]
+	
+	 ok.each do |numero_sacos|
+	 	partida = new_partida
+    partida.numero_sacos = numero_sacos
+    assert partida.save, "#{numero_sacos} shouldn't be invalid"
+	 end
+	
+	 bad.each do |numero_sacos|
+     partida = new_partida
+     partida.numero_sacos = numero_sacos
+	 	 assert_not partida.save, "#{numero_sacos} shouldn't be valid"
+   end
+  end
 
   test "partida attributes must not be empty" do
     partida = Partida.new
@@ -116,6 +150,28 @@ class PartidaTest < ActiveSupport::TestCase
     
     assert_equal ['El valor no corresponde a la diferencia entre sacos y bolsas'],
       partida.errors[:tara]
+  end
+  
+  test "valor kilogramos netos es correcto" do
+    partida = new_partida
+    partida.kilogramos_brutos = 50
+    partida.tara = 3
+    partida.kilogramos_netos = 47
+    partida.save
+    
+    assert_equal partida.kilogramos_netos, '47'
+  end
+  
+  test "valor kilogramos netos no es correcto" do
+    partida = new_partida
+    partida.kilogramos_brutos = 50
+    partida.tara = 3
+    partida.kilogramos_netos = 67
+    
+    partida.save
+    
+    assert_equal ['El valor no corresponde a la diferencia entre kilogramos brutos y tara'],
+      partida.errors[:kilogramos_netos]
   end
 
 end
