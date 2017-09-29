@@ -1,4 +1,6 @@
+require 'jasper-bridge/jasper'
 class ClientsController < ApplicationController
+  include Jasper::Bridge
   rescue_from PG::ForeignKeyViolation, with: :client_in_use
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
@@ -6,6 +8,8 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
     @clients = Client.order("updated_at DESC")
+    template = render_to_string('index.xml.builder', layout: false)    
+    send_doc(template, 'clients/client', 'Blank_A4.jasper', "Clientes", 'pdf')
   end
 
   # GET /clients/1
