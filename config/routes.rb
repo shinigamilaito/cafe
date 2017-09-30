@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :partidas
-  resources :entradas
+  resources :entradas do
+    get :reporte, on: :member
+  end
   resources :drivers
   resources :clients
 

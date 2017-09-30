@@ -161,12 +161,14 @@ es:
       driver: 'Chofer:'        
       total_partidas: 'Total de Partidas:'
       entregado_por: 'Entregado por:'
+      organization: 'Organización:'
       created_at: 'Fecha-Hora de creación:'
       updated_at: 'Fecha-Hora de última actualización:'
       partidas_title: Datos de las Partidas
       edit_link: 'Editar'
       delete_link: 'Eliminar'
       back_link: 'Regresar'
+      print_report_link: 'Ver Recibo'
 
   partidas: 
     partida:

@@ -1,5 +1,7 @@
+require 'jasper-bridge/jasper'
 class EntradasController < ApplicationController
-  before_action :set_entrada, only: [:show, :edit, :update, :destroy]
+  include Jasper::Bridge
+  before_action :set_entrada, only: [:show, :edit, :update, :destroy, :reporte]
   
   # GET /entradas
   # GET /entradas.json
@@ -68,6 +70,11 @@ class EntradasController < ApplicationController
       format.html { redirect_to entradas_url }
       format.json { head :no_content }
     end
+  end
+  
+  def reporte
+    template = render_to_string('reporte.xml.builder', layout: false)    
+    send_doc(template, 'entrada', 'entradas.jasper', "entradas", 'pdf')
   end
 
   private
