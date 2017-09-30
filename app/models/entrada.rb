@@ -32,4 +32,31 @@ class Entrada < ApplicationRecord
     return true
   end
   
+  def total_kilos_brutos
+    total = BigDecimal("0")
+    itera_partidas { |partida| total += BigDecimal(partida.kilogramos_brutos) }
+        
+    total.to_s    
+  end
+  
+  def total_tara
+    total = BigDecimal("0")
+    itera_partidas { |partida| total += BigDecimal(partida.tara) }
+        
+    total.to_s    
+  end
+  
+  def total_kilos_netos
+    total = BigDecimal("0")
+    itera_partidas { |partida| total += BigDecimal(partida.kilogramos_netos) }
+        
+    total.to_s    
+  end
+  
+  private 
+    
+    def itera_partidas()
+      self.partidas.each { |partida| yield partida }      
+    end
+  
 end

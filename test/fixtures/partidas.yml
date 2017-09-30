@@ -5,7 +5,7 @@ one:
   kilogramos_brutos: 9.99
   numero_sacos: 1
   numero_bolsas: 1
-  tara: 1 + 1*0.100
+  tara: 1.1
   kilogramos_netos: 8.89
   humedad: 9.99
   type_coffee: pergamino
@@ -21,4 +21,14 @@ two:
   humedad: 9.99
   type_coffee: cerezo
   calidad_cafe: MyString
-  
+
+three:
+  entrada: one
+  kilogramos_brutos: 17.88
+  numero_sacos: 10
+  numero_bolsas: 5
+  tara: 10.5
+  kilogramos_netos: 7.38
+  humedad: 9.99
+  type_coffee: cerezo
+  calidad_cafe: MyString  

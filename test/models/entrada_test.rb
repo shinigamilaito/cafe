@@ -61,4 +61,11 @@ class EntradaTest < ActiveSupport::TestCase
     assert_equal(entradas_scope, entradas_consult, "Las entradas no coinciden")
   end
   
+  test "total kilogramos brutos, tara, kilogramos netos" do
+    entrada = entradas(:one)
+    assert_equal entrada.total_kilos_brutos, "27.87"
+    assert_equal entrada.total_tara, "11.6" 
+    assert_equal entrada.total_kilos_netos, "16.27" 
+  end
+  
 end
