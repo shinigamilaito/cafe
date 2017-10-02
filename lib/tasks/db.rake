@@ -6,5 +6,15 @@ namespace :db do
       entrada.save
     end
   end
+  
+  desc "Asignando numero de entradas por cliente a las entradas ya registradas"
+  task asignar_numero_entrada_por_organizacion_to_entradas: :environment do
+     Client.all.each do |cliente|
+       cliente.entradas.order.each do |entrada|
+         entrada.numero_entrada_cliente = entrada.asignar_numero_entrada_por_cliente
+         entrada.save
+       end      
+    end
+  end
 
 end

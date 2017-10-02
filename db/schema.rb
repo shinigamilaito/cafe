@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170930082136) do
     t.datetime "updated_at",                             null: false
     t.boolean  "delete_logical",         default: false
     t.integer  "client_id"
-    t.bigint   "numero_entrada_cliente"
+    t.bigint   "numero_entrada_cliente", default: 0
     t.index ["client_id"], name: "index_entradas_on_client_id", using: :btree
   end
 

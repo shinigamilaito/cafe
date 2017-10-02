@@ -1,5 +1,5 @@
 class Client < ApplicationRecord
-	has_many :partidas
+	has_many :entradas
 
 	validates :legal_representative, presence: true
 	validates :address, :organization, presence: true  

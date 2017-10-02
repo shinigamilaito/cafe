@@ -76,6 +76,18 @@ class EntradasController < ApplicationController
     template = render_to_string('reporte.xml.builder', layout: false)    
     send_doc(template, 'entrada', 'entradas.jasper', "entradas", 'pdf')
   end
+  
+  # GET /entradas/numero_entrada_cliente?idCliente=1.json
+  def numero_entrada_cliente
+    cliente = Client.find(params[:idCliente])
+    entrada = Entrada.new
+    entrada.client = cliente
+    entrada.asignar_numero_entrada_por_cliente
+    
+    respond_to do |format|
+      format.json {render json: {numero_entrada_cliente: entrada.numero_entrada_cliente}, status: :ok }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

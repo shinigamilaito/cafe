@@ -18,7 +18,7 @@ class Entrada < ApplicationRecord
     if ultima_entrada
       self.numero_entrada = ultima_entrada.numero_entrada + 1
     else
-      return 1
+      self.numero_entrada = 1
     end    
   end
   
@@ -27,7 +27,7 @@ class Entrada < ApplicationRecord
      if ultima_entrada
       self.numero_entrada_cliente = ultima_entrada.numero_entrada_cliente + 1
     else
-      return 1
+      self.numero_entrada_cliente = 1
     end    
   end
   

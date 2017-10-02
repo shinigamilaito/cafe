@@ -298,7 +298,6 @@ $(function() {
     }
 });
 
-
 $(function() {
     
     /**
@@ -345,6 +344,50 @@ $(function() {
     }
     
     
+});
+
+/**
+ * Realiza la petición para obtener el total de entradas por organizacion
+ */
+$(function () {    
+    
+    if($('#formulario-entradas').length) {
+        
+        /**
+        * Objeto que almacena el cliente, numero de entrada por cliente
+        * @type type
+        */    
+        var entrada = {
+            $cliente: $('#entrada_client_id'),
+        
+            $numeroEntradaCliente: $('#entrada_numero_entrada_cliente'),
+        
+            obtenerValorEntradaCliente: function() {             
+                var that = this;
+                var jqxhr = $.getJSON("/entradas/numero_entrada_cliente", {idCliente: this.$cliente.val()}, function(data) {
+                    that.asignarValorEntrada(data.numero_entrada_cliente);
+                });
+            },
+            
+            asignarValorEntrada: function(numeroEntradaCliente) {
+              this.$numeroEntradaCliente.val(numeroEntradaCliente);
+              
+              return;
+            }
+        };
+        
+        /**
+        * Funcion que observa por cambios en el campo cliente
+        */
+        $(document).on('change', '#entrada_client_id', entrada, function() {       
+        
+            entrada.obtenerValorEntradaCliente();
+
+            return;
+        });
+        
+        
+    }
 });
 
 /**
