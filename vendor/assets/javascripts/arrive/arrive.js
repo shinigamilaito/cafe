@@ -1,5 +1,5 @@
 /*
- * arrive.js
+ * arrive.js. Agrega listeners para elementos del DOM añadidos de manera dinamica
  * v2.4.1
  * https://github.com/uzairfarooq/arrive
  * MIT licensed
