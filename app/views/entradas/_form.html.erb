@@ -9,6 +9,8 @@
       #datetime: :multi_select_horizontal
     } do |f| %>
     <%= f.error_notification %>
+    
+    <%= f.input :id, as: :hidden %>
 
     <%= f.input :numero_entrada, readonly: true %>
     

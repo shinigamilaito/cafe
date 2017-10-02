@@ -79,13 +79,24 @@ class EntradasController < ApplicationController
   
   # GET /entradas/numero_entrada_cliente?idCliente=1.json
   def numero_entrada_cliente
+    numero_entrada_cliente = {}
     cliente = Client.find(params[:idCliente])
-    entrada = Entrada.new
-    entrada.client = cliente
-    entrada.asignar_numero_entrada_por_cliente
+    
+    if params[:id] != ""
+      entrada = Entrada.find(params[:id])
+    else
+      entrada = Entrada.new
+    end
+    
+    if entrada.new_record? || !entrada.client_id.eql?(cliente.id)      
+      entrada.client = cliente
+      entrada.asignar_numero_entrada_por_cliente      
+    end
+    
+    numero_entrada_cliente[:numero_entrada] = entrada.numero_entrada_cliente 
     
     respond_to do |format|
-      format.json {render json: {numero_entrada_cliente: entrada.numero_entrada_cliente}, status: :ok }
+      format.json {render json: numero_entrada_cliente, status: :ok }
     end
   end
 

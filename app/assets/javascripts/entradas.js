@@ -358,19 +358,26 @@ $(function () {
         * @type type
         */    
         var entrada = {
-            $cliente: $('#entrada_client_id'),
+            $idInput: $('#entrada_id'),
+            
+            $clienteInput: $('#entrada_client_id'),
         
-            $numeroEntradaCliente: $('#entrada_numero_entrada_cliente'),
-        
-            obtenerValorEntradaCliente: function() {             
+            $numeroEntradaClienteInput: $('#entrada_numero_entrada_cliente'),
+            
+            obtenerValorEntradaCliente: function() {
+                var datosEnviar = {
+                    id: this.$idInput.val(), 
+                    idCliente: this.$clienteInput.val()
+                };
                 var that = this;
-                var jqxhr = $.getJSON("/entradas/numero_entrada_cliente", {idCliente: this.$cliente.val()}, function(data) {
-                    that.asignarValorEntrada(data.numero_entrada_cliente);
+                var jqxhr = $.getJSON("/entradas/numero_entrada_cliente", 
+                    datosEnviar, function(data) {
+                    that.asignarValorEntrada(data.numero_entrada);
                 });
             },
             
             asignarValorEntrada: function(numeroEntradaCliente) {
-              this.$numeroEntradaCliente.val(numeroEntradaCliente);
+              this.$numeroEntradaClienteInput.val(numeroEntradaCliente);
               
               return;
             }
@@ -380,9 +387,7 @@ $(function () {
         * Funcion que observa por cambios en el campo cliente
         */
         $(document).on('change', '#entrada_client_id', entrada, function() {       
-        
             entrada.obtenerValorEntradaCliente();
-
             return;
         });
         
