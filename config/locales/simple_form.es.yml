@@ -28,6 +28,7 @@ es:
       entrada:
         date: 'Fecha:'
         numero_entrada: 'Número:'
+        numero_entrada_cliente: 'Número de Entrada por Organización:'
         client_id: 'Organización:'
         driver: 'Chofer:' 
         entregado_por: 'Entregado por:'

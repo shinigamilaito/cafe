@@ -21,6 +21,8 @@
     
     <%= f.input :client_id, collection: Client.all.map {|client| [client.organization, client.id]},           
           prompt: :translate %>
+    
+    <%= f.input :numero_entrada_cliente, input_html: { class: 'numero_entrada_cliente', readonly: true } %>
       
     <%= f.input :driver %>
     

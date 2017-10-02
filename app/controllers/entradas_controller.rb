@@ -17,7 +17,7 @@ class EntradasController < ApplicationController
   # GET /entradas/new
   def new
     @entrada = Entrada.new
-    @entrada.siguiente_numero_entrada
+    @entrada.asignar_numero_entrada
     @entrada.partidas.build
   end
 
@@ -85,8 +85,10 @@ class EntradasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entrada_params
-      params.require(:entrada).permit(:client_id,:total_partidas, :date, :numero_entrada, :driver, :entregado_por, partidas_attributes: [
-          :id, :identificador, :kilogramos_brutos, :numero_sacos, :numero_bolsas, :tara, :kilogramos_netos, :humedad,
-          :type_coffee_id, :observaciones, :calidad_cafe, :_destroy])
+      params.require(:entrada).permit(:client_id,:total_partidas, :date, :numero_entrada, 
+          :numero_entrada_cliente, :driver, :entregado_por, partidas_attributes: [
+          :id, :identificador, :kilogramos_brutos, :numero_sacos, :numero_bolsas, 
+          :tara, :kilogramos_netos, :humedad, :type_coffee_id, :observaciones, 
+          :calidad_cafe, :_destroy])
     end
 end

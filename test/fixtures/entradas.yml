@@ -3,6 +3,7 @@
 one:
   date: 2017-09-02 14:52:42
   numero_entrada: 1
+  numero_entrada_cliente: 1
   driver: Edgar Espindola
   entregado_por: AAAA
   client: pedro
@@ -10,6 +11,7 @@ one:
 two:
   date: 2017-09-02 14:52:42
   numero_entrada: 2
+  numero_entrada_cliente: 1
   driver: Alan Espindola
   entregado_por: AAAA
   client: juan

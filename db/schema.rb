@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927210940) do
+ActiveRecord::Schema.define(version: 20170930082136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,11 +29,12 @@ ActiveRecord::Schema.define(version: 20170927210940) do
     t.bigint   "numero_entrada"
     t.string   "driver"
     t.string   "entregado_por"
-    t.bigint   "total_partidas", default: 1
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.boolean  "delete_logical", default: false
+    t.bigint   "total_partidas",         default: 1
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "delete_logical",         default: false
     t.integer  "client_id"
+    t.bigint   "numero_entrada_cliente"
     t.index ["client_id"], name: "index_entradas_on_client_id", using: :btree
   end
 

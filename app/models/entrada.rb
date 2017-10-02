@@ -5,22 +5,30 @@ class Entrada < ApplicationRecord
   accepts_nested_attributes_for :partidas, allow_destroy: true
   belongs_to :client
 
-  validates :date, :numero_entrada, :driver, :entregado_por, presence: :true
+  validates :date, :numero_entrada, :numero_entrada_cliente, :driver, :entregado_por, presence: :true
   validates :date, uniqueness: {scope: [:numero_entrada]} 
   validates :numero_entrada, uniqueness: true
   validates :client_id, presence: true
   
-  before_create :siguiente_numero_entrada
+  before_create :asignar_numero_entrada, :asignar_numero_entrada_por_cliente
   after_save :actualiza_numero_partidas
     
-  def siguiente_numero_entrada
+  def asignar_numero_entrada
     ultima_entrada = Entrada.order("created_at DESC").first
-    
     if ultima_entrada
       self.numero_entrada = ultima_entrada.numero_entrada + 1
     else
-      self.numero_entrada = 1
-    end
+      return 1
+    end    
+  end
+  
+  def asignar_numero_entrada_por_cliente
+    ultima_entrada = Entrada.where("client_id = ?", self.client_id).order("created_at DESC").first
+     if ultima_entrada
+      self.numero_entrada_cliente = ultima_entrada.numero_entrada_cliente + 1
+    else
+      return 1
+    end    
   end
   
   def actualiza_numero_partidas        
@@ -54,7 +62,7 @@ class Entrada < ApplicationRecord
   end
   
   private 
-    
+  
     def itera_partidas()
       self.partidas.each { |partida| yield partida }      
     end

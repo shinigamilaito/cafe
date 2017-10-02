@@ -5,6 +5,7 @@ class EntradaTest < ActiveSupport::TestCase
 		Entrada.new(
 			date: '24/09/2017 12:05',
 			numero_entrada: '1',
+			numero_entrada_cliente: '2',
    		driver: 'MyString',
    		entregado_por: 'MyString',  
       client: clients(:pedro)   		      
@@ -16,6 +17,7 @@ class EntradaTest < ActiveSupport::TestCase
     assert entrada.invalid?
     assert entrada.errors[:date].any?	
     assert entrada.errors[:numero_entrada].any?
+    assert entrada.errors[:numero_entrada_cliente].any?
     assert entrada.errors[:driver].any?
     assert entrada.errors[:entregado_por].any? 
     assert entrada.errors[:client_id].any?    
@@ -25,6 +27,17 @@ class EntradaTest < ActiveSupport::TestCase
     entrada = new_entrada
   
     last_entrada = Entrada.last.numero_entrada
+   
+    entrada.save
+    
+    assert entrada.numero_entrada, last_entrada + 1
+       
+  end
+  
+  test "numero entrada por cliente" do
+    entrada = new_entrada
+  
+    last_entrada = Entrada.last.numero_entrada_cliente
    
     entrada.save
     
@@ -66,6 +79,13 @@ class EntradaTest < ActiveSupport::TestCase
     assert_equal entrada.total_kilos_brutos, "27.87"
     assert_equal entrada.total_tara, "11.6" 
     assert_equal entrada.total_kilos_netos, "16.27" 
+  end
+  
+  test "total partidas" do
+    entrada = entradas(:one)
+    
+    assert entrada.save
+    assert_equal entrada.total_partidas, 2 
   end
   
 end

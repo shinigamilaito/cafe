@@ -5,6 +5,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
     @entrada = Entrada.new({
       date: Time.now,
       numero_entrada: 3,
+      numero_entrada_cliente: 2,
       driver: 'driver',
       client_id: clients(:pedro).id,
       entregado_por: 'entragado por'     
@@ -36,6 +37,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Entrada.count') do
       post entradas_url, params: {  entrada: {
           numero_entrada: @entrada.numero_entrada, 
+          numero_entrada_cliente: @entrada.numero_entrada_cliente, 
           date: @entrada.date, 
           entregado_por: @entrada.entregado_por, 
           client_id: @entrada.client_id,
@@ -80,6 +82,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
     
     patch entrada_url(@entrada), params: { entrada: {
       numero_entrada: @entrada.numero_entrada, 
+      numero_entrada_cliente: @entrada.numero_entrada_cliente, 
       date: @entrada.date, 
       entregado_por: @entrada.entregado_por, 
       client_id: @entrada.client_id,

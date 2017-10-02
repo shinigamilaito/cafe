@@ -13,18 +13,19 @@
 <ul class='list-group entrada-info-list'>
     <%= render 'attributes', title1: t('.numero_entrada'), 
       value1: padded_zeros_numero_entrada(@entrada.numero_entrada),
-      title2: t('.date'), value2: l(@entrada.date, format: :medium_date)%>             
+      title2: t('.numero_entrada_cliente'), value2: @entrada.numero_entrada_cliente%>             
     
-    <%= render 'attributes', title1: t('.entregado_por'), 
-      value1: @entrada.entregado_por, title2: t('.organization'), value2: @entrada.client.organization %>             
+    <%= render 'attributes', title1: t('.date'), value1: l(@entrada.date, format: :medium_date), 
+      title2: t('.entregado_por'), value2: @entrada.entregado_por %>             
     
-    <%= render 'attributes', title1: t('.total_partidas'), 
-      value1: @entrada.total_partidas, title2: t('.driver'), 
-      value2: @entrada.driver %>   
+    <%= render 'attributes', title1: t('.organization'), value1: @entrada.client.organization, 
+      title2: t('.total_partidas'), value2: @entrada.total_partidas %>   
     
-    <%= render 'attributes', title1: t('.created_at'), 
-      value1: l(@entrada.created_at, format: :medium), title2: t('.updated_at'), 
-      value2: l(@entrada.updated_at, format: :medium) %>   
+    <%= render 'attributes', title1: t('.driver'), value1: @entrada.driver, 
+      title2: t('.created_at'), value2: l(@entrada.created_at, format: :medium) %>   
+    
+    <%= render 'attributes', title1: t('.updated_at'), 
+      value1: l(@entrada.updated_at, format: :medium), title2: nil, value2: nil %>             
     
 </ul>
 

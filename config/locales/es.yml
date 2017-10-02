@@ -158,6 +158,7 @@ es:
       title: Datos de la Entrada
       date: 'Fecha de Ingreso:'
       numero_entrada: 'Número de Entrada:'
+      numero_entrada_cliente: 'Número de Entrada por Organización:'
       driver: 'Chofer:'        
       total_partidas: 'Total de Partidas:'
       entregado_por: 'Entregado por:'
