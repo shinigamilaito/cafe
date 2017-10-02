@@ -13,9 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require bootflat/icheck.min.js
-//= require bootflat/jquery.fs.selecter.min.js
-//= require bootflat/jquery.fs.stepper.min.js
 // require turbolinks
 //= require angular
 //= require cocoon
