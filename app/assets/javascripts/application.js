@@ -12,12 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require theme/page/page.navbar-fixed-shrinked.js
+//= require theme/bootstrap.min.js
 // require turbolinks
-//= require angular
 //= require cocoon
 //= require moment
 //= require moment/es
+//= require theme/jRespond.js
+//= require theme/smooth-scroll.js
+//= require theme/owl.carousel.js
+//= require theme/jquery.mixitup.js
+//= require theme/jquery.magnific-popup.js
+//= require theme/jquery.waypoints.js
+//= require theme/jquery.countTo.js
+//= require theme/theme.js
+//= require theme/page/page.home.js
 //= require bootstrap-datetimepicker
 //= require jquery.mask
 //= require arrive/arrive.js

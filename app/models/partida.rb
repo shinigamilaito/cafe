@@ -1,4 +1,6 @@
 class Partida < ApplicationRecord
+  scope :identificador_ascendente, -> { order("identificador ASC") }
+  
   belongs_to :entrada    
   belongs_to :type_coffee
 

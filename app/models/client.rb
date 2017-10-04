@@ -11,6 +11,10 @@ class Client < ApplicationRecord
     self.persona_fisica ? 'Si' : 'No'
   end
   
+  def total_entradas
+    self.entradas.validas.size
+  end
+  
   private
   
   def verifica_existencia_partidas

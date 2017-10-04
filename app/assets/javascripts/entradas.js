@@ -394,15 +394,3 @@ $(function () {
         
     }
 });
-
-/**
- * Entradas Index Controller
- * @returns {undefined}
- */
-(function() {
-    var app = angular.module('myApp');
-    app.controller('entradasIndexController', function($scope) {
-        $scope.firstName= "John";
-        $scope.lastName= "Doe";
-    });
-})();

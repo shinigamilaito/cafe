@@ -1,4 +1,5 @@
-<div class='nested-fields'>     
+<div class='nested-fields'>  
+    <hr class="hr-divider-xs">
         <%= f.input :identificador, input_html: {readonly: true, class: 'identificador'} %>  
     
 	<%= f.input :kilogramos_brutos, wrapper: :horizontal_input_group do %>    	
@@ -6,14 +7,8 @@
           <span class="input-group-addon">Kgs</span>
   	<% end %>
 	
-        <fieldset class="sacos-bolsas-form">
-            <legend class="sacos-bolsas-form">
-                <div class="row">
-                    <div class="col-sm-9 col-sm-offset-3">
-                      Bultos                      
-                    </div>
-                </div>
-            </legend>
+        <h3 class="title-md text-center title-striped no-margin text-info">Bultos</h3>  
+        
             <%= f.input :numero_sacos, wrapper: :horizontal_input_group do %>    	
               <%= f.input_field :numero_sacos, as: :string, class: 'form-control numero-sacos' %>
               <span class="input-group-addon">Sacos</span>
@@ -23,8 +18,9 @@
               <%= f.input_field :numero_bolsas, as: :string, class: 'form-control numero-bolsas' %>
               <span class="input-group-addon">Bolsas</span>
             <% end %>  
-        </fieldset>
         
+         <h3 class="title-md text-center title-striped no-margin"></h3> 
+         
         <%= f.input :tara, wrapper: :horizontal_input_group do %>
           <%= f.input_field :tara, class: 'form-control tara', readonly: true %>
           <span class="input-group-addon">Kgs</span>
@@ -46,7 +42,10 @@
                 
         <div class="row">
           <div class="col-sm-9 col-sm-offset-3">
-              <%= link_to_remove_association "Eliminar", f, class: 'btn btn-warning pull-right' %>
+              <%= link_to_remove_association f, class: 'btn btn-rounded btn-red pull-right' do %>
+                <i class="fa fa-trash"  aria-hidden="true"></i>
+                Quitar
+              <% end %>
           </div>                
         </div>
 </div>

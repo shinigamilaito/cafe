@@ -1,4 +1,4 @@
-<div>  
+<div class='row'>  
   <%= simple_form_for entrada, html: { class: 'form-horizontal' }, wrapper: :horizontal_form,
     wrapper_mappings: {
       check_boxes: :horizontal_radio_and_checkboxes,
@@ -30,13 +30,16 @@
     
     <div class="row add-partidas">        
       <div class="col-sm-7 col-sm-offset-3">
-        <h2>
+        <h3 class="title-md hr-before mb-30 mt-20">
           <%= t('.partidas_title') %>         
           <span class="badge badge-partidas"><%= @entrada.total_partidas %></span>
         </h2>                    
       </div>
       <div class="col-sm-2">
-         <%= link_to_add_association 'Añadir', f, :partidas, 'data-association-insertion-node': '#partidas', 'data-association-insertion-method': :prepend, class: 'btn btn-primary pull-right' %> 
+         <%= link_to_add_association f, :partidas, 'data-association-insertion-node': '#partidas', 'data-association-insertion-method': :prepend, class: 'btn btn-rounded btn-blue pull-right' do %> 
+            <i class="fa fa-plus"  aria-hidden="true"></i>
+            Añadir
+          <% end %>
       </div>
     </div>
 
@@ -48,8 +51,14 @@
 
     <div class="row">
       <div class="col-sm-9 col-sm-offset-3">
-        <%= f.button :submit, class: 'btn btn-primary' %>                
-        <%= link_to 'Cancelar', entradas_path, role: 'button', class: 'btn btn-default' %>        
+         <%= button_tag(type: :submit, class: 'btn btn-primary') do %>
+        <i class="fa fa-check" aria-hidden="true"></i>    
+        <%= value_button_submit f.object %>
+      <% end %>
+        <%= link_to entradas_path, role: 'button', class: 'btn btn-default' do %> 
+        <i class="fa fa-remove" aria-hidden="true"></i> 
+        Cancelar
+      <% end %> 
       </div>    
     </div>  
       

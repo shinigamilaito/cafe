@@ -1,5 +1,6 @@
 class Entrada < ApplicationRecord
   scope :validas, -> { where(delete_logical: false) }
+  scope :numero_entrada_ascendente, -> { order("numero_entrada ASC") }
   
   has_many :partidas, dependent: :destroy, inverse_of: :entrada  
   accepts_nested_attributes_for :partidas, allow_destroy: true
@@ -59,6 +60,10 @@ class Entrada < ApplicationRecord
     itera_partidas { |partida| total += BigDecimal(partida.kilogramos_netos) }
         
     total.to_s    
+  end
+  
+  def total_partidas
+    return self.partidas.size
   end
   
   private 

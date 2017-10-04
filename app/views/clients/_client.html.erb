@@ -1,0 +1,45 @@
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <td></td>
+            <td class='pull-right'>             
+              <%= link_to edit_client_path(client), class: "btn btn-ghost btn-blue" do %>
+                <i class="fa fa-pencil" aria-hidden="true"></i>        
+                <%= t('.edit_link') %>
+              <% end %>
+              <%= link_to client, method: :delete, class: "btn btn-ghost btn-red", data: {confirm: '¿Está usted seguro?'} do %>
+                <i class="fa fa-remove" aria-hidden="true"></i>                                      
+                <%= t('.delete_link')  %>
+              <% end %>
+              <%= link_to clients_path, class: "btn btn-ghost btn-gray" do %>        
+                <i class="fa fa-mail-reply" aria-hidden="true"></i>                                      
+                <%= t('.back_link') %>
+              <% end %>  
+            </td>
+        </tr>
+        <tr>
+            <td><strong><%= t('.legal_representative') %></strong></td>
+            <td><%= client.legal_representative %></td>
+        </tr>
+        <tr>
+            <td><strong><%= t('.persona_fisica') %></strong></td>
+            <td><%= client.es_persona_fisica %></td>
+        </tr>
+        <tr>
+            <td><strong><%= t('.organization') %></strong></td>
+            <td><%= client.organization %></td>
+        </tr>
+        <tr>
+            <td><strong><%= t('.address') %></strong></td>
+            <td><%= client.address %></td>
+        </tr>
+        <tr>
+            <td><strong><%= t('.created_at') %></strong></td>
+            <td><%= l(client.created_at, format: :medium) %></td>
+        </tr>
+        <tr>
+            <td><strong><%= t('.updated_at') %></strong></td>
+            <td><%= l(client.updated_at, format: :medium) %></td>
+        </tr>                              
+    </tbody>
+</table>

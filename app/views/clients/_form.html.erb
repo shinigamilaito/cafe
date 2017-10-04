@@ -9,7 +9,6 @@
   } do |f| %>
   <%= f.error_notification %>
 
-  
   <%= f.input :persona_fisica, as: :radio_buttons, item_label_class: 'radio-inline', item_wrapper_tag: false %>    
 
   <%= f.input :legal_representative %>    
@@ -19,9 +18,16 @@
   <%= f.input :organization %>
 
   <div class="row">
-    <div class="col-sm-9 col-sm-offset-3">
-      <%= f.button :submit, class: 'btn btn-primary' %>        
-      <%= link_to 'Cancelar', clients_path, role: 'button', class: 'btn btn-default' %>        
+    <div class="col-sm-9 col-sm-offset-3">      
+      <%= button_tag(type: :submit, class: 'btn btn-primary') do %>
+        <i class="fa fa-check" aria-hidden="true"></i>    
+        <%= value_button_submit f.object %>
+      <% end %>
+        
+      <%= link_to clients_path, role: 'button', class: 'btn btn-default' do %> 
+        <i class="fa fa-remove" aria-hidden="true"></i> 
+        Cancelar
+      <% end %>
     </div>    
   </div>
 <% end %>

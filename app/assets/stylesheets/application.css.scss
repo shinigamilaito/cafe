@@ -10,13 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require theme/bootstrap.min.css
+ *= require font-awesome.css 
+ *= require theme/theme.css
  *= require_tree .
  *= require_self
   
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
 @import "bootstrap-datetimepicker";
 
 .alert-alert, .alert-error{
@@ -40,3 +41,14 @@
     margin-bottom: 5px;
     margin-right: 30px;
 }
+
+@media (min-width: 768px) {
+    .body-nav-fixed-menu-top #nav.navbar-fixed-top {
+        top: 0px !important;
+    }
+}
+
+.section-lg.section-both {
+    padding: 0 0 250px 0 !important;
+}
+

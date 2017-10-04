@@ -1,20 +1,19 @@
-<%#*<div ng-controller="entradasIndexController">%>
-
-<%#*First Name: <input type="text" ng-model="firstName"><br>%>
-<%#*Last Name: <input type="text" ng-model="lastName"><br>%>
-<%#*<br>%>
-<%#*Full Name: {{firstName + " " + lastName}}%>
-
-<%#*</div>%>
-  
 <div class="row">
-    <div class='col-sm-6'><h1 class='title-show'><%= t('.title') %></h1></div>
-    <div class='col-sm-6'>
+    <div class='col-sm-12'><h1 class='title-md hr text-center text-uppercase'><%= t('.title') %></h1></div>
+</div>
+
+<div class="row">
+    <div class='col-sm-12'>
       <div class="pull-right">
-          <%= link_to t('.new_entrada_link'), new_entrada_path, class: "btn btn-default" %>        
+          <%= link_to new_entrada_path, class: "btn btn-ghost btn-primary" do %>   
+            <i class="fa fa-plus-square"  aria-hidden="true"></i>
+            <%= t('.new_entrada_link') %>
+          <% end %>
       </div>         
     </div>
 </div>
+
+<hr class="hr-divider-xs"></hr>
 
 <% if @entradas.blank? %>
     <p class='lead'>Aún no tienes entradas registradas.</p>    
@@ -41,26 +40,19 @@
             <td><%= entrada.partidas.size %></td>            
             <td><%= l entrada.updated_at, format: :medium %></td>
             <td>
-              <%= link_to entrada do %>
-                 <button type="button" class="btn btn-default btn-xs">
-                  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>                    
-                </button>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to edit_entrada_path(entrada) do %>
-                <button type="button" class="btn btn-default btn-xs">
-                  <span class="glyphicon glyphicon-book" aria-hidden="true"></span>                    
-                </button>
-              <% end %>
-            </td>  
-            <td>
-              <%= link_to entrada, method: :delete, data: { confirm: '¿Está usted seguro?' } do %>
-                <button type="button" class="btn btn-default btn-xs">
-                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>                    
-                </button>
-              <% end %>
-            </td>        
+                <%= link_to entrada do %>
+                  <i class="fa fa-eye" aria-hidden="true"></i>                    
+                <% end %>
+              </td>
+              <td>
+                <%= link_to edit_entrada_path(entrada) do %>
+                  <i class="fa fa-pencil" aria-hidden="true"></i>                    
+                <% end %>              </td>  
+              <td>
+                <%= link_to entrada, method: :delete, data: { confirm: '¿Está usted seguro?' } do %>
+                  <i class="fa fa-remove" aria-hidden="true"></i>                                      
+                <% end %>
+              </td>        
           </tr>
           <% end %>
         </tbody>

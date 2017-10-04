@@ -97,7 +97,12 @@ es:
       registration_profile_title: Creación de Perfíl - Formulario de Registro
     edit:
       title: Editar Cliente
-    show:
+    show: 
+      title: Datos del Cliente
+      back_link: 'Clientes'
+      edit_link: 'Editar'
+      delete_link: 'Eliminar'
+    client:
       title: Datos del Cliente
       legal_representative: 'Representante Legal:'
       address: 'Dirección:'
@@ -105,7 +110,7 @@ es:
       organization: 'Organización:'
       created_at: 'Creado el:'
       updated_at: 'Actualizado el:'
-      back_link: 'Regresar'
+      back_link: 'Clientes'
       edit_link: 'Editar'
       delete_link: 'Eliminar'
       
@@ -153,14 +158,24 @@ es:
       title: Editar Entrada
     form:
       partidas_title: Partidas
-
+      
     show:
+      title: Datos de la Entrada  
+      edit_link: 'Editar'
+      delete_link: 'Eliminar'
+      back_link: 'Entradas'
+      print_report_link: 'Recibo'  
+
+    entrada:
       title: Datos de la Entrada
       date: 'Fecha de Ingreso:'
       numero_entrada: 'Número de Entrada:'
       numero_entrada_cliente: 'Número de Entrada por Organización:'
       driver: 'Chofer:'        
       total_partidas: 'Total de Partidas:'
+      total_kilogramos_brutos: 'Total Kilogramos Brutos:'
+      total_tara: 'Total Tara:'
+      total_kilogramos_netos: 'Total Kilogramos Netos:'
       entregado_por: 'Entregado por:'
       organization: 'Organización:'
       created_at: 'Fecha-Hora de creación:'
@@ -168,8 +183,8 @@ es:
       partidas_title: Datos de las Partidas
       edit_link: 'Editar'
       delete_link: 'Eliminar'
-      back_link: 'Regresar'
-      print_report_link: 'Ver Recibo'
+      back_link: 'Entradas'
+      print_report_link: 'Recibo'
 
   partidas: 
     partida:

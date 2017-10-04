@@ -12,6 +12,13 @@ module ApplicationHelper
     end    
     content_tag("div", attributes, &block)
   end
+  
+  def active_link_if(condition, attributes = {}, &block)
+    if condition
+      attributes["class"] = "active"
+    end    
+    content_tag("li", attributes, &block)
+  end
 
   def disabled_button_checkout_if(condition)
   	disabled = false
@@ -19,4 +26,14 @@ module ApplicationHelper
     
     button_to t('.checkout'), new_order_path, method: :get, disabled: disabled 
   end
+  
+  def value_button_submit(object)
+    if object.new_record?
+      return 'Crear'
+    else
+      return 'Actualizar'
+    end    
+  end
+  
+  
 end

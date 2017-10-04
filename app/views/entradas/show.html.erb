@@ -1,37 +1,20 @@
 <div class="row">
-    <div class='col-sm-6'><h1 class='title-show'><%= t('.title') %></h1></div>
-    <div class='col-sm-6'>
-      <div class="pull-right">
-        <%= link_to t('.print_report_link'), reporte_entrada_path(@entrada), class: "btn btn-default", target: '_blank' %>
-        <%= link_to t('.edit_link'), edit_entrada_path(@entrada), class: "btn btn-default" %>
-        <%= link_to t('.delete_link'), @entrada, method: :delete, class: "btn btn-default", data: {confirm: '¿Está usted seguro?'} %>
-        <%= link_to t('.back_link'), entradas_path, class: "btn btn-default" %>
-      </div>         
-    </div>
+    <div class='col-sm-12'><h1 class='title-md hr text-center text-uppercase'><%= t('.title') %></h1></div>
 </div>
 
-<ul class='list-group entrada-info-list'>
-    <%= render 'attributes', title1: t('.numero_entrada'), 
-      value1: padded_zeros_numero_entrada(@entrada.numero_entrada),
-      title2: t('.numero_entrada_cliente'), value2: @entrada.numero_entrada_cliente%>             
-    
-    <%= render 'attributes', title1: t('.date'), value1: l(@entrada.date, format: :medium_date), 
-      title2: t('.entregado_por'), value2: @entrada.entregado_por %>             
-    
-    <%= render 'attributes', title1: t('.organization'), value1: @entrada.client.organization, 
-      title2: t('.total_partidas'), value2: @entrada.total_partidas %>   
-    
-    <%= render 'attributes', title1: t('.driver'), value1: @entrada.driver, 
-      title2: t('.created_at'), value2: l(@entrada.created_at, format: :medium) %>   
-    
-    <%= render 'attributes', title1: t('.updated_at'), 
-      value1: l(@entrada.updated_at, format: :medium), title2: nil, value2: nil %>             
-    
-</ul>
-
-<h2>
-  <%= t('.partidas_title') %>
-  <span class="badge badge-partidas"><%= @entrada.total_partidas %></span>
-</h2>
-
-<%= render @entrada.partidas.order('identificador ASC') %>
+<div class="row mt-20 mb-30">
+    <div class="col-sm-12">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-tabs-shop" role="tablist">
+            <li class="active">
+                <a href="#specifications" role="tab" data-toggle="tab">Informacion Entrada</a>
+            </li>           
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content tab-content-shop">
+            <div class="tab-pane fade in active tab-shop-item" id="specifications">
+                <%= render @entrada %>
+            </div>            
+        </div>
+    </div>
+</div>

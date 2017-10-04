@@ -12,7 +12,7 @@ gem 'rails', '~> 5.0.5'
 gem 'pg', '~> 0.18'
 
 # Using angular 
-gem 'angularjs-rails'
+# gem 'angularjs-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -57,7 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 gem 'devise'
-gem 'bootstrap-sass', '~> 3.3.0'
+#gem 'bootstrap-sass', '~> 3.3.0'
 
 gem 'simple_form'
 gem "cocoon"

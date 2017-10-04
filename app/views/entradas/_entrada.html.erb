@@ -1,0 +1,98 @@
+<table class="table table-striped">
+    <tbody>        
+        <tr>
+            <td></td>
+            <td class='pull-right'>
+              <%= link_to reporte_entrada_path(entrada), class: "btn btn-ghost btn-sea", target: '_blank' do %>
+                <i class="fa fa-file-pdf-o"  aria-hidden="true"></i>
+                <%= t('.print_report_link') %>
+              <% end %>
+              <%= link_to edit_entrada_path(entrada), class: "btn btn-ghost btn-blue" do %>
+                <i class="fa fa-pencil" aria-hidden="true"></i>        
+                <%= t('.edit_link') %>
+              <% end %>
+              <%= link_to entrada, method: :delete, class: "btn btn-ghost btn-red", data: {confirm: '¿Está usted seguro?'} do %>
+                <i class="fa fa-remove" aria-hidden="true"></i>                                      
+                <%= t('.delete_link')  %>
+              <% end %>
+              <%= link_to entradas_path, class: "btn btn-ghost btn-gray" do %>        
+                <i class="fa fa-mail-reply" aria-hidden="true"></i>                                      
+                <%= t('.back_link') %>
+              <% end %>  
+            </td>
+        </tr>
+        <tr>
+            <td><strong><%= t('.numero_entrada_cliente') %></strong></td>
+            <td><%= padded_zeros_numero_entrada(entrada.numero_entrada_cliente) %></td>
+        </tr>
+        <tr>
+            <td><strong><%= t('.date') %></strong></td>
+            <td><%= l(entrada.date, format: :medium_date) %></td>
+        </tr>
+        <tr>
+            <td><strong><%= t('.entregado_por') %></strong></td>
+            <td><%= entrada.entregado_por %></td>
+        </tr>
+        <tr>
+            <td><strong><%= t('.organization') %></strong></td>
+            <td><%= entrada.client.organization %></td>
+        </tr>
+        <tr>
+            <td><strong><%=  t('.driver') %></strong></td>
+            <td><%= entrada.driver %></td>
+        </tr>         
+        <tr>
+            <td><strong><%=  t('.total_kilogramos_brutos') %></strong></td>
+            <td><%= "#{number_with_precision(entrada.total_kilos_brutos, precision: 2)} Kgs" %></td>
+        </tr>         
+        <tr>
+            <td><strong><%=  t('.total_tara') %></strong></td>
+            <td><%= "#{number_with_precision(entrada.total_tara, precision: 2)} Kgs" %></td>
+        </tr>         
+        <tr>
+            <td><strong><%=  t('.total_kilogramos_netos') %></strong></td>
+            <td><%= "#{number_with_precision(entrada.total_kilos_netos, precision: 2)} Kgs" %></td>
+        </tr>         
+        <tr>
+            <td><strong><%=  t('.created_at') %></strong></td>
+            <td><%= l(entrada.created_at, format: :medium) %></td>
+        </tr>                              
+        <tr>
+            <td><strong><%=  t('.updated_at') %></strong></td>
+            <td><%= l(entrada.updated_at, format: :medium) %></td>
+        </tr>                              
+    </tbody>
+</table>
+
+<h3 class="title-md hr text-center text-uppercase">Partidas <span class="badge"><%= entrada.partidas.size %></span></h2>
+
+<div class="row-code">
+  <div class="row row-pills row-pills-left" role="tabpanel">
+    <div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked" role="tablist">
+        <% entrada.partidas.identificador_ascendente.each_with_index do |partida, index| %>
+          <% if index.zero? %>
+            <li role="presentation" class="active">
+          <% else %>
+            <li role="presentation">
+          <% end %>
+              <a href="#partida<%= partida.id %>" aria-controls="partida<%= partida.id%>" role="tab" data-toggle="tab"><%= "Partida - #{padded_zeros_numero_entrada(partida.identificador)}" %></a>
+          </li>
+        <% end %>                      
+    </ul>
+    </div>
+    <div class="col-md-9">
+      <div class="tab-content">
+          <% entrada.partidas.identificador_ascendente.each_with_index do |partida, index| %>
+            <% if index.zero? %>
+            <div role="tabpanel" class="tab-pane fade in active" id="partida<%= partida.id %>">
+          <% else %>
+            <div role="tabpanel" class="tab-pane fade in" id="partida<%= partida.id %>">
+          <% end %>
+            <%= render partida %>
+            </div>
+          <% end %>                        
+      </div>
+    </div>
+  </div>
+</div>
