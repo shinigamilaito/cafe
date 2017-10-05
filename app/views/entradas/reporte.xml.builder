@@ -2,12 +2,16 @@ xml.instruct!
 xml.entrada do
   xml.fecha l(@entrada.date, format: :medium_date)
   xml.numero_entrada padded_zeros_numero_entrada(@entrada.numero_entrada)
+  xml.numero_entrada_cliente padded_zeros_numero_entrada(@entrada.numero_entrada_cliente)
 #  xml.chofer @entrada.driver
   xml.entregado_por @entrada.entregado_por
 #  xml.total_partidas @entrada.total_partidas
   xml.total_kilos_brutos number_with_precision(@entrada.total_kilos_brutos, precision: 2)
   xml.total_tara number_with_precision(@entrada.total_tara, precision: 2)
   xml.total_kilos_netos number_with_precision(@entrada.total_kilos_netos, precision: 2)
+#  xml.imagen asset_data_uri('logo/logo_cafe.jpg')
+  xml.imagen asset_url('logo/logo_cafe.jpg')
+#  xml.imagen2 asset_path('logo/logo_cafe.jpg')
   xml.cliente do
     xml.representante_legal @entrada.client.legal_representative
     xml.direccion @entrada.client.address
