@@ -73,8 +73,8 @@ class EntradasController < ApplicationController
   end
   
   def reporte
-    template = render_to_string('reporte.xml.builder', layout: false)    
-    send_doc(template, 'entrada', 'entradas.jasper', "entradas", 'pdf')
+    xml_data = render_to_string('reporte.xml.builder', layout: false)    
+    send_file_pdf("Entrada#{@entrada.numero_entrada}", "entradas", xml_data, "entrada")
   end
   
   # GET /entradas/numero_entrada_cliente?idCliente=1.json

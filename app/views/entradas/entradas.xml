@@ -1,52 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <entrada>
-<fecha>27/09/2017</fecha>
-<numero_entrada>00003</numero_entrada>
-<numero_entrada_cliente>00003</numero_entrada_cliente>
-<entregado_por>aSAsA aSAsA sA</entregado_por>
-<total_kilos_brutos>865.00</total_kilos_brutos>
-<total_tara>134.40</total_tara>
-<total_kilos_netos>730.60</total_kilos_netos>
-<imagen>
-http://localhost:3000/assets/logo/logo_cafe-aacb3150ba84a541f4ab94001cca8e30249b0e83bb3e2e522c43a950235da653.jpg
-</imagen>
-<cliente>
-<representante_legal>aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA</representante_legal>
-<direccion>aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA</direccion>
-<organizacion>aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA aSAsA</organizacion>
-</cliente>
-<partidas>
-<partida>
-<kilogramos_brutos>500.00</kilogramos_brutos>
-<tara>60.00</tara>
-<kilogramos_netos>440.00</kilogramos_netos>
-<numero_sacos>50</numero_sacos>
-<numero_bolsas>100</numero_bolsas>
-<humedad>20.00</humedad>
-<tipo_cafe>Pergamino</tipo_cafe>
-<calidad_cafe>asdasdas</calidad_cafe>
-<observaciones>asdasda</observaciones>
-</partida>
-<partida>
-<kilogramos_brutos>350.00</kilogramos_brutos>
-<tara>66.00</tara>
-<kilogramos_netos>284.00</kilogramos_netos>
-<numero_sacos>60</numero_sacos>
-<numero_bolsas>60</numero_bolsas>
-<humedad>15.00</humedad>
-<tipo_cafe>Cerezo</tipo_cafe>
-<calidad_cafe>sdsdfsdf</calidad_cafe>
-<observaciones>sdfsdfs</observaciones>
-</partida>
-<partida>
-<kilogramos_brutos>15.00</kilogramos_brutos>
-<tara>8.40</tara>
-<kilogramos_netos>6.60</kilogramos_netos>
-<numero_sacos>5</numero_sacos>
-<numero_bolsas>34</numero_bolsas>
-<humedad>15.00</humedad>
-<tipo_cafe>Cerezo</tipo_cafe>
-<calidad_cafe>sadasdas</calidad_cafe>
-<observaciones>asdasda</observaciones>
-</partida>
-</partidas>
+  <fecha>27/09/2017</fecha>
+  <numero_entrada>00003</numero_entrada>
+  <numero_entrada_cliente>00003</numero_entrada_cliente>
+  <entregado_por>asdasdasdas</entregado_por>
+  <total_kilos_brutos>865.00</total_kilos_brutos>
+  <total_tara>134.40</total_tara>
+  <total_kilos_netos>730.60</total_kilos_netos>
+  <imagen>http://localhost:3000/assets/logo/logo_cafe-aacb3150ba84a541f4ab94001cca8e30249b0e83bb3e2e522c43a950235da653.jpg</imagen>
+  <cliente>
+    <representante_legal>aSAsA</representante_legal>
+    <direccion>ASAs</direccion>
+    <organizacion>ASAsA</organizacion>
+  </cliente>
+  <partidas>
+    <partida>
+      <kilogramos_brutos>500.00</kilogramos_brutos>
+      <tara>60.00</tara>
+      <kilogramos_netos>440.00</kilogramos_netos>
+      <numero_sacos>50</numero_sacos>
+      <numero_bolsas>100</numero_bolsas>
+      <humedad>20.00</humedad>
+      <tipo_cafe>Pergamino</tipo_cafe>
+      <calidad_cafe>asdasdas</calidad_cafe>
+      <observaciones>asdasda</observaciones>
+    </partida>
+    <partida>
+      <kilogramos_brutos>350.00</kilogramos_brutos>
+      <tara>66.00</tara>
+      <kilogramos_netos>284.00</kilogramos_netos>
+      <numero_sacos>60</numero_sacos>
+      <numero_bolsas>60</numero_bolsas>
+      <humedad>15.00</humedad>
+      <tipo_cafe>Cerezo</tipo_cafe>
+      <calidad_cafe>sdsdfsdf</calidad_cafe>
+      <observaciones>sdfsdfs</observaciones>
+    </partida>
+    <partida>
+      <kilogramos_brutos>15.00</kilogramos_brutos>
+      <tara>8.40</tara>
+      <kilogramos_netos>6.60</kilogramos_netos>
+      <numero_sacos>5</numero_sacos>
+      <numero_bolsas>34</numero_bolsas>
+      <humedad>15.00</humedad>
+      <tipo_cafe>Cerezo</tipo_cafe>
+      <calidad_cafe>sadasdas</calidad_cafe>
+      <observaciones>asdasda</observaciones>
+    </partida>
+  </partidas>
 </entrada>
