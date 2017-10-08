@@ -6,7 +6,7 @@ class Entrada < ApplicationRecord
   accepts_nested_attributes_for :partidas, allow_destroy: true
   belongs_to :client
 
-  validates :date, :numero_entrada, :numero_entrada_cliente, :driver, :entregado_por, presence: :true
+  validates :date, :numero_entrada, :driver, :entregado_por, presence: :true
   validates :date, uniqueness: {scope: [:numero_entrada]} 
   validates :numero_entrada, uniqueness: true
   validates :client_id, presence: true
@@ -64,6 +64,19 @@ class Entrada < ApplicationRecord
   
   def total_partidas
     return self.partidas.size
+  end
+  
+  # Obtiene los clientes que estan disponibles para las
+  # entradas, los cuales se consideran no son historicos,
+  # agrega el cliente actual para la entrada actual en caso de que el objecto ya exista
+  # return Entrada::ActiveRecord_Relation
+  def tipos_clientes
+    clients = Client.validos
+    if self.new_record?
+      return clients
+    else
+      return clients + Client.where(id: self.client_id)
+    end
   end
   
   private 

@@ -21,7 +21,7 @@
 
     <%= f.input :entregado_por %>
     
-    <%= f.input :client_id, collection: Client.all.map {|client| [client.organization, client.id]},           
+    <%= f.input :client_id, collection: entrada.tipos_clientes.map {|client| [client.organization, client.id]},           
           prompt: :translate %>
     
     <%= f.input :numero_entrada_cliente, input_html: { readonly: true } %>

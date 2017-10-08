@@ -17,7 +17,6 @@ class EntradaTest < ActiveSupport::TestCase
     assert entrada.invalid?
     assert entrada.errors[:date].any?	
     assert entrada.errors[:numero_entrada].any?
-    assert entrada.errors[:numero_entrada_cliente].any?
     assert entrada.errors[:driver].any?
     assert entrada.errors[:entregado_por].any? 
     assert entrada.errors[:client_id].any?    

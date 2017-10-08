@@ -1,11 +1,10 @@
 class ClientsController < ApplicationController
-  rescue_from PG::ForeignKeyViolation, with: :client_in_use
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.order("updated_at DESC")    
+    @clients = Client.validos.order("updated_at DESC")    
   end
 
   # GET /clients/1
@@ -42,8 +41,8 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1
   # PATCH/PUT /clients/1.json
   def update
-    respond_to do |format|
-      if @client.update(client_params)
+    respond_to do |format|      
+      if @client.check_it_is_using_for_another_models(client_params)
         flash[:success] = I18n.t('.clients.updated')
         format.html { redirect_to @client }
         format.json { render :show, status: :ok, location: @client }
@@ -76,8 +75,4 @@ class ClientsController < ApplicationController
       params.require(:client).permit(:legal_representative, :address, :organization, :persona_fisica)
     end
     
-    def client_in_use
-      flash[:warning] = 'Imposible eliminar ó actualizar el cliente'
-      redirect_to root_url      
-    end
 end

@@ -1,12 +1,12 @@
 class Client < ApplicationRecord
+  scope :validos, -> { where(is_historical: false) }
+  
 	has_many :entradas
 
 	validates :legal_representative, presence: true
 	validates :address, :organization, presence: true  
-	validates :legal_representative, uniqueness: {scope: [:organization]}
+	validates :legal_representative, uniqueness: {scope: [:organization, :is_historical]} # agregar scope delete logical
 
-  #before_update :verifica_existencia_partidas
-  
   def es_persona_fisica
     self.persona_fisica ? 'Si' : 'No'
   end
@@ -15,11 +15,20 @@ class Client < ApplicationRecord
     self.entradas.validas.size
   end
   
-  private
-  
-  def verifica_existencia_partidas
-    if partidas
-      throw PG::ForeignKeyViolation
+  # Si el cliente a actualizar esta siendo referenciado desde alguna entrada
+  # se crea un nuevo objeto con los mismos atributos y el cliente
+  # actual se mantiene sin cambios a excepción de la bandera is_historical la 
+  # cual cambia a verdadero.
+  def check_it_is_using_for_another_models(client_params)
+    if self.entradas
+      new_copy_entrada = self.dup
+      self.update(is_historical: true)
+      new_copy_entrada.save(client_params)
+
+      new_copy_entrada
+    else
+      self.update(client_params)
     end
   end
+  
 end
