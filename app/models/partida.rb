@@ -20,6 +20,19 @@ class Partida < ApplicationRecord
   before_save :verificar_valor_tara
   before_save :verificar_valor_kilogramos_netos  
   
+  # Obtiene los tipos de cafe que estan disponibles para las
+  # partidas, los cuale se consideran no son historicos
+  # agrega el tipo de cafe actual en caso de que el objecto ya exista
+  # return TypeCoffee::ActiveRecord_Relation
+  def tipos_cafes
+    type_coffees = TypeCoffee.validos
+    if self.new_record?
+      return type_coffees
+    else
+      return type_coffees +  TypeCoffee.where(id: self.type_coffee_id)
+    end
+  end
+
   private
   
     def verificar_valor_tara
