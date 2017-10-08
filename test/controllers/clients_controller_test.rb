@@ -44,7 +44,7 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
         organization: @client.organization } 
       }
       
-    assert_redirected_to client_url(@client)
+    assert_redirected_to client_url(Client.last)
   end
 
   test "should destroy client" do
@@ -56,18 +56,11 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     
     @client.save
     
-    assert_difference('Client.count', -1) do
+    assert_difference('Client.count', 0) do
       delete client_url(@client)
     end
 
     assert_redirected_to clients_url
   end
   
-  test "should not destroy client" do
-    assert_difference('Client.count', 0) do
-      delete client_url(@client)
-    end
-
-    assert_redirected_to root_url
-  end
 end

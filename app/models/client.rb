@@ -1,5 +1,5 @@
 class Client < ApplicationRecord
-  scope :validos, -> { where(is_historical: false) }
+  scope :validos, -> { where('is_historical = ? AND delete_logical = ?', false, false) }
   
 	has_many :entradas
 
@@ -20,15 +20,22 @@ class Client < ApplicationRecord
   # actual se mantiene sin cambios a excepción de la bandera is_historical la 
   # cual cambia a verdadero.
   def check_it_is_using_for_another_models(client_params)
-    if self.entradas
-      new_copy_entrada = self.dup
+    unless self.entradas.blank?
       self.update(is_historical: true)
-      new_copy_entrada.save(client_params)
-
-      new_copy_entrada
+      
+      new_copy_client = Client.new(client_params)      
+      new_copy_client.save
+      new_copy_client
+      
     else
       self.update(client_params)
+      self
     end
+  end
+  
+  def destroyed_logical
+    self.update_columns(delete_logical: true)
+    return true
   end
   
 end

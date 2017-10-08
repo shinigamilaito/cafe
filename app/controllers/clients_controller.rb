@@ -42,7 +42,7 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1.json
   def update
     respond_to do |format|      
-      if @client.check_it_is_using_for_another_models(client_params)
+      if(@client = @client.check_it_is_using_for_another_models(client_params))
         flash[:success] = I18n.t('.clients.updated')
         format.html { redirect_to @client }
         format.json { render :show, status: :ok, location: @client }
@@ -56,7 +56,7 @@ class ClientsController < ApplicationController
   # DELETE /clients/1
   # DELETE /clients/1.json
   def destroy
-    @client.destroy
+    @client.destroyed_logical
     flash[:success] = I18n.t('.clients.destroyed')
     respond_to do |format|
       format.html { redirect_to clients_url }

@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20171008044416) do
     t.datetime "updated_at",                           null: false
     t.boolean  "persona_fisica",       default: false
     t.boolean  "is_historical",        default: false
+    t.boolean  "delete_logical",       default: false
   end
 
   create_table "entradas", force: :cascade do |t|

@@ -11,14 +11,16 @@ class TypeCoffee < ApplicationRecord
   # actual se mantiene sin cambios a excepción de la bandera is_historical la 
   # cual cambia a verdadero.
   def check_it_is_using_for_another_models(type_coffee_params)
-    if self.partidas
-      new_copy_type_coffee = self.dup
+    unless self.partidas.blank?
       self.update(is_historical: true)
-      new_copy_type_coffee.save(type_coffee_params)
       
+      new_copy_type_coffee = TypeCoffee.new(type_coffee_params)
+      new_copy_type_coffee.save
       new_copy_type_coffee
+      
     else
       self.update(type_coffee_params)
+      self
     end
   end
   
