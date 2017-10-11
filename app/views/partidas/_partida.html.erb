@@ -16,22 +16,24 @@
             <td><strong><%= t('.sacos') %></strong></td>
             <td>
               <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                   <%= "#{partida.numero_sacos} Sacos" %>
                 </div>
-                <div class="col-sm-9">
-                  <div class="card"> 
-                    <div class="front"> 
-                        <a class="btn btn-ghost btn-green btn-sm btn-rounded salida-proceso">
-                            <i class="fa fa-adjust"></i>
-                            Salida a proceso
-                        </a>                        
-                    </div> 
-                    <div class="back">
-                        <%= render 'partidas/form_sacos_salidas', partida: partida %>
-                    </div> 
+                <% if controller_name.eql?('clients') %>
+                  <div class="col-sm-8">
+                    <div class="card"> 
+                      <div class="front"> 
+                          <a class="btn btn-ghost btn-green btn-sm btn-rounded salida-proceso">
+                              <i class="fa fa-adjust"></i>
+                              Salida a proceso
+                          </a>                        
+                      </div> 
+                      <div class="back">
+                          <%= render 'partidas/form_sacos_salidas', partida: partida %>
+                      </div> 
+                    </div>
                   </div>
-                </div>
+                <% end %>
               </div>
             </td>
         </tr>
@@ -39,22 +41,24 @@
             <td><strong><%= t('.bolsas') %></strong></td>
             <td>
                <div class="row">
-                <div class="col-sm-3">  
+                <div class="col-sm-4">  
                   <%= "#{partida.numero_bolsas} Bolsas" %>
                 </div>
-                <div class="col-sm-9">
-                  <div class="card"> 
-                    <div class="front"> 
-                        <a class="btn btn-ghost btn-green btn-sm btn-rounded salida-proceso">
-                            <i class="fa fa-adjust"></i>
-                            Salida a proceso
-                        </a>                        
-                    </div> 
-                    <div class="back">
-                      <%= render 'partidas/form_bolsas_salidas', partida: partida %>
-                    </div> 
+                <% if controller_name.eql?('clients') %>
+                  <div class="col-sm-8">
+                    <div class="card"> 
+                      <div class="front"> 
+                          <a class="btn btn-ghost btn-green btn-sm btn-rounded salida-proceso">
+                              <i class="fa fa-adjust"></i>
+                              Salida a proceso
+                          </a>                        
+                      </div> 
+                      <div class="back">
+                        <%= render 'partidas/form_bolsas_salidas', partida: partida %>
+                      </div> 
+                    </div>
                   </div>
-                </div>
+                <% end %>
               </div>
             </td>
         </tr>
