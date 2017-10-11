@@ -1,4 +1,6 @@
 class ClientsController < ApplicationController
+  include CurrentCartSalidas
+  before_action :set_cart_salidas
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   # GET /clients
@@ -10,6 +12,8 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    @cart_salida.destroy  if @cart_salida.id == session[:cart_salida_id]
+    session[:cart_salida_id] = nil
   end
 
   # GET /clients/new

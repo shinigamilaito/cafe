@@ -2,7 +2,8 @@ class Partida < ApplicationRecord
   scope :identificador_ascendente, -> { order("identificador ASC") }
   
   belongs_to :entrada    
-  belongs_to :type_coffee
+  belongs_to :type_coffee  
+  has_many :line_item_salidas
 
   validates :kilogramos_brutos, :numero_bolsas, :numero_sacos, presence: true
   validates :tara, :kilogramos_netos, :humedad, presence: true
@@ -19,6 +20,7 @@ class Partida < ApplicationRecord
   
   before_save :verificar_valor_tara
   before_save :verificar_valor_kilogramos_netos  
+  before_destroy :ensure_not_referenced_by_any_line_item_salida
   
   # Obtiene los tipos de cafe que estan disponibles para las
   # partidas, los cuale se consideran no son historicos
@@ -51,6 +53,14 @@ class Partida < ApplicationRecord
       
       if (valor_real_kilogramos_netos != valor_actual_kilogramos_netos) 
         self.errors.add(:kilogramos_netos, 'El valor no corresponde a la diferencia entre kilogramos brutos y tara')
+      end
+    end
+    
+    # ensure that there are no line items referencing this product
+    def ensure_not_referenced_by_any_line_item_salida
+      unless line_item_salidas.empty?
+        errors.add(:base, 'hay salidas presentes')
+        throw :abort
       end
     end
     
