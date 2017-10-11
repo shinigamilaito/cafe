@@ -41,7 +41,7 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     get client_url(@client)
     assert_response :success
     assert_select "h1.title-md", I18n.t('clients.show.title')
-    assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", 'Informacion Personal'
+    assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", 'Información Personal'
     assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", /Entradas/
     assert_select "div.tab-content div.tab-pane#specifications", 1
     assert_select "div.tab-content div.tab-pane#comments", 1
