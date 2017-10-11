@@ -62,7 +62,7 @@ $(function() {
  */
 
 $(function() {
-    if($('._menu-cart-salidas').length) {
+    if($('.menu-cart-salidas').length) {
         $('.add-to-cart').on('click', function() {
             var cart = $('#span_total_partidas');
             var imgtodrag = $(this).prev().eq(0);
@@ -116,7 +116,7 @@ $(function() {
  */
 
 $(function() {
-    if($('._menu-cart-salidas').length) {
+    if($('.menu-cart-salidas').length) {
        $(".card").flip({
            trigger: 'manual'
        });     
@@ -126,7 +126,7 @@ $(function() {
         * Realiza el cambio de tarjeta para realizar la salida
         */
        
-       $('._salida-proceso').click(function() {
+       $('.salida-proceso').click(function() {
            $card = $(this).parents('.card').eq(0);
            $card.flip(true);
        });
