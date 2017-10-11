@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/effect.all
 //= require theme/page/page.navbar-fixed-shrinked.js
 //= require theme/bootstrap.min.js
 // require turbolinks
@@ -30,5 +31,6 @@
 //= require bootstrap-datetimepicker
 //= require jquery.mask
 //= require arrive/arrive.js
+//= require jquery_flip/jquery.flip.js
 //= require_tree .
 
