@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171008044416) do
+ActiveRecord::Schema.define(version: 20171009204848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cart_salidas", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "clients", force: :cascade do |t|
     t.string   "legal_representative"
@@ -38,6 +43,17 @@ ActiveRecord::Schema.define(version: 20171008044416) do
     t.integer  "client_id"
     t.bigint   "numero_entrada_cliente", default: 0
     t.index ["client_id"], name: "index_entradas_on_client_id", using: :btree
+  end
+
+  create_table "line_item_salidas", force: :cascade do |t|
+    t.integer  "partida_id"
+    t.integer  "cart_salida_id"
+    t.bigint   "total_sacos",    default: 0
+    t.bigint   "total_bolsas",   default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["cart_salida_id"], name: "index_line_item_salidas_on_cart_salida_id", using: :btree
+    t.index ["partida_id"], name: "index_line_item_salidas_on_partida_id", using: :btree
   end
 
   create_table "partidas", force: :cascade do |t|
@@ -66,6 +82,8 @@ ActiveRecord::Schema.define(version: 20171008044416) do
   end
 
   add_foreign_key "entradas", "clients"
+  add_foreign_key "line_item_salidas", "cart_salidas"
+  add_foreign_key "line_item_salidas", "partidas"
   add_foreign_key "partidas", "entradas"
   add_foreign_key "partidas", "type_coffees"
 end

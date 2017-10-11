@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :line_item_salidas
+  resources :cart_salidas
   resources :partidas
   resources :entradas do
     get :reporte, on: :member

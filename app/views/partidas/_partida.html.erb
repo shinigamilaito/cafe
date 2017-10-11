@@ -14,11 +14,49 @@
         </tr>
         <tr>
             <td><strong><%= t('.sacos') %></strong></td>
-            <td><%= "#{partida.numero_sacos} Sacos" %></td>
+            <td>
+              <div class="row">
+                <div class="col-sm-3">
+                  <%= "#{partida.numero_sacos} Sacos" %>
+                </div>
+                <div class="col-sm-9">
+                  <div class="card"> 
+                    <div class="front"> 
+                        <a class="btn btn-ghost btn-green btn-sm btn-rounded _salida-proceso">
+                            <i class="fa fa-adjust"></i>
+                            Salida a proceso
+                        </a>                        
+                    </div> 
+                    <div class="back">
+                        <%= render 'partidas/form_sacos_salidas', partida: partida %>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+            </td>
         </tr>
         <tr>
             <td><strong><%= t('.bolsas') %></strong></td>
-            <td><%= "#{partida.numero_bolsas} Bolsas" %></td>
+            <td>
+               <div class="row">
+                <div class="col-sm-3">  
+                  <%= "#{partida.numero_bolsas} Bolsas" %>
+                </div>
+                <div class="col-sm-9">
+                  <div class="card"> 
+                    <div class="front"> 
+                        <a class="btn btn-ghost btn-green btn-sm btn-rounded _salida-proceso">
+                            <i class="fa fa-adjust"></i>
+                            Salida a proceso
+                        </a>                        
+                    </div> 
+                    <div class="back">
+                      <%= render 'partidas/form_bolsas_salidas', partida: partida %>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+            </td>
         </tr>
         <tr>
             <td><strong><%=  t('.kilogramos_brutos') %></strong></td>
