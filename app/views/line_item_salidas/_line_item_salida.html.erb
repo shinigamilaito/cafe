@@ -1,0 +1,17 @@
+<tr>              
+  <td>
+    <span class="title"><%= padded_zeros_numero_entrada(line_item_salida.partida.identificador) %></span>
+  </td>
+  <td>
+    <span class="title"><%= line_item_salida.partida.type_coffee.name %></span>
+  </td>
+  <td>
+    <span class="title"><%= "#{line_item_salida.total_sacos} Sacos" %></span>
+  </td>
+  <td>
+    <span><%= "#{line_item_salida.total_bolsas} Bolsas " %></span>
+  </td>
+  <td>
+      <span><%= "#{number_with_precision(line_item_salida.total_tara, precision: 2)} Kgs" %></span>
+  </td>
+</tr>

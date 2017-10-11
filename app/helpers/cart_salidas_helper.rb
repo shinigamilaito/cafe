@@ -1,0 +1,2 @@
+module CartSalidasHelper
+end

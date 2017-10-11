@@ -1,0 +1,2 @@
+module LineItemSalidasHelper
+end
