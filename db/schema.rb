@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009204848) do
+ActiveRecord::Schema.define(version: 20171012215336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,10 +48,11 @@ ActiveRecord::Schema.define(version: 20171009204848) do
   create_table "line_item_salidas", force: :cascade do |t|
     t.integer  "partida_id"
     t.integer  "cart_salida_id"
-    t.bigint   "total_sacos",    default: 0
-    t.bigint   "total_bolsas",   default: 0
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.bigint   "total_sacos",            default: 0
+    t.bigint   "total_bolsas",           default: 0
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "total_kilogramos_netos", default: 0
     t.index ["cart_salida_id"], name: "index_line_item_salidas_on_cart_salida_id", using: :btree
     t.index ["partida_id"], name: "index_line_item_salidas_on_partida_id", using: :btree
   end

@@ -18,4 +18,13 @@ class CartSalida < ApplicationRecord
     total.to_s    
   end
   
+  def total_kilogramos_netos
+    total = BigDecimal("0")
+    self.line_item_salidas.each do |line_item_salida|
+      total += BigDecimal((line_item_salida.total_kilogramos_netos).to_s)      
+    end
+        
+    total.to_s    
+  end
+  
 end

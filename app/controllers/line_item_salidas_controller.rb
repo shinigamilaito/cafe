@@ -35,6 +35,8 @@ class LineItemSalidasController < ApplicationController
       @line_item_salida.total_sacos = params[:sacos_salida][:total]
     elsif params[:bolsas_salida].present?
       @line_item_salida.total_bolsas = params[:bolsas_salida][:total]
+    elsif params[:kilogramos_netos_salida].present?
+      @line_item_salida.total_kilogramos_netos = params[:kilogramos_netos_salida][:total]
     end
     
     respond_to do |format|
