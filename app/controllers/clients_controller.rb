@@ -14,6 +14,7 @@ class ClientsController < ApplicationController
   def show
     @cart_salida.destroy  if @cart_salida.id == session[:cart_salida_id]
     session[:cart_salida_id] = nil
+    @line_item_salida = LineItemSalida.new
   end
 
   # GET /clients/new

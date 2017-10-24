@@ -1,7 +1,9 @@
-<%= simple_form_for :kilogramos_netos_salida, url: line_item_salidas_path(partida_id: partida), remote: true, html: { class: 'form-inline' } do |f| %>
+<%= simple_form_for line_item_salida, url: line_item_salidas_path(partida_id: partida), remote: true, html: { class: 'form-horizontal' } do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :total, label: false, placeholder: 'Ingrese el número de kilogramos netos' %>    
+  <%= f.input :total_sacos  %>    
+  <%= f.input :total_bolsas %>    
+  <%= f.input :total_kilogramos_netos %>    
 
   <div class="col-sm-3" style = "display: none">
     <div class="icon-box bg">
@@ -11,7 +13,8 @@
   </div>
 
   <%= button_tag(type: :submit, class: 'btn btn-green btn-ghost add-to-cart') do %>
-    <i class="fa fa-send" aria-hidden="true"></i>                          
+    <i class="fa fa-send" aria-hidden="true"></i> 
+    Enviar a Proceso
   <% end %>
     
 <% end %>

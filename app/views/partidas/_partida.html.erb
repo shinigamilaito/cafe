@@ -16,24 +16,7 @@
             <td><strong><%= t('.sacos') %></strong></td>
             <td>
               <div class="row">
-                <div class="col-sm-4">
-                  <%= "#{partida.numero_sacos} Sacos" %>
-                </div>
-                <% if controller_name.eql?('clients') %>
-                  <div class="col-sm-8">
-                    <div class="card"> 
-                      <div class="front"> 
-                          <a class="btn btn-ghost btn-green btn-sm btn-rounded salida-proceso">
-                              <i class="fa fa-adjust"></i>
-                              Salida a proceso
-                          </a>                        
-                      </div> 
-                      <div class="back">
-                          <%= render 'partidas/form_sacos_salidas', partida: partida %>
-                      </div> 
-                    </div>
-                  </div>
-                <% end %>
+                <%= "#{partida.numero_sacos} Sacos" %>                
               </div>
             </td>
         </tr>
@@ -41,24 +24,7 @@
             <td><strong><%= t('.bolsas') %></strong></td>
             <td>
                <div class="row">
-                <div class="col-sm-4">  
-                  <%= "#{partida.numero_bolsas} Bolsas" %>
-                </div>
-                <% if controller_name.eql?('clients') %>
-                  <div class="col-sm-8">
-                    <div class="card"> 
-                      <div class="front"> 
-                          <a class="btn btn-ghost btn-green btn-sm btn-rounded salida-proceso">
-                              <i class="fa fa-adjust"></i>
-                              Salida a proceso
-                          </a>                        
-                      </div> 
-                      <div class="back">
-                        <%= render 'partidas/form_bolsas_salidas', partida: partida %>
-                      </div> 
-                    </div>
-                  </div>
-                <% end %>
+                  <%= "#{partida.numero_bolsas} Bolsas" %>                
               </div>
             </td>
         </tr>
@@ -86,8 +52,9 @@
                               Salida a proceso
                           </a>                        
                       </div> 
-                      <div class="back">
-                        <%= render 'partidas/form_kilogramos_netos_salidas', partida: partida %>
+                      <div class="back" style="display: none">
+                        <%= render 'partidas/form_kilogramos_netos_salidas', 
+                          partida: partida, line_item_salida: @line_item_salida %>
                       </div> 
                     </div>
                   </div>

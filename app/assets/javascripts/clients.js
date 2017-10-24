@@ -116,6 +116,7 @@ $(function() {
        $('.salida-proceso').click(function() {
            $card = $(this).parents('.card').eq(0);
            $card.flip(true);
+           $card.find('.back').css({display: 'block'});
        });
     }
 });

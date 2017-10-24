@@ -31,13 +31,7 @@ class LineItemSalidasController < ApplicationController
     @line_item_salida = @cart_salida.line_item_salidas.find_by_partida_id(partida.id) ||
                         @cart_salida.line_item_salidas.build(partida: partida)  
     
-    if params[:sacos_salida].present?
-      @line_item_salida.total_sacos = params[:sacos_salida][:total]
-    elsif params[:bolsas_salida].present?
-      @line_item_salida.total_bolsas = params[:bolsas_salida][:total]
-    elsif params[:kilogramos_netos_salida].present?
-      @line_item_salida.total_kilogramos_netos = params[:kilogramos_netos_salida][:total]
-    end
+    @line_item_salida.attributes = salida_proceso_params
     
     respond_to do |format|
       if @line_item_salida.save
@@ -46,6 +40,7 @@ class LineItemSalidasController < ApplicationController
         format.json { render :show, status: :created, location: @line_item_salida }
       else
         format.html { render :new }
+        format.js { render :not_create }
         format.json { render json: @line_item_salida.errors, status: :unprocessable_entity }
       end
     end
@@ -84,5 +79,10 @@ class LineItemSalidasController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_salida_params
       params.require(:line_item_salida).permit(:partida_id)
+    end
+    
+    def salida_proceso_params
+      params.require(:line_item_salida).permit(:total_sacos, :total_bolsas, 
+        :total_kilogramos_netos)
     end
 end

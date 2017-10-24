@@ -45,6 +45,11 @@ es:
         client_id: 'Organización:'
         observaciones: 'Observaciones:'
         
+      line_item_salida:
+          total_sacos: 'Cantidad de Sacos:'
+          total_bolsas: 'Cantidad de Bolsas:'
+          total_kilogramos_netos: 'Cantidad de Kilogramos Netos:'
+        
     hints:
       client:
         name: 'Proporciona el nombre del cliente.'
