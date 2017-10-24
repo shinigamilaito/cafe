@@ -13,8 +13,7 @@
             <th>No. Partida</th>
             <th>Tipo de Cafe</th>
             <th>No. Sacos</th>
-            <th>No. Bolsas</th>
-            <th>Tara</th>
+            <th>No. Bolsas</th>            
             <th>Kilogramos Netos</th>
             <th></th>
           </tr>
@@ -29,7 +28,6 @@
               <th>Total:</th>
               <th><%= "#{cart_salida.total_sacos} Sacos" %></th>
               <th><%= "#{cart_salida.total_bolsas} Bolsas" %></th>
-              <th><%= "#{number_with_precision(cart_salida.total_tara, precision: 2)} Kgs" %></th>
               <th><%= "#{number_with_precision(cart_salida.total_kilogramos_netos, precision: 2)} Kgs" %></th>
           </tr>          
         </tbody>

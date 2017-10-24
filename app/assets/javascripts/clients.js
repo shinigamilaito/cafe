@@ -54,7 +54,7 @@ var cliente = new Cliente({
 $(function() {
     if($('.menu-cart-salidas').length) {
         $('.add-to-cart').on('click', function() {            
-            var cart = $('.span_total_partidas');
+            var cart = $(this).parents('.wrapper_partida_tabs').prev().find('.span_total_partidas');            
             var imgtodrag = $(this).prev().eq(0);
             var inputwithposition = imgtodrag.prev().eq(0).find('input').eq(0);
             
