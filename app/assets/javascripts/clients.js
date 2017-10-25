@@ -56,6 +56,7 @@ $(function() {
         $('.add-to-cart').on('click', function() {            
             var cart = $(this).parents('.wrapper_partida_tabs').prev().find('.span_total_partidas');            
             var imgtodrag = $(this).prev().eq(0);
+//            var imgtodrag = $(this).prev().find('img');
             var inputwithposition = imgtodrag.prev().eq(0).find('input').eq(0);
             
             if(imgtodrag) {
@@ -72,8 +73,8 @@ $(function() {
                     'display': 'block',
                     'opacity': '1',                    
                     'position': 'absolute',
-                    'height': '150px',
-                    'width': '100px',
+                    'height': '100px',
+                    'width': '150px',
                     'z-index': '10'
                 })
                     .appendTo($('body'))
@@ -81,7 +82,7 @@ $(function() {
                     'top': cart.offset().top - 5,
                     'left': cart.offset().left + 10,
                     'width': 100,
-                    'height': 150
+                    'height': 50
                 }, 2000, 'easeInOutBack');
                 
                 setTimeout(function() {
