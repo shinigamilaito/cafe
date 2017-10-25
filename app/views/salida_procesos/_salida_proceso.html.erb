@@ -27,7 +27,7 @@
         </tr>
         <tr>
             <td><strong><%= t('salida_procesos.salida_proceso.total_kilogramos_netos') %></strong></td>
-            <td><%= salida_proceso.total_kilogramos_netos %> Kilogramos Netos</td>
+            <td><%= number_with_precision(salida_proceso.total_kilogramos_netos, precision: 2) %> Kilogramos Netos</td>
         </tr>
         <tr>
             <td><strong><%=  t('salida_procesos.salida_proceso.created_at') %></strong></td>
@@ -72,6 +72,7 @@
               <% end %>
                 <% salida_proceso.line_item_salidas_para_entrada(entrada).each do |line_item_salida| %>                  
                   <%= render 'line_item_salida', line_item_salida: line_item_salida %>
+                  <hr class="hr-divider-xs">
                 <% end %>
               </div>
               <% end %>                        

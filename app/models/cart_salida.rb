@@ -31,4 +31,8 @@ class CartSalida < ApplicationRecord
     return self.line_item_salidas.first.partida.entrada.client
   end
   
+  def tipo_cafe
+    return self.line_item_salidas.first.partida.type_coffee.name
+  end
+  
 end

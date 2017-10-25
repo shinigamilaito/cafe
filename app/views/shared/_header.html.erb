@@ -20,6 +20,9 @@
             <%= active_link_if controller_name.eql?('entradas') do %>
               <a href="/entradas">Entradas</a>
             <% end %>          
+            <%= active_link_if controller_name.eql?('salida_procesos') do %>
+              <a href="/salida_procesos">Salidas</a>
+            <% end %>          
         </ul>
       </div><!--/.nav-collapse -->
     </div>

@@ -212,6 +212,16 @@ es:
       back_link: Salidas Proceso
     show:
       title: Datos de la Salida
+    index: 
+      title: Salidas a Proceso
+      salida_proceso:
+          legal_representative: Representante Legal
+          tipo_cafe: Tipo de Cafe
+          total_sacos: Total Sacos
+          total_bolsas: Total Bolsas
+          total_kilogramos_netos: Total Kgs Netos
+          created_at: Registrado el
+          options: Opciones
 
   activerecord:
     errors:

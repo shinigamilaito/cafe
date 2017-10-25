@@ -1,35 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+    <div class='col-sm-12'><h1 class='title-md hr text-center text-uppercase'><%= t('.title') %></h1></div>
+</div>
 
-<h1>Salida Procesos</h1>
+<hr class="hr-divider-xs"></hr>
 
-<table>
-  <thead>
-    <tr>
-      <th>Client</th>
-      <th>Tipo cafe</th>
-      <th>Total sacos</th>
-      <th>Total bolsas</th>
-      <th>Total kilogramos netos</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @salida_procesos.each do |salida_proceso| %>
-      <tr>
-        <td><%= salida_proceso.client %></td>
-        <td><%= salida_proceso.tipo_cafe %></td>
-        <td><%= salida_proceso.total_sacos %></td>
-        <td><%= salida_proceso.total_bolsas %></td>
-        <td><%= salida_proceso.total_kilogramos_netos %></td>
-        <td><%= link_to 'Show', salida_proceso %></td>
-        <td><%= link_to 'Edit', edit_salida_proceso_path(salida_proceso) %></td>
-        <td><%= link_to 'Destroy', salida_proceso, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Salida Proceso', new_salida_proceso_path %>
+<% if @salida_procesos.blank? %>
+    <p class='lead'>Aún no tienes salidas registradas.</p>    
+<% else %>        
+    <div class="table-responsive">
+      <table class="table table-striped table-hover table-condensed">
+        <thead>
+          <tr scope="row">
+            <th><%= t('.salida_proceso.legal_representative') %></th>
+            <th><%= t('.salida_proceso.tipo_cafe') %></th>
+            <th><%= t('.salida_proceso.total_sacos') %></th>
+            <th><%= t('.salida_proceso.total_bolsas') %></th>          
+            <th><%= t('.salida_proceso.total_kilogramos_netos') %></th>          
+            <th><%= t('.salida_proceso.created_at') %></th>
+          
+            <th colspan="3"><%= t('.salida_proceso.options') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @salida_procesos.each_with_index do |salida_proceso, index| %>
+          <tr>
+            <td><%= salida_proceso.client.legal_representative %></td>
+            <td><%= salida_proceso.tipo_cafe %></td>
+            <td><%= salida_proceso.total_sacos %></td>
+            <td><%= salida_proceso.total_bolsas %></td>
+            <td><%= salida_proceso.total_kilogramos_netos %></td>
+            <td><%= l salida_proceso.created_at, format: :medium_date %></td>
+            <td>
+                <%= link_to salida_proceso do %>
+                  <i class="fa fa-eye" aria-hidden="true"></i>                    
+                <% end %>
+            </td>              
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+<% end %>

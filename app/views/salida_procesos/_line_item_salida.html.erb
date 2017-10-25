@@ -18,7 +18,7 @@
         </tr>
         <tr>
             <td><strong><%= t('salida_procesos.salida_proceso.total_kilogramos_netos') %></strong></td>
-            <td><%= line_item_salida.total_kilogramos_netos %> Kilogramos Netos</td>
+            <td><%= number_with_precision(line_item_salida.total_kilogramos_netos, precision: 2) %> Kilogramos Netos</td>
         </tr>
         <tr>
             <td><strong><%=  t('salida_procesos.salida_proceso.created_at') %></strong></td>
@@ -26,5 +26,3 @@
         </tr>                                      
     </tbody>
 </table>
-
-<hr>
