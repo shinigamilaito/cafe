@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Salida Procesos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Tipo cafe</th>
+      <th>Total sacos</th>
+      <th>Total bolsas</th>
+      <th>Total kilogramos netos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @salida_procesos.each do |salida_proceso| %>
+      <tr>
+        <td><%= salida_proceso.client %></td>
+        <td><%= salida_proceso.tipo_cafe %></td>
+        <td><%= salida_proceso.total_sacos %></td>
+        <td><%= salida_proceso.total_bolsas %></td>
+        <td><%= salida_proceso.total_kilogramos_netos %></td>
+        <td><%= link_to 'Show', salida_proceso %></td>
+        <td><%= link_to 'Edit', edit_salida_proceso_path(salida_proceso) %></td>
+        <td><%= link_to 'Destroy', salida_proceso, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Salida Proceso', new_salida_proceso_path %>

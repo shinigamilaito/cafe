@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :salida_procesos
   resources :line_item_salidas
   resources :cart_salidas
   resources :partidas

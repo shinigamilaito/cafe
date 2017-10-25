@@ -42,7 +42,7 @@ class CartSalidasControllerTest < ActionDispatch::IntegrationTest
     post line_item_salidas_url, params: { partida_id: partidas(:one).id, 
       line_item_salida: {total_sacos: 10, total_bolsas: 23, total_kilogramos_netos:23.45}}
     @cart_salida = CartSalida.find(session[:cart_salida_id])
-    @client = @cart_salida.line_item_salidas.first.partida.entrada.client
+    @client = @cart_salida.cliente
     
     assert_difference('CartSalida.count', -1) do
       delete cart_salida_url(@cart_salida)

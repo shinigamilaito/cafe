@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: pedro
+  tipo_cafe: MyString
+  total_sacos: 1
+  total_bolsas: 1
+  total_kilogramos_netos: 9.99
+
+two:
+  client: juan
+  tipo_cafe: MyString
+  total_sacos: 1
+  total_bolsas: 1
+  total_kilogramos_netos: 9.99

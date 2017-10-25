@@ -1,0 +1,15 @@
+<%= simple_form_for(@salida_proceso) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :client %>
+    <%= f.input :tipo_cafe %>
+    <%= f.input :total_sacos %>
+    <%= f.input :total_bolsas %>
+    <%= f.input :total_kilogramos_netos %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

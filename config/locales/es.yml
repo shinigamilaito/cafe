@@ -200,6 +200,18 @@ es:
       calidad_cafe: 'Calidad del Café:'
       organization: 'Organización:'
       observaciones: 'Observaciones:'
+      
+  salida_procesos:
+    created: Salida creada exitosamente.
+    not_created: Imposible crear la salida, intente nuevamente.
+    salida_proceso:
+      total_sacos: 'Total Sacos:'
+      total_bolsas: 'Total Bolsas:'
+      total_kilogramos_netos: 'Total Kilogramos Netos:'
+      created_at: 'Creado el:'
+      back_link: Salidas Proceso
+    show:
+      title: Datos de la Salida
 
   activerecord:
     errors:

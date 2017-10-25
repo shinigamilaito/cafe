@@ -27,4 +27,8 @@ class CartSalida < ApplicationRecord
     total.to_s    
   end
   
+  def cliente
+    return self.line_item_salidas.first.partida.entrada.client
+  end
+  
 end

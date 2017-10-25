@@ -129,6 +129,8 @@ var tiposCafe = {
     
   $tiposCafe : [],
   
+  mismoTipo: false,
+  
   verificarMismoTipo: function() {
     var mismoTipoCafe = true;
     var tipoCafe = '';
@@ -143,13 +145,14 @@ var tiposCafe = {
         }
     }); 
     
+    this.mismoTipo = mismoTipoCafe;
     return mismoTipoCafe;
   },
   
   mostrarMensajeError: function() {
-      if(this.verificarMismoTipo()) {
+      if(this.verificarMismoTipo()) {          
           $('.alert').css({display: 'none'});
-      } else {
+      } else {          
           $('.alert').css({display: 'block'});
       }
   }
@@ -157,10 +160,17 @@ var tiposCafe = {
 };
 
 $(function() {
-    $(document).on('click', '.realizar_salida_proceso_link', function() {
-        var $tiposCafe = $(this).parents('.panel-footer').prev().find('.tipo_cafe_salida');
+    $(document).on('click', '.realizar_salida_proceso_link', function(e) {        
+        var $link = $(this);
+        var $tiposCafe = $link.parents('.panel-footer').prev()
+                .find('.tipo_cafe_salida');
         tiposCafe.$tiposCafe = $tiposCafe;
         tiposCafe.mostrarMensajeError();
+        if (tiposCafe.mismoTipo) {
+            return true;
+        } else {
+            return false;            
+        }
     });    
 });
 

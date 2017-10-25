@@ -1,0 +1,20 @@
+<div class="row">
+    <div class='col-sm-12'><h1 class='title-md hr text-center text-uppercase'><%= t('.title') %></h1></div>
+</div>
+
+<div class="row mt-20 mb-30">
+    <div class="col-sm-12">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-tabs-shop" role="tablist">
+            <li class="active">
+                <a href="#specifications" role="tab" data-toggle="tab">Información Salida</a>
+            </li>           
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content tab-content-shop">
+            <div class="tab-pane fade in active tab-shop-item" id="specifications">
+                <%= render @salida_proceso %>
+            </div>            
+        </div>
+    </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012215336) do
+ActiveRecord::Schema.define(version: 20171025113516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,8 +53,10 @@ ActiveRecord::Schema.define(version: 20171012215336) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.string   "total_kilogramos_netos", default: "0.0"
+    t.integer  "salida_proceso_id"
     t.index ["cart_salida_id"], name: "index_line_item_salidas_on_cart_salida_id", using: :btree
     t.index ["partida_id"], name: "index_line_item_salidas_on_partida_id", using: :btree
+    t.index ["salida_proceso_id"], name: "index_line_item_salidas_on_salida_proceso_id", using: :btree
   end
 
   create_table "partidas", force: :cascade do |t|
@@ -75,6 +77,17 @@ ActiveRecord::Schema.define(version: 20171012215336) do
     t.index ["type_coffee_id"], name: "index_partidas_on_type_coffee_id", using: :btree
   end
 
+  create_table "salida_procesos", force: :cascade do |t|
+    t.integer  "client_id"
+    t.string   "tipo_cafe"
+    t.bigint   "total_sacos",            default: 0
+    t.bigint   "total_bolsas",           default: 0
+    t.string   "total_kilogramos_netos", default: "0.0"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.index ["client_id"], name: "index_salida_procesos_on_client_id", using: :btree
+  end
+
   create_table "type_coffees", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",                    null: false
@@ -85,6 +98,8 @@ ActiveRecord::Schema.define(version: 20171012215336) do
   add_foreign_key "entradas", "clients"
   add_foreign_key "line_item_salidas", "cart_salidas"
   add_foreign_key "line_item_salidas", "partidas"
+  add_foreign_key "line_item_salidas", "salida_procesos"
   add_foreign_key "partidas", "entradas"
   add_foreign_key "partidas", "type_coffees"
+  add_foreign_key "salida_procesos", "clients"
 end
