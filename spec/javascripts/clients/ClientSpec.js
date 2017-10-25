@@ -117,3 +117,38 @@ describe("Salida a proceso", function() {
         
     });
 });
+
+describe("Cuando se realize una salida a proceso", function() {
+    beforeEach(function() {
+        loadFixtures("clients/tabla_salida_proceso.html");
+    });
+    
+    it("debe estar presente el enlace para realizar la salida", function() {
+        expect($('.realizar_salida_proceso_link')[0]).toBeInDOM();
+        expect($('.cart_salida')[0]).toBeInDOM();
+        expect($('.alert')[0]).toBeInDOM();
+    });
+    
+    it("debe estar definido el objeto salida a proceso", function() {
+        expect(tiposCafe).toBeDefined();
+        expect(tiposCafe).toBeObject();
+        expect(tiposCafe).toHaveMember('$tiposCafe');
+        expect(tiposCafe).toHaveMethod('verificarMismoTipo');
+        expect(tiposCafe).toHaveMethod('mostrarMensajeError');
+    });
+    
+    it("debe verificar que sean del mismo tipo de cafe", function() {
+        var $salidaProcesoLink = $('.realizar_salida_proceso_link');
+        var spyEvent = spyOnEvent($salidaProcesoLink, 'click');
+        spyOn(tiposCafe, 'mostrarMensajeError').and.callThrough();
+        spyOn(tiposCafe, 'verificarMismoTipo');
+        expect($('.alert')).toHaveCss({display: "none"});
+        $salidaProcesoLink.click();
+        
+        expect('click').toHaveBeenTriggeredOn($salidaProcesoLink);
+        expect(spyEvent).toHaveBeenTriggered();
+        expect(tiposCafe.mostrarMensajeError).toHaveBeenCalled();
+        expect(tiposCafe.verificarMismoTipo).toHaveBeenCalled();
+        expect($('.alert')).toHaveCss({display: "block"});
+    });
+});

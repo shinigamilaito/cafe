@@ -122,3 +122,46 @@ $(function() {
     }
 });
 //</editor-fold>
+
+//<editor-fold desc="Verifica que el tipo de cafe sea el mismo antes de realizar la salida">
+
+var tiposCafe = {
+    
+  $tiposCafe : [],
+  
+  verificarMismoTipo: function() {
+    var mismoTipoCafe = true;
+    var tipoCafe = '';
+    this.$tiposCafe.each(function(index, element) {        
+        if(index === 0) {
+            tipoCafe = $(element).text();
+        } else {
+            if (tipoCafe !== $(element).text()) {
+                mismoTipoCafe = false;
+                return;
+            } 
+        }
+    }); 
+    
+    return mismoTipoCafe;
+  },
+  
+  mostrarMensajeError: function() {
+      if(this.verificarMismoTipo()) {
+          $('.alert').css({display: 'none'});
+      } else {
+          $('.alert').css({display: 'block'});
+      }
+  }
+  
+};
+
+$(function() {
+    $(document).on('click', '.realizar_salida_proceso_link', function() {
+        var $tiposCafe = $(this).parents('.panel-footer').prev().find('.tipo_cafe_salida');
+        tiposCafe.$tiposCafe = $tiposCafe;
+        tiposCafe.mostrarMensajeError();
+    });    
+});
+
+//</editor-fold>

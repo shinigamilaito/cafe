@@ -34,12 +34,19 @@
       </table>
       <div class="panel-footer">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-3">
             <%= link_to 'Cancelar Salida', cart_salida, method: :delete, class: 'btn btn-default btn-sm', 
                   data: { confirm: '¿Esta usted seguro?' } %>
           </div>
-          <div class="col-sm-6 text-right">
-            <a href="#" class="btn btn-primary btn-sm">Procceed to checkout</a>
+          <div class="col-sm-6 alert alert-danger" role="alert" style="display: none;">
+              <span style="display: inline;" class="glyphicon glyphicon-exclamation-sign" 
+                    aria-hidden="true">
+              </span>
+              <span class="sr-only">Error:</span>
+              Tipos de cafe distintos
+          </div>
+          <div class="col-sm-3 text-right">
+            <a class="btn btn-primary btn-sm realizar_salida_proceso_link">Procceed to checkout</a>
           </div>
         </div>
       </div>
