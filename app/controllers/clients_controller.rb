@@ -5,8 +5,8 @@ class ClientsController < ApplicationController
 
   # GET /clients
   # GET /clients.json
-  def index
-    @clients = Client.validos.order("updated_at DESC")    
+  def index    
+    @clients = Client.validos.order(:legal_representative).page(params[:page])    
   end
 
   # GET /clients/1
