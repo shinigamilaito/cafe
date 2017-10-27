@@ -11,7 +11,7 @@
       <table class="table table-striped table-hover table-condensed">
         <thead>
           <tr scope="row">
-            <th><%= t('.salida_proceso.legal_representative') %></th>
+            <th><%= t('.salida_proceso.organization') %></th>
             <th><%= t('.salida_proceso.tipo_cafe') %></th>
             <th><%= t('.salida_proceso.total_sacos') %></th>
             <th><%= t('.salida_proceso.total_bolsas') %></th>          
@@ -24,7 +24,7 @@
         <tbody>
           <% @salida_procesos.each_with_index do |salida_proceso, index| %>
           <tr>
-            <td><%= salida_proceso.client.legal_representative %></td>
+            <td><%= salida_proceso.client.organization %></td>
             <td><%= salida_proceso.tipo_cafe %></td>
             <td><%= salida_proceso.total_sacos %></td>
             <td><%= salida_proceso.total_bolsas %></td>
