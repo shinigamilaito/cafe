@@ -23,30 +23,30 @@
                 <%= render @client %>
             </div>
             <div class="tab-pane fade tab-shop-item" id="comments">
-                <hr class="hr-divider-xs"></hr>
-                <div class="row-code">
-                  <div class="row row-pills row-pills-left" role="tabpanel">
+                <div class="row-code div-info-entrada">
+                  <div class="row row-pills row-pills-left" role="tabpanel">                      
                     <div class="col-md-2">
-                    <ul class="nav nav-pills nav-stacked" role="tablist">
-                        <% @client.entradas.validas.numero_entrada_ascendente.each_with_index do |entrada, index| %>
-                          <% if index.zero? %>
-                            <li role="presentation" class="active">
-                          <% else %>
-                            <li role="presentation">
-                          <% end %>
-                              <a href="#entrada<%= entrada.id %>" 
-                                 aria-controls="entrada<%= entrada.id%>" role="tab" 
-                                 data-toggle="tab" data-entrada-index="<%= index %>">
-                                  <%= "Entrada - #{padded_zeros_numero_entrada(entrada.numero_entrada)}" %>
-                              </a>
-                          </li>
-                        <% end %>                      
-                    </ul>
+                      <ul class="nav nav-pills nav-stacked" role="tablist">
+                          <% @client.entradas.validas.numero_entrada_ascendente.each_with_index do |entrada, index| %>
+                            <% if index.zero? %>
+                              <li role="presentation" class="active">
+                            <% else %>
+                              <li role="presentation">
+                            <% end %>
+                                <a href="#entrada<%= entrada.id %>" 
+                                   aria-controls="entrada<%= entrada.id%>" role="tab" 
+                                   data-toggle="tab" data-entrada-index="<%= index %>">
+                                    <%= "Entrada - #{padded_zeros_numero_entrada(entrada.numero_entrada)}" %>
+                                </a>
+                            </li>
+                          <% end %>                      
+                      </ul>
                     </div>
                     <div class="col-md-10">
                       <div class="tab-content">
                           <% @client.entradas.validas.numero_entrada_ascendente.each_with_index do |entrada, index| %>
                             <% if index.zero? %>
+                              <%= render 'entradas/link_options_show', entrada: entrada %>
                             <div role="tabpanel" class="tab-pane fade in active" id="entrada<%= entrada.id %>">
                             <% else %>
                             <div role="tabpanel" class="tab-pane fade in" id="entrada<%= entrada.id %>">

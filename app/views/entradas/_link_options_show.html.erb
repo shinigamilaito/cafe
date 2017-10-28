@@ -1,0 +1,18 @@
+<div class="col-sm-12 btn-group">
+  <%= link_to entradas_path, class: "btn btn-ghost btn-gray pull-right" do %>        
+    <i class="fa fa-mail-reply" aria-hidden="true"></i>                                      
+    <%= t('entradas.show.back_link') %>
+  <% end %>    
+  <%= link_to entrada, method: :delete, class: "btn btn-ghost btn-red pull-right", data: {confirm: '¿Está usted seguro?'} do %>
+    <i class="fa fa-remove" aria-hidden="true"></i>                                      
+    <%= t('entradas.show.delete_link')  %>
+  <% end %>
+  <%= link_to edit_entrada_path(entrada), class: "btn btn-ghost btn-blue pull-right" do %>
+    <i class="fa fa-pencil" aria-hidden="true"></i>        
+    <%= t('entradas.show.edit_link') %>
+  <% end %>
+  <%= link_to reporte_entrada_path(entrada), class: "btn btn-ghost btn-sea pull-right", target: '_blank' do %>
+    <i class="fa fa-file-pdf-o"  aria-hidden="true"></i>
+    <%= t('entradas.show.print_report_link') %>
+  <% end %>
+</div>

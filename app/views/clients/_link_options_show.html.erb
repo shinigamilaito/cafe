@@ -1,0 +1,14 @@
+<div class="col-sm-12 btn-group">
+  <%= link_to clients_path, class: "btn btn-ghost btn-gray pull-right" do %>        
+    <i class="fa fa-mail-reply" aria-hidden="true"></i>                                      
+    <%= t('clients.show.back_link') %>
+  <% end %>    
+  <%= link_to client, method: :delete, class: "btn btn-ghost btn-red pull-right", data: {confirm: '¿Está usted seguro?'} do %>
+    <i class="fa fa-remove" aria-hidden="true"></i>                                      
+    <%= t('clients.show.delete_link')  %>
+  <% end %>
+  <%= link_to edit_client_path(client), class: "btn btn-ghost btn-blue pull-right" do %>
+    <i class="fa fa-pencil " aria-hidden="true"></i>        
+    <%= t('clients.show.edit_link') %>
+  <% end %>
+</div>

@@ -1,22 +1,7 @@
+<%= render 'link_options_show', client: client %>
+
 <table class="table table-striped">
-    <tbody>
-        <tr>
-            <td></td>
-            <td class='pull-right'>             
-              <%= link_to edit_client_path(client), class: "btn btn-ghost btn-blue" do %>
-                <i class="fa fa-pencil" aria-hidden="true"></i>        
-                <%= t('.edit_link') %>
-              <% end %>
-              <%= link_to client, method: :delete, class: "btn btn-ghost btn-red", data: {confirm: '¿Está usted seguro?'} do %>
-                <i class="fa fa-remove" aria-hidden="true"></i>                                      
-                <%= t('.delete_link')  %>
-              <% end %>
-              <%= link_to clients_path, class: "btn btn-ghost btn-gray" do %>        
-                <i class="fa fa-mail-reply" aria-hidden="true"></i>                                      
-                <%= t('.back_link') %>
-              <% end %>  
-            </td>
-        </tr>
+    <tbody>        
         <tr>
             <td><strong><%= t('.legal_representative') %></strong></td>
             <td><%= client.legal_representative %></td>

@@ -1,15 +1,6 @@
 <table class="table table-striped">
     <tbody>        
         <tr>
-            <td></td>
-            <td class='pull-right'>
-              <%= link_to salida_procesos_path, class: "btn btn-ghost btn-gray" do %>        
-                <i class="fa fa-mail-reply" aria-hidden="true"></i>                                      
-                <%= t('.back_link') %>
-              <% end %>  
-            </td>
-        </tr>
-        <tr>
             <td><strong><%= t('clients.client.legal_representative') %></strong></td>
             <td><%= salida_proceso.client.legal_representative %></td>
         </tr>
