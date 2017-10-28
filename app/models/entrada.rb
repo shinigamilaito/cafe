@@ -33,7 +33,7 @@ class Entrada < ApplicationRecord
   end
   
   def actualiza_numero_partidas        
-    self.update_columns(total_partidas: self.partidas.size)
+    self.update_columns(total_partidas: self.total_partidas)
   end
 
   def destroyed_logical
