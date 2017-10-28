@@ -27,6 +27,7 @@ class CartSalida < ApplicationRecord
     total.to_s    
   end
   
+  # Todas la salidas en un cart son del mismo cliente
   def cliente
     return self.line_item_salidas.first.partida.entrada.client
   end
