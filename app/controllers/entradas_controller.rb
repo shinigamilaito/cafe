@@ -6,7 +6,7 @@ class EntradasController < ApplicationController
   # GET /entradas
   # GET /entradas.json
   def index
-    @entradas = Entrada.validas.order("updated_at DESC")
+    @entradas = Entrada.validas.order("numero_entrada DESC").page(params[:page])
   end
 
   # GET /entradas/1
