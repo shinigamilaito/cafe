@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :salida_procesos
   resources :line_item_salidas, only: :create
   resources :cart_salidas, only: :destroy
-  resources :partidas
   resources :entradas do
     get :reporte, on: :member
     get :numero_entrada_cliente, on: :collection

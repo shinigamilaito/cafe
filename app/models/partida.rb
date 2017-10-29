@@ -56,7 +56,7 @@ class Partida < ApplicationRecord
       end
     end
     
-    # ensure that there are no line items referencing this product
+    # ensure that there are no line items referencing this partida
     def ensure_not_referenced_by_any_line_item_salida
       unless line_item_salidas.empty?
         errors.add(:base, 'hay salidas presentes')

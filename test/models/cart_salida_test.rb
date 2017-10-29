@@ -13,12 +13,6 @@ class CartSalidaTest < ActiveSupport::TestCase
     assert_equal(cart_salida.total_bolsas, 28)
   end
   
-  test "debe obtener el total de tara correcto" do
-    cart_salida = cart_salidas(:one)
-    
-    assert_equal(cart_salida.total_tara, '55.8')
-  end
-  
   test "debe obtener el total de kilogramos netos correcto" do
     cart_salida = cart_salidas(:one)
     
