@@ -10,11 +10,6 @@ class SalidaProcesosControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_salida_proceso_url
-    assert_response :success
-  end
-
   test "should create salida_proceso" do    
     sacos = 12
     bolsas = 12
@@ -48,16 +43,4 @@ class SalidaProcesosControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_salida_proceso_url(@salida_proceso)
-    assert_response :success
-  end
-
-  test "should destroy salida_proceso" do
-    assert_difference('SalidaProceso.count', -1) do
-      delete salida_proceso_url(@salida_proceso)
-    end
-
-    assert_redirected_to salida_procesos_url
-  end
 end

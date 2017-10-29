@@ -1,7 +1,7 @@
 class SalidaProcesosController < ApplicationController
   include CurrentCartSalidas
   before_action :set_cart_salidas, only: [:create]
-  before_action :set_salida_proceso, only: [:show, :edit, :update, :destroy]
+  before_action :set_salida_proceso, only: [:show]
 
   # GET /salida_procesos
   # GET /salida_procesos.json
@@ -14,19 +14,10 @@ class SalidaProcesosController < ApplicationController
   def show
   end
 
-  # GET /salida_procesos/new
-  def new
-    @salida_proceso = SalidaProceso.new
-  end
-
-  # GET /salida_procesos/1/edit
-  def edit
-  end
-
   # POST /salida_procesos
   # POST /salida_procesos.json
   def create
-    @salida_proceso = SalidaProceso.new(salida_proceso_params)
+    @salida_proceso = SalidaProceso.new
     @salida_proceso.client = @cart_salida.cliente
     @salida_proceso.add_total_from_cart_salida(@cart_salida)
     @salida_proceso.add_line_item_salidas_from_cart_salida(@cart_salida)
@@ -46,24 +37,10 @@ class SalidaProcesosController < ApplicationController
     end
   end
 
-  # DELETE /salida_procesos/1
-  # DELETE /salida_procesos/1.json
-  def destroy
-    @salida_proceso.destroy
-    respond_to do |format|
-      format.html { redirect_to salida_procesos_url, notice: 'Salida proceso was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_salida_proceso
       @salida_proceso = SalidaProceso.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def salida_proceso_params      
-#      params.require(:salida_proceso).permit(:tipo_cafe, :total_sacos, :total_bolsas, :total_kilogramos_netos)
-    end
 end
