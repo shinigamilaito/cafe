@@ -79,6 +79,14 @@ class Entrada < ApplicationRecord
     end
   end
   
+  # Verifica si las partidas de esta entrada han salido a proceso
+  # return Boolean, true si existen partidas con salidas a proceso, false contrario
+  def tiene_partidas_que_han_salido_a_proceso
+    ids_partidas = partidas.map(&:id)
+    
+    LineItemSalida.where(partida_id: ids_partidas).present?    
+  end
+  
   private 
   
     def itera_partidas()

@@ -102,4 +102,16 @@ class EntradaTest < ActiveSupport::TestCase
     assert_equal entrada.partidas.size, 2    
   end
   
+  test "tiene partidas que han salido a proceso" do
+    entrada = entradas(:one)
+    
+    assert(entrada.tiene_partidas_que_han_salido_a_proceso)
+  end
+  
+  test "no tiene partidas que han salido a proceso" do
+    entrada = entradas(:sin_salida_proceso)
+    
+    assert_not(entrada.tiene_partidas_que_han_salido_a_proceso)
+  end
+  
 end

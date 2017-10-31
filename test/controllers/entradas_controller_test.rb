@@ -4,7 +4,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
   setup do
     @entrada = Entrada.new({
       date: Time.now,
-      numero_entrada: 4,
+      numero_entrada: 5,
       numero_entrada_cliente: 2,
       driver: 'driver',
       client_id: clients(:pedro).id,
@@ -100,7 +100,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
-    @entrada = entradas(:one)
+    @entrada = entradas(:sin_salida_proceso)
     
     get edit_entrada_url(@entrada)
     assert_response :success
@@ -120,6 +120,13 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
     assert_select "input[type=hidden]#entrada_id", minimum: 1
     assert_select "select#entrada_client_id", minimum: 1
     assert_select "input[type=number]#entrada_numero_entrada_cliente", minimum: 1
+  end
+  
+  test "not should get edit for entradas con partidas que han salido a proceso" do
+    @entrada = entradas(:one)
+    
+    get edit_entrada_url(@entrada)
+    assert_redirected_to entradas_url
   end
 
   test "should update entrada" do
@@ -155,12 +162,23 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy entrada" do
-    @entrada = Entrada.last
+    @entrada = entradas(:sin_salida_proceso)
+    
     assert_difference('Entrada.count', 0) do
       delete entrada_url(@entrada)
     end
 
-    assert(Entrada.last.delete_logical)
+    assert(Entrada.find(@entrada.id).delete_logical)
+    assert_redirected_to entradas_url
+  end
+  
+  test "not should destroy entrada para partidas que han salido a proceso" do
+    @entrada = entradas(:one)
+    assert_difference('Entrada.count', 0) do
+      delete entrada_url(@entrada)
+    end
+
+    assert_not(Entrada.last.delete_logical)
     assert_redirected_to entradas_url
   end
   
