@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: cart_salidas
+#
+#  id         :integer          not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class CartSalida < ApplicationRecord
   has_many :line_item_salidas, dependent: :destroy
   

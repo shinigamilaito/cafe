@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: partidas
+#
+#  id                :integer          not null, primary key
+#  identificador     :integer          default(1)
+#  entrada_id        :integer
+#  kilogramos_brutos :string
+#  numero_sacos      :integer
+#  tara              :string
+#  kilogramos_netos  :string
+#  humedad           :string
+#  type_coffee_id    :integer
+#  calidad_cafe      :string
+#  observaciones     :text
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  numero_bolsas     :integer
+#
+
 require 'test_helper'
 
 class PartidaTest < ActiveSupport::TestCase

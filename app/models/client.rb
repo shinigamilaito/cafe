@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: clients
+#
+#  id                   :integer          not null, primary key
+#  legal_representative :string
+#  address              :text
+#  organization         :string
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  persona_fisica       :boolean          default(FALSE)
+#  is_historical        :boolean          default(FALSE)
+#  delete_logical       :boolean          default(FALSE)
+#
+
 class Client < ApplicationRecord
   scope :validos, -> { where('is_historical = ? AND delete_logical = ?', false, false) }
   
