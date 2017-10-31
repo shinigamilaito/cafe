@@ -7,4 +7,22 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  class ActionDispatch::IntegrationTest
+    def login_as(user)
+      post user_session_path \
+        "user[username]"    => user.username,
+        "user[password]" => 'admin'
+    end
+  
+    def logout
+      delete logout_url
+    end
+
+    def setup
+      login_as users(:administrador)
+    end
+    
+  end  
 end
+
+

@@ -1,0 +1,29 @@
+<div class="section section-xs section-bottom">
+  <div class="container">
+    <div class="row mb">
+      <div class="col-md-6 col-md-offset-3">
+        <h3 class="title-md hr-left text-theme">Iniciar Sesión</h3>
+        <div class="panel panel-primary text-theme">
+          <div class="panel-heading">
+            <h3 class="panel-title">Ingrese sus credenciales</h3>
+          </div>
+          <div class="panel-body">
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="form-inputs">
+                <%= f.input :username, required: false, autofocus: true %>
+                <%= f.input :password, required: false %>
+                <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+              </div>
+
+              <div class="form-actions">
+                <%= f.button :submit, "Acceder" %>
+              </div>
+              <%#*<a href="#" class="text-theme-xs pull-right a-black">Forgot your password ?</a>%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%#= render "devise/shared/links" %>

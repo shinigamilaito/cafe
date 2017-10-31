@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, path: 'accounts', path_names: {sign_in: 'login', sign_out: 'logout' }
   resources :salida_procesos
   resources :line_item_salidas, only: :create
   resources :cart_salidas, only: :destroy

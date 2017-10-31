@@ -20,6 +20,7 @@ es:
 
       user:
         name: 'Nombre:'
+        username: 'Usuario:'
         email: 'Correo Electrónico:'     
         password: 'Contraseña:'
         password_confirmation: 'Confirmación de la contraseña'
