@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(version: 20171031001149) do
     t.integer  "cart_salida_id"
     t.bigint   "total_sacos",            default: 0
     t.bigint   "total_bolsas",           default: 0
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.string   "total_kilogramos_netos", default: "0.0"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "total_kilogramos_netos", default: "0.00"
     t.integer  "salida_proceso_id"
     t.index ["cart_salida_id"], name: "index_line_item_salidas_on_cart_salida_id", using: :btree
     t.index ["partida_id"], name: "index_line_item_salidas_on_partida_id", using: :btree
@@ -82,9 +82,9 @@ ActiveRecord::Schema.define(version: 20171031001149) do
     t.string   "tipo_cafe"
     t.bigint   "total_sacos",            default: 0
     t.bigint   "total_bolsas",           default: 0
-    t.string   "total_kilogramos_netos", default: "0.0"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.string   "total_kilogramos_netos", default: "0.00"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.index ["client_id"], name: "index_salida_procesos_on_client_id", using: :btree
   end
 

@@ -7,7 +7,7 @@
 #  tipo_cafe              :string
 #  total_sacos            :integer          default(0)
 #  total_bolsas           :integer          default(0)
-#  total_kilogramos_netos :string           default("0.0")
+#  total_kilogramos_netos :string           default("0.00")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #

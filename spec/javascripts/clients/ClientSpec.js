@@ -152,3 +152,27 @@ describe("Cuando se realize una salida a proceso", function() {
         expect($('.alert')).toHaveCss({display: "block"});
     });
 });
+
+//<editor-fold desc="Verifica la colocación de las mascaras en el formulario de salida a proceso">
+
+describe("El formulario para las salidas a proceso debe tener mascaras en los input", function() {
+       
+    beforeEach(function() {
+        loadFixtures("clients/form_salida_proceso.html");
+    });
+
+    it("el formulario debe tener tres inputs", function() {
+        expect($('#line_item_salida_total_sacos')[0]).toBeInDOM();
+        expect($('#line_item_salida_total_bolsas')[0]).toBeInDOM();
+        expect($('#line_item_salida_total_kilogramos_netos')[0]).toBeInDOM();
+    });
+
+    it("Las mascaras deben estar definidas", function() {
+        expect($('#line_item_salida_total_sacos')).toHaveMethod('mask');
+        expect($('#line_item_salida_total_bolsas')).toHaveMethod('mask');
+        expect($('#line_item_salida_total_kilogramos_netos')).toHaveMethod('mask');
+    });
+    
+});
+
+//</editor-fold>

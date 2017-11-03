@@ -175,3 +175,20 @@ $(function() {
 });
 
 //</editor-fold>
+
+//<editor-fold desc="Coloca las mascaras a los input del formulario de salida a proceso">
+$(function() {
+    
+    var formatKilogramos = "##0.00";
+    var formatSacosBolsas = "##0";    
+    
+    $('#line_item_salida_total_kilogramos_netos').mask(formatKilogramos, {reverse: true});
+    
+    $('#line_item_salida_total_bolsas').mask(formatSacosBolsas, {reverse: true});
+        
+    $('#line_item_salida_total_sacos').mask(formatSacosBolsas, {reverse: true});
+        
+});
+
+//</editor-fold>
+
