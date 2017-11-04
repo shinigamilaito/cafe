@@ -3,6 +3,7 @@ class EntradasController < ApplicationController
   include Jasper::Bridge
   before_action :set_entrada, only: [:show, :edit, :update, :destroy, :reporte]
   before_action :check_entrada_not_have_partidas_with_salidas_proceso, only: [:edit, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_entrada
   
   # GET /entradas
   # GET /entradas.json
@@ -122,5 +123,11 @@ class EntradasController < ApplicationController
         flash[:danger] = 'Acción no realizada. Entrada ha salido a proceso'
         redirect_to entradas_url
       end
+    end
+    
+    def invalid_entrada
+      logger.error "Attempt to access invalid entrada #{params[:id]}"
+      flash[:danger] = 'Entrada no valida'
+      redirect_to root_url
     end
 end

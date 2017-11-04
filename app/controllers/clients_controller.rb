@@ -2,6 +2,7 @@ class ClientsController < ApplicationController
   include CurrentCartSalidas
   before_action :set_cart_salidas
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_client
 
   # GET /clients
   # GET /clients.json
@@ -78,6 +79,12 @@ class ClientsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
       params.require(:client).permit(:legal_representative, :address, :organization, :persona_fisica)
+    end
+    
+    def invalid_client
+      logger.error "Attempt to access invalid client #{params[:id]}"
+      flash[:danger] = 'Cliente no valido'
+      redirect_to root_url
     end
     
 end

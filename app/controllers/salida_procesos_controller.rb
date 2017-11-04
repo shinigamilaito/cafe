@@ -2,6 +2,7 @@ class SalidaProcesosController < ApplicationController
   include CurrentCartSalidas
   before_action :set_cart_salidas, only: [:create]
   before_action :set_salida_proceso, only: [:show]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_salida_proceso
 
   # GET /salida_procesos
   # GET /salida_procesos.json
@@ -41,6 +42,12 @@ class SalidaProcesosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_salida_proceso
       @salida_proceso = SalidaProceso.find(params[:id])
+    end
+    
+    def invalid_salida_proceso
+      logger.error "Attempt to access invalid salida proceso #{params[:id]}"
+      flash[:danger] = 'Salida a proceso no valida'
+      redirect_to root_url
     end
 
 end
