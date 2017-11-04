@@ -3,9 +3,9 @@ require 'test_helper'
 class LineItemSalidasControllerTest < ActionDispatch::IntegrationTest
   
   test "should create line_item_salida" do   
-    sacos = 8
-    bolsas = 10
-    kilogramos_netos = 34.56
+    sacos = 1
+    bolsas = 1
+    kilogramos_netos = 4.56
     assert_difference('LineItemSalida.count') do
       post line_item_salidas_url, params: { 
         partida_id: partidas(:one).id,
@@ -17,9 +17,9 @@ class LineItemSalidasControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_equal(LineItemSalida.last.total_sacos, 8)
-    assert_equal(LineItemSalida.last.total_bolsas, 10)
-    assert_equal(LineItemSalida.last.total_kilogramos_netos, '34.56')
+    assert_equal(LineItemSalida.last.total_sacos, 1)
+    assert_equal(LineItemSalida.last.total_bolsas, 1)
+    assert_equal(LineItemSalida.last.total_kilogramos_netos, '4.56')
     follow_redirect!
     assert_select 'h1', 'Datos del Cliente'
     assert_select 'ul.nav li a', 'Información Personal'

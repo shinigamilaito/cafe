@@ -11,9 +11,9 @@ class SalidaProcesosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create salida_proceso" do    
-    sacos = 12
-    bolsas = 12
-    kilogramos_netos = 12
+    sacos = 8
+    bolsas = 2
+    kilogramos_netos = 1.13
     
     post line_item_salidas_url, params: { 
       partida_id: partidas(:three).id,

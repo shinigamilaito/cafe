@@ -16,6 +16,8 @@ class SalidaProceso < ApplicationRecord
   belongs_to :client
   has_many :line_item_salidas, dependent: :destroy
   
+  validate :same_type_coffee
+  
   def add_line_item_salidas_from_cart_salida(cart_salida)
     cart_salida.line_item_salidas.each do |item|
       item.cart_salida_id = nil
@@ -44,5 +46,16 @@ class SalidaProceso < ApplicationRecord
       .select("line_item_salidas.id AS line_item_salida_id")
       
     LineItemSalida.where(id: line_item_salida_ids.map(&:line_item_salida_id))      
+  end
+  
+  # Verifica que los item de la salida tengan el mismo tipo de cafe
+  def same_type_coffee
+    type_coffee = line_item_salidas.first.partida.type_coffee
+    line_item_salidas.each do |salida|
+      unless type_coffee.eql?(salida.partida.type_coffee)
+        errors.add(:base, 'Los tipos de cafés son diferentes.')
+        return false
+      end
+    end
   end
 end

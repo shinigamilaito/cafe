@@ -95,7 +95,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
     assert_select "h1.title-md", I18n.t('entradas.show.title')
     assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", 'Información Entrada'
     assert_select "div.tab-content div.tab-pane#specifications", 1
-    assert_select "table.table", 3
+    assert_select "table.table", 4
     assert_select "table tbody tr", minimum: 11
   end
 

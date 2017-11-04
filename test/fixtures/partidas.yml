@@ -67,4 +67,16 @@ sin_salida_proceso:
   humedad: 9.99
   type_coffee: cerezo
   calidad_cafe: MyString  
+  
+salida_proceso:
+  identificador: 3
+  entrada: one
+  kilogramos_brutos: 17.88
+  numero_sacos: 1
+  numero_bolsas: 1
+  tara: 10.5
+  kilogramos_netos: 1
+  humedad: 9.99
+  type_coffee: honney
+  calidad_cafe: MyString  
     

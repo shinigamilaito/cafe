@@ -27,6 +27,9 @@ class Client < ApplicationRecord
     self.persona_fisica ? 'Si' : 'No'
   end
   
+  # Retorna las entradas validas, aquellas que no son historicas o han sido eliminadas
+  # logicamente
+  # return ActiveRecord::Relation
   def total_entradas
     self.entradas.validas.size
   end

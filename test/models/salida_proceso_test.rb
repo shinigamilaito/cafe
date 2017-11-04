@@ -15,7 +15,10 @@
 require 'test_helper'
 
 class SalidaProcesoTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "los tipos de cafe deben ser iguales" do
+    salida_proceso = salida_procesos(:one)
+    
+    assert_not(salida_proceso.same_type_coffee)
+    assert_equal(salida_proceso.errors[:base], ['Los tipos de cafés son diferentes.'])
+  end
 end

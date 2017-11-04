@@ -53,8 +53,8 @@ class ClientTest < ActiveSupport::TestCase
   test "obtain total entradas" do
     client = new_client
     
-    assert_equal client.total_entradas, 1
-    assert_equal client.entradas.size, 2    
+    assert_equal client.total_entradas, 2
+    assert_equal client.entradas.size, 3    
   end
   
 end

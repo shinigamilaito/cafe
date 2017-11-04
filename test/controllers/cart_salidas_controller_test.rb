@@ -7,7 +7,7 @@ class CartSalidasControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy cart_salida" do
     post line_item_salidas_url, params: { partida_id: partidas(:one).id, 
-      line_item_salida: {total_sacos: 10, total_bolsas: 23, total_kilogramos_netos:23.45}}
+      line_item_salida: {total_sacos: 1, total_bolsas: 1, total_kilogramos_netos:8.00}}
     @cart_salida = CartSalida.find(session[:cart_salida_id])
     @client = @cart_salida.cliente
     

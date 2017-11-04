@@ -79,6 +79,9 @@ class Entrada < ApplicationRecord
     total.to_s    
   end
   
+  # Retorna el número de partidas que estan asociadas 
+  # con la entrada
+  # return FixNum
   def total_partidas
     return self.partidas.size
   end
