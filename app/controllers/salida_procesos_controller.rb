@@ -7,7 +7,7 @@ class SalidaProcesosController < ApplicationController
   # GET /salida_procesos
   # GET /salida_procesos.json
   def index
-    @salida_procesos = SalidaProceso.order('created_at DESC')
+    @salida_procesos = SalidaProceso.order('created_at DESC').page(params[:page])
   end
 
   # GET /salida_procesos/1
