@@ -17,9 +17,9 @@
 one:
   client: pedro
   tipo_cafe: MyString
-  total_sacos: 1
-  total_bolsas: 1
-  total_kilogramos_netos: 9.99
+  total_sacos: 2
+  total_bolsas: 0
+  total_kilogramos_netos: 0.00
 
 two:
   client: juan

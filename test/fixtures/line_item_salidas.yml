@@ -32,3 +32,11 @@ three:
   total_sacos: 45
   total_bolsas: 23
   total_kilogramos_netos: 23.64
+  
+four:
+  partida: three
+  cart_salida:
+  total_sacos: 2
+  total_bolsas: 3
+  total_kilogramos_netos: 6.25
+  salida_proceso: one

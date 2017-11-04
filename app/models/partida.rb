@@ -54,6 +54,47 @@ class Partida < ApplicationRecord
       return type_coffees +  TypeCoffee.where(id: self.type_coffee_id)
     end
   end
+  
+  # Devuelve el total de sacos que han tenido salidas a proceso
+  # return Integer mayor o igual a cero
+  def total_sacos_a_proceso
+    salidas_proceso.map(&:total_sacos).sum   
+  end
+  
+  # Devuelve el total de bolsas que han tenido salidas a proceso
+  # return Integer mayor o igual a cero
+  def total_bolsas_a_proceso
+    salidas_proceso.map(&:total_bolsas).sum
+  end
+  
+  # Devuelve el total de kilos netos que han tenido salidas a proceso
+  # return String
+  def total_kilos_netos_a_proceso
+    total_kilos_netos = BigDecimal('0')
+    salidas_proceso.each do |salida|  
+      total_kilos_netos += BigDecimal("#{salida.total_kilogramos_netos}") 
+    end
+    
+    return total_kilos_netos.to_s
+  end
+  
+  # Devuelve la cantidad de sacos disponibles
+  # return Integer mayor o igual a cero
+  def total_sacos_disponibles
+    return numero_sacos - total_sacos_a_proceso
+  end
+  
+  # Devuelve la cantidad de bolsas disponibles
+  # return Integer mayor o igual a cero
+  def total_bolsas_disponibles
+    return numero_bolsas - total_bolsas_a_proceso
+  end
+  
+  # Devuelve la cantidad de kilos netos disponibles
+  # return Big Decimal mayor o igual a cero
+  def total_kilos_netos_disponibles
+    return BigDecimal(kilogramos_netos) - BigDecimal(total_kilos_netos_a_proceso) 
+  end
 
   private
   
@@ -84,4 +125,9 @@ class Partida < ApplicationRecord
       end
     end
     
+    # Obtiene las salidas a proceso
+    # Return ActiveRecord::Relation LineItemSalida
+    def salidas_proceso
+      return line_item_salidas.where("salida_proceso_id IS NOT NULL")
+    end
 end
