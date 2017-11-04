@@ -15,10 +15,50 @@
 require 'test_helper'
 
 class SalidaProcesoTest < ActiveSupport::TestCase
-  test "los tipos de cafe deben ser iguales" do
-    salida_proceso = salida_procesos(:one)
+  def setup
+    @salida_proceso = salida_procesos(:one)
+  end
+      
+  test "pertenece a un cliente y tiene muchos line_item_salidas" do
+    assert(@salida_proceso.client)
+    assert(@salida_proceso.line_item_salidas)
+  end
+  
+  test "agrega los line item desde un cart_salida" do
+    cart_salida = cart_salidas(:two)
+    salida_proceso = salida_procesos(:two)
+    salida_proceso.add_line_item_salidas_from_cart_salida(cart_salida)
     
-    assert_not(salida_proceso.same_type_coffee)
-    assert_equal(salida_proceso.errors[:base], ['Los tipos de cafés son diferentes.'])
+    assert_equal(salida_proceso.line_item_salidas, cart_salida.line_item_salidas)
+    salida_proceso.line_item_salidas.each do |salida|
+      assert_nil(salida.cart_salida_id)
+    end 
+  end
+  
+  test "añade el total de sacos,bolsas, kilogramos netos y el tipo de cafe" do
+    cart_salida = cart_salidas(:two)
+    salida_proceso = salida_procesos(:two)
+    
+    salida_proceso.add_total_from_cart_salida(cart_salida)
+    
+    assert_equal(salida_proceso.total_sacos, cart_salida.total_sacos)
+    assert_equal(salida_proceso.total_bolsas, cart_salida.total_bolsas)
+    assert_equal(salida_proceso.total_kilogramos_netos, cart_salida.total_kilogramos_netos)
+    assert_equal(salida_proceso.tipo_cafe, cart_salida.tipo_cafe)
+  end
+  
+  test "obtener las entradas afectadas" do
+    assert_equal(@salida_proceso.entradas_afectadas.to_a, [entradas(:one)])
+  end
+  
+  test "obtener line item salidas para entrada" do
+    assert_equal(@salida_proceso.line_item_salidas_para_entrada(entradas(:one)).to_a, 
+    [line_item_salidas(:four), line_item_salidas(:no_valido_cafe_distinto)]
+    )
+  end
+  
+  test "los tipos de cafe deben ser iguales" do
+    assert_not(@salida_proceso.same_type_coffee)
+    assert_equal(@salida_proceso.errors[:base], ['Los tipos de cafés son diferentes.'])
   end
 end
