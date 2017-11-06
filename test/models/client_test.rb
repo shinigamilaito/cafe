@@ -28,17 +28,6 @@ class ClientTest < ActiveSupport::TestCase
     assert client.errors[:organization].any?    
   end
   
-  test "unique clients por representante legal" do
-    client = new_client
-        
-    another_client = Client.new(client.attributes)
-    
-    assert another_client.invalid?  
-    
-    assert_equal ['ya existe'],
-      another_client.errors[:legal_representative]
-  end
-  
   test "unique clients por organizacion" do
     client = new_client
     

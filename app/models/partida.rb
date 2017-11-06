@@ -48,11 +48,12 @@ class Partida < ApplicationRecord
   # return TypeCoffee::ActiveRecord_Relation
   def tipos_cafes
     type_coffees = TypeCoffee.validos
-    if self.new_record?
-      return type_coffees
-    else
-      return type_coffees +  TypeCoffee.where(id: self.type_coffee_id)
+    
+    unless type_coffees.include?(self.type_coffee)
+      type_coffees = type_coffees.or(TypeCoffee.where(id: self.type_coffee_id))
     end
+    
+    return type_coffees.order(:name)
   end
   
   # Devuelve el total de sacos que han tenido salidas a proceso

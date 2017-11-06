@@ -21,7 +21,6 @@ class Client < ApplicationRecord
 	validates :legal_representative, presence: true
 	validates :address, :organization, presence: true  
 	validates :organization, uniqueness: {scope: [:is_historical, :delete_logical]}
-	validates :legal_representative, uniqueness: {scope: [:is_historical, :delete_logical]}
 
   def es_persona_fisica
     self.persona_fisica ? 'Si' : 'No'

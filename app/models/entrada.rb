@@ -92,11 +92,12 @@ class Entrada < ApplicationRecord
   # return Entrada::ActiveRecord_Relation
   def tipos_clientes
     clients = Client.validos
-    if self.new_record?
-      return clients
-    else
-      return clients + Client.where(id: self.client_id)
+    
+    unless clients.include?(self.client)
+      clients = clients.or(Client.where(id: self.client_id))
     end
+    
+    return clients.order(:organization)
   end
   
   # Verifica si las partidas de esta entrada han salido a proceso
