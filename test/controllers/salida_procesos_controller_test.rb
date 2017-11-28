@@ -20,16 +20,16 @@ class SalidaProcesosControllerTest < ActionDispatch::IntegrationTest
     bolsas = 2
     kilogramos_netos = 1.13
     
-    post line_item_salidas_url, params: { 
+    post line_item_salida_procesos_url, params: { 
       partida_id: partidas(:three).id,
-      line_item_salida: {
+      line_item_salida_proceso: {
         total_sacos: sacos,
         total_bolsas: bolsas,
         total_kilogramos_netos: kilogramos_netos
       }        
     }
     
-    @cart_salida = CartSalida.find(session[:cart_salida_id])
+    @cart_salida = CartSalidaProceso.find(session[:cart_salida_proceso_id])
     @client = @cart_salida.cliente
     
     assert_difference('SalidaProceso.count') do

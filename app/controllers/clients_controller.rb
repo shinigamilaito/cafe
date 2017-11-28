@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
   include CurrentCartSalidas
-  before_action :set_cart_salidas
+  before_action :set_cart_salida_proceso
+#  before_action :set_cart_salida_bodega
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_client
 
@@ -13,9 +14,12 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
-    @cart_salida.destroy  if @cart_salida.id == session[:cart_salida_id]
-    session[:cart_salida_id] = nil
-    @line_item_salida = LineItemSalida.new
+    @cart_salida_proceso.destroy  if @cart_salida_proceso.id == session[:cart_salida_proceso_id]
+#    @cart_salida_bodega.destroy  if @cart_salida_bodega.id == session[:cart_salida_bodega_id]
+    session[:cart_salida_proceso_id] = nil
+#    session[:cart_salida_bodega_id] = nil
+    @line_item_salida_proceso = LineItemSalidaProceso.new
+#    @line_item_salida_bodega = LineItemSalidaBodega.new
   end
 
   # GET /clients/new

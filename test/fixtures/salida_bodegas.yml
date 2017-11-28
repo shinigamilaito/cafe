@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: salida_bodegas
+#
+#  id                     :integer          not null, primary key
+#  name_driver            :string
+#  name_person            :string
+#  client_id              :integer
+#  tipo_cafe              :string
+#  total_sacos            :integer
+#  total_bolsas           :integer
+#  total_kilogramos_netos :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_driver: MyString
+  name_person: MyString
+  client: one
+  tipo_cafe: MyString
+  total_sacos: 1
+  total_bolsas: 1
+  total_kilogramos_netos: MyString
+
+two:
+  name_driver: MyString
+  name_person: MyString
+  client: two
+  tipo_cafe: MyString
+  total_sacos: 1
+  total_bolsas: 1
+  total_kilogramos_netos: MyString

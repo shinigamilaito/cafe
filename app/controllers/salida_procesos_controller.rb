@@ -1,6 +1,6 @@
 class SalidaProcesosController < ApplicationController
   include CurrentCartSalidas
-  before_action :set_cart_salidas, only: [:create]
+  before_action :set_cart_salida_proceso, only: [:create]
   before_action :set_salida_proceso, only: [:show]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_salida_proceso
 
@@ -19,20 +19,20 @@ class SalidaProcesosController < ApplicationController
   # POST /salida_procesos.json
   def create
     @salida_proceso = SalidaProceso.new
-    @salida_proceso.client = @cart_salida.cliente
-    @salida_proceso.add_total_from_cart_salida(@cart_salida)
-    @salida_proceso.add_line_item_salidas_from_cart_salida(@cart_salida)
+    @salida_proceso.client = @cart_salida_proceso.cliente
+    @salida_proceso.add_total_from_cart_salida(@cart_salida_proceso)
+    @salida_proceso.add_line_item_salidas_from_cart_salida(@cart_salida_proceso)
 
     respond_to do |format|
       if @salida_proceso.save
-        CartSalida.destroy(session[:cart_salida_id])
-        session[:cart_salida_id] = nil
+        CartSalidaProceso.destroy(session[:cart_salida_proceso_id])
+        session[:cart_salida_proceso_id] = nil
         flash[:success] = I18n.t('.salida_procesos.created')        
         format.html { redirect_to @salida_proceso }
         format.json { render :show, status: :created, location: @salida_proceso }
       else
         flash[:error] = I18n.t('.salida_procesos.not_created')        
-        format.html { redirect_to @cart_salida.cliente }
+        format.html { redirect_to @cart_salida_proceso.cliente }
         format.json { render json: @salida_proceso.errors, status: :unprocessable_entity }
       end
     end
