@@ -21,22 +21,22 @@ class SalidaProcesoTest < ActiveSupport::TestCase
       
   test "pertenece a un cliente y tiene muchos line_item_salidas" do
     assert(@salida_proceso.client)
-    assert(@salida_proceso.line_item_salidas)
+    assert(@salida_proceso.line_item_salida_procesos)
   end
   
   test "agrega los line item desde un cart_salida" do
-    cart_salida = cart_salidas(:two)
+    cart_salida = cart_salida_procesos(:two)
     salida_proceso = salida_procesos(:two)
     salida_proceso.add_line_item_salidas_from_cart_salida(cart_salida)
     
-    assert_equal(salida_proceso.line_item_salidas, cart_salida.line_item_salidas)
-    salida_proceso.line_item_salidas.each do |salida|
-      assert_nil(salida.cart_salida_id)
+    assert_equal(salida_proceso.line_item_salida_procesos, cart_salida.line_item_salida_procesos)
+    salida_proceso.line_item_salida_procesos.each do |salida|
+      assert_nil(salida.cart_salida_proceso_id)
     end 
   end
   
   test "añade el total de sacos,bolsas, kilogramos netos y el tipo de cafe" do
-    cart_salida = cart_salidas(:two)
+    cart_salida = cart_salida_procesos(:two)
     salida_proceso = salida_procesos(:two)
     
     salida_proceso.add_total_from_cart_salida(cart_salida)
@@ -53,7 +53,7 @@ class SalidaProcesoTest < ActiveSupport::TestCase
   
   test "obtener line item salidas para entrada" do
     assert_equal(@salida_proceso.line_item_salidas_para_entrada(entradas(:one)).to_a, 
-    [line_item_salidas(:four), line_item_salidas(:no_valido_cafe_distinto)]
+    [line_item_salida_procesos(:four), line_item_salida_procesos(:no_valido_cafe_distinto)]
     )
   end
   

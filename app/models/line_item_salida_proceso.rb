@@ -13,10 +13,10 @@
 #  salida_proceso_id      :integer
 #
 
-class LineItemSalida < ApplicationRecord
+class LineItemSalidaProceso < ApplicationRecord
   belongs_to :salida_proceso, optional: true
   belongs_to :partida
-  belongs_to :cart_salida, optional: true
+  belongs_to :cart_salida_proceso, optional: true
   
   validates :partida_id, presence: true
   validates :total_sacos, :total_bolsas, :total_kilogramos_netos, presence: true

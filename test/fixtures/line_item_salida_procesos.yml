@@ -17,25 +17,25 @@
 
 one:
   partida: one
-  cart_salida: one
+  cart_salida_proceso: one
   total_sacos: 8
   total_bolsas: 5
   total_kilogramos_netos: 45.67
 
 two:
   partida: two
-  cart_salida: two
+  cart_salida_proceso: two
 
 three:
   partida: two
-  cart_salida: one
+  cart_salida_proceso: one
   total_sacos: 45
   total_bolsas: 23
   total_kilogramos_netos: 23.64
   
 four:
   partida: three
-  cart_salida:
+  cart_salida_proceso:
   total_sacos: 2
   total_bolsas: 3
   total_kilogramos_netos: 6.25
@@ -43,7 +43,7 @@ four:
   
 no_valido_cafe_distinto:
   partida: salida_proceso
-  cart_salida:
+  cart_salida_proceso:
   total_sacos: 1
   total_bolsas: 1
   total_kilogramos_netos: 1

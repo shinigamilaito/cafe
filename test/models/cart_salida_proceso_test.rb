@@ -9,9 +9,9 @@
 
 require 'test_helper'
 
-class CartSalidaTest < ActiveSupport::TestCase
+class CartSalidaProcesoTest < ActiveSupport::TestCase
   def setup 
-    @cart_salida = cart_salidas(:one)
+    @cart_salida = cart_salida_procesos(:one)
   end
   
   test "debe obtener el total de sacos correcto" do

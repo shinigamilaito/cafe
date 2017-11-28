@@ -105,7 +105,7 @@ class Entrada < ApplicationRecord
   def tiene_partidas_que_han_salido_a_proceso
     ids_partidas = partidas.map(&:id)
     
-    LineItemSalida.where(partida_id: ids_partidas).present?    
+    LineItemSalidaProceso.where(partida_id: ids_partidas).present?    
   end
   
   private 

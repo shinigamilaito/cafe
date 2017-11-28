@@ -15,9 +15,9 @@
 
 require 'test_helper'
 
-class LineItemSalidaTest < ActiveSupport::TestCase
+class LineItemSalidaProcesoTest < ActiveSupport::TestCase
   def setup 
-    @line_item_salida = line_item_salidas(:one)
+    @line_item_salida = line_item_salida_procesos(:one)
   end
   
   test "pertenece a una partida" do
@@ -25,7 +25,7 @@ class LineItemSalidaTest < ActiveSupport::TestCase
   end
   
   test "pertenece a un carrito de salida" do
-    assert(@line_item_salida.cart_salida)
+    assert(@line_item_salida.cart_salida_proceso)
   end
   
   test "verifica se valide total de sacos no exceda el disponible" do

@@ -23,7 +23,7 @@ class Partida < ApplicationRecord
   
   belongs_to :entrada    
   belongs_to :type_coffee  
-  has_many :line_item_salidas
+  has_many :line_item_salida_procesos
 
   validates :kilogramos_brutos, :numero_bolsas, :numero_sacos, presence: true
   validates :tara, :kilogramos_netos, :humedad, presence: true
@@ -120,7 +120,7 @@ class Partida < ApplicationRecord
     
     # ensure that there are no line items referencing this partida
     def ensure_not_referenced_by_any_line_item_salida
-      unless line_item_salidas.empty?
+      unless line_item_salida_procesos.empty?
         errors.add(:base, 'hay salidas presentes')
         throw :abort
       end
@@ -129,6 +129,6 @@ class Partida < ApplicationRecord
     # Obtiene las salidas a proceso
     # Return ActiveRecord::Relation LineItemSalida
     def salidas_proceso
-      return line_item_salidas.where("salida_proceso_id IS NOT NULL")
+      return line_item_salida_procesos.where("salida_proceso_id IS NOT NULL")
     end
 end
