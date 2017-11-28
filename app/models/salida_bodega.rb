@@ -14,6 +14,8 @@
 #  updated_at             :datetime         not null
 #
 
+# Entidad que registra las salidas de cafe de bodega
+
 class SalidaBodega < ApplicationRecord
   include Salidas
   
@@ -25,16 +27,16 @@ class SalidaBodega < ApplicationRecord
   validate :same_type_coffee
   
   def entradas_afectadas
-    entradas_ids = SalidaProceso.joins(line_item_salidas_bodega: {partida: :entrada})
-      .where("salida_procesos.id = ?", self.id)
+    entradas_ids = SalidaBodega.joins(line_item_salidas_bodega: {partida: :entrada})
+      .where("salida_bodegas.id = ?", self.id)
       .select("DISTINCT(entradas.id) AS entrada_id")      
       
     Entrada.where(id: entradas_ids.map(&:entrada_id))
   end
   
   def line_item_salidas_para_entrada(entrada)
-    line_item_salida_ids = SalidaProceso.joins(line_item_salidas_bodega: {partida: :entrada})
-      .where("salida_procesos.id = ? AND entradas.id = ?", self.id, entrada.id)
+    line_item_salida_ids = SalidaBodega.joins(line_item_salidas_bodega: {partida: :entrada})
+      .where("salida_bodegas.id = ? AND entradas.id = ?", self.id, entrada.id)
       .select("line_item_salidas_bodega.id AS line_item_salida_id")
       
     LineItemSalidaBodega.where(id: line_item_salida_ids.map(&:line_item_salida_id))      

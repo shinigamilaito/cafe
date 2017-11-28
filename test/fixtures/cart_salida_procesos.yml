@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: cart_salidas
+# Table name: cart_salida_procesos
 #
 #  id         :integer          not null, primary key
 #  created_at :datetime         not null
