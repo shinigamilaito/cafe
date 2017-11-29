@@ -103,19 +103,19 @@ $(function() {
 });
 //</editor-fold>
 
-//<editor-fold desc="Agrega el efecto flip al retiro de salidas">
+//<editor-fold desc="Agrega el efecto flip al retiro de salidas a proceso">
 $(function() {
     if($('.menu-cart-salidas-proceso').length) {
-       $(".card").flip({
+       $(".card-salida-proceso").flip({
            trigger: 'manual'
        });     
        
        /**
-        * Realiza el cambio de tarjeta para realizar la salida
+        * Realiza el cambio de tarjeta para realizar la salida a proceso
         */
        
        $('.salida-proceso').click(function() {
-           $card = $(this).parents('.card').eq(0);
+           $card = $(this).parents('.card-salida-proceso').eq(0);
            $card.flip(true);
            $card.find('.back').css({display: 'block'});
        });
