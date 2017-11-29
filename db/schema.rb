@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128204057) do
+ActiveRecord::Schema.define(version: 20171128233309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cart_salida_bodegas", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cart_salida_procesos", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -43,6 +48,20 @@ ActiveRecord::Schema.define(version: 20171128204057) do
     t.integer  "client_id"
     t.bigint   "numero_entrada_cliente", default: 0
     t.index ["client_id"], name: "index_entradas_on_client_id", using: :btree
+  end
+
+  create_table "line_item_salida_bodegas", force: :cascade do |t|
+    t.integer  "partida_id"
+    t.integer  "cart_salida_bodega_id"
+    t.bigint   "total_sacos",            default: 0
+    t.bigint   "total_bolsas",           default: 0
+    t.string   "total_kilogramos_netos", default: "0.00"
+    t.integer  "salida_bodega_id"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.index ["cart_salida_bodega_id"], name: "index_line_item_salida_bodegas_on_cart_salida_bodega_id", using: :btree
+    t.index ["partida_id"], name: "index_line_item_salida_bodegas_on_partida_id", using: :btree
+    t.index ["salida_bodega_id"], name: "index_line_item_salida_bodegas_on_salida_bodega_id", using: :btree
   end
 
   create_table "line_item_salida_procesos", force: :cascade do |t|
@@ -130,6 +149,9 @@ ActiveRecord::Schema.define(version: 20171128204057) do
   end
 
   add_foreign_key "entradas", "clients"
+  add_foreign_key "line_item_salida_bodegas", "cart_salida_bodegas"
+  add_foreign_key "line_item_salida_bodegas", "partidas"
+  add_foreign_key "line_item_salida_bodegas", "salida_bodegas"
   add_foreign_key "line_item_salida_procesos", "cart_salida_procesos"
   add_foreign_key "line_item_salida_procesos", "partidas"
   add_foreign_key "line_item_salida_procesos", "salida_procesos"

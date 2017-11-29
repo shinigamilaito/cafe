@@ -26,7 +26,7 @@ class SalidaProceso < ApplicationRecord
       line_item_salida_procesos << item      
     end
   end
-  
+    
   def entradas_afectadas
     entradas_ids = SalidaProceso.joins(line_item_salida_procesos: {partida: :entrada})
       .where("salida_procesos.id = ?", self.id)
@@ -45,12 +45,9 @@ class SalidaProceso < ApplicationRecord
   
   # Verifica que los item de la salida tengan el mismo tipo de cafe
   def same_type_coffee
-    type_coffee = line_item_salida_procesos.first.partida.type_coffee
-    line_item_salida_procesos.each do |salida|
-      unless type_coffee.eql?(salida.partida.type_coffee)
-        errors.add(:base, 'Los tipos de cafés son diferentes.')
-        return false
-      end
+    unless Salidas.same_type_coffee(line_item_salida_procesos)
+      errors.add(:base, 'Los tipos de cafés son diferentes.')
+      return false
     end
   end
 end

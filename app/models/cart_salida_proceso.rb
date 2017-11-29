@@ -7,33 +7,32 @@
 #  updated_at :datetime         not null
 #
 
+# Entidad que almacena las salidas a proceso de manera temporal
+
 class CartSalidaProceso < ApplicationRecord
+  include CartSalidas
+  
   has_many :line_item_salida_procesos, dependent: :destroy
   
   def total_sacos
-    self.line_item_salida_procesos.map(&:total_sacos).sum
+    CartSalidas.total_sacos(line_item_salida_procesos)
   end
   
   def total_bolsas
-    self.line_item_salida_procesos.map(&:total_bolsas).sum
+    CartSalidas.total_bolsas(line_item_salida_procesos)
   end
   
   def total_kilogramos_netos
-    total = BigDecimal("0")
-    self.line_item_salida_procesos.each do |line_item_salida|
-      total += BigDecimal(line_item_salida.total_kilogramos_netos)      
-    end
-        
-    total.to_s    
+    CartSalidas.total_kilogramos_netos(line_item_salida_procesos)    
   end
   
   # Todas la salidas en un cart son del mismo cliente
   def cliente
-    return self.line_item_salida_procesos.first.partida.entrada.client
+    CartSalidas.cliente(line_item_salida_procesos)
   end
   
   def tipo_cafe
-    return self.line_item_salida_procesos.first.partida.type_coffee.name
+    CartSalidas.tipo_cafe(line_item_salida_procesos)
   end
   
 end

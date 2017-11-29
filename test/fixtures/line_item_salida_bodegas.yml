@@ -1,0 +1,40 @@
+# == Schema Information
+#
+# Table name: line_item_salida_bodegas
+#
+#  id                     :integer          not null, primary key
+#  partida_id             :integer
+#  cart_salida_bodega_id  :integer
+#  total_sacos            :integer          default(0)
+#  total_bolsas           :integer          default(0)
+#  total_kilogramos_netos :string           default("0.00")
+#  salida_bodega_id       :integer
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  partida: one
+  cart_salida_bodega: one
+  total_sacos: 10
+  total_bolsas: 10
+  total_kilogramos_netos: 10.0
+  salida_bodega: one
+
+two:
+  partida: two
+  cart_salida_bodega: two
+  total_sacos: 1
+  total_bolsas: 1
+  total_kilogramos_netos: 9.99
+  salida_bodega: two
+
+cafe_distinto:
+  partida: two
+  cart_salida_bodega: 
+  total_sacos: 1
+  total_bolsas: 1
+  total_kilogramos_netos: 1.1
+  salida_bodega: one
