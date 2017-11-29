@@ -90,22 +90,7 @@
                       
                     </div>
                 </div>  
-                <% if controller_name.eql?('clients') %>
-                  <div class="col-sm-8">
-                    <div class="card card-salida-proceso"> 
-                      <div class="front"> 
-                          <a class="btn btn-ghost btn-green btn-sm btn-rounded salida-proceso">
-                              <i class="fa fa-adjust"></i>
-                              Salida a proceso
-                          </a>                        
-                      </div> 
-                      <div class="back" style="display: none">
-                        <%= render 'partidas/form_kilogramos_netos_salida_procesos', 
-                          partida: partida, line_item_salida_proceso: @line_item_salida_proceso %>
-                      </div> 
-                    </div>
-                  </div>
-                <% end %>
+                <%= render "salidas/salidas", partida: partida, line_item_salida_proceso: @line_item_salida_proceso  %>                  
               </div>
             </td>
         </tr>                              
