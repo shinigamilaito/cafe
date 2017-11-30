@@ -1,0 +1,56 @@
+<% unless cart_salida_bodega.line_item_salida_bodegas.empty? %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default panel-shopping-cart">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>No. Entrada</th>
+            <th>No. Partida</th>
+            <th>Tipo de Cafe</th>
+            <th>No. Sacos</th>
+            <th>No. Bolsas</th>            
+            <th>Kilogramos Netos</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render cart_salida_bodega.line_item_salida_bodegas.order("id DESC") %>
+        </tbody>
+        <tbody>
+          <tr>
+              <th></th>
+              <th></th>
+              <th>Total:</th>
+              <th><%= "#{cart_salida_bodega.total_sacos} Sacos" %></th>
+              <th><%= "#{cart_salida_bodega.total_bolsas} Bolsas" %></th>
+              <th><%= "#{number_with_precision(cart_salida_bodega.total_kilogramos_netos, precision: 2)} Kgs" %></th>
+          </tr>          
+        </tbody>
+      </table>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-sm-3">
+            <%= link_to 'Cancelar Salida', cart_salida_bodega, method: :delete, class: 'btn btn-default btn-sm', 
+                  data: { confirm: '¿Está usted seguro?' } %>
+          </div>
+          <div class="col-sm-6">
+            <div class="alert alert-danger" role="alert" style="display: none;">
+                <span style="display: inline;" class="glyphicon glyphicon-exclamation-sign" 
+                      aria-hidden="true">
+                </span>
+                <span class="sr-only">Error:</span>
+                Tipos de cafe distintos
+            </div>            
+          </div>
+          <div class="col-sm-3 text-right">
+              <%= button_to 'Registrar Salida', salida_bodegas_path, 
+                class: 'btn btn-primary bt-sm realizar_salida_bodega_link' %>            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Panel End -->
+  </div>
+</div>
+<% end %>

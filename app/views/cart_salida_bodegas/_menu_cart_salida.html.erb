@@ -1,17 +1,17 @@
-<% if cart_salida_proceso %>
-  <div class="pull-right menu-cart-salidas-proceso">
+<% if cart_salida_bodega %>
+  <div class="pull-right menu-cart-salidas-bodega">
       <div class="dropdown dropdown-cart pull-right open">
           <button class="btn btn-gray btn-xs hidden-xs" id="dShop" type="button" 
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               <i class="fa fa-cogs"></i> 
               <span class="span_total_partidas">
-                  <%= "Salidas a proceso (#{cart_salida_proceso.line_item_salida_procesos.size})" %>
+                  <%= "Salidas de Bodega (#{cart_salida_bodega.line_item_salida_bodegas.size})" %>
               </span>
           </button>
           <div class="dropdown-menu dropdown-menu-right dropdown-menu-cart stop-prop" 
                role="menu" aria-labelledby="dShop">
               <div class="cart_salida">
-                  <%= render cart_salida_proceso %>                    
+                  <%= render cart_salida_bodega %>                    
               </div>
           </div>
       </div>
