@@ -14,47 +14,11 @@
         </tr>
         <tr>
             <td><strong><%= t('.sacos') %></strong></td>
-            <td>
-              <div class="row">
-                  <div class="col-sm-12">
-                      <span>+ <%= "#{partida.numero_sacos} Sacos" %></span>
-                  </div>
-                  <div class="col-sm-12">
-                      <span class="totales_salidas_proceso" 
-                            title="Sacos que han salido a proceso.">
-                          - <%= "#{partida.total_sacos_a_proceso} Sacos" %>
-                      </span>
-                  </div>
-                  <div class="col-sm-12">
-                      <span class="totales_disponibles" 
-                            title="Sacos disponibles.">
-                          = <%= "#{partida.total_sacos_disponibles} Sacos" %>
-                      </span>
-                  </div>
-                                
-              </div>
-            </td>
+            <td><%= render "partidas/sacos", partida: partida %></td>
         </tr>
         <tr>
             <td><strong><%= t('.bolsas') %></strong></td>
-            <td>
-               <div class="row">
-                   <div class="col-sm-12">
-                       <span>+ <%= "#{partida.numero_bolsas} Bolsas" %></span>
-                   </div>
-                   <div class="col-sm-12">
-                       <span class="totales_salidas_proceso" 
-                             title="Bolsas que han salido a proceso.">
-                           - <%= "#{partida.total_bolsas_a_proceso} Bolsas" %>
-                       </span>
-                   </div>
-                   <div class="col-sm-12">
-                       <span class="totales_disponibles" title="Bolsas disponibles.">
-                           = <%= "#{partida.total_bolsas_disponibles} Bolsas" %>
-                       </span>
-                   </div>                                  
-              </div>
-            </td>
+            <td><%= render "partidas/bolsas", partida: partida %></td>
         </tr>
         <tr>
             <td><strong><%=  t('.kilogramos_brutos') %></strong></td>
@@ -68,28 +32,7 @@
             <td><strong><%=  t('.kilogramos_netos') %></strong></td>
             <td>
               <div class="row">
-                <div class="col-sm-4">  
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <span>
-                                + <%= "#{number_with_precision(partida.kilogramos_netos, precision: 2)} Kgs" %>
-                            </span>                          
-                        </div>
-                        <div class="col-sm-12">
-                            <span class="totales_salidas_proceso" 
-                                  title="Kilogramos que han salido a proceso.">
-                                - <%= "#{number_with_precision(partida.total_kilos_netos_a_proceso, precision: 2)} Kgs" %>
-                            </span>                          
-                        </div>
-                        <div class="col-sm-12">
-                            <span class="totales_disponibles" 
-                                  title="Kilogramos disponibles.">
-                                = <%= "#{number_with_precision(partida.total_kilos_netos_disponibles, precision: 2)} Kgs" %>
-                            </span>                          
-                        </div>
-                      
-                    </div>
-                </div>  
+                <%= render "partidas/kilogramos_netos", partida: partida %>
                 <%= render "salidas/salidas", partida: partida, line_item_salida_proceso: @line_item_salida_proceso  %>                  
               </div>
             </td>

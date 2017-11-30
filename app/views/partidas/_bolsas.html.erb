@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-sm-12">
+        <span>+ <%= "#{partida.numero_bolsas} Bolsas" %></span>
+    </div>
+    <div class="col-sm-12">
+        <span class="totales_salidas_proceso" 
+              title="Bolsas que han salido a proceso.">
+            - <%= "#{partida.total_bolsas_a_proceso} Bolsas" %>
+        </span>
+    </div>
+    <div class="col-sm-12">
+        <span class="totales_disponibles" title="Bolsas disponibles.">
+            = <%= "#{partida.total_bolsas_disponibles} Bolsas" %>
+        </span>
+    </div>                                  
+</div>

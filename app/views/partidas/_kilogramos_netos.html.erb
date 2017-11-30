@@ -1,0 +1,22 @@
+<div class="col-sm-4">  
+    <div class="row">
+        <div class="col-sm-12">
+            <span>
+                + <%= "#{number_with_precision(partida.kilogramos_netos, precision: 2)} Kgs" %>
+            </span>                          
+        </div>
+        <div class="col-sm-12">
+            <span class="totales_salidas_proceso" 
+                  title="Kilogramos que han salido a proceso.">
+                - <%= "#{number_with_precision(partida.total_kilos_netos_a_proceso, precision: 2)} Kgs" %>
+            </span>                          
+        </div>
+        <div class="col-sm-12">
+            <span class="totales_disponibles" 
+                  title="Kilogramos disponibles.">
+                = <%= "#{number_with_precision(partida.total_kilos_netos_disponibles, precision: 2)} Kgs" %>
+            </span>                          
+        </div>
+
+    </div>
+</div>  

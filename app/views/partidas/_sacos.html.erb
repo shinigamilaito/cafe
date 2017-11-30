@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-sm-12">
+        <span>+ <%= "#{partida.numero_sacos} Sacos" %></span>
+    </div>
+    <div class="col-sm-12">
+        <span class="totales_salidas_proceso" 
+              title="Sacos que han salido a proceso.">
+            - <%= "#{partida.total_sacos_a_proceso} Sacos" %>
+        </span>
+    </div>
+    <div class="col-sm-12">
+        <span class="totales_disponibles" 
+              title="Sacos disponibles.">
+            = <%= "#{partida.total_sacos_disponibles} Sacos" %>
+        </span>
+    </div>
+</div>
