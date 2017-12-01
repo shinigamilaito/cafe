@@ -32,10 +32,10 @@
         <div class="row">
           <div class="col-sm-3">
             <%= link_to 'Cancelar Salida', cart_salida_proceso, method: :delete, class: 'btn btn-default btn-sm', 
-                  data: { confirm: '¿Está usted seguro?' } %>
+                  id: 'cancelar-salida-link', data: { confirm: '¿Está usted seguro?' } %>
           </div>
           <div class="col-sm-6">
-            <div class="alert alert-danger" role="alert" style="display: none;">
+            <div id="mensage-error-div" class="alert alert-danger" role="alert" style="display: none;">
                 <span style="display: inline;" class="glyphicon glyphicon-exclamation-sign" 
                       aria-hidden="true">
                 </span>
@@ -44,7 +44,7 @@
             </div>            
           </div>
           <div class="col-sm-3 text-right">
-              <%= button_to 'Registrar Salida', salida_procesos_path, 
+              <%= button_to 'Registrar Salida', salida_procesos_path, id: 'realizar-salida-proceso-input',
                 class: 'btn btn-primary bt-sm realizar_salida_proceso_link' %>            
           </div>
         </div>

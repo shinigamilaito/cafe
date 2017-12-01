@@ -1,57 +1,209 @@
-<div class="menu-cart-salidas-proceso">  
-    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      <i class="fa fa-cogs"></i> 
-      <span class="span_total_partidas">A proceso</span>
-    </button>
-</div>
-
-<div class='wrapper_partida_tabs'>
-    <div class="form-group string required kilogramos_netos_salida_total" 
-     style="backface-visibility: hidden;">
-    <input class="form-control string required" 
-           placeholder="Ingrese el número de kilogramos netos" 
-           name="kilogramos_netos_salida[total]" 
-           id="kilogramos_netos_salida_total" 
-           style="backface-visibility: hidden;" type="text">
-</div>    
-<div class="col-sm-3" style="display: none; backface-visibility: hidden;">
-    <div class="icon-box bg" style="backface-visibility: hidden;">
-      <h3 class="title-count title-lg text-theme-sm hr total-bolsas" 
-          data-from="25" data-speed="1400" data-refresh-interval="50" data-to="75" 
-          style="backface-visibility: hidden;">
-          0
-      </h3>
-      <h3 class="total-bolsas-title text-theme-sm" style="backface-visibility: hidden;">
-          KILOS
-      </h3>
+<div class="pull-right menu-cart-salidas-proceso">
+    <div class="dropdown dropdown-cart pull-right open">
+        <button class="btn btn-gray btn-xs hidden-xs" id="dShop" type="button" 
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="fa fa-cogs"></i>
+            <span class="span_total_partidas" style="">A proceso (1)</span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right dropdown-menu-cart stop-prop" 
+             role="menu" aria-labelledby="dShop">
+            <div class="cart_salida">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel-shopping-cart">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>No. Entrada</th>
+                                        <th>No. Partida</th>
+                                        <th>Tipo de Cafe</th>
+                                        <th>No. Sacos</th>
+                                        <th>No. Bolsas</th>
+                                        <th>Kilogramos Netos</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span class="title">00023</span>
+                                        </td>
+                                        <td>
+                                            <span class="title">00001</span>
+                                        </td>
+                                        <td>
+                                            <span class="title tipo_cafe_salida">Pergamino</span>
+                                        </td>
+                                        <td>
+                                            <span class="title">0 Sacos</span>
+                                        </td>
+                                        <td>
+                                            <span>0 Bolsas </span>
+                                        </td>
+                                        <td>
+                                            <span>10.00 Kgs</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="title">00023</span>
+                                        </td>
+                                        <td>
+                                            <span class="title">00001</span>
+                                        </td>
+                                        <td>
+                                            <span class="title tipo_cafe_salida">Cerezo</span>
+                                        </td>
+                                        <td>
+                                            <span class="title">0 Sacos</span>
+                                        </td>
+                                        <td>
+                                            <span>0 Bolsas </span>
+                                        </td>
+                                        <td>
+                                            <span>10.00 Kgs</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th>Total:</th>
+                                        <th>0 Sacos</th>
+                                        <th>0 Bolsas</th>
+                                        <th>10.00 Kgs</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <a id="cancelar-salida-link" class="btn btn-default btn-sm" data-confirm="¿Está usted seguro?" 
+                                           rel="nofollow" data-method="delete" 
+                                           href="/cart_salida_procesos/23">Cancelar Salida</a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div id="mensage-error-div" class="alert alert-danger" role="alert" style="display: none;">
+                                            <span style="display: inline;" class="glyphicon glyphicon-exclamation-sign" 
+                                                  aria-hidden="true">
+                                            </span>
+                                            <span class="sr-only">Error:</span>
+                                            Tipos de cafe distintos
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 text-right">
+                                        <form class="button_to" method="post" action="/salida_procesos">
+                                            <input id="realizar-salida-proceso-input" class="btn btn-primary bt-sm" 
+                                                   value="Registrar Salida" type="submit">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Panel End -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-    
-<button name="button" type="submit" class="add-to-cart" 
-        style="backface-visibility: hidden;">
-    <i class="fa fa-send" aria-hidden="true" style="backface-visibility: hidden;"></i>                          
-</button>    
+
+<!--CODIGO HTML PARA REALIZAR LA SALIDA A PROCESO-->
+
+<div>
+    <div class="pull-right menu-cart-salidas-proceso">
+        <div class="dropdown dropdown-cart pull-right">
+            <button class="btn btn-gray btn-xs hidden-xs" id="dShop" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-cogs"></i> 
+                <span class="span_total_partidas">
+                    Salidas a proceso (0)
+                </span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-cart stop-prop" role="menu" aria-labelledby="dShop">
+                <div class="cart_salida">
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<a class="btn btn-ghost btn-green btn-sm btn-rounded salida-proceso" style="backface-visibility: hidden;">
-  <i class="fa fa-adjust" style="backface-visibility: hidden;"></i>
-  Salida a proceso
-</a>
+<div class="col-sm-8 wrapper_partida_tabs">
+    <div class="card card-salida-proceso" style="perspective: 0px; position: relative;"> 
+        <div class="front" style="backface-visibility: hidden; transform-style: preserve-3d; 
+             position: absolute; z-index: 1; height: 100%; width: 100%; 
+             transition: all 0.5s ease-out 0s; transform: rotateY(0deg);"> 
+            <a class="btn btn-ghost btn-green btn-sm btn-rounded salida-proceso" 
+               style="backface-visibility: hidden;">
+                <i class="fa fa-adjust" style="backface-visibility: hidden;"></i>
+                Salida a proceso
+            </a>                        
+        </div> 
+        <div class="back" style="display: none; backface-visibility: hidden; 
+             transform-style: preserve-3d; position: relative; z-index: 0; 
+             height: 100%; width: 100%; transform: rotateY(-180deg); 
+             transition: all 0.5s ease-out 0s;">
+            <form class="simple_form form-horizontal" novalidate="novalidate" 
+                  id="new_line_item_salida_proceso" action="/line_item_salida_procesos?partida_id=54" 
+                  accept-charset="UTF-8" data-remote="true" method="post" 
+                  style="backface-visibility: hidden;">
+                <input name="utf8" value="✓" style="backface-visibility: hidden;" type="hidden">
+                <div class="form-group string required line_item_salida_proceso_total_sacos" 
+                     style="backface-visibility: hidden;">
+                    <label class="control-label string required" 
+                           for="line_item_salida_proceso_total_sacos" style="backface-visibility: hidden;">
+                        <abbr title="Campo Obligatorio" style="backface-visibility: hidden;">
+                            *
+                        </abbr> Total sacos
+                    </label>
+                    <input class="form-control string required" value="0" 
+                           name="line_item_salida_proceso[total_sacos]" 
+                           id="line_item_salida_proceso_total_sacos" 
+                           style="backface-visibility: hidden;" type="text">
+                </div>    
+                <div class="form-group string required line_item_salida_proceso_total_bolsas" 
+                     style="backface-visibility: hidden;">
+                    <label class="control-label string required" 
+                           for="line_item_salida_proceso_total_bolsas" style="backface-visibility: hidden;">
+                        <abbr title="Campo Obligatorio" style="backface-visibility: hidden;">
+                            *
+                        </abbr> Total bolsas
+                    </label>
+                    <input class="form-control string required" value="0" 
+                           name="line_item_salida_proceso[total_bolsas]" 
+                           id="line_item_salida_proceso_total_bolsas" style="backface-visibility: hidden;" type="text">
+                </div>    
+                <div class="form-group string required line_item_salida_proceso_total_kilogramos_netos" 
+                     style="backface-visibility: hidden;">
+                    <label class="control-label string required" 
+                           for="line_item_salida_proceso_total_kilogramos_netos" 
+                           style="backface-visibility: hidden;">
+                        <abbr title="Campo Obligatorio" style="backface-visibility: hidden;">
+                            *
+                        </abbr> Total kilogramos netos
+                    </label>
+                    <input class="form-control string required" value="0.00" 
+                           name="line_item_salida_proceso[total_kilogramos_netos]" 
+                           id="line_item_salida_proceso_total_kilogramos_netos" 
+                           style="backface-visibility: hidden;" type="text">
+                </div>    
 
-<div class="card card-salida-proceso" style="perspective: 0px; position: relative;"> 
-    <div class="front" style="backface-visibility: hidden; transform-style: 
-         preserve-3d; position: absolute; z-index: 1; height: 100%; width: 100%; 
-         transition: all 0.5s ease-out 0s;"> 
-      <a class="btn btn-ghost btn-green btn-sm btn-rounded salida-proceso" 
-         style="backface-visibility: hidden;">
-          <i class="fa fa-adjust" style="backface-visibility: hidden;"></i>
-          Salida a proceso
-      </a>                        
-    </div> 
-    <div class="back" style="backface-visibility: hidden; 
-         transform-style: preserve-3d; position: relative; z-index: 0; height: 100%; 
-         width: 100%; transform: rotateY(-180deg); transition: all 0.5s ease-out 0s;">
-    </div> 
+                <div class="col-sm-3" style="display: none; backface-visibility: hidden;">
+                    <div class="icon-box bg" style="backface-visibility: hidden;">      
+                        <img alt="costal_cafe" src="/assets/costal_cafe_big-f5a35ac28d55722dc797d264297855d55b010052d03fcaafcff2593db48131b1.jpg" 
+                             style="backface-visibility: hidden;">
+                    </div>
+                </div>
+
+                <button name="button" type="submit" class="btn btn-green btn-ghost add-to-cart" 
+                        style="backface-visibility: hidden;">
+                    <i class="fa fa-send" aria-hidden="true" style="backface-visibility: hidden;"></i> 
+                    Enviar a Proceso
+                </button>
+            </form>
+        </div> 
+    </div>
 </div>
 
 <script src="/assets/clients.js" type="text/javascript"></script>

@@ -49,12 +49,110 @@ var cliente = new Cliente({
 
 //</editor-fold>
 
-//<editor-fold desc="Agrega las salidas de las partidas al proceso">
+//<editor-fold desc="Código para el manejo del carrito de salidas a proceso">
+
+//<editor-fold desc="Verifica que el tipo de cafe sea el mismo antes de realizar la salida">
+
+var tiposCafe = {
+    
+  $divErrorMessage: null,
+    
+  $tiposCafe: [],
+  
+  mismoTipo: false,
+  
+  verificarMismoTipo: function() {
+    var mismoTipoCafe = true;
+    var tipoCafe = '';
+    this.$tiposCafe.each(function(index, element) {        
+        if(index === 0) {
+            tipoCafe = $(element).text();
+        } else {
+            if (tipoCafe !== $(element).text()) {
+                mismoTipoCafe = false;
+                return;
+            } 
+        }
+    }); 
+    
+    this.mismoTipo = mismoTipoCafe;
+    return mismoTipoCafe;
+  },
+  
+  mostrarMensajeError: function() {
+      if(this.verificarMismoTipo()) {          
+          $('.alert').css({display: 'none'});
+      } else {          
+          $('.alert').css({display: 'block'});
+      }
+  }
+  
+};
+
+$(function() {
+    $('.menu-cart-salidas-proceso').on('click', '.cart_salida #realizar-salida-proceso-input', function(e) {        
+        var $link = $(this);
+        var $panelFooter = $link.parents('.panel-footer');
+        tiposCafe.$divErrorMessage = $panelFooter.find('#mensage-error-div');
+        var $tiposCafe = $panelFooter.prev().find('.tipo_cafe_salida');
+        tiposCafe.$tiposCafe = $tiposCafe;
+        tiposCafe.mostrarMensajeError();
+        if (tiposCafe.mismoTipo) {
+            return true;
+        } else {
+            return false;            
+        }
+    });    
+});
+
+//</editor-fold>
+
+//</editor-fold>
+
+//<editor-fold desc="Contiene los datos relacionados con las partidas que salen a proceso">
+
+//<editor-fold desc="Agrega el efecto flip al enlace que muestra el formulatio de salidas a proceso">
+$(function() {
+    if($('.menu-cart-salidas-proceso').length) {
+       $(".card-salida-proceso").flip({
+           trigger: 'manual'
+       });     
+       
+       /**
+        * Realiza el cambio de tarjeta para realizar la salida a proceso
+        */
+       
+       $('.card-salida-proceso .salida-proceso').click(function() {
+           $card = $(this).parents('.card-salida-proceso').eq(0);
+           $card.flip(true);
+           $card.find('.back').css({display: 'block'});
+       });
+    }
+});
+//</editor-fold>
+
+//<editor-fold desc="Coloca las mascaras a los input del formulario de salida a proceso">
+$(function() {
+    
+    var formatKilogramos = "##0.00";
+    var formatSacosBolsas = "##0";    
+    
+    $('#line_item_salida_proceso_total_kilogramos_netos').mask(formatKilogramos, {reverse: true});
+    
+    $('#line_item_salida_proceso_total_bolsas').mask(formatSacosBolsas, {reverse: true});
+        
+    $('#line_item_salida_proceso_total_sacos').mask(formatSacosBolsas, {reverse: true});
+        
+});
+
+//</editor-fold>
+
+//<editor-fold desc="Agrega el efecto que muestra la imagen del cafe a las partidas que han salido a proceso">
 
 $(function() {
     if($('.menu-cart-salidas-proceso').length) {
-        $('.add-to-cart').on('click', function() {            
-            var cart = $(this).parents('.wrapper_partida_tabs').prev().find('.span_total_partidas');            
+        $('.card-salida-proceso .add-to-cart').on('click', function() {            
+            var cart = $(this).parents('.wrapper_partida_tabs').prev().find('.menu-cart-salidas-proceso .span_total_partidas');            
             var imgtodrag = $(this).prev().eq(0);
 //            var imgtodrag = $(this).prev().find('img');
             var inputwithposition = imgtodrag.prev().eq(0).find('input').eq(0);
@@ -102,93 +200,6 @@ $(function() {
     }
 });
 //</editor-fold>
-
-//<editor-fold desc="Agrega el efecto flip al retiro de salidas a proceso">
-$(function() {
-    if($('.menu-cart-salidas-proceso').length) {
-       $(".card-salida-proceso").flip({
-           trigger: 'manual'
-       });     
-       
-       /**
-        * Realiza el cambio de tarjeta para realizar la salida a proceso
-        */
-       
-       $('.salida-proceso').click(function() {
-           $card = $(this).parents('.card-salida-proceso').eq(0);
-           $card.flip(true);
-           $card.find('.back').css({display: 'block'});
-       });
-    }
-});
-//</editor-fold>
-
-//<editor-fold desc="Verifica que el tipo de cafe sea el mismo antes de realizar la salida">
-
-var tiposCafe = {
-    
-  $tiposCafe : [],
-  
-  mismoTipo: false,
-  
-  verificarMismoTipo: function() {
-    var mismoTipoCafe = true;
-    var tipoCafe = '';
-    this.$tiposCafe.each(function(index, element) {        
-        if(index === 0) {
-            tipoCafe = $(element).text();
-        } else {
-            if (tipoCafe !== $(element).text()) {
-                mismoTipoCafe = false;
-                return;
-            } 
-        }
-    }); 
-    
-    this.mismoTipo = mismoTipoCafe;
-    return mismoTipoCafe;
-  },
-  
-  mostrarMensajeError: function() {
-      if(this.verificarMismoTipo()) {          
-          $('.alert').css({display: 'none'});
-      } else {          
-          $('.alert').css({display: 'block'});
-      }
-  }
-  
-};
-
-$(function() {
-    $(document).on('click', '.realizar_salida_proceso_link', function(e) {        
-        var $link = $(this);
-        var $tiposCafe = $link.parents('.panel-footer').prev()
-                .find('.tipo_cafe_salida');
-        tiposCafe.$tiposCafe = $tiposCafe;
-        tiposCafe.mostrarMensajeError();
-        if (tiposCafe.mismoTipo) {
-            return true;
-        } else {
-            return false;            
-        }
-    });    
-});
-
-//</editor-fold>
-
-//<editor-fold desc="Coloca las mascaras a los input del formulario de salida a proceso">
-$(function() {
-    
-    var formatKilogramos = "##0.00";
-    var formatSacosBolsas = "##0";    
-    
-    $('#line_item_salida_total_kilogramos_netos').mask(formatKilogramos, {reverse: true});
-    
-    $('#line_item_salida_total_bolsas').mask(formatSacosBolsas, {reverse: true});
-        
-    $('#line_item_salida_total_sacos').mask(formatSacosBolsas, {reverse: true});
-        
-});
 
 //</editor-fold>
 
