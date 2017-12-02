@@ -1,0 +1,15 @@
+<div class="dropdown dropdown-cart pull-right open">
+    <button class="btn btn-gray btn-xs hidden-xs" id="dShop" type="button" 
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <i class="fa fa-cogs"></i> 
+        <span class="span_total_partidas">
+            <%= title %>
+        </span>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right dropdown-menu-cart stop-prop" 
+         role="menu" aria-labelledby="dShop">
+        <div class="cart_salida">
+            <%= render cart %>                    
+        </div>
+    </div>
+</div>

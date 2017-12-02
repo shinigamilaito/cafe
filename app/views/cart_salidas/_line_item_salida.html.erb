@@ -1,0 +1,22 @@
+<tr>              
+  <td>
+    <span class="title">
+      <%=padded_zeros_numero_entrada(line_item.partida.entrada.numero_entrada) %>
+    </span>
+  </td>
+  <td>
+    <span class="title"><%=padded_zeros_numero_entrada(line_item.partida.identificador) %></span>
+  </td>
+  <td>
+    <span class="title tipo_cafe_salida"><%=line_item.partida.type_coffee.name %></span>
+  </td>
+  <td>
+    <span class="title"><%="#{line_item.total_sacos} Sacos" %></span>
+  </td>
+  <td>
+    <span><%="#{line_item.total_bolsas} Bolsas " %></span>
+  </td>  
+  <td>
+    <span><%="#{number_with_precision(line_item.total_kilogramos_netos, precision: 2)} Kgs" %></span>
+  </td>
+</tr>

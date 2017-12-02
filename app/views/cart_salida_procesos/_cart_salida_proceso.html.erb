@@ -3,52 +3,16 @@
   <div class="col-md-12">
     <div class="panel panel-default panel-shopping-cart">
       <table class="table">
-        <thead>
-          <tr>
-            <th>No. Entrada</th>
-            <th>No. Partida</th>
-            <th>Tipo de Cafe</th>
-            <th>No. Sacos</th>
-            <th>No. Bolsas</th>            
-            <th>Kilogramos Netos</th>
-            <th></th>
-          </tr>
-        </thead>
+        <%= "cart_salidas/head_table" %>
         <tbody>
           <%= render cart_salida_proceso.line_item_salida_procesos.order("id DESC") %>
         </tbody>
         <tbody>
-          <tr>
-              <th></th>
-              <th></th>
-              <th>Total:</th>
-              <th><%= "#{cart_salida_proceso.total_sacos} Sacos" %></th>
-              <th><%= "#{cart_salida_proceso.total_bolsas} Bolsas" %></th>
-              <th><%= "#{number_with_precision(cart_salida_proceso.total_kilogramos_netos, precision: 2)} Kgs" %></th>
-          </tr>          
+          <%= render "cart_salidas/body_table", cart: cart_salida_proceso %>
         </tbody>
       </table>
-      <div class="panel-footer">
-        <div class="row">
-          <div class="col-sm-3">
-            <%= link_to 'Cancelar Salida', cart_salida_proceso, method: :delete, class: 'btn btn-default btn-sm', 
-                  id: 'cancelar-salida-link', data: { confirm: '¿Está usted seguro?' } %>
-          </div>
-          <div class="col-sm-6">
-            <div id="mensage-error-div" class="alert alert-danger" role="alert" style="display: none;">
-                <span style="display: inline;" class="glyphicon glyphicon-exclamation-sign" 
-                      aria-hidden="true">
-                </span>
-                <span class="sr-only">Error:</span>
-                Tipos de cafe distintos
-            </div>            
-          </div>
-          <div class="col-sm-3 text-right">
-              <%= button_to 'Registrar Salida', salida_procesos_path, id: 'realizar-salida-proceso-input',
-                class: 'btn btn-primary bt-sm realizar_salida_proceso_link' %>            
-          </div>
-        </div>
-      </div>
+      <%= render "cart_salidas/footer", cart: cart_salida_proceso, 
+        salida: salida_procesos_path, id_salida: 'realizar-salida-proceso-input' %>
     </div>
     <!-- Panel End -->
   </div>

@@ -45,6 +45,20 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", /Entradas/
     assert_select "div.tab-content div.tab-pane#specifications", 1
     assert_select "div.tab-content div.tab-pane#comments", 1    
+    
+    
+    # Debe mostrarse las salidas a proceso y bodega
+    assert_select "div.menu-cart-salidas-proceso", 1
+    assert_select "div.menu-cart-salidas-proceso .span_total_partidas", 1
+    assert_select "div.menu-cart-salidas-proceso .cart_salida", 1
+    assert_select "div.menu-cart-salidas-bodega", 1
+    assert_select "div.menu-cart-salidas-bodega .span_total_partidas", 1
+    assert_select "div.menu-cart-salidas-bodega .cart_salida", 1
+#    assert_select "a#cancelar-salida-link", 2
+#    assert_select "div#mensage-error-div", 2
+#    assert_select "input#realizar-salida-proceso-input", 2
+    
+    
   end
 
   test "should get edit" do

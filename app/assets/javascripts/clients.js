@@ -81,9 +81,9 @@ var tiposCafe = {
   
   mostrarMensajeError: function() {
       if(this.verificarMismoTipo()) {          
-          $('.alert').css({display: 'none'});
+          this.$divErrorMessage.css({display: 'none'});
       } else {          
-          $('.alert').css({display: 'block'});
+          this.$divErrorMessage.css({display: 'block'});
       }
   }
   
@@ -91,6 +91,20 @@ var tiposCafe = {
 
 $(function() {
     $('.menu-cart-salidas-proceso').on('click', '.cart_salida #realizar-salida-proceso-input', function(e) {        
+        var $link = $(this);
+        var $panelFooter = $link.parents('.panel-footer');
+        tiposCafe.$divErrorMessage = $panelFooter.find('#mensage-error-div');
+        var $tiposCafe = $panelFooter.prev().find('.tipo_cafe_salida');
+        tiposCafe.$tiposCafe = $tiposCafe;
+        tiposCafe.mostrarMensajeError();
+        if (tiposCafe.mismoTipo) {
+            return true;
+        } else {
+            return false;            
+        }
+    });
+    
+    $('.menu-cart-salidas-bodega').on('click', '.cart_salida #realizar-salida-bodega-input', function(e) {        
         var $link = $(this);
         var $panelFooter = $link.parents('.panel-footer');
         tiposCafe.$divErrorMessage = $panelFooter.find('#mensage-error-div');
