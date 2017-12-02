@@ -46,10 +46,15 @@ es:
         client_id: 'Organización:'
         observaciones: 'Observaciones:'
         
-      line_item_salida:
-          total_sacos: 'Cantidad de Sacos:'
-          total_bolsas: 'Cantidad de Bolsas:'
-          total_kilogramos_netos: 'Cantidad de Kilogramos Netos:'
+      line_item_salida_proceso:
+          total_sacos: 'Total de Sacos:'
+          total_bolsas: 'Total de Bolsas:'
+          total_kilogramos_netos: 'Total de Kgrs Netos:'
+          
+      line_item_salida_bodega:
+          total_sacos: 'Total de Sacos:'
+          total_bolsas: 'Total de Bolsas:'
+          total_kilogramos_netos: 'Total de Kgrs Netos:'
         
     hints:
       client:

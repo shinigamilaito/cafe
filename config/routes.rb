@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
   devise_for :users, path: 'accounts', path_names: {sign_in: 'login', sign_out: 'logout' }
+  
   resources :salida_procesos
+  
   resources :line_item_salida_procesos, only: :create
+  
+  resources :line_item_salida_bodegas, only: :create
+  
   resources :cart_salida_procesos, only: :destroy
+  
   resources :cart_salida_bodegas, only: :destroy
+  
   resources :entradas do
     get :reporte, on: :member
     get :numero_entrada_cliente, on: :collection
   end
+  
   resources :drivers
+  
   resources :clients
 
   root "entradas#index"

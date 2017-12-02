@@ -207,7 +207,7 @@ es:
     salida_proceso:
       total_sacos: 'Total Sacos:'
       total_bolsas: 'Total Bolsas:'
-      total_kilogramos_netos: 'Total Kilogramos Netos:'
+      total_kilogramos_netos: 'Total Kgrs. Netos:'
       created_at: 'Creado el:'
       back_link: Salidas Proceso
     show:

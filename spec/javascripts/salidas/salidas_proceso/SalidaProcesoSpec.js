@@ -89,17 +89,3 @@ describe("Enviar partidas a una salida a proceso", function() {
     });
     
 });
-
-//<editor-fold desc="Verifica la colocación de las mascaras en el formulario de salida a proceso">
-
-xdescribe("El formulario para las salidas a proceso debe tener mascaras en los input", function() {
-       
-    beforeEach(function() {
-        loadFixtures("salidas/salidas_proceso/form_salida_proceso.html");
-    });
-
-    
-    
-});
-
-//</editor-fold>

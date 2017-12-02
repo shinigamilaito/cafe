@@ -1,0 +1,28 @@
+<table class="table table-striped">
+    <tbody>                
+        <tr>
+            <td><strong><%= t('partidas.partida.identificador') %></strong></td>
+            <td><%= padded_zeros_numero_entrada(line_item_salida.partida.identificador) %></td>
+        </tr>
+        <tr>
+            <td><strong><%= t('partidas.partida.tipo_cafe') %></strong></td>
+            <td><%= line_item_salida.partida.type_coffee.name %></td>
+        </tr>
+        <tr>
+            <td><strong><%= t('salida_procesos.salida_proceso.total_sacos') %></strong></td>
+            <td><%= line_item_salida.total_sacos %> Sacos</td>
+        </tr>
+        <tr>
+            <td><strong><%= t('salida_procesos.salida_proceso.total_bolsas') %></strong></td>
+            <td><%= line_item_salida.total_bolsas %> Bolsas</td>
+        </tr>
+        <tr>
+            <td><strong><%= t('salida_procesos.salida_proceso.total_kilogramos_netos') %></strong></td>
+            <td><%= number_with_precision(line_item_salida.total_kilogramos_netos, precision: 2) %> Kilogramos Netos</td>
+        </tr>
+        <tr>
+            <td><strong><%=  t('salida_procesos.salida_proceso.created_at') %></strong></td>
+            <td><%= l(line_item_salida.created_at, format: :medium) %></td>
+        </tr>                                      
+    </tbody>
+</table>

@@ -38,3 +38,53 @@ describe("Carrito de Salidas de bodega", function() {
         expect($divMensajeError).toHaveCss({display: "block"});
     });
 });
+
+describe("Retirar partidas de la bodega", function() {
+    beforeEach(function() {
+        loadFixtures('salidas/salidas_bodega/carrito_salidas_bodega.html');    
+    });
+    
+    it("Al presionar el enlace salida de Bodega debe mostrarse el formulario", function() {
+        var $linkSalidaBodega = $('.card-salida-bodega .salida-bodega');        
+        var spyEvent = spyOnEvent($linkSalidaBodega, 'click');
+        
+        expect($('.card-salida-bodega')[0]).toBeInDOM();
+        expect($('.card-salida-bodega .front')[0]).toBeInDOM();
+        expect($('.card-salida-bodega .back')[0]).toBeInDOM();
+        expect($('.card-salida-bodega .front')).not.toHaveCss({display: "none"});
+        expect($('.card-salida-bodega .back')).toHaveCss({display: "none"});
+                
+        $linkSalidaBodega.click();
+        
+        expect('click').toHaveBeenTriggeredOn($linkSalidaBodega);
+        expect(spyEvent).toHaveBeenTriggered();
+//        expect($('.card-salida-proceso .front')).toHaveCss({display: "none"});
+        expect($('.card-salida-bodega .back')).not.toHaveCss({display: "none"});
+        
+    });
+    
+    it("el formulario debe tener tres inputs", function() {
+        expect($('#line_item_salida_bodega_total_sacos')[0]).toBeInDOM();
+        expect($('#line_item_salida_bodega_total_bolsas')[0]).toBeInDOM();
+        expect($('#line_item_salida_bodega_total_kilogramos_netos')[0]).toBeInDOM();
+    });
+
+    it("Las mascaras deben estar definidas", function() {
+        expect($('#line_item_salida_bodega_total_sacos')).toHaveMethod('mask');
+        expect($('#line_item_salida_bodega_total_bolsas')).toHaveMethod('mask');
+        expect($('#line_item_salida_bodega_total_kilogramos_netos')).toHaveMethod('mask');
+    });
+    
+    it("Debe mostrar la animación al momento de sacar la partida de bodega", function() {
+      var spyEvent = spyOnEvent($('.card-salida-bodega .add-to-cart'), 'click');
+      
+      expect($('.menu-cart-salidas-bodega .span_total_partidas')[0]).toBeInDOM();  
+
+      $('.card-salida-bodega .add-to-cart').click();
+      
+      expect('click').toHaveBeenTriggeredOn($('.card-salida-bodega .add-to-cart'));
+      expect(spyEvent).toHaveBeenTriggered(); 
+//      expect($('.col-sm-3').length).toEqual(2);
+    });
+    
+});

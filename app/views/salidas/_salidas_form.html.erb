@@ -1,0 +1,16 @@
+<%= f.error_notification %>
+
+<%= f.input :total_sacos, as: :string  %>    
+<%= f.input :total_bolsas, as: :string %>    
+<%= f.input :total_kilogramos_netos %>    
+
+<div class="col-sm-3" style = "display: none">
+    <div class="icon-box bg">      
+        <%= image_tag "costal_cafe_big.jpg", alt: 'costal_cafe' %>
+    </div>
+</div>
+
+<%= button_tag(type: :submit, class: 'btn btn-green btn-ghost add-to-cart') do %>
+    <i class="fa fa-send" aria-hidden="true"></i> 
+    <%= send_item_salida %>
+<% end %>

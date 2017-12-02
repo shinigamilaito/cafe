@@ -1,0 +1,16 @@
+<% if controller_name.eql?('clients') %>
+<div class="col-sm-4">
+    <div class="card card-salida-bodega"> 
+        <div class="front"> 
+            <a class="btn btn-ghost btn-green btn-sm btn-rounded salida-bodega">
+                <i class="fa fa-adjust"></i>
+                Salida de Bodega
+            </a>                        
+        </div> 
+        <div class="back" style="display: none">
+            <%= render "salida_bodegas/salida_bodega_form", partida: partida, 
+              line_item_salida_bodega: line_item_salida_bodega %>
+        </div> 
+    </div>
+  </div>
+<% end %>

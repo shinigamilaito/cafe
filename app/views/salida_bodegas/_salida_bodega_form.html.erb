@@ -1,0 +1,6 @@
+<%= simple_form_for line_item_salida_bodega, url: line_item_salida_bodegas_path(partida_id: partida), 
+  remote: true, html: { class: 'form-horizontal' } do |f| %>
+
+    <%= render "salidas/salidas_form", f: f, send_item_salida: 'Retirar de Bodega' %>
+
+<% end %>

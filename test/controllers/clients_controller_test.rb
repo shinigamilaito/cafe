@@ -54,11 +54,10 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     assert_select "div.menu-cart-salidas-bodega", 1
     assert_select "div.menu-cart-salidas-bodega .span_total_partidas", 1
     assert_select "div.menu-cart-salidas-bodega .cart_salida", 1
-#    assert_select "a#cancelar-salida-link", 2
+#    assert_select ".card-salida-proceso", 1
+#    assert_select ".card-salida-bodega", 1
 #    assert_select "div#mensage-error-div", 2
 #    assert_select "input#realizar-salida-proceso-input", 2
-    
-    
   end
 
   test "should get edit" do

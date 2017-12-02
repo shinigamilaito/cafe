@@ -123,9 +123,9 @@ $(function() {
 
 //</editor-fold>
 
-//<editor-fold desc="Contiene los datos relacionados con las partidas que salen a proceso">
+//<editor-fold desc="Contiene los datos relacionados con las partidas que salen a proceso y las partidas que se retiran de bodega">
 
-//<editor-fold desc="Agrega el efecto flip al enlace que muestra el formulatio de salidas a proceso">
+//<editor-fold desc="Agrega el efecto flip al enlace que muestra el formulatio de salidas a proceso y salidas de bodega">
 $(function() {
     if($('.menu-cart-salidas-proceso').length) {
        $(".card-salida-proceso").flip({
@@ -142,6 +142,22 @@ $(function() {
            $card.find('.back').css({display: 'block'});
        });
     }
+    
+    if($('.menu-cart-salidas-bodega').length) {
+       $(".card-salida-bodega").flip({
+           trigger: 'manual'
+       });     
+       
+       /**
+        * Realiza el cambio de tarjeta para realizar la salida de la bodega
+        */
+       
+       $('.card-salida-bodega .salida-bodega').click(function() {
+           $card = $(this).parents('.card-salida-bodega').eq(0);
+           $card.flip(true);
+           $card.find('.back').css({display: 'block'});
+       });
+    }
 });
 //</editor-fold>
 
@@ -151,17 +167,19 @@ $(function() {
     var formatKilogramos = "##0.00";
     var formatSacosBolsas = "##0";    
     
-    $('#line_item_salida_proceso_total_kilogramos_netos').mask(formatKilogramos, {reverse: true});
-    
-    $('#line_item_salida_proceso_total_bolsas').mask(formatSacosBolsas, {reverse: true});
-        
+    $('#line_item_salida_proceso_total_kilogramos_netos').mask(formatKilogramos, {reverse: true});    
+    $('#line_item_salida_proceso_total_bolsas').mask(formatSacosBolsas, {reverse: true});        
     $('#line_item_salida_proceso_total_sacos').mask(formatSacosBolsas, {reverse: true});
+        
+    $('#line_item_salida_bodega_total_kilogramos_netos').mask(formatKilogramos, {reverse: true});    
+    $('#line_item_salida_bodega_total_bolsas').mask(formatSacosBolsas, {reverse: true});        
+    $('#line_item_salida_bodega_total_sacos').mask(formatSacosBolsas, {reverse: true});
         
 });
 
 //</editor-fold>
 
-//<editor-fold desc="Agrega el efecto que muestra la imagen del cafe a las partidas que han salido a proceso">
+//<editor-fold desc="Agrega el efecto que muestra la imagen del cafe a las partidas que han salido a proceso y  que se retiran de bodega">
 
 $(function() {
     if($('.menu-cart-salidas-proceso').length) {
@@ -170,47 +188,60 @@ $(function() {
             var imgtodrag = $(this).prev().eq(0);
 //            var imgtodrag = $(this).prev().find('img');
             var inputwithposition = imgtodrag.prev().eq(0).find('input').eq(0);
-            
-            if(imgtodrag) {
-                var imgclone = imgtodrag.clone();
-                
-                imgclone.find('h3').eq(0).text(inputwithposition.val());
-                
-                imgclone
+            showAnimation(imgtodrag, inputwithposition, cart); 
+        });
+    }
+    
+    if($('.menu-cart-salidas-bodega').length) {
+        $('.card-salida-bodega .add-to-cart').on('click', function() {            
+            var cart = $(this).parents('.wrapper_partida_tabs').prev().find('.menu-cart-salidas-bodega .span_total_partidas');            
+            var imgtodrag = $(this).prev().eq(0);
+//            var imgtodrag = $(this).prev().find('img');
+            var inputwithposition = imgtodrag.prev().eq(0).find('input').eq(0);
+            showAnimation(imgtodrag, inputwithposition, cart);            
+        });
+    }
+    
+    function showAnimation(imgtodrag, inputwithposition, cart) {
+        if (imgtodrag) {
+            var imgclone = imgtodrag.clone();
+
+            imgclone.find('h3').eq(0).text(inputwithposition.val());
+
+            imgclone
                     .offset({
-                    top: inputwithposition.offset().top,
-                    left: inputwithposition.offset().left
-                })
+                        top: inputwithposition.offset().top,
+                        left: inputwithposition.offset().left
+                    })
                     .css({
-                    'display': 'block',
-                    'opacity': '1',                    
-                    'position': 'absolute',
-                    'height': '100px',
-                    'width': '150px',
-                    'z-index': '10'
-                })
+                        'display': 'block',
+                        'opacity': '1',
+                        'position': 'absolute',
+                        'height': '100px',
+                        'width': '150px',
+                        'z-index': '10'
+                    })
                     .appendTo($('body'))
                     .animate({
-                    'top': cart.offset().top - 5,
-                    'left': cart.offset().left + 10,
-                    'width': 100,
-                    'height': 50
-                }, 2000, 'easeInOutBack');
-                
-                setTimeout(function() {
-                    cart.effect("bounce", {
-                        times: 2
-                    }, 200);
-                }, 1500);
-                
-                imgclone.animate({
-                    'width': 0,
-                    'height': 0
-                }, function() {
-                    $(this).detach();
-                });
-            }
-        });
+                        'top': cart.offset().top - 5,
+                        'left': cart.offset().left + 10,
+                        'width': 100,
+                        'height': 50
+                    }, 2000, 'easeInOutBack');
+
+            setTimeout(function () {
+                cart.effect("bounce", {
+                    times: 2
+                }, 200);
+            }, 1500);
+
+            imgclone.animate({
+                'width': 0,
+                'height': 0
+            }, function () {
+                $(this).detach();
+            });
+        }
     }
 });
 //</editor-fold>
