@@ -1,0 +1,28 @@
+<table class="table table-striped">
+    <tbody>        
+        <tr>
+            <td><strong><%= t('clients.client.legal_representative') %></strong></td>
+            <td><%= salida.client.legal_representative %></td>
+        </tr>
+        <tr>
+            <td><strong><%= t('partidas.partida.tipo_cafe') %></strong></td>
+            <td><%= salida.tipo_cafe %></td>
+        </tr>
+        <tr>
+            <td><strong><%= t('salidas.total_sacos') %></strong></td>
+            <td><%= salida.total_sacos %> Sacos</td>
+        </tr>
+        <tr>
+            <td><strong><%= t('salidas.total_bolsas') %></strong></td>
+            <td><%= salida.total_bolsas %> Bolsas</td>
+        </tr>
+        <tr>
+            <td><strong><%= t('salidas.total_kilogramos_netos') %></strong></td>
+            <td><%= number_with_precision(salida.total_kilogramos_netos, precision: 2) %> Kilogramos Netos</td>
+        </tr>
+        <tr>
+            <td><strong><%=  t('salidas.created_at') %></strong></td>
+            <td><%= l(salida.created_at, format: :medium) %></td>
+        </tr>                                      
+    </tbody>
+</table>

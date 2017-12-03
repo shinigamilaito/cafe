@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h3 class="title-md hr text-center text-uppercase text-center">
+          Entradas Afectadas
+          <span class="badge"><%=  salida.entradas_afectadas.size %></span>          
+        </h3>
+    </div>
+</div>
+
+<div class="row-code">
+  <div class="row row-pills row-pills-left" role="tabpanel">
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+            <% salida.entradas_afectadas.numero_entrada_ascendente.each_with_index do |entrada, index| %>
+              <% if index.zero? %>
+                <li role="presentation" class="active">
+                  <% else %>
+                <li role="presentation">
+                  <% end %>
+                  <a href="#entrada<%= entrada.id %>" aria-controls="entrada<%= entrada.id%>" 
+                     role="tab" data-toggle="tab">
+                      <%= "Entrada - #{padded_zeros_numero_entrada(entrada.numero_entrada)}" %></a>
+              </li>
+            <% end %>                      
+        </ul>
+      </div>
+      <div class="col-md-9">
+        <div class="tab-content">
+            <% salida.entradas_afectadas.numero_entrada_ascendente.each_with_index do |entrada, index| %>
+              <% if index.zero? %>
+              <div role="tabpanel" class="tab-pane fade in active" id="entrada<%= entrada.id %>">
+              <% else %>
+              <div role="tabpanel" class="tab-pane fade in" id="entrada<%= entrada.id %>">
+              <% end %>
+                <% salida.line_item_salidas_para_entrada(entrada).each do |line_item_salida| %>                  
+                  <%= render 'salidas/line_item_salida', line_item_salida: line_item_salida %>
+                  <hr class="hr-divider-xs">
+                <% end %>
+              </div>
+              <% end %>                        
+        </div>
+      </div>
+  </div>
+</div>

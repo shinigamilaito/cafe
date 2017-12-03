@@ -12,10 +12,17 @@
           <%= render "cart_salidas/body_table", cart: cart_salida_proceso %>
         </tbody>
       </table>
-      <%= render "cart_salidas/footer", cart: cart_salida_proceso, 
-        salida: salida_procesos_path, id_salida: 'realizar-salida-proceso-input' %>
+      <div class="panel-footer">
+        <div class="row">
+          <%= render "cart_salidas/footer", cart: cart_salida_proceso %>
+      
+          <div class="col-sm-4 text-right">
+            <%= button_to 'Registrar Salida', salida_procesos_path, id: 'realizar-salida-proceso-input',
+                class: 'btn btn-primary bt-sm' %>            
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- Panel End -->
   </div>
 </div>
 <% end %>

@@ -3,19 +3,42 @@
   <div class="col-md-12">
     <div class="panel panel-default panel-shopping-cart">
       <p class="text-center text-uppercase">Salidas de Bodega</p>
-      <table class="table">
-        <%= render "cart_salidas/head_table" %>
-        <tbody>
-          <%= render cart_salida_bodega.line_item_salida_bodegas.order("id DESC") %>
-        </tbody>
-        <tbody>
-          <%= render "cart_salidas/body_table", cart: cart_salida_bodega %>         
-        </tbody>
-      </table>
-      <%= render "cart_salidas/footer", cart: cart_salida_bodega, 
-        salida: salida_bodegas_path, id_salida: 'realizar-salida-bodega-input' %>
+      
+      <%= simple_form_for :salida_bodega, url: salida_bodegas_path, html: { class: 'form-horizontal' }, 
+        wrapper: :horizontal_form,
+        wrapper_mappings: {
+          check_boxes: :horizontal_radio_and_checkboxes,
+          radio_buttons: :horizontal_radio_and_checkboxes,
+          file: :horizontal_file_input,
+          boolean: :horizontal_boolean
+          #date: :multi_select_horizontal,
+          #datetime: :multi_select_horizontal
+        } do |f| %>
+      
+        <%= f.input :name_driver, as: :string, required: true, input_html: { class: 'form-salida-bodega' }  %> 
+        <%= f.input :name_person, as: :string, required: true, input_html: { class: 'form-salida-bodega' }  %> 
+
+        <table class="table">
+          <%= render "cart_salidas/head_table" %>
+          <tbody>
+            <%= render cart_salida_bodega.line_item_salida_bodegas.order("id DESC") %>
+          </tbody>
+          <tbody>
+            <%= render "cart_salidas/body_table", cart: cart_salida_bodega %>         
+          </tbody>
+        </table>
+        <div class="panel-footer">
+          <div class="row">
+            <%= render "cart_salidas/footer", cart: cart_salida_bodega %>
+          
+            <div class="col-sm-4 text-right">
+              <%= f.submit 'Registrar Salida', id: 'realizar-salida-bodega-input',
+                class: 'btn btn-primary bt-sm' %>            
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <!-- Panel End -->
   </div>
 </div>
 <% end %>

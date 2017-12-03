@@ -1,7 +1,7 @@
 <div class="row">
     <div class='col-sm-12'>
         <h1 class='title-md hr text-center text-uppercase'>
-          <%= t('.title') %>
+          <%= t('salidas.show.title_proceso') %>
         </h1>
     </div>
 </div>
@@ -18,7 +18,35 @@
         <div class="tab-content tab-content-shop">
             <div class="tab-pane fade in active tab-shop-item" id="specifications">
                 <%= render 'link_options_show', salida_proceso: @salida_proceso %>
-                <%= render @salida_proceso %>
+                <table class="table table-striped">
+                    <tbody>        
+                        <tr>
+                            <td><strong><%= t('clients.client.legal_representative') %></strong></td>
+                            <td><%= @salida_proceso.client.legal_representative %></td>
+                        </tr>
+                        <tr>
+                            <td><strong><%= t('partidas.partida.tipo_cafe') %></strong></td>
+                            <td><%= @salida_proceso.tipo_cafe %></td>
+                        </tr>
+                        <tr>
+                            <td><strong><%= t('salidas.total_sacos') %></strong></td>
+                            <td><%= @salida_proceso.total_sacos %> Sacos</td>
+                        </tr>
+                        <tr>
+                            <td><strong><%= t('salidas.total_bolsas') %></strong></td>
+                            <td><%= @salida_proceso.total_bolsas %> Bolsas</td>
+                        </tr>
+                        <tr>
+                            <td><strong><%= t('salidas.total_kilogramos_netos') %></strong></td>
+                            <td><%= number_with_precision(@salida_proceso.total_kilogramos_netos, precision: 2) %> Kilogramos Netos</td>
+                        </tr>
+                        <tr>
+                            <td><strong><%=  t('salidas.created_at') %></strong></td>
+                            <td><%= l(@salida_proceso.created_at, format: :medium) %></td>
+                        </tr>                                      
+                    </tbody>
+                </table>
+                <%= render "salidas/salida_detail", salida: @salida_proceso %>
             </div>            
         </div>
     </div>

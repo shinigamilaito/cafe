@@ -1,39 +1,39 @@
 <div class="row">
     <div class='col-sm-12'>
         <h1 class='title-md hr text-center text-uppercase'>
-          <%= t('.title') %>
+          <%= t('salidas.index.title_bodega') %>
         </h1>
     </div>
 </div>
 
-<% if @salida_procesos.blank? %>
+<% if @salida_bodegas.blank? %>
     <p class='lead'>Aún no tienes salidas registradas.</p>    
 <% else %>        
     <div class="table-responsive">
       <table class="table table-striped table-hover table-condensed">
         <thead>
           <tr scope="row">
-            <th><%= t('.salida_proceso.organization') %></th>
-            <th><%= t('.salida_proceso.tipo_cafe') %></th>
-            <th><%= t('.salida_proceso.total_sacos') %></th>
-            <th><%= t('.salida_proceso.total_bolsas') %></th>          
-            <th><%= t('.salida_proceso.total_kilogramos_netos') %></th>          
-            <th><%= t('.salida_proceso.created_at') %></th>
+            <th><%= t('salidas.index.organization') %></th>
+            <th><%= t('salidas.index.tipo_cafe') %></th>
+            <th><%= t('salidas.index.total_sacos') %></th>
+            <th><%= t('salidas.index.total_bolsas') %></th>          
+            <th><%= t('salidas.index.total_kilogramos_netos') %></th>          
+            <th><%= t('salidas.index.created_at') %></th>
           
-            <th colspan="3"><%= t('.salida_proceso.options') %></th>
+            <th colspan="3"><%= t('salidas.options') %></th>
           </tr>
         </thead>
         <tbody>
-          <% @salida_procesos.each_with_index do |salida_proceso, index| %>
+          <% @salida_bodegas.each_with_index do |salida_bodega, index| %>
           <tr>
-            <td><%= salida_proceso.client.organization %></td>
-            <td><%= salida_proceso.tipo_cafe %></td>
-            <td><%= salida_proceso.total_sacos %></td>
-            <td><%= salida_proceso.total_bolsas %></td>
-            <td><%= salida_proceso.total_kilogramos_netos %></td>
-            <td><%= l salida_proceso.created_at, format: :medium_date %></td>
+            <td><%= salida_bodega.client.organization %></td>
+            <td><%= salida_bodega.tipo_cafe %></td>
+            <td><%= salida_bodega.total_sacos %></td>
+            <td><%= salida_bodega.total_bolsas %></td>
+            <td><%= salida_bodega.total_kilogramos_netos %></td>
+            <td><%= l salida_bodega.created_at, format: :medium_date %></td>
             <td>
-                <%= link_to salida_proceso do %>
+                <%= link_to salida_bodega do %>
                   <i class="fa fa-eye" aria-hidden="true"></i>                    
                 <% end %>
             </td>              

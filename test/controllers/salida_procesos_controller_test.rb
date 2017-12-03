@@ -10,7 +10,7 @@ class SalidaProcesosControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     
     assert_select ".row .col-sm-12 h1.title-md", 1
-    assert_select "h1.text-uppercase", I18n.t('salida_procesos.index.title')
+    assert_select "h1.text-uppercase", I18n.t('salidas.index.title_proceso')
     assert_select ".table-responsive table.table", 1
     assert_select "table tbody tr", minimum: 2
   end
@@ -47,7 +47,7 @@ class SalidaProcesosControllerTest < ActionDispatch::IntegrationTest
     get salida_proceso_url(@salida_proceso)
     assert_response :success
     
-    assert_select "h1.title-md", I18n.t('salida_procesos.show.title')
+    assert_select "h1.title-md", I18n.t('salidas.show.title_proceso')
     assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", 'Información Salida'
     assert_select "div.tab-content div.tab-pane#specifications", 1
     assert_select "div.btn-group a", 1

@@ -201,28 +201,31 @@ es:
       organization: 'Organización:'
       observaciones: 'Observaciones:'
       
-  salida_procesos:
+  salidas:
     created: Salida creada exitosamente.
     not_created: Imposible crear la salida, intente nuevamente.
-    salida_proceso:
-      total_sacos: 'Total Sacos:'
-      total_bolsas: 'Total Bolsas:'
-      total_kilogramos_netos: 'Total Kgrs. Netos:'
-      created_at: 'Creado el:'
-      back_link: Salidas Proceso
+    total_sacos: 'Total Sacos:'
+    total_bolsas: 'Total Bolsas:'
+    total_kilogramos_netos: 'Total Kgrs. Netos:'
+    name_driver: 'Chofer:'
+    name_person: 'Persona que se llevo el Café:'
+    created_at: 'Creado el:'
+    back_link_proceso: Ver Salidas a Proceso
+    back_link_bodega: Ver Salidas de Bodega
     show:
-      title: Datos de la Salida
+      title_bodega: Datos de la Salida de la Bodega
+      title_proceso: Datos de la Salida a Proceso
     index: 
-      title: Salidas a Proceso
-      salida_proceso:
-          legal_representative: Representante Legal
-          organization: Organización
-          tipo_cafe: Tipo de Cafe
-          total_sacos: Total Sacos
-          total_bolsas: Total Bolsas
-          total_kilogramos_netos: Total Kgs Netos
-          created_at: Registrado el
-          options: Opciones
+      title_proceso: Salidas a Proceso
+      title_bodega: Salidas de Bodega
+      legal_representative: Representante Legal
+      organization: Organización
+      tipo_cafe: Tipo de Cafe
+      total_sacos: Total Sacos
+      total_bolsas: Total Bolsas
+      total_kilogramos_netos: Total Kgs Netos
+      created_at: Registrado el
+      options: Opciones    
 
   activerecord:
     errors:

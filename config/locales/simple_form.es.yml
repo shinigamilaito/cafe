@@ -55,6 +55,10 @@ es:
           total_sacos: 'Total de Sacos:'
           total_bolsas: 'Total de Bolsas:'
           total_kilogramos_netos: 'Total de Kgrs Netos:'
+          
+      salida_bodega:
+          name_driver: 'Chofer:'
+          name_person: 'Quién se lleva el Café:'
         
     hints:
       client:
