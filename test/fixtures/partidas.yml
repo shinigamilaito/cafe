@@ -23,11 +23,11 @@
 one:
   identificador: 1
   entrada: one
-  kilogramos_brutos: 9.99
-  numero_sacos: 1
-  numero_bolsas: 1
-  tara: 1.1
-  kilogramos_netos: 8.89
+  kilogramos_brutos: 156.99
+  numero_sacos: 25
+  numero_bolsas: 63
+  tara: 31.3
+  kilogramos_netos: 125.7
   humedad: 9.99
   type_coffee: pergamino
   calidad_cafe: MyString  
@@ -38,45 +38,32 @@ two:
   kilogramos_brutos: 19.99
   numero_sacos: 10
   numero_bolsas: 5
-  tara: 10 + 5*0.100  
+  tara: 10.5
   kilogramos_netos: 9.49
   humedad: 9.99
   type_coffee: cerezo
   calidad_cafe: MyString
 
 three:
-  identificador: 2
-  entrada: one
-  kilogramos_brutos: 17.88
-  numero_sacos: 10
-  numero_bolsas: 5
-  tara: 10.5
-  kilogramos_netos: 7.38
-  humedad: 9.99
-  type_coffee: cerezo
-  calidad_cafe: MyString  
-  
-sin_salida_proceso:
   identificador: 1
-  entrada: sin_salida_proceso
+  entrada: two
   kilogramos_brutos: 17.88
-  numero_sacos: 10
-  numero_bolsas: 5
+  numero_sacos: 53
+  numero_bolsas: 28
   tara: 10.5
-  kilogramos_netos: 7.38
+  kilogramos_netos: 69.31
   humedad: 9.99
   type_coffee: cerezo
-  calidad_cafe: MyString  
+  calidad_cafe: MyString
   
-salida_proceso:
-  identificador: 3
-  entrada: one
+four:
+  identificador: 1
+  entrada: three
   kilogramos_brutos: 17.88
-  numero_sacos: 1
-  numero_bolsas: 1
+  numero_sacos: 53
+  numero_bolsas: 28
   tara: 10.5
-  kilogramos_netos: 1
+  kilogramos_netos: 69.31
   humedad: 9.99
-  type_coffee: honney
-  calidad_cafe: MyString  
-    
+  type_coffee: cerezo
+  calidad_cafe: MyString

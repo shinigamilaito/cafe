@@ -105,10 +105,11 @@ $(function() {
     });
     
     $('.menu-cart-salidas-bodega').on('click', '.cart_salida #realizar-salida-bodega-input', function(e) {
-        var $choferInputVal = $("#salida_bodega_name_driver").val();
-        var $personInputVal = $("#salida_bodega_name_person").val();
         var $link = $(this);
         var $panelFooter = $link.parents('.panel-footer');
+        var $panel = $panelFooter.parents('.panel');
+        var $choferInputVal = $panel.find("#salida_bodega_name_driver").val();
+        var $personInputVal = $panel.find("#salida_bodega_name_person").val();
         tiposCafe.$divErrorMessage = $panelFooter.find('#mensage-error-div');
         var $tiposCafe = $panelFooter.prev().find('.tipo_cafe_salida');
         tiposCafe.$tiposCafe = $tiposCafe;

@@ -15,18 +15,18 @@ class CartSalidaBodegaTest < ActiveSupport::TestCase
   end
   
   test "debe obtener el total de sacos correcto" do
-    assert_equal(@cart_salida.total_sacos, 10)
+    assert_equal(@cart_salida.total_sacos, 53)
   end
   
   test "debe obtener el total de bolsas correcto" do
-    assert_equal(@cart_salida.total_bolsas, 10)
+    assert_equal(@cart_salida.total_bolsas, 28)
   end
   
   test "debe obtener el total de kilogramos netos correcto" do
-    assert_equal(@cart_salida.total_kilogramos_netos, '10.0')
+    assert_equal(@cart_salida.total_kilogramos_netos, '69.31')
   end
   
   test "debe obtener el cliente correcto" do
-    assert_equal(@cart_salida.cliente, clients(:pedro))
+    assert_equal(@cart_salida.cliente, clients(:juan))
   end
 end

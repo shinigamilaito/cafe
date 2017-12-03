@@ -16,25 +16,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  partida: one
-  cart_salida_bodega: one
+  partida: two
+  cart_salida_bodega: 
   total_sacos: 10
   total_bolsas: 10
   total_kilogramos_netos: 10.0
   salida_bodega: one
-
-two:
-  partida: two
-  cart_salida_bodega: two
-  total_sacos: 1
-  total_bolsas: 1
-  total_kilogramos_netos: 9.99
-  salida_bodega: two
-
-cafe_distinto:
-  partida: two
-  cart_salida_bodega: 
-  total_sacos: 1
-  total_bolsas: 1
-  total_kilogramos_netos: 1.1
-  salida_bodega: one
+  
+agregado_carrito:
+  partida: three
+  cart_salida_bodega: one 
+  total_sacos: 53
+  total_bolsas: 28
+  total_kilogramos_netos: 69.31
+  salida_bodega: 

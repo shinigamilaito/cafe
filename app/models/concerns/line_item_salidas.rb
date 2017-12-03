@@ -7,7 +7,7 @@ module LineItemSalidas
   
   # Verifica si el total de sacos es menor o igual a la cantidad disponible en la partida
   # la cantidad disponible es el total de sacos en la partida menos la cantida de sacos
-  # que han salida a proceso
+  # que han salida a proceso y la cantidad de sacos que han sacado de bodega
   # return true | false
   # Si es false agrega un mensaje de error al objeto errors de la partida
   def check_total_sacos_is_valid
@@ -22,7 +22,7 @@ module LineItemSalidas
   
   # Verifica si el total de bolsas es menor o igual a la cantidad disponible en la partida
   # la cantidad disponible es el total de bolsas en la partida menos la cantidad de bolsas
-  # que han salida a proceso
+  # que han salida a proceso y la cantidad de bolsas que han sacado de bodega
   # return true | false
   # Si es false agrega un mensaje de error al objeto errors de la salida
   def check_total_bolsas_is_valid
@@ -37,7 +37,7 @@ module LineItemSalidas
   
   # Verifica si el total de kilos es menor o igual a la cantidad disponible en la partida
   # la cantidad disponible es el total de kilos en la partida menos la cantidad de kilos
-  # que han salida a proceso
+  # que han salida a proceso y la cantidad de kilos que han sacado de bodega
   # return true | false
   # Si es false agrega un mensaje de error al objeto errors de la salida
   def check_total_kilogramos_netos_is_valid

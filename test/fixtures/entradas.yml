@@ -41,7 +41,7 @@ three:
   entregado_por: AAAA
   client: juan
   delete_logical: true
-  
+
 sin_salida_proceso:
   date: 2017-09-02 14:52:42
   numero_entrada: 4

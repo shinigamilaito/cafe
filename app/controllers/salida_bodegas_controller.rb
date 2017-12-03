@@ -27,11 +27,11 @@ class SalidaBodegasController < ApplicationController
       if @salida_bodega.save
         CartSalidaBodega.destroy(session[:cart_salida_bodega_id])
         session[:cart_salida_bodega_id] = nil
-        flash[:success] = I18n.t('.salida_bodegas.created')        
+        flash[:success] = I18n.t('salidas.created')        
         format.html { redirect_to @salida_bodega }
         format.json { render :show, status: :created, location: @salida_bodega }
       else
-        flash[:error] = I18n.t('.salida_bodegas.not_created')        
+        flash[:error] = I18n.t('salidas.not_created')        
         format.html { redirect_to @cart_salida_bodega.cliente }
         format.json { render json: @salida_bodega.errors, status: :unprocessable_entity }
       end

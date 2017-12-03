@@ -17,7 +17,13 @@ require 'test_helper'
 
 class LineItemSalidaBodegaTest < ActiveSupport::TestCase
   def setup 
-    @line_item_salida = line_item_salida_bodegas(:one)
+    @line_item_salida = LineItemSalidaBodega.new({
+      partida: partidas(:one),
+      cart_salida_bodega: cart_salida_bodegas(:one),
+      total_sacos: 58,
+      total_bolsas: 80,
+      total_kilogramos_netos: 145.67
+     })
   end
   
   test "pertenece a una partida" do
@@ -30,11 +36,11 @@ class LineItemSalidaBodegaTest < ActiveSupport::TestCase
   
   test "verifica se valide total de sacos no exceda el disponible" do
     assert_not(@line_item_salida.check_total_sacos_is_valid)
-    assert_equal(@line_item_salida.errors[:total_sacos], ['La cantidad disponible es 1 sacos'])
+    assert_equal(@line_item_salida.errors[:total_sacos], ['La cantidad disponible es 17 sacos'])
     assert_not(@line_item_salida.check_total_bolsas_is_valid)
-    assert_equal(@line_item_salida.errors[:total_bolsas], ['La cantidad disponible es 1 bolsas'])
+    assert_equal(@line_item_salida.errors[:total_bolsas], ['La cantidad disponible es 58 bolsas'])
     assert_not(@line_item_salida.check_total_kilogramos_netos_is_valid)
-    assert_equal(@line_item_salida.errors[:total_kilogramos_netos], ['La cantidad disponible es 8.89 kilogramos'])
+    assert_equal(@line_item_salida.errors[:total_kilogramos_netos], ['La cantidad disponible es 80.03 kilogramos'])
   end
   
   test "obtiene el cliente correcto" do

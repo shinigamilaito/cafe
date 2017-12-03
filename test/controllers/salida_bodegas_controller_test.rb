@@ -12,7 +12,7 @@ class SalidaBodegasControllerTest < ActionDispatch::IntegrationTest
     assert_select ".row .col-sm-12 h1.title-md", 1
     assert_select "h1.text-uppercase", I18n.t('salidas.index.title_bodega')
     assert_select ".table-responsive table.table", 1
-    assert_select "table tbody tr", minimum: 2
+    assert_select "table tbody tr", minimum: 1
   end
 
   test "should create salida_bodega" do    

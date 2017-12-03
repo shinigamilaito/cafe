@@ -25,8 +25,8 @@ class SalidaProcesoTest < ActiveSupport::TestCase
   end
   
   test "agrega los line item desde un cart_salida" do
-    cart_salida = cart_salida_procesos(:two)
-    salida_proceso = salida_procesos(:two)
+    cart_salida = cart_salida_procesos(:one)
+    salida_proceso = SalidaProceso.new
     salida_proceso.add_line_item_salidas_from_cart_salida(cart_salida)
     
     assert_equal(salida_proceso.line_item_salida_procesos, cart_salida.line_item_salida_procesos)
@@ -36,8 +36,8 @@ class SalidaProcesoTest < ActiveSupport::TestCase
   end
   
   test "añade el total de sacos,bolsas, kilogramos netos y el tipo de cafe" do
-    cart_salida = cart_salida_procesos(:two)
-    salida_proceso = salida_procesos(:two)
+    cart_salida = cart_salida_procesos(:one)
+    salida_proceso = SalidaProceso.new
     
     salida_proceso.add_total_from_cart_salida(cart_salida)
     
@@ -53,11 +53,19 @@ class SalidaProcesoTest < ActiveSupport::TestCase
   
   test "obtener line item salidas para entrada" do
     assert_equal(@salida_proceso.line_item_salidas_para_entrada(entradas(:one)).to_a, 
-    [line_item_salida_procesos(:four), line_item_salida_procesos(:no_valido_cafe_distinto)]
+    [line_item_salida_procesos(:one)]
     )
   end
   
   test "los tipos de cafe deben ser iguales" do
+    line_item_salida_proceso = LineItemSalidaProceso.new({
+        partida: partidas(:two),
+        total_sacos: 1,
+        total_bolsas: 1,
+        total_kilogramos_netos: 1      
+      })
+    
+    @salida_proceso.line_item_salida_procesos << line_item_salida_proceso
     assert_not(@salida_proceso.same_type_coffee)
     assert_equal(@salida_proceso.errors[:base], ['Los tipos de cafés son diferentes.'])
   end

@@ -27,11 +27,11 @@ class SalidaProcesosController < ApplicationController
       if @salida_proceso.save
         CartSalidaProceso.destroy(session[:cart_salida_proceso_id])
         session[:cart_salida_proceso_id] = nil
-        flash[:success] = I18n.t('.salida_procesos.created')        
+        flash[:success] = I18n.t('salidas.created')        
         format.html { redirect_to @salida_proceso }
         format.json { render :show, status: :created, location: @salida_proceso }
       else
-        flash[:error] = I18n.t('.salida_procesos.not_created')        
+        flash[:error] = I18n.t('salidas.not_created')        
         format.html { redirect_to @cart_salida_proceso.cliente }
         format.json { render json: @salida_proceso.errors, status: :unprocessable_entity }
       end

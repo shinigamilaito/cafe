@@ -24,6 +24,7 @@ class Partida < ApplicationRecord
   belongs_to :entrada    
   belongs_to :type_coffee  
   has_many :line_item_salida_procesos
+  has_many :line_item_salida_bodegas
 
   validates :kilogramos_brutos, :numero_bolsas, :numero_sacos, presence: true
   validates :tara, :kilogramos_netos, :humedad, presence: true
@@ -62,10 +63,22 @@ class Partida < ApplicationRecord
     salidas_proceso.map(&:total_sacos).sum   
   end
   
+  # Devuelve el total de sacos que han sacado de bodega
+  # return Integer mayor o igual a cero
+  def total_sacos_de_bodega
+    salidas_de_bodega.map(&:total_sacos).sum   
+  end
+  
   # Devuelve el total de bolsas que han tenido salidas a proceso
   # return Integer mayor o igual a cero
   def total_bolsas_a_proceso
     salidas_proceso.map(&:total_bolsas).sum
+  end
+  
+  # Devuelve el total de bolsas que han sacado de bodega
+  # return Integer mayor o igual a cero
+  def total_bolsas_de_bodega
+    salidas_de_bodega.map(&:total_bolsas).sum
   end
   
   # Devuelve el total de kilos netos que han tenido salidas a proceso
@@ -79,22 +92,34 @@ class Partida < ApplicationRecord
     return total_kilos_netos.to_s
   end
   
+  # Devuelve el total de kilos netos que han sacado de bodega
+  # return String
+  def total_kilos_netos_de_bodega
+    total_kilos_netos = BigDecimal('0')
+    salidas_de_bodega.each do |salida|  
+      total_kilos_netos += BigDecimal("#{salida.total_kilogramos_netos}") 
+    end
+    
+    return total_kilos_netos.to_s
+  end
+  
   # Devuelve la cantidad de sacos disponibles
   # return Integer mayor o igual a cero
   def total_sacos_disponibles
-    return numero_sacos - total_sacos_a_proceso
+    return numero_sacos - (total_sacos_a_proceso + total_sacos_de_bodega)
   end
   
   # Devuelve la cantidad de bolsas disponibles
   # return Integer mayor o igual a cero
   def total_bolsas_disponibles
-    return numero_bolsas - total_bolsas_a_proceso
+    return numero_bolsas - (total_bolsas_a_proceso + total_bolsas_de_bodega)
   end
   
   # Devuelve la cantidad de kilos netos disponibles
   # return Big Decimal mayor o igual a cero
   def total_kilos_netos_disponibles
-    return BigDecimal(kilogramos_netos) - BigDecimal(total_kilos_netos_a_proceso) 
+    total_kilos_sacados = BigDecimal(total_kilos_netos_a_proceso) + BigDecimal(total_kilos_netos_de_bodega)
+    return BigDecimal(kilogramos_netos) - (total_kilos_sacados) 
   end
 
   private
@@ -127,8 +152,14 @@ class Partida < ApplicationRecord
     end
     
     # Obtiene las salidas a proceso
-    # Return ActiveRecord::Relation LineItemSalida
+    # Return ActiveRecord::Relation LineItemSalidaProceso
     def salidas_proceso
       return line_item_salida_procesos.where("salida_proceso_id IS NOT NULL")
+    end
+    
+    # Obtiene las salidas de bodega
+    # Return ActiveRecord::Relation LineItemSalidaBodega
+    def salidas_de_bodega
+      return line_item_salida_bodegas.where("salida_bodega_id IS NOT NULL")
     end
 end

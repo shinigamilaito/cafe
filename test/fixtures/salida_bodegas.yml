@@ -17,18 +17,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name_driver: Jose
-  name_person: Miguel
-  client: pedro  
-  total_sacos: 1
-  total_bolsas: 1
-  total_kilogramos_netos: 1.00
-
-two:
-  name_driver: Jose
-  name_person: Miguel
-  client: juan
+  name_driver: jose
+  name_person: miguel
+  client: pedro
   tipo_cafe: Pergamino
-  total_sacos: 1
-  total_bolsas: 1
-  total_kilogramos_netos: 9.99
+  total_sacos: 10
+  total_bolsas: 10
+  total_kilogramos_netos: 10.0

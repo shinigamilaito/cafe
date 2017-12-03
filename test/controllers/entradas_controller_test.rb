@@ -95,12 +95,12 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
     assert_select "h1.title-md", I18n.t('entradas.show.title')
     assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", 'Información Entrada'
     assert_select "div.tab-content div.tab-pane#specifications", 1
-    assert_select "table.table", 4
+    assert_select "table.table", 2
     assert_select "table tbody tr", minimum: 11
   end
 
   test "should get edit" do
-    @entrada = entradas(:sin_salida_proceso)
+    @entrada = entradas(:three)
     
     get edit_entrada_url(@entrada)
     assert_response :success

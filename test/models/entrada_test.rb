@@ -92,16 +92,16 @@ class EntradaTest < ActiveSupport::TestCase
   
   test "total kilogramos brutos, tara, kilogramos netos" do
     entrada = entradas(:one)
-    assert_equal entrada.total_kilos_brutos, "45.75"
-    assert_equal entrada.total_tara, "22.1" 
-    assert_equal entrada.total_kilos_netos, "17.27" 
+    assert_equal entrada.total_kilos_brutos, "156.99"
+    assert_equal entrada.total_tara, "31.3" 
+    assert_equal entrada.total_kilos_netos, "125.7" 
   end
   
   test "total partidas" do
     entrada = entradas(:one)
     
     assert entrada.save
-    assert_equal entrada.total_partidas, 3
+    assert_equal entrada.total_partidas, 1
   end
   
   test "should order by numero entrada ascendente" do
@@ -115,8 +115,7 @@ class EntradaTest < ActiveSupport::TestCase
   test "obtain total partidas" do
     entrada = entradas(:one)
     
-    assert_equal entrada.total_partidas, 3
-    assert_equal entrada.partidas.size, 3    
+    assert_equal entrada.total_partidas, 1
   end
   
   test "tiene partidas que han salido a proceso" do

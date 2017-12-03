@@ -12,6 +12,12 @@
             </span>                          
         </div>
         <div class="col-sm-12">
+            <span class="totales_salidas_proceso" 
+                  title="Kilogramos que han salido de bodega.">
+                - <%= "#{number_with_precision(partida.total_kilos_netos_de_bodega, precision: 2)} Kgs" %>
+            </span>                          
+        </div>
+        <div class="col-sm-12">
             <span class="totales_disponibles" 
                   title="Kilogramos disponibles.">
                 = <%= "#{number_with_precision(partida.total_kilos_netos_disponibles, precision: 2)} Kgs" %>

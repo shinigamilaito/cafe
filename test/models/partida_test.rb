@@ -198,32 +198,21 @@ class PartidaTest < ActiveSupport::TestCase
     partidas = entradas(:one).partidas.identificador_ascendente
     
     assert_equal partidas[0].identificador, 1 
-    assert_equal partidas[1].identificador, 2
   end
   
   test "obtiene el total de sacos, bolsas, kilos netos que salieron a proceso" do
-    partida_con_salidas = partidas(:three)
-    partida_sin_salidas = partidas(:one)
+    partida_sin_salidas_proceso = partidas(:one)
     
-    assert_equal(partida_con_salidas.total_sacos_a_proceso, 2)
-    assert_equal(partida_sin_salidas.total_sacos_a_proceso, 0)
-    assert_equal(partida_con_salidas.total_bolsas_a_proceso, 3)
-    assert_equal(partida_sin_salidas.total_bolsas_a_proceso, 0)
-    assert_equal(partida_con_salidas.total_kilos_netos_a_proceso, '6.25')
-    assert_equal(partida_sin_salidas.total_kilos_netos_a_proceso, '0.0')
+    assert_equal(partida_sin_salidas_proceso.total_sacos_a_proceso, 8)
+    assert_equal(partida_sin_salidas_proceso.total_bolsas_a_proceso, 5)
+    assert_equal(partida_sin_salidas_proceso.total_kilos_netos_a_proceso, '45.67')
   end
   
   test "obtiene el total de sacos, bolsas, kilos netos disponibles" do
-    partida_con_salidas = partidas(:three)
-    partida_sin_salidas = partidas(:one)
+    partida_con_salidas_proceso = partidas(:one)
     
-    assert_equal(partida_con_salidas.total_sacos_disponibles, 8)
-    assert_equal(partida_sin_salidas.total_sacos_disponibles, 1)
-    assert_equal(partida_con_salidas.total_bolsas_disponibles, 2)
-    assert_equal(partida_sin_salidas.total_bolsas_disponibles, 1)
-    assert_equal(partida_con_salidas.total_kilos_netos_disponibles, BigDecimal('1.13'))
-    assert_equal(partida_sin_salidas.total_kilos_netos_disponibles, BigDecimal('8.89'))
-    
+    assert_equal(partida_con_salidas_proceso.total_sacos_disponibles, 17)
+    assert_equal(partida_con_salidas_proceso.total_bolsas_disponibles, 58)
+    assert_equal(partida_con_salidas_proceso.total_kilos_netos_disponibles, BigDecimal('80.03'))
   end
-  
 end
