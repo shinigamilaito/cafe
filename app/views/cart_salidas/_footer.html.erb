@@ -4,7 +4,7 @@
             <%= link_to 'Cancelar Salida', cart, method: :delete, class: 'btn btn-default btn-sm', 
                 id: 'cancelar-salida-link', data: { confirm: '¿Está usted seguro?' } %>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-5">
             <div id="mensage-error-div" class="alert alert-danger" role="alert" style="display: none;">
                 <span style="display: inline;" class="glyphicon glyphicon-exclamation-sign" 
                         aria-hidden="true">
@@ -13,7 +13,7 @@
                   Tipos de cafe distintos
             </div>            
         </div>
-        <div class="col-sm-3 text-right">
+        <div class="col-sm-4 text-right">
               <%= button_to 'Registrar Salida', salida, id: id_salida,
                 class: 'btn btn-primary bt-sm' %>            
         </div>

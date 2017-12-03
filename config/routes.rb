@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   
   resources :salida_procesos
   
+  resources :salida_bodegas
+  
   resources :line_item_salida_procesos, only: :create
   
   resources :line_item_salida_bodegas, only: :create

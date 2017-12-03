@@ -2,7 +2,7 @@ require 'test_helper'
 
 class LineItemSalidaProcesosControllerTest < ActionDispatch::IntegrationTest
   
-  test "should create line_item_salida" do   
+  test "should create line_item_salida_proceso" do   
     sacos = 1
     bolsas = 1
     kilogramos_netos = 4.56

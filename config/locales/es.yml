@@ -259,6 +259,11 @@ es:
           attributes:
             total_kilogramos_netos:
               greater_than_or_equal_to: Debe ser mayor a 0.1
+              
+        line_item_salida_bodega:
+          attributes:
+            total_kilogramos_netos:
+              greater_than_or_equal_to: Debe ser mayor a 0.1
 
       messages:
         blank: no puede estar vacio

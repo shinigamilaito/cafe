@@ -2,8 +2,9 @@
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-default panel-shopping-cart">
+      <p class="text-center text-uppercase">Salidas de Bodega</p>
       <table class="table">
-        <%= "cart_salidas/head_table" %>
+        <%= render "cart_salidas/head_table" %>
         <tbody>
           <%= render cart_salida_bodega.line_item_salida_bodegas.order("id DESC") %>
         </tbody>
