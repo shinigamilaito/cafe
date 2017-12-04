@@ -209,6 +209,7 @@ es:
     total_kilogramos_netos: 'Total Kgrs. Netos:'
     name_driver: 'Chofer:'
     name_person: 'Persona que se llevo el Café:'
+    observaciones: 'Observaciones:'
     created_at: 'Creado el:'
     back_link_proceso: Ver Salidas a Proceso
     back_link_bodega: Ver Salidas de Bodega

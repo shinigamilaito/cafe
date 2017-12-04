@@ -3,7 +3,7 @@
     <i class="fa fa-mail-reply" aria-hidden="true"></i>                                      
     <%= t('entradas.show.back_link') %>
   <% end %>  
-  <% unless entrada.tiene_partidas_que_han_salido_a_proceso %>
+  <% unless entrada.tiene_partidas_con_salidas %>
     <%= link_to entrada, method: :delete, class: "btn btn-ghost btn-red pull-right", data: {confirm: '¿Está usted seguro?'} do %>
       <i class="fa fa-remove" aria-hidden="true"></i>                                      
       <%= t('entradas.show.delete_link')  %>

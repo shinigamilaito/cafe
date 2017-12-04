@@ -49,6 +49,10 @@
                             <td><%= number_with_precision(@salida_bodega.total_kilogramos_netos, precision: 2) %> Kilogramos Netos</td>
                         </tr>
                         <tr>
+                            <td><strong><%= t('salidas.observaciones') %></strong></td>
+                            <td><%= @salida_bodega.observaciones %></td>
+                        </tr>
+                        <tr>
                             <td><strong><%=  t('salidas.created_at') %></strong></td>
                             <td><%= l(@salida_bodega.created_at, format: :medium) %></td>
                         </tr>                                      

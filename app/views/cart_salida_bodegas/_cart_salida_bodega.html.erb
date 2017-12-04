@@ -5,18 +5,11 @@
       <p class="text-center text-uppercase">Salidas de Bodega</p>
       
       <%= simple_form_for :salida_bodega, url: salida_bodegas_path, html: { class: 'form-horizontal' }, 
-        wrapper: :horizontal_form,
-        wrapper_mappings: {
-          check_boxes: :horizontal_radio_and_checkboxes,
-          radio_buttons: :horizontal_radio_and_checkboxes,
-          file: :horizontal_file_input,
-          boolean: :horizontal_boolean
-          #date: :multi_select_horizontal,
-          #datetime: :multi_select_horizontal
-        } do |f| %>
+        wrapper: :horizontal_form do |f| %>
       
         <%= f.input :name_driver, as: :string, required: true, input_html: { class: 'form-salida-bodega' }  %> 
         <%= f.input :name_person, as: :string, required: true, input_html: { class: 'form-salida-bodega' }  %> 
+        <%= f.input :observaciones, as: :text, required: false %> 
 
         <table class="table">
           <%= render "cart_salidas/head_table" %>

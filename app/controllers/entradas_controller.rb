@@ -2,7 +2,7 @@ require 'jasper-bridge/jasper'
 class EntradasController < ApplicationController
   include Jasper::Bridge
   before_action :set_entrada, only: [:show, :edit, :update, :destroy, :reporte]
-  before_action :check_entrada_not_have_partidas_with_salidas_proceso, only: [:edit, :destroy]
+  before_action :check_entrada_not_have_partidas_with_salidas, only: [:edit, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_entrada
   
   # GET /entradas
@@ -117,10 +117,10 @@ class EntradasController < ApplicationController
           :calidad_cafe, :_destroy])
     end
     
-    def check_entrada_not_have_partidas_with_salidas_proceso
-      if @entrada.tiene_partidas_que_han_salido_a_proceso
+    def check_entrada_not_have_partidas_with_salidas
+      if @entrada.tiene_partidas_con_salidas
         logger.error "Attempt to change entrada not modificable #{params[:id]}"
-        flash[:danger] = 'Acción no realizada. Entrada ha salido a proceso'
+        flash[:danger] = 'Acción no realizada. Entrada tiene partidas con salidas.'
         redirect_to entradas_url
       end
     end

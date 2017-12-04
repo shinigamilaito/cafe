@@ -12,6 +12,7 @@
 #  total_kilogramos_netos :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  observaciones          :text
 #
 
 require 'test_helper'

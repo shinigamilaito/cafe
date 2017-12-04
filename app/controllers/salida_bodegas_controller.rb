@@ -45,7 +45,7 @@ class SalidaBodegasController < ApplicationController
     end
     
     def salida_bodega_params
-      params.require(:salida_bodega).permit(:name_driver, :name_person)
+      params.require(:salida_bodega).permit(:name_driver, :name_person, :observaciones)
     end
     
     def invalid_salida_bodega

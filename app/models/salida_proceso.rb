@@ -10,6 +10,7 @@
 #  total_kilogramos_netos :string           default("0.00")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  observaciones          :text
 #
 
 class SalidaProceso < ApplicationRecord

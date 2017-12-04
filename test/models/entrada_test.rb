@@ -121,13 +121,13 @@ class EntradaTest < ActiveSupport::TestCase
   test "tiene partidas que han salido a proceso" do
     entrada = entradas(:one)
     
-    assert(entrada.tiene_partidas_que_han_salido_a_proceso)
+    assert(entrada.tiene_partidas_con_salidas)
   end
   
   test "no tiene partidas que han salido a proceso" do
     entrada = entradas(:sin_salida_proceso)
     
-    assert_not(entrada.tiene_partidas_que_han_salido_a_proceso)
+    assert_not(entrada.tiene_partidas_con_salidas)
   end
   
 end

@@ -46,7 +46,7 @@
                   <i class="fa fa-eye" aria-hidden="true"></i>                    
                 <% end %>
               </td>
-              <% unless entrada.tiene_partidas_que_han_salido_a_proceso %>
+              <% unless entrada.tiene_partidas_con_salidas %>
               <td>
                 <%= link_to edit_entrada_path(entrada) do %>
                   <i class="fa fa-pencil" aria-hidden="true"></i>                    

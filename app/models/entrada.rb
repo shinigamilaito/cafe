@@ -100,12 +100,15 @@ class Entrada < ApplicationRecord
     return clients.order(:organization)
   end
   
-  # Verifica si las partidas de esta entrada han salido a proceso
-  # return Boolean, true si existen partidas con salidas a proceso, false contrario
-  def tiene_partidas_que_han_salido_a_proceso
-    ids_partidas = partidas.map(&:id)
+  # Verifica si las partidas de esta entrada han salido a proceso o han sido sacados de 
+  # la bodega.
+  # return Boolean, true si existen partidas con salidas, false contrario
+  def tiene_partidas_con_salidas
+    ids_partidas_array = partidas.map(&:id)
+    existe_salidas_proceso = LineItemSalidaProceso.where(partida_id: ids_partidas_array).present?    
+    existe_salidas_bodega = LineItemSalidaBodega.where(partida_id: ids_partidas_array).present?
     
-    LineItemSalidaProceso.where(partida_id: ids_partidas).present?    
+    return existe_salidas_proceso || existe_salidas_bodega
   end
   
   private 
