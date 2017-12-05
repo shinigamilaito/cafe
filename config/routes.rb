@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   
   resources :salida_procesos
   
-  resources :salida_bodegas
+  resources :salida_bodegas do
+    get :reporte, on: :member
+  end
   
   resources :line_item_salida_procesos, only: :create
   

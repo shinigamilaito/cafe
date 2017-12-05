@@ -52,8 +52,17 @@ class SalidaBodegasControllerTest < ActionDispatch::IntegrationTest
     assert_select "h1.title-md", I18n.t('salidas.show.title_bodega')
     assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", 'Información Salida'
     assert_select "div.tab-content div.tab-pane#specifications", 1
-    assert_select "div.btn-group a", 1
+    assert_select "div.btn-group a", minimum: 1
     assert_select "table.table.table-striped", minimum: 1
+  end
+  
+  test "should get reporte" do
+    @salida_bodega = SalidaBodega.last
+    
+    get reporte_salida_bodega_url(@salida_bodega)
+    assert File.exist?("#{Rails.root}/reports/entradas.pdf")
+    assert_response :success
+    assert File.delete("#{Rails.root}/reports/entradas.pdf")
   end
 
 end

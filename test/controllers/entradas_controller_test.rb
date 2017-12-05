@@ -92,7 +92,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
     
     get entrada_url(@entrada)
     assert_response :success
-    assert_select "h1.title-md", I18n.t('entradas.show.title')
+    assert_select "h1.title-md", "#{I18n.t('entradas.show.title')}: 00001"
     assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", 'Información Entrada'
     assert_select "div.tab-content div.tab-pane#specifications", 1
     assert_select "table.table", 2

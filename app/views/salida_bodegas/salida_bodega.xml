@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entrada>
+  <fecha>04/12/2017</fecha>
+  <numero_entrada>00012</numero_entrada>
+  <numero_entrada_cliente>00001</numero_entrada_cliente>
+  <entregado_por>SOFIA SUÑIGA SIERRA</entregado_por>
+  <total_kilos_brutos>5401.10</total_kilos_brutos>
+  <total_tara>43.40</total_tara>
+  <total_kilos_netos>5357.70</total_kilos_netos>
+  <imagen>http://localhost:3000/assets/logo/logo_cafe-aacb3150ba84a541f4ab94001cca8e30249b0e83bb3e2e522c43a950235da653.jpg</imagen>
+  <cliente>
+    <representante_legal>FIDEL MORALES</representante_legal>
+    <direccion>DOMICILIO CONOCIDO</direccion>
+    <organizacion>CAFETICULTORES ORGANICOS DE OAXACA SPR DE RL</organizacion>
+    <observaciones>asdasdasdasdasd dadasdas
+</observaciones>
+    <mostrar_observaciones>nil</mostrar_observaciones>
+  </cliente>
+  <partidas>
+    <partida>
+      <numero_partida>0001</numero_partida>
+      <kilogramos_brutos>4301.00</kilogramos_brutos>
+      <tara>36.20</tara>
+      <kilogramos_netos>40.00</kilogramos_netos>
+      <numero_sacos>0</numero_sacos>
+      <numero_bolsas>0</numero_bolsas>
+      <humedad>14.20</humedad>
+      <tipo_cafe>Pergamino</tipo_cafe>
+      <calidad_cafe>CAFÉ PERGAMINO ORGANICO</calidad_cafe>
+      <observaciones>CAFE LIMPIO</observaciones>
+    </partida>
+  </partidas>
+</entrada>

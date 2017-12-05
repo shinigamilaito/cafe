@@ -14,10 +14,13 @@ xml.entrada do
     xml.representante_legal @entrada.client.legal_representative
     xml.direccion @entrada.client.address
     xml.organizacion @entrada.client.organization
+    xml.observaciones nil
+    xml.mostrar_observaciones false
   end  
   xml.partidas do
     @entrada.partidas.order("identificador ASC").each do |partida|
       xml.partida do
+        xml.numero_partida padded_zeros_numero_entrada(partida.identificador)
         xml.kilogramos_brutos number_with_precision(partida.kilogramos_brutos, precision: 2)
         xml.tara number_with_precision(partida.tara, precision: 2)
         xml.kilogramos_netos number_with_precision(partida.kilogramos_netos, precision: 2)

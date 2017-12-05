@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="entradas" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true" whenResourceMissingType="Error" uuid="1bed1544-354f-464d-be3a-44e1ca805c75">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="entradas" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true" uuid="1bed1544-354f-464d-be3a-44e1ca805c75">
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="515"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="471"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="entrada"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="salida_bodega"/>
 	<property name="net.sf.jasperreports.print.create.bookmarks" value="false"/>
 	<import value="net.sf.jasperreports.engine.data.*"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
@@ -94,63 +94,24 @@
 		<field name="observaciones" class="java.lang.String">
 			<fieldDescription><![CDATA[observaciones]]></fieldDescription>
 		</field>
+		<field name="numero_partida" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
 	</subDataset>
 	<queryString language="xPath">
 		<![CDATA[/entrada]]>
 	</queryString>
-	<field name="identificador" class="java.lang.Integer">
-		<fieldDescription><![CDATA[identificador]]></fieldDescription>
-	</field>
-	<field name="kilogramos_brutos" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[kilogramos_brutos]]></fieldDescription>
-	</field>
-	<field name="numero_sacos" class="java.lang.Integer">
-		<fieldDescription><![CDATA[numero_sacos]]></fieldDescription>
-	</field>
-	<field name="tara" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[tara]]></fieldDescription>
-	</field>
-	<field name="kilogramos_netos" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[kilogramos_netos]]></fieldDescription>
-	</field>
-	<field name="humedad" class="java.lang.Float">
-		<fieldDescription><![CDATA[humedad]]></fieldDescription>
-	</field>
-	<field name="tipo_cafe" class="java.lang.String">
-		<fieldDescription><![CDATA[tipo_cafe]]></fieldDescription>
-	</field>
-	<field name="calidad_cafe" class="java.lang.String">
-		<fieldDescription><![CDATA[calidad_cafe]]></fieldDescription>
-	</field>
-	<field name="observaciones" class="java.lang.String">
-		<fieldDescription><![CDATA[observaciones]]></fieldDescription>
-	</field>
-	<field name="numero_bolsas" class="java.lang.Integer">
-		<fieldDescription><![CDATA[numero_bolsas]]></fieldDescription>
-	</field>
 	<field name="fecha" class="java.lang.String">
-		<fieldDescription><![CDATA[/entrada/fecha]]></fieldDescription>
+		<fieldDescription><![CDATA[fecha]]></fieldDescription>
 	</field>
 	<field name="numero_entrada" class="java.lang.String">
-		<fieldDescription><![CDATA[/entrada/numero_entrada]]></fieldDescription>
+		<fieldDescription><![CDATA[numero_entrada]]></fieldDescription>
 	</field>
-	<field name="chofer" class="java.lang.String">
-		<fieldDescription><![CDATA[/entrada/chofer]]></fieldDescription>
+	<field name="numero_entrada_cliente" class="java.lang.String">
+		<fieldDescription><![CDATA[numero_entrada_cliente]]></fieldDescription>
 	</field>
 	<field name="entregado_por" class="java.lang.String">
-		<fieldDescription><![CDATA[/entrada/entregado_por]]></fieldDescription>
-	</field>
-	<field name="total_partidas" class="java.lang.Integer">
-		<fieldDescription><![CDATA[/entrada/total_partidas]]></fieldDescription>
-	</field>
-	<field name="representante_legal" class="java.lang.String">
-		<fieldDescription><![CDATA[/entrada/cliente/representante_legal]]></fieldDescription>
-	</field>
-	<field name="direccion" class="java.lang.String">
-		<fieldDescription><![CDATA[/entrada/cliente/direccion]]></fieldDescription>
-	</field>
-	<field name="organizacion" class="java.lang.String">
-		<fieldDescription><![CDATA[/entrada/cliente/organizacion]]></fieldDescription>
+		<fieldDescription><![CDATA[entregado_por]]></fieldDescription>
 	</field>
 	<field name="total_kilos_brutos" class="java.lang.String">
 		<fieldDescription><![CDATA[total_kilos_brutos]]></fieldDescription>
@@ -161,11 +122,23 @@
 	<field name="total_kilos_netos" class="java.lang.String">
 		<fieldDescription><![CDATA[total_kilos_netos]]></fieldDescription>
 	</field>
-	<field name="numero_entrada_cliente" class="java.lang.String">
-		<fieldDescription><![CDATA[numero_entrada_cliente]]></fieldDescription>
-	</field>
 	<field name="imagen" class="java.lang.String">
 		<fieldDescription><![CDATA[imagen]]></fieldDescription>
+	</field>
+	<field name="observaciones" class="java.lang.String">
+		<fieldDescription><![CDATA[cliente/observaciones]]></fieldDescription>
+	</field>
+	<field name="mostrar_observaciones" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[cliente/mostrar_observaciones]]></fieldDescription>
+	</field>
+	<field name="organizacion" class="java.lang.String">
+		<fieldDescription><![CDATA[cliente/organizacion]]></fieldDescription>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[cliente/direccion]]></fieldDescription>
+	</field>
+	<field name="representante_legal" class="java.lang.String">
+		<fieldDescription><![CDATA[cliente/representante_legal]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch">
@@ -379,11 +352,34 @@
 					<datasetRun subDataset="partidas" uuid="cb761a96-ae75-4fe0-a365-ce0e1ae520fc">
 						<dataSourceExpression><![CDATA[((JRXmlDataSource)$P{REPORT_DATA_SOURCE}).dataSource("/entrada/partidas/partida")]]></dataSourceExpression>
 					</datasetRun>
-					<jr:column width="90" uuid="826a3447-1c51-4a63-b74f-aa15ca06a891">
+					<jr:column width="60" uuid="03e09dbf-5c8e-47de-a87a-6d710ba16226">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
 						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement positionType="Float" x="0" y="0" width="90" height="30" uuid="cf30bb4b-d3fd-4a93-87b9-833f8f68122e">
+								<reportElement positionType="Float" x="0" y="0" width="60" height="30" uuid="4455aed2-1d59-421d-8bcf-ddccadca9a93">
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[No. PARTIDA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField isStretchWithOverflow="true">
+								<reportElement positionType="Float" x="0" y="0" width="60" height="30" uuid="7f23bc86-7efe-4791-ac01-562a48a50afe">
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{numero_partida}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="80" uuid="826a3447-1c51-4a63-b74f-aa15ca06a891">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" x="0" y="0" width="80" height="30" uuid="cf30bb4b-d3fd-4a93-87b9-833f8f68122e">
 									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 								</reportElement>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -394,7 +390,7 @@
 						</jr:columnHeader>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField isStretchWithOverflow="true">
-								<reportElement positionType="Float" x="0" y="0" width="90" height="30" uuid="d6c93a1a-e7c5-4913-b1da-f6b7498bab29">
+								<reportElement positionType="Float" x="0" y="0" width="80" height="30" uuid="d6c93a1a-e7c5-4913-b1da-f6b7498bab29">
 									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 								</reportElement>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
@@ -402,12 +398,12 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="160" uuid="38ab70d1-0714-4133-ab8e-6aca303e77a3">
+					<jr:column width="139" uuid="38ab70d1-0714-4133-ab8e-6aca303e77a3">
 						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
 						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement positionType="Float" x="0" y="0" width="160" height="30" uuid="36751a23-3d23-43b5-b634-6f2ba4fadcc5"/>
+								<reportElement positionType="Float" x="0" y="0" width="139" height="30" uuid="36751a23-3d23-43b5-b634-6f2ba4fadcc5"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8" isBold="true"/>
 								</textElement>
@@ -416,17 +412,21 @@
 						</jr:columnHeader>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField isStretchWithOverflow="true">
-								<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="160" height="30" uuid="823ac0a7-9ee7-4eee-85d2-1c8d36798bdc"/>
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="139" height="30" uuid="823ac0a7-9ee7-4eee-85d2-1c8d36798bdc"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA["CAFÉ: " + $F{tipo_cafe}.toUpperCase() + ", HUMEDAD: " +  $F{humedad}.toUpperCase() +" %, CALIDAD: " + $F{calidad_cafe}.toUpperCase()]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="170" uuid="90b59674-b94d-43ca-b035-2ca80e179097">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+					<jr:column width="142" uuid="90b59674-b94d-43ca-b035-2ca80e179097">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
-								<reportElement positionType="Float" x="0" y="0" width="170" height="30" uuid="47800a22-1fe6-46d9-ad7c-104d22a3c7fb"/>
+								<reportElement positionType="Float" x="0" y="0" width="140" height="30" uuid="47800a22-1fe6-46d9-ad7c-104d22a3c7fb">
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8" isBold="true"/>
 								</textElement>
@@ -435,14 +435,16 @@
 						</jr:columnHeader>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="170" height="30" uuid="1321c1ae-bd4b-413a-b733-7e8cb03e3762"/>
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="140" height="30" uuid="1321c1ae-bd4b-413a-b733-7e8cb03e3762">
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{observaciones}.toUpperCase()]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="51ca87fb-c927-4671-aad6-470033ff7e11">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
 						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement positionType="Float" x="0" y="0" width="50" height="30" uuid="573b8794-7602-452d-83ed-7ddbe97ebb61"/>
@@ -461,7 +463,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="40" uuid="01b7561f-7e5f-48fb-a24a-8d508de03345">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
 						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement positionType="Float" x="0" y="0" width="40" height="30" uuid="743cd86a-cea9-4a84-b7fb-4c562c12f79e"/>
@@ -480,7 +482,7 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="44" uuid="7d3444e9-0779-470e-8ac5-d2dac53b53df">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
 						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement positionType="Float" x="0" y="0" width="44" height="30" uuid="a7fe87e4-bd4b-4cb4-aaff-54a057e02597"/>
@@ -503,7 +505,7 @@
 		</band>
 	</detail>
 	<summary>
-		<band height="75" splitType="Prevent">
+		<band height="105" splitType="Prevent">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<staticText>
 				<reportElement positionType="Float" x="350" y="0" width="70" height="30" uuid="47f8f78a-19aa-45ff-9ea3-939bd66b6a01">
@@ -551,7 +553,7 @@
 				<textFieldExpression><![CDATA[$F{total_kilos_netos} + " "]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="60" width="198" height="15" uuid="f576c898-e4c4-4972-a1ba-6617d60da921">
+				<reportElement positionType="Float" x="0" y="90" width="198" height="15" uuid="f576c898-e4c4-4972-a1ba-6617d60da921">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
@@ -561,7 +563,7 @@
 				<text><![CDATA[ENTREGÓ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="198" y="60" width="198" height="15" uuid="a9e73983-c1af-4062-b9b4-e219ed91a1ef">
+				<reportElement positionType="Float" x="198" y="90" width="198" height="15" uuid="a9e73983-c1af-4062-b9b4-e219ed91a1ef">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
@@ -571,7 +573,7 @@
 				<text><![CDATA[REPRESENTANTE DE LA ORGANIZACIÓN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="396" y="60" width="159" height="15" uuid="8e24b252-fe9c-498b-8fb3-11c1361fa59c">
+				<reportElement positionType="Float" x="396" y="90" width="159" height="15" uuid="8e24b252-fe9c-498b-8fb3-11c1361fa59c">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
@@ -588,9 +590,9 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<frame>
-				<reportElement positionType="Float" x="0" y="45" width="555" height="15" uuid="0894a202-43e5-4eba-8835-6658d85d5956"/>
+				<reportElement positionType="Float" x="1" y="75" width="555" height="15" uuid="0894a202-43e5-4eba-8835-6658d85d5956"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement positionType="Float" stretchType="ContainerHeight" x="0" y="0" width="198" height="15" uuid="0ef1649c-1eed-4b66-81f8-080b60e48f4c">
+					<reportElement positionType="Float" stretchType="ContainerHeight" x="-1" y="0" width="198" height="15" uuid="0ef1649c-1eed-4b66-81f8-080b60e48f4c">
 						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					</reportElement>
@@ -598,19 +600,47 @@
 					<textFieldExpression><![CDATA[$F{entregado_por}.toUpperCase()]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement positionType="Float" stretchType="ContainerHeight" x="198" y="0" width="198" height="15" uuid="c56036c3-7018-4070-b936-fb7c47223d9d">
+					<reportElement positionType="Float" stretchType="ContainerHeight" x="197" y="0" width="198" height="15" uuid="c56036c3-7018-4070-b936-fb7c47223d9d">
 						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Bottom"/>
 					<textFieldExpression><![CDATA[$F{representante_legal}.toUpperCase()]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement positionType="Float" stretchType="ContainerHeight" x="396" y="0" width="159" height="15" uuid="25e120c3-4452-49e8-88fe-182c23b69298">
+					<reportElement positionType="Float" stretchType="ContainerHeight" x="395" y="0" width="159" height="15" uuid="25e120c3-4452-49e8-88fe-182c23b69298">
 						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 					</reportElement>
 					<textElement textAlignment="Center" verticalAlignment="Bottom"/>
 					<textFieldExpression><![CDATA["L.A.E. LILIANA CONTRERAS."]]></textFieldExpression>
 				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="45" width="555" height="15" uuid="d37639d1-6de2-4f49-aff5-3edf3b97e901">
+					<printWhenExpression><![CDATA[$F{mostrar_observaciones}]]></printWhenExpression>
+				</reportElement>
+				<staticText>
+					<reportElement key="" positionType="Float" stretchType="ContainerHeight" x="0" y="0" width="165" height="15" uuid="a0fb04dd-bb68-4c1b-b41a-6a3f7b563a41">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[OBSERVACIONES:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="ContainerHeight" x="180" y="0" width="375" height="15" uuid="3fdb88c2-15b0-4fce-b23c-815c1b49e495"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{observaciones}.toUpperCase()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" stretchType="ContainerHeight" x="165" y="0" width="15" height="15" uuid="e7d2eeca-3949-4551-a7da-ffb7c76e299c">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[]]></text>
+				</staticText>
 			</frame>
 		</band>
 	</summary>

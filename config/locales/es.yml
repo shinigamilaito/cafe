@@ -216,6 +216,7 @@ es:
     show:
       title_bodega: Datos de la Salida de la Bodega
       title_proceso: Datos de la Salida a Proceso
+      print_report_link: 'Recibo'
     index: 
       title_proceso: Salidas a Proceso
       title_bodega: Salidas de Bodega
