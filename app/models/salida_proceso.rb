@@ -18,6 +18,8 @@ class SalidaProceso < ApplicationRecord
   
   belongs_to :client
   has_many :line_item_salida_procesos, dependent: :destroy
+  has_many :partidas, through: :line_item_salida_procesos
+  has_many :entradas, through: :partidas
   
   validate :same_type_coffee
   
@@ -29,19 +31,11 @@ class SalidaProceso < ApplicationRecord
   end
     
   def entradas_afectadas
-    entradas_ids = SalidaProceso.joins(line_item_salida_procesos: {partida: :entrada})
-      .where("salida_procesos.id = ?", self.id)
-      .select("DISTINCT(entradas.id) AS entrada_id")      
-      
-    Entrada.where(id: entradas_ids.map(&:entrada_id))
+    entradas
   end
   
   def line_item_salidas_para_entrada(entrada)
-    line_item_salida_ids = SalidaProceso.joins(line_item_salida_procesos: {partida: :entrada})
-      .where("salida_procesos.id = ? AND entradas.id = ?", self.id, entrada.id)
-      .select("line_item_salida_procesos.id AS line_item_salida_id")
-      
-    LineItemSalidaProceso.where(id: line_item_salida_ids.map(&:line_item_salida_id))      
+    entradas_afectadas.where(id: entrada.id).first.partidas_a_proceso      
   end
   
   # Verifica que los item de la salida tengan el mismo tipo de cafe

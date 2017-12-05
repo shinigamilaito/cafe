@@ -22,6 +22,8 @@ class SalidaBodega < ApplicationRecord
   
   belongs_to :client
   has_many :line_item_salida_bodegas, dependent: :destroy
+  has_many :partidas, through: :line_item_salida_bodegas
+  has_many :entradas, through: :partidas
   
   validates :name_driver, presence: true
   validates :name_person, presence: true
@@ -35,19 +37,11 @@ class SalidaBodega < ApplicationRecord
   end
   
   def entradas_afectadas
-    entradas_ids = SalidaBodega.joins(line_item_salida_bodegas: {partida: :entrada})
-      .where("salida_bodegas.id = ?", self.id)
-      .select("DISTINCT(entradas.id) AS entrada_id")      
-      
-    Entrada.where(id: entradas_ids.map(&:entrada_id))
+    entradas
   end
   
   def line_item_salidas_para_entrada(entrada)
-    line_item_salida_ids = SalidaBodega.joins(line_item_salida_bodegas: {partida: :entrada})
-      .where("salida_bodegas.id = ? AND entradas.id = ?", self.id, entrada.id)
-      .select("line_item_salida_bodegas.id AS line_item_salida_id")
-      
-    LineItemSalidaBodega.where(id: line_item_salida_ids.map(&:line_item_salida_id))      
+    entradas_afectadas.where(id: entrada.id).first.partidas_retiradas_bodega
   end
   
   # Verifica que los item de la salida tengan el mismo tipo de cafe

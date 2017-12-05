@@ -20,7 +20,9 @@ class Entrada < ApplicationRecord
   scope :numero_entrada_ascendente, -> { order("numero_entrada ASC") }
   
   has_many :partidas, dependent: :destroy, inverse_of: :entrada  
-  accepts_nested_attributes_for :partidas, allow_destroy: true
+  has_many :line_item_salida_procesos, through: :partidas
+  has_many :line_item_salida_bodegas, through: :partidas 
+  accepts_nested_attributes_for :partidas, allow_destroy: true  
   belongs_to :client
 
   validates :date, :numero_entrada, :driver, :entregado_por, presence: :true
@@ -104,11 +106,17 @@ class Entrada < ApplicationRecord
   # la bodega.
   # return Boolean, true si existen partidas con salidas, false contrario
   def tiene_partidas_con_salidas
-    ids_partidas_array = partidas.map(&:id)
-    existe_salidas_proceso = LineItemSalidaProceso.where(partida_id: ids_partidas_array).present?    
-    existe_salidas_bodega = LineItemSalidaBodega.where(partida_id: ids_partidas_array).present?
-    
-    return existe_salidas_proceso || existe_salidas_bodega
+    return partidas_a_proceso.present? || partidas_retiradas_bodega.present?
+  end
+  
+  def partidas_a_proceso
+    line_item_salida_procesos.where("line_item_salida_procesos.cart_salida_proceso_id IS NULL 
+      AND line_item_salida_procesos.salida_proceso_id IS NOT NULL")
+  end
+  
+  def partidas_retiradas_bodega
+    line_item_salida_bodegas.where("line_item_salida_bodegas.cart_salida_bodega_id IS NULL 
+      AND line_item_salida_bodegas.salida_bodega_id IS NOT NULL")
   end
   
   private 
