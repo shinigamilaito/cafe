@@ -164,7 +164,7 @@ $(function() {
 });
 //</editor-fold>
 
-//<editor-fold desc="Coloca las mascaras a los input del formulario de salida a proceso">
+//<editor-fold desc="Coloca las mascaras a los input de los formularios: salidas a proceso, salidas de bodega y mermas">
 $(function() {
     
     var formatKilogramos = "##0.00";
@@ -178,6 +178,7 @@ $(function() {
     $('#line_item_salida_bodega_total_bolsas').mask(formatSacosBolsas, {reverse: true});        
     $('#line_item_salida_bodega_total_sacos').mask(formatSacosBolsas, {reverse: true});
         
+    $('.merma-quantity').mask(formatKilogramos, {reverse: true});
 });
 
 //</editor-fold>

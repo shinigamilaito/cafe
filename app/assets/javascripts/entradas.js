@@ -299,7 +299,7 @@ $(function() {
     /**
      * Configuración de picker hora-fecha
      */
-    $('#datetimepicker_for_date').datetimepicker({
+    $('.datetimepicker_for_date').datetimepicker({
         format: "DD/MM/YYYY",
         sideBySide: true,
         ignoreReadonly: true        

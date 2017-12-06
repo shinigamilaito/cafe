@@ -59,6 +59,11 @@ es:
       salida_bodega:
           name_driver: 'Chofer:'
           name_person: 'Quién se lleva el Café:'
+          
+      merma:
+          date_dry: 'Fecha de Secado:'
+          quantity: 'Cantidad Mermada:'
+          observations: 'Observaciones:'
         
     hints:
       client:

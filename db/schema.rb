@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204215302) do
+ActiveRecord::Schema.define(version: 20171206020639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,16 @@ ActiveRecord::Schema.define(version: 20171204215302) do
     t.index ["cart_salida_proceso_id"], name: "index_line_item_salida_procesos_on_cart_salida_proceso_id", using: :btree
     t.index ["partida_id"], name: "index_line_item_salida_procesos_on_partida_id", using: :btree
     t.index ["salida_proceso_id"], name: "index_line_item_salida_procesos_on_salida_proceso_id", using: :btree
+  end
+
+  create_table "mermas", force: :cascade do |t|
+    t.date     "date_dry"
+    t.string   "quantity"
+    t.text     "observations"
+    t.integer  "partida_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["partida_id"], name: "index_mermas_on_partida_id", using: :btree
   end
 
   create_table "partidas", force: :cascade do |t|
@@ -157,6 +167,7 @@ ActiveRecord::Schema.define(version: 20171204215302) do
   add_foreign_key "line_item_salida_procesos", "cart_salida_procesos"
   add_foreign_key "line_item_salida_procesos", "partidas"
   add_foreign_key "line_item_salida_procesos", "salida_procesos"
+  add_foreign_key "mermas", "partidas"
   add_foreign_key "partidas", "entradas"
   add_foreign_key "partidas", "type_coffees"
   add_foreign_key "salida_bodegas", "clients"

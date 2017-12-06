@@ -49,7 +49,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
     assert_select "input[type=text].tara", 1
     assert_select "input[type=text].kilogramos-brutos", 1
     assert_select "input[type=text].kilogramos-netos", 1
-    assert_select "div#datetimepicker_for_date", 1
+    assert_select "div.datetimepicker_for_date", 1
     assert_select "input[type=text]#entrada_date", 1
     assert_select "input[type=text].humedad", 1
     assert_select "input[type=hidden]#entrada_id", 1
@@ -117,7 +117,7 @@ class EntradasControllerTest < ActionDispatch::IntegrationTest
     assert_select "input[type=text].tara", minimum: 1
     assert_select "input[type=text].kilogramos-brutos", minimum: 1
     assert_select "input[type=text].kilogramos-netos", minimum: 1
-    assert_select "div#datetimepicker_for_date", minimum: 1
+    assert_select "div.datetimepicker_for_date", minimum: 1
     assert_select "input[type=text]#entrada_date", minimum: 1
     assert_select "input[type=text].humedad", minimum: 1
     assert_select "input[type=hidden]#entrada_id", minimum: 1
