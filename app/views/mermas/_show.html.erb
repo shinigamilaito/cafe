@@ -1,0 +1,38 @@
+<div data-use='mermas-wrapper'>
+  <a class="btn btn-ghost btn-grey pull-right" role="button" data-toggle="collapse" 
+     href="#collapseMerma<%=partida.id%>" aria-expanded="false" 
+     aria-controls="collapseMerma<%=partida.id%>">
+    Mermas
+  </a>
+  <div class="collapse" id="collapseMerma<%=partida.id%>">    
+    <div class="row row-tabs well" role="tabpanel">
+      <div class="col-md-12">
+        <div class="tabs-top tabs-justified-top">
+          <ul class="nav nav-tabs nav-justified" role="tablist">
+            <li role="presentation" class="active">
+              <a href="#registrar<%=partida.id%>" aria-controls="registrar" 
+                 role="tab" data-toggle="tab">
+                  Registrar
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#ver<%=partida.id%>" aria-controls="ver" role="tab" 
+                 data-toggle="tab">
+                  Ver
+              </a>
+            </li>        
+          </ul>
+          <div class="tab-content">
+              <div role="tabpanel" class="tab-pane fade in active" 
+                   id="registrar<%=partida.id%>">
+                  <%= render "mermas/form", partida: partida %>
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="ver<%=partida.id%>">
+                  <%= render "mermas/index", partida: partida %>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>       
+  </div>  
+</div>
