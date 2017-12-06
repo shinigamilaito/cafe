@@ -1,0 +1,11 @@
+<tr>              
+  <td>
+    <%= l(merma.date_dry) %>    
+  </td>
+  <td>
+    <%="#{number_with_precision(merma.quantity, precision: 2)} Kgs" %>
+  </td>
+  <td>
+    <%= l(merma.created_at, format: :medium) %>
+  </td> 
+</tr>

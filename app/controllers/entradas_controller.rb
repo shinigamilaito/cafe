@@ -14,6 +14,7 @@ class EntradasController < ApplicationController
   # GET /entradas/1
   # GET /entradas/1.json
   def show     
+    @merma = Merma.new
   end
 
   # GET /entradas/new

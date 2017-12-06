@@ -1,9 +1,12 @@
-<%= simple_form_for Merma.new, remote: true, html: { class: 'form-horizontal' }, wrapper: :horizontal_form,
+<%= simple_form_for @merma, remote: true, html: { class: 'form-horizontal' }, wrapper: :horizontal_form,
   wrapper_mappings: {
     date: :multi_select_horizontal,
     datetime: :multi_select_horizontal
   } do |f| %>
+
   <%= f.error_notification %>
+
+  <%= f.input :partida_id, as: :hidden, input_html: { value: partida.id } %>
 
   <%= f.input :date_dry, wrapper: :horizontal_input_group, input_group_span_html: { class: "datetimepicker_for_date" } do %>
     <span class="input-group-addon text-info"><span class="glyphicon glyphicon-calendar text-info"></span></span>

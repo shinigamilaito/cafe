@@ -35,6 +35,19 @@ class PartidaTest < ActiveSupport::TestCase
 		)
   end
 
+  test "obtener la cantidad de mermas correcta" do
+    partida_con_mermas = partidas(:three)
+    partida_sin_mermas = partidas(:one)
+    
+    assert_equal("1.5", partida_con_mermas.total_mermas)
+    assert_equal("0", partida_sin_mermas.total_mermas)
+  end
+  
+  test "debe tener asociacion a mermas" do
+    partida = partidas(:one)
+    assert partida.mermas
+  end
+  
   test "kilogramos brutos" do
 	 ok = [9, 9.875, 987.56, 674569.03,  786.54, 0.01] 
 	 bad = [0.001, 0, -5679834520, "4567abc7895"]

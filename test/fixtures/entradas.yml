@@ -42,6 +42,7 @@ three:
   client: juan
   delete_logical: true
 
+# Usado para verificar que entradas sin salida a proceso pueden eliminarse
 sin_salida_proceso:
   date: 2017-09-02 14:52:42
   numero_entrada: 4

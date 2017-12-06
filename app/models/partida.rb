@@ -25,6 +25,7 @@ class Partida < ApplicationRecord
   belongs_to :type_coffee  
   has_many :line_item_salida_procesos
   has_many :line_item_salida_bodegas
+  has_many :mermas
 
   validates :kilogramos_brutos, :numero_bolsas, :numero_sacos, presence: true
   validates :tara, :kilogramos_netos, :humedad, presence: true
@@ -103,6 +104,14 @@ class Partida < ApplicationRecord
     return total_kilos_netos.to_s
   end
   
+  # Devuelve el total de kilos mermados
+  # Return String
+  def total_mermas
+    total_mermas = BigDecimal('0')
+    
+    return (mermas.map() { |m| BigDecimal(m.quantity) }).sum().to_s
+  end
+  
   # Devuelve la cantidad de sacos disponibles
   # return Integer mayor o igual a cero
   def total_sacos_disponibles
@@ -119,7 +128,9 @@ class Partida < ApplicationRecord
   # return Big Decimal mayor o igual a cero
   def total_kilos_netos_disponibles
     total_kilos_sacados = BigDecimal(total_kilos_netos_a_proceso) + BigDecimal(total_kilos_netos_de_bodega)
-    return BigDecimal(kilogramos_netos) - (total_kilos_sacados) 
+    total_mermas_partida = BigDecimal(total_mermas)
+    
+    return BigDecimal(kilogramos_netos) - (total_kilos_sacados + total_mermas_partida) 
   end
 
   private

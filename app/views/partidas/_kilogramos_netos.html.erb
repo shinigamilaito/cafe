@@ -18,6 +18,12 @@
             </span>                          
         </div>
         <div class="col-sm-12">
+            <span class="totales_salidas_proceso" 
+                  title="Kilogramos que han sido mermados.">
+                - <%= "#{number_with_precision(partida.total_mermas, precision: 2)} Kgs" %>
+            </span>                          
+        </div>
+        <div class="col-sm-12">
             <span class="totales_disponibles" 
                   title="Kilogramos disponibles.">
                 = <%= "#{number_with_precision(partida.total_kilos_netos_disponibles, precision: 2)} Kgs" %>

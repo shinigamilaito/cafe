@@ -19,7 +19,8 @@ class ClientsController < ApplicationController
     session[:cart_salida_proceso_id] = nil
     session[:cart_salida_bodega_id] = nil
     @line_item_salida_proceso = LineItemSalidaProceso.new
-    @line_item_salida_bodega = LineItemSalidaBodega.new
+    @line_item_salida_bodega = LineItemSalidaBodega.new    
+    @merma = Merma.new
   end
 
   # GET /clients/new

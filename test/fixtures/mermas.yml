@@ -15,10 +15,6 @@
 
 one:
   date_dry: 2017-12-05
-  quantity: MyString
+  quantity: 1.5
   observations: MyText
-
-two:
-  date_dry: 2017-12-05
-  quantity: MyString
-  observations: MyText
+  partida: three

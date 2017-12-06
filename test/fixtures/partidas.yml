@@ -20,6 +20,7 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+# Sacado a proceso
 one:
   identificador: 1
   entrada: one
@@ -32,6 +33,7 @@ one:
   type_coffee: pergamino
   calidad_cafe: MyString  
 
+# Sacado de Bodega
 two:
   identificador: 1
   entrada: two
@@ -44,6 +46,8 @@ two:
   type_coffee: cerezo
   calidad_cafe: MyString
 
+# Agregado a carrito de salida de bodega y carrito de salida a proceso
+# Tiene mermas
 three:
   identificador: 1
   entrada: two

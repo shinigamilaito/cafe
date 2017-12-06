@@ -227,7 +227,11 @@ es:
       total_bolsas: Total Bolsas
       total_kilogramos_netos: Total Kgs Netos
       created_at: Registrado el
-      options: Opciones    
+      options: Opciones   
+      
+  mermas:
+    created: Merma creada exitosamente.
+    updated: Merma actualizada exitosamente.  
 
   activerecord:
     errors:
@@ -268,6 +272,11 @@ es:
         line_item_salida_bodega:
           attributes:
             total_kilogramos_netos:
+              greater_than_or_equal_to: Debe ser mayor a 0.1
+              
+        merma:
+          attributes:
+            quantity:
               greater_than_or_equal_to: Debe ser mayor a 0.1
 
       messages:
