@@ -79,12 +79,13 @@ ActiveRecord::Schema.define(version: 20171206020639) do
   end
 
   create_table "mermas", force: :cascade do |t|
+    t.integer  "merma_type",   default: 0
     t.date     "date_dry"
     t.string   "quantity"
     t.text     "observations"
     t.integer  "partida_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["partida_id"], name: "index_mermas_on_partida_id", using: :btree
   end
 
