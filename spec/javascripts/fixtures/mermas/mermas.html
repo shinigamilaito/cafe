@@ -29,6 +29,19 @@
                                   data-remote="true" method="post">
                                 <input name="utf8" type="hidden" value="✓">
 
+                                <div class="form-group select optional merma_merma_type">
+                                    <label class="col-sm-3 control-label select optional" 
+                                           for="merma_merma_type">
+                                        Tipo:
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control select optional" 
+                                                name="merma[merma_type]" id="merma_merma_type">
+                                            <option selected="selected" value="dry_coffee">Secado</option>
+                                            <option value="time">Por tiempo</option>
+                                            <option value="sample_coffee">Muestra</option></select>
+                                    </div>
+                                </div>
                                 <div class="form-group date required merma_date_dry">
                                     <label class="col-sm-3 control-label date required" 
                                            for="merma_date_dry">

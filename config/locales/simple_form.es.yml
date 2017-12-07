@@ -61,7 +61,7 @@ es:
           name_person: 'Quién se lleva el Café:'
           
       merma:
-          type: 'Tipo:'
+          merma_type: 'Tipo:'
           date_dry: 'Fecha de Secado:'
           quantity: 'Cantidad Mermada:'
           observations: 'Observaciones:'
@@ -95,6 +95,8 @@ es:
         client_id: Selecciona una opción          
       partidas:
         type_coffee_id: Selecciona una opción
+      mermas:
+        merma_type: Selecciona una opción
 
     # Examples
     # labels:

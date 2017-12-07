@@ -285,6 +285,13 @@ es:
         taken: ya existe
         too_short: 'es demasiado corto, por lo menos %{count} números'
         inclusion: 'no se encuentra en el rango correcto'
+        
+    attributes:
+        merma:
+            merma_types:
+              dry_coffee: Secado
+              time: "Por tiempo"
+              sample_coffee: Muestra 
 
   password:
     minimum:

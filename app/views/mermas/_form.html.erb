@@ -6,6 +6,8 @@
 
   <%= f.error_notification %>
 
+  <%= f.input :merma_type, collection: enum_options_for_select(Merma, :merma_type), prompt: :translate %>
+
   <%= f.input :partida_id, as: :hidden, input_html: { value: partida.id } %>
 
   <%= f.input :date_dry, wrapper: :horizontal_input_group, input_group_span_html: { class: "datetimepicker_for_date" } do %>

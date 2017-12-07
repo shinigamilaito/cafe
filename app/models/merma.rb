@@ -13,7 +13,7 @@
 #
 
 class Merma < ApplicationRecord
-  enum merma_type: [ :dry_coffee, :time, :sample_coffee ]  
+  enum merma_type: { dry_coffee: 0, time: 1, sample_coffee: 2 }  
   
   belongs_to :partida
 

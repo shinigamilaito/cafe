@@ -12,6 +12,7 @@ describe("Registro de Mermas", function() {
    });
    
    it("deben estar presentes los inputs del formulario", function() {
+       expect($("div[data-use='mermas-wrapper'] select#merma_merma_type")[0]).toBeInDOM();
        expect($("div[data-use='mermas-wrapper'] input#merma_date_dry")[0]).toBeInDOM();
        expect($("div[data-use='mermas-wrapper'] input#merma_quantity")[0]).toBeInDOM();
        expect($("div[data-use='mermas-wrapper'] textarea#merma_observations")[0]).toBeInDOM();
