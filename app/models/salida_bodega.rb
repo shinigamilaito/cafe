@@ -13,6 +13,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  observaciones          :text
+#  numero_salida          :integer          default(0)
+#  numero_salida_cliente  :integer          default(0)
 #
 
 # Entidad que registra las salidas de cafe de bodega
@@ -28,6 +30,8 @@ class SalidaBodega < ApplicationRecord
   validates :name_driver, presence: true
   validates :name_person, presence: true
   validate :same_type_coffee
+  
+  before_create :asignar_numero_salida, :asignar_numero_salida_por_cliente
   
   def add_line_item_salidas_from_cart_salida(cart_salida)
     cart_salida.line_item_salida_bodegas.each do |item|
@@ -51,5 +55,29 @@ class SalidaBodega < ApplicationRecord
       return false
     end    
   end
+  
+  def asignar_numero_salida
+    ultima_salida = SalidaBodega.order("created_at DESC").first
+    if ultima_salida
+      self.numero_salida = ultima_salida.numero_salida + 1
+    else
+      self.numero_entrada = 1
+    end    
+  end
+  
+  def asignar_numero_salida_por_cliente
+    ultima_salida = SalidaBodega.where("client_id = ?", self.client_id).order("created_at DESC").first
+     if ultima_salida
+      self.numero_salida_cliente = ultima_salida.numero_salida_cliente + 1
+    else
+      self.numero_salida_cliente = 1
+    end    
+  end
+  
+  private
+  
+    def class_name
+      SalidaBodega
+    end
   
 end

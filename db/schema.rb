@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171206020639) do
+ActiveRecord::Schema.define(version: 20171208011526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,9 +115,11 @@ ActiveRecord::Schema.define(version: 20171206020639) do
     t.integer  "total_sacos"
     t.integer  "total_bolsas"
     t.string   "total_kilogramos_netos"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.text     "observaciones"
+    t.integer  "numero_salida",          default: 0
+    t.integer  "numero_salida_cliente",  default: 0
     t.index ["client_id"], name: "index_salida_bodegas_on_client_id", using: :btree
   end
 

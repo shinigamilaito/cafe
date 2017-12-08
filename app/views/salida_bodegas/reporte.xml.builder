@@ -1,8 +1,8 @@
 xml.instruct!
 xml.entrada do
   xml.fecha l(@salida_bodega.created_at, format: :medium_date)
-  xml.numero_entrada @salida_bodega.entradas_afectadas.map() {|e| padded_zeros_numero_entrada(e.numero_entrada) }.join("-")
-  xml.numero_entrada_cliente @salida_bodega.entradas_afectadas.map() {|e| padded_zeros_numero_entrada(e.numero_entrada_cliente) }.join("-")
+  xml.numero_salida @salida_bodega.numero_salida
+  xml.numero_salida_cliente @salida_bodega.numero_salida_cliente
   xml.entregado_por @salida_bodega.entradas_afectadas.map(&:entregado_por).join("-")
   xml.total_kilos_brutos number_with_precision(@salida_bodega.line_item_salida_bodegas.map() {|item| BigDecimal(item.partida.kilogramos_brutos)}.reduce(BigDecimal("0"), :+), precision: 2)
   xml.total_tara number_with_precision(@salida_bodega.line_item_salida_bodegas.map() {|item| BigDecimal(item.partida.tara)}.reduce(BigDecimal("0"), :+), precision: 2)
@@ -15,7 +15,6 @@ xml.entrada do
     xml.direccion @salida_bodega.entradas_afectadas.map() {|e| e.client.address}.join("-")
     xml.organizacion @salida_bodega.entradas_afectadas.map() {|e| e.client.organization}.join("-")
     xml.observaciones @salida_bodega.observaciones
-    xml.mostrar_observaciones true
   end  
   xml.partidas do
     @salida_bodega.line_item_salida_bodegas.order("created_at ASC").each do |item_salida|

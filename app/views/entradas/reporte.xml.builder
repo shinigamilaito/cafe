@@ -14,8 +14,6 @@ xml.entrada do
     xml.representante_legal @entrada.client.legal_representative
     xml.direccion @entrada.client.address
     xml.organizacion @entrada.client.organization
-    xml.observaciones nil
-    xml.mostrar_observaciones false
   end  
   xml.partidas do
     @entrada.partidas.order("identificador ASC").each do |partida|

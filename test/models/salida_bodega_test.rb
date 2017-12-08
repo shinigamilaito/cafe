@@ -13,18 +13,39 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  observaciones          :text
+#  numero_salida          :integer          default(0)
+#  numero_salida_cliente  :integer          default(0)
 #
 
 require 'test_helper'
 
 class SalidaBodegaTest < ActiveSupport::TestCase
   def setup
-    @salida_bodega = salida_bodegas(:one)
+#    @salida_bodega = salida_bodegas(:one)
+    
+    @salida = new_salida
+    @salida.partidas << partidas(:one)
+  end
+  
+  def new_salida
+		SalidaBodega.new(
+			name_driver: 'XXXX',
+			name_person: 'ZZZZ',
+      client: clients(:pedro),   		      
+			tipo_cafe: 'Pergamino',
+   		total_sacos: 10,
+   		total_bolsas: 10,
+      total_kilogramos_netos: "10.0",
+      numero_salida: 1,
+      numero_salida_cliente: 1
+		)
   end
       
   test "pertenece a un cliente y tiene muchos line_item_salidas" do
-    assert(@salida_bodega.client)
-    assert(@salida_bodega.line_item_salida_bodegas)
+    salida_bodega = salida_bodegas(:one)
+    
+    assert(salida_bodega.client)
+    assert(salida_bodega.line_item_salida_bodegas)
   end
   
   test "agrega los line item desde un cart_salida" do
@@ -51,16 +72,21 @@ class SalidaBodegaTest < ActiveSupport::TestCase
   end
   
   test "obtener las entradas afectadas" do
-    assert_equal(@salida_bodega.entradas_afectadas.to_a, [entradas(:two)])
+    salida_bodega = salida_bodegas(:one)
+    
+    assert_equal(salida_bodega.entradas_afectadas.to_a, [entradas(:two)])
   end
   
   test "obtener line item salidas para entrada" do
-    assert_equal(@salida_bodega.line_item_salidas_para_entrada(entradas(:two)).to_a, 
+    salida_bodega = salida_bodegas(:one)
+    
+    assert_equal(salida_bodega.line_item_salidas_para_entrada(entradas(:two)).to_a, 
     [line_item_salida_bodegas(:one)]
     )
   end
   
   test "los tipos de cafe deben ser iguales" do
+    salida_bodega = salida_bodegas(:one)
     line_item_salida_bodega = LineItemSalidaBodega.new({
         partida: partidas(:one),
         total_sacos: 1,
@@ -68,9 +94,22 @@ class SalidaBodegaTest < ActiveSupport::TestCase
         total_kilogramos_netos: 1      
       })
     
-    @salida_bodega.line_item_salida_bodegas << line_item_salida_bodega
+    salida_bodega.line_item_salida_bodegas << line_item_salida_bodega
     
-    assert_not(@salida_bodega.same_type_coffee)    
-    assert_equal(@salida_bodega.errors[:base], ['Los tipos de cafés son diferentes.'])
+    assert_not(salida_bodega.same_type_coffee)    
+    assert_equal(salida_bodega.errors[:base], ['Los tipos de cafés son diferentes.'])
+  end
+  
+  test "numero salida" do
+    last_salida = SalidaBodega.last.numero_salida   
+    @salida.save    
+    assert @salida.numero_salida, last_salida + 1
+       
+  end
+  
+  test "numero salida por cliente" do
+    last_salida_cliente = SalidaBodega.last.numero_salida_cliente
+    @salida.save
+    assert @salida.numero_salida_cliente, last_salida_cliente + 1
   end
 end

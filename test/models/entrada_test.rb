@@ -53,11 +53,11 @@ class EntradaTest < ActiveSupport::TestCase
   test "numero entrada por cliente" do
     entrada = new_entrada
   
-    last_entrada = Entrada.last.numero_entrada_cliente
+    last_entrada_cliente = Entrada.last.numero_entrada_cliente
    
     entrada.save
     
-    assert entrada.numero_entrada, last_entrada + 1
+    assert entrada.numero_entrada_cliente, last_entrada_cliente + 1
        
   end
   
