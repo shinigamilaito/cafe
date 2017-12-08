@@ -205,6 +205,7 @@ es:
     created: Salida creada exitosamente.
     not_created: Imposible crear la salida, intente nuevamente.
     total_sacos: 'Total Sacos:'
+    number_exit_client: 'Número de Salida por Cliente:'
     total_bolsas: 'Total Bolsas:'
     total_kilogramos_netos: 'Total Kgrs. Netos:'
     name_driver: 'Chofer:'
@@ -221,6 +222,7 @@ es:
       title_proceso: Salidas a Proceso
       title_bodega: Salidas de Bodega
       legal_representative: Representante Legal
+      number_exit: Número
       organization: Organización
       tipo_cafe: Tipo de Cafe
       total_sacos: Total Sacos

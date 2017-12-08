@@ -47,9 +47,10 @@ class SalidaBodegasControllerTest < ActionDispatch::IntegrationTest
 
   test "should show salida_bodega" do
     get salida_bodega_url(@salida_bodega)
+    
     assert_response :success
     
-    assert_select "h1.title-md", I18n.t('salidas.show.title_bodega')
+    assert_select "h1.title-md", "#{I18n.t('salidas.show.title_bodega')}: 00001"
     assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", 'Información Salida'
     assert_select "div.tab-content div.tab-pane#specifications", 1
     assert_select "div.btn-group a", minimum: 1

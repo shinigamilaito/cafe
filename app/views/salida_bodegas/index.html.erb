@@ -13,6 +13,7 @@
       <table class="table table-striped table-hover table-condensed">
         <thead>
           <tr scope="row">
+            <th><%= t('salidas.index.number_exit') %></th>
             <th><%= t('salidas.index.organization') %></th>
             <th><%= t('salidas.index.tipo_cafe') %></th>
             <th><%= t('salidas.index.total_sacos') %></th>
@@ -26,6 +27,7 @@
         <tbody>
           <% @salida_bodegas.each_with_index do |salida_bodega, index| %>
           <tr>
+            <td><%= padded_zeros_numero_entrada(salida_bodega.numero_salida) %></td>
             <td><%= salida_bodega.client.organization %></td>
             <td><%= salida_bodega.tipo_cafe %></td>
             <td><%= salida_bodega.total_sacos %></td>

@@ -1,7 +1,7 @@
 <div class="row">
     <div class='col-sm-12'>
         <h1 class='title-md hr text-center text-uppercase'>
-          <%= t('salidas.show.title_bodega') %>
+          <%= t('salidas.show.title_bodega') + ": #{padded_zeros_numero_entrada(@salida_bodega.numero_salida)}" %>
         </h1>
     </div>
 </div>
@@ -20,6 +20,10 @@
                 <%= render 'link_options_show', salida_bodega: @salida_bodega %>
                 <table class="table table-striped">
                     <tbody>        
+                        <tr>
+                            <td><strong><%= t('salidas.number_exit_client') %></strong></td>
+                            <td><%= padded_zeros_numero_entrada(@salida_bodega.numero_salida_cliente) %></td>
+                        </tr>
                         <tr>
                             <td><strong><%= t('clients.client.legal_representative') %></strong></td>
                             <td><%= @salida_bodega.client.legal_representative %></td>

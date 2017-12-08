@@ -27,3 +27,5 @@ one:
   total_sacos: 10
   total_bolsas: 10
   total_kilogramos_netos: 10.0
+  numero_salida: 1
+  numero_salida_cliente: 1
