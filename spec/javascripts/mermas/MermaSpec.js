@@ -21,4 +21,14 @@ describe("Registro de Mermas", function() {
    it("el campo de cantidad debe tener la mascara para aceptar solo números", function() {
       expect($("div[data-use='mermas-wrapper'] input.merma-quantity")).toHaveMethod('mask'); 
    });
+   
+   it("para las mermas diferentes a secado se desabilita el input de fecha de secado", function() {
+       var secado = 'Secado';
+       var $typeMerma = $("div[data-use='mermas-wrapper'] select.merma_type");
+       var $dryDateDiv = $typeMerma.parent().parent().next();
+       
+       expect($typeMerma.find('option:selected').text()).toEqual("Secado");       
+       expect($dryDateDiv).not.toBeHidden();
+       
+   });
 });

@@ -63,7 +63,7 @@ es:
       merma:
           merma_type: 'Tipo:'
           date_dry: 'Fecha de Secado:'
-          quantity: 'Cantidad Mermada:'
+          quantity: 'Cantidad:'
           observations: 'Observaciones:'
         
     hints:

@@ -252,3 +252,26 @@ $(function() {
 
 //</editor-fold>
 
+//<editor-fold desc="Mermas">
+
+// Verifica que se desabilite la fecha de secado para el tipo de merma secado
+$(function() {    
+    var $typeMerma = $("div[data-use='mermas-wrapper'] select.merma_type");
+        
+    $typeMerma.change(function() {
+        var $optionSelected = $(this);
+        var $divWrapperDateDry = $optionSelected.parent().parent().next();
+        
+        if($optionSelected.find('option:selected').text() === 'Secado') {
+            $divWrapperDateDry.show();            
+        } else {
+            $divWrapperDateDry.hide();            
+        }
+    });    
+    
+    $typeMerma.change();
+});
+
+
+
+//</editor-fold>
