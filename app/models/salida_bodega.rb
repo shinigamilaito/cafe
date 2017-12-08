@@ -61,7 +61,7 @@ class SalidaBodega < ApplicationRecord
     if ultima_salida
       self.numero_salida = ultima_salida.numero_salida + 1
     else
-      self.numero_entrada = 1
+      self.numero_salida = 1
     end    
   end
   
