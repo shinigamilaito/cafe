@@ -42,7 +42,7 @@ class SalidaBodegasController < ApplicationController
   
   def reporte
     xml_data = render_to_string('reporte.xml.builder', layout: false)    
-    send_file_pdf("SalidaBodega", "entradas", xml_data, "entrada")
+    send_file_pdf("SalidaBodega", "salidas_bodega", xml_data, "salida")
   end
 
   private

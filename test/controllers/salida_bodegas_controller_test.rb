@@ -61,9 +61,9 @@ class SalidaBodegasControllerTest < ActionDispatch::IntegrationTest
     @salida_bodega = SalidaBodega.last
     
     get reporte_salida_bodega_url(@salida_bodega)
-    assert File.exist?("#{Rails.root}/reports/entradas.pdf")
+    assert File.exist?("#{Rails.root}/reports/salidas_bodega.pdf")
     assert_response :success
-    assert File.delete("#{Rails.root}/reports/entradas.pdf")
+    assert File.delete("#{Rails.root}/reports/salidas_bodega.pdf")
   end
 
 end
