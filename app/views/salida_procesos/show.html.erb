@@ -1,7 +1,7 @@
 <div class="row">
     <div class='col-sm-12'>
         <h1 class='title-md hr text-center text-uppercase'>
-          <%= t('salidas.show.title_proceso') %>
+          <%= t('salidas.show.title_proceso') + ": #{padded_zeros_numero_entrada(@salida_proceso.numero_salida)}" %>
         </h1>
     </div>
 </div>
@@ -19,7 +19,11 @@
             <div class="tab-pane fade in active tab-shop-item" id="specifications">
                 <%= render 'link_options_show', salida_proceso: @salida_proceso %>
                 <table class="table table-striped">
-                    <tbody>        
+                    <tbody>     
+                        <tr>
+                            <td><strong><%= t('salidas.number_exit_client') %></strong></td>
+                            <td><%= padded_zeros_numero_entrada(@salida_proceso.numero_salida_cliente) %></td>
+                        </tr>
                         <tr>
                             <td><strong><%= t('clients.client.legal_representative') %></strong></td>
                             <td><%= @salida_proceso.client.legal_representative %></td>

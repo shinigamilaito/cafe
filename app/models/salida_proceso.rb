@@ -11,6 +11,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  observaciones          :text
+#  numero_salida          :integer          default(0)
+#  numero_salida_cliente  :integer          default(0)
 #
 
 class SalidaProceso < ApplicationRecord
@@ -22,6 +24,8 @@ class SalidaProceso < ApplicationRecord
   has_many :entradas, through: :partidas
   
   validate :same_type_coffee
+  
+  before_create :asignar_numero_salida, :asignar_numero_salida_por_cliente
   
   def add_line_item_salidas_from_cart_salida(cart_salida)
     cart_salida.line_item_salida_procesos.each do |item|
@@ -45,4 +49,10 @@ class SalidaProceso < ApplicationRecord
       return false
     end
   end
+  
+  private
+  
+    def class_name
+      SalidaProceso
+    end
 end

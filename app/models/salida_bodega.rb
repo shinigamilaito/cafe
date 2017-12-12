@@ -54,25 +54,7 @@ class SalidaBodega < ApplicationRecord
       errors.add(:base, 'Los tipos de cafés son diferentes.')
       return false
     end    
-  end
-  
-  def asignar_numero_salida
-    ultima_salida = SalidaBodega.order("created_at DESC").first
-    if ultima_salida
-      self.numero_salida = ultima_salida.numero_salida + 1
-    else
-      self.numero_salida = 1
-    end    
-  end
-  
-  def asignar_numero_salida_por_cliente
-    ultima_salida = SalidaBodega.where("client_id = ?", self.client_id).order("created_at DESC").first
-     if ultima_salida
-      self.numero_salida_cliente = ultima_salida.numero_salida_cliente + 1
-    else
-      self.numero_salida_cliente = 1
-    end    
-  end
+  end  
   
   private
   

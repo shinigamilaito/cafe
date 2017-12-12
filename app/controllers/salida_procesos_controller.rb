@@ -1,7 +1,9 @@
+require 'jasper-bridge/jasper'
 class SalidaProcesosController < ApplicationController
   include CurrentCartSalidas
+  include Jasper::Bridge
   before_action :set_cart_salida_proceso, only: [:create]
-  before_action :set_salida_proceso, only: [:show]
+  before_action :set_salida_proceso, only: [:show, :reporte]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_salida_proceso
 
   # GET /salida_procesos
@@ -36,6 +38,11 @@ class SalidaProcesosController < ApplicationController
         format.json { render json: @salida_proceso.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def reporte
+    xml_data = render_to_string('reporte.xml.builder', layout: false)    
+    send_file_pdf("SalidaProceso", "salidas_proceso", xml_data, "salida")
   end
 
   private

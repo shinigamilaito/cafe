@@ -20,9 +20,7 @@
 require 'test_helper'
 
 class SalidaBodegaTest < ActiveSupport::TestCase
-  def setup
-#    @salida_bodega = salida_bodegas(:one)
-    
+  def setup   
     @salida = new_salida
     @salida.partidas << partidas(:one)
   end

@@ -11,6 +11,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  observaciones          :text
+#  numero_salida          :integer          default(0)
+#  numero_salida_cliente  :integer          default(0)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
@@ -21,3 +23,5 @@ one:
   total_sacos: 8
   total_bolsas: 5
   total_kilogramos_netos: 45.67
+  numero_salida: 1
+  numero_salida_cliente: 1

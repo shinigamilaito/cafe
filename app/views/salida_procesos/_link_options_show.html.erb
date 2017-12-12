@@ -3,4 +3,8 @@
     <i class="fa fa-mail-reply" aria-hidden="true"></i>                                      
     <%= t('salidas.back_link_proceso') %>
   <% end %>  
+  <%= link_to reporte_salida_proceso_path(salida_proceso), class: "btn btn-ghost btn-sea pull-right", target: '_blank' do %>
+    <i class="fa fa-file-pdf-o"  aria-hidden="true"></i>
+    <%= t('salidas.show.print_report_link') %>
+  <% end %>  
 </div>

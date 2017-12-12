@@ -1,8 +1,8 @@
 xml.instruct!
 xml.salida do
   xml.fecha l(@salida_bodega.created_at, format: :medium_date)
-  xml.numero_salida @salida_bodega.numero_salida
-  xml.numero_salida_cliente @salida_bodega.numero_salida_cliente  
+  xml.numero_salida padded_zeros_numero_entrada(@salida_bodega.numero_salida)
+  xml.numero_salida_cliente padded_zeros_numero_entrada(@salida_bodega.numero_salida_cliente)  
   xml.entregado_por @salida_bodega.entradas_afectadas.map(&:entregado_por).join("-")
   xml.total_kilos_brutos number_with_precision(@salida_bodega.line_item_salida_bodegas.map() {|item| BigDecimal(item.partida.kilogramos_brutos)}.reduce(BigDecimal("0"), :+), precision: 2)
   xml.total_tara number_with_precision(@salida_bodega.line_item_salida_bodegas.map() {|item| BigDecimal(item.partida.tara)}.reduce(BigDecimal("0"), :+), precision: 2)

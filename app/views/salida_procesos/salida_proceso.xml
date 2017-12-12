@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<salida>
+  <fecha>08/12/2017</fecha>
+  <numero_salida>0001</numero_salida>
+  <numero_salida_cliente>0001</numero_salida_cliente>
+  <entregado_por>CARLOS ZARATE</entregado_por>
+  <total_kilos_brutos>1171.00</total_kilos_brutos>
+  <total_tara>21.00</total_tara>
+  <total_kilos_netos>10.00</total_kilos_netos>
+  <imagen>http://localhost:3000/assets/logo/logo_cafe-aacb3150ba84a541f4ab94001cca8e30249b0e83bb3e2e522c43a950235da653.jpg</imagen>
+  <cliente>
+    <representante_legal>CARLOS ZARATE</representante_legal>
+    <organizacion>CARLOS ZARATE</organizacion>
+  </cliente>
+  <item_salidas>
+    <item>
+      <numero_partida>00001</numero_partida>
+      <kilogramos_brutos>1171.00</kilogramos_brutos>
+      <tara>21.00</tara>
+      <kilogramos_netos>10.00</kilogramos_netos>
+      <numero_sacos>0</numero_sacos>
+      <numero_bolsas>0</numero_bolsas>
+      <humedad>14.80</humedad>
+      <tipo_cafe>Pergamino</tipo_cafe>
+      <calidad_cafe>CAFE PERGAMINO CONVENCIONAL</calidad_cafe>
+      <observaciones>CAFE LIMPIO</observaciones>
+    </item>
+  </item_salidas>
+</salida>

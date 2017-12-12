@@ -47,11 +47,20 @@ class SalidaProcesosControllerTest < ActionDispatch::IntegrationTest
     get salida_proceso_url(@salida_proceso)
     assert_response :success
     
-    assert_select "h1.title-md", I18n.t('salidas.show.title_proceso')
+    assert_select "h1.title-md",  "#{I18n.t('salidas.show.title_proceso')}: 00001"
     assert_select "ul.nav.nav-tabs.nav-tabs-shop li a", 'Información Salida'
     assert_select "div.tab-content div.tab-pane#specifications", 1
-    assert_select "div.btn-group a", 1
+    assert_select "div.btn-group a", minimum: 1
     assert_select "table.table.table-striped", minimum: 1
+  end
+  
+  test "should get reporte" do
+    @salida_proceso = SalidaProceso.last
+    
+    get reporte_salida_proceso_url(@salida_proceso)
+    assert File.exist?("#{Rails.root}/reports/salidas_proceso.pdf")
+    assert_response :success
+    assert File.delete("#{Rails.root}/reports/salidas_proceso.pdf")
   end
 
 end

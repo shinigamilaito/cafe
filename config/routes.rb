@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, path: 'accounts', path_names: {sign_in: 'login', sign_out: 'logout' }
   
-  resources :salida_procesos
+  resources :salida_procesos do
+    get :reporte, on: :member
+  end
   
   resources :salida_bodegas do
     get :reporte, on: :member
