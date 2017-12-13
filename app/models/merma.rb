@@ -17,8 +17,8 @@ class Merma < ApplicationRecord
   
   belongs_to :partida
 
-  validates :merma_type, inclusion: { in: Merma.merma_types }
-  validates :date_dry, :quantity, :partida, presence: true
+  validates :merma_type, inclusion: { in: Merma.merma_types }  
+  validates :quantity, :partida, presence: true
   validates :quantity, allow_blank: true, numericality: {
     greater_than_or_equal_to: 0.01 }
 end
