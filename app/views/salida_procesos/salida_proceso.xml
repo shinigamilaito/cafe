@@ -14,6 +14,7 @@
   </cliente>
   <item_salidas>
     <item>
+      <numero_entrada>00001</numero_entrada>  
       <numero_partida>00001</numero_partida>
       <kilogramos_brutos>1171.00</kilogramos_brutos>
       <tara>21.00</tara>
