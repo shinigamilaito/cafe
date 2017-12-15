@@ -19,6 +19,8 @@ class Merma < ApplicationRecord
 
   validates :merma_type, inclusion: { in: Merma.merma_types }  
   validates :quantity, :partida, presence: true
+  validates :date_dry, presence: true, if: Proc.new { |m| m.merma_type == "dry_coffee" }  
   validates :quantity, allow_blank: true, numericality: {
     greater_than_or_equal_to: 0.01 }
+  
 end

@@ -27,7 +27,7 @@ class MermaTest < ActiveSupport::TestCase
   test "merma attributes must not be empty" do
     merma = Merma.new
     assert merma.invalid?
-#    assert merma.errors[:date_dry].any?	
+    assert merma.errors[:date_dry].any?	
     assert merma.errors[:quantity].any?
     assert merma.errors[:partida].any?
   end

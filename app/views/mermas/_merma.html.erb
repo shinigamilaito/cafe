@@ -1,6 +1,9 @@
-<tr>              
+<tr>     
   <td>
-    <%= l(merma.date_dry) %>    
+    <%= t('activerecord.attributes.merma.merma_types.'+ merma.merma_type) %>
+  </td>
+  <td>
+    <%= merma.merma_type == "dry_coffee" ? l(merma.date_dry) : 'No aplica' %>    
   </td>
   <td>
     <%="#{number_with_precision(merma.quantity, precision: 2)} Kgs" %>

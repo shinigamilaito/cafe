@@ -24,6 +24,6 @@ class MermasController < ApplicationController
   private
     
     def merma_params
-      params.require(:merma).permit(:date_dry, :quantity, :observations, :partida_id)
+      params.require(:merma).permit(:merma_type, :date_dry, :quantity, :observations, :partida_id)
     end
 end
