@@ -16,5 +16,20 @@ namespace :db do
        end      
     end
   end
+  
+  desc "Cleaning the system. Only clients and type_coffees will exist."
+  task cleaning_tables: :environment do
+    p "Destroying datas"
+    Merma.destroy_all
+    LineItemSalidaBodega.destroy_all
+    LineItemSalidaProceso.destroy_all
+    CartSalidaBodega.destroy_all
+    CartSalidaProceso.destroy_all
+    SalidaBodega.destroy_all
+    SalidaProceso.destroy_all
+    Partida.destroy_all    
+    Entrada.destroy_all
+    p "Datas destroyed"
+  end
 
 end
