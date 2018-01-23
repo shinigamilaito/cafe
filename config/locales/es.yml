@@ -114,6 +114,10 @@ es:
       edit_link: 'Editar'
       delete_link: 'Eliminar'
       
+  process_results:
+    new:
+      title: 'Resultado de Proceso'
+      
   devise:
     sessions:
       new:

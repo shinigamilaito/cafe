@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171212011350) do
+ActiveRecord::Schema.define(version: 20180122194603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,48 @@ ActiveRecord::Schema.define(version: 20171212011350) do
     t.index ["type_coffee_id"], name: "index_partidas_on_type_coffee_id", using: :btree
   end
 
+  create_table "process_results", force: :cascade do |t|
+    t.integer  "salida_proceso_id"
+    t.string   "date"
+    t.string   "rango_lote"
+    t.string   "fecha_inicio"
+    t.string   "fecha_termino"
+    t.string   "humedad"
+    t.string   "fecha_inicio_humedad"
+    t.string   "fecha_termino_humedad"
+    t.bigint   "equivalencia_sacos",    default: 69
+    t.string   "total_kilos_totales"
+    t.string   "total_porcentaje"
+    t.string   "total_sacos"
+    t.string   "total_kilos_sacos"
+    t.string   "rendimiento"
+    t.text     "observaciones"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.index ["salida_proceso_id"], name: "index_process_results_on_salida_proceso_id", using: :btree
+  end
+
+  create_table "qualities", force: :cascade do |t|
+    t.integer  "quality_type_id"
+    t.integer  "process_result_id"
+    t.string   "kilos_totales"
+    t.string   "percentage"
+    t.integer  "sacos"
+    t.string   "kilos_sacos"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["process_result_id"], name: "index_qualities_on_process_result_id", using: :btree
+    t.index ["quality_type_id"], name: "index_qualities_on_quality_type_id", using: :btree
+  end
+
+  create_table "quality_types", force: :cascade do |t|
+    t.string   "name"
+    t.bigint   "orden",           default: 1
+    t.boolean  "is_to_increment", default: true
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
   create_table "salida_bodegas", force: :cascade do |t|
     t.string   "name_driver"
     t.string   "name_person"
@@ -175,6 +217,9 @@ ActiveRecord::Schema.define(version: 20171212011350) do
   add_foreign_key "mermas", "partidas"
   add_foreign_key "partidas", "entradas"
   add_foreign_key "partidas", "type_coffees"
+  add_foreign_key "process_results", "salida_procesos"
+  add_foreign_key "qualities", "process_results"
+  add_foreign_key "qualities", "quality_types"
   add_foreign_key "salida_bodegas", "clients"
   add_foreign_key "salida_procesos", "clients"
 end

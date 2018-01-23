@@ -65,6 +65,17 @@ es:
           date_dry: 'Fecha de Secado:'
           quantity: 'Cantidad:'
           observations: 'Observaciones:'
+          
+      process_result:
+          date: 'FECHA:'
+          rango_lote: 'RANGO DE LOTE:'
+          fecha_inicio: 'INICIO:'
+          fecha_termino: 'TERMINO:'
+          humedad: 'H2O:'
+          fecha_inicio_humedad: 'INICIO HUMEDAD:'
+          fecha_termino_humedad: 'TERMINO HUMEDAD:'
+          rendimiento: 'RENDIMIENTO:'
+          observaciones: 'OBSERVACIONES:'
         
     hints:
       client:

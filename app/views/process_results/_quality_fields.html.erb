@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-sm-3">
+      <input type="text" class="form-control" 
+             value="<%= f.object.quality_type.name %>"
+             readonly>
+    </div>
+    <div class="col-sm-3">
+      <%= f.input :kilos_totales, wrapper: :vertical_input_group, label: false %>  
+    </div>
+    <div class="col-sm-2">
+      <%= f.input :percentage, wrapper: :vertical_input_group, label: false %> 
+    </div>
+    <div class="col-sm-2">
+      <%= f.input :sacos, wrapper: :vertical_input_group, label: false %> 
+    </div>
+    <div class="col-sm-2">
+      <%= f.input :kilos_sacos, wrapper: :vertical_input_group, label: false %> 
+    </div>
+</div>

@@ -32,4 +32,19 @@ namespace :db do
     p "Datas destroyed"
   end
 
+  desc "Add the qualities types to process results."
+  task add_qualities: :environment do
+    p "Adding qualities"
+    QualityType.create!(name: "CAFÉ VERDE EXPORTACION", orden: 1)
+    QualityType.create!(name: "GRANZA", orden: 2)
+    QualityType.create!(name: "TERCERAS DE ZARANDA", orden: 3)
+    QualityType.create!(name: "CARACOLILLO", orden: 4)
+    QualityType.create!(name: "CEREZO", orden: 5)
+    QualityType.create!(name: "TERCERAS DE OLIVER MERCATOR", orden: 6)
+    QualityType.create!(name: "MANCHA ELECTRONICA", orden: 7)
+    QualityType.create!(name: "BARREDURAS", orden: 8)
+    QualityType.create!(name: "PURGA (PERGAMINO)", orden: 9)
+    QualityType.create!(name: "MERMA", orden: 10, is_to_increment: false)   
+  end
+  
 end
