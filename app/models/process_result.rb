@@ -28,4 +28,36 @@ class ProcessResult < ApplicationRecord
   accepts_nested_attributes_for :qualities, allow_destroy: true
   
   belongs_to :salida_proceso
+  
+  def colocar_kilos_totales
+    kilos_totales_arr = self.qualities.map do |quality|
+      BigDecimal.new(quality.kilos_totales)
+    end
+    
+    self.total_kilos_totales = kilos_totales_arr.sum.to_s
+  end
+  
+  def colocar_porcentaje
+    porcentajes_totales_arr = self.qualities.map do |quality|
+      BigDecimal.new(quality.percentage)
+    end
+    
+    self.total_porcentaje = porcentajes_totales_arr.sum.to_s
+  end
+  
+  def colocar_sacos
+    sacos_totales_arr = self.qualities.map do |quality|
+      BigDecimal.new(quality.sacos)
+    end
+    
+    self.total_sacos = sacos_totales_arr.sum.to_s
+  end
+  
+  def colocar_kilos_sacos
+    kilos_sacos_totales_arr = self.qualities.map do |quality|
+      BigDecimal.new(quality.kilos_sacos)
+    end
+    
+    self.total_kilos_sacos = kilos_sacos_totales_arr.sum.to_s
+  end
 end

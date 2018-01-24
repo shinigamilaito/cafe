@@ -8,6 +8,10 @@ es:
         entrada:
           create: Crear
           update: Actualizar
+          
+        process_result:
+          create: Crear
+          update: Actualizar
   date:
     abbr_day_names:
     - dom
@@ -115,6 +119,7 @@ es:
       delete_link: 'Eliminar'
       
   process_results:
+    created: Resultado de proceso creado exitosamente.    
     new:
       title: 'Resultado de Proceso'
       

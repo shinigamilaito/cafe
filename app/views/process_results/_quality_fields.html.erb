@@ -1,19 +1,29 @@
 <div class="row">
+    <%= f.input :quality_type_id, as: :hidden, value: f.object.quality_type_id %>
+    
     <div class="col-sm-3">
       <input type="text" class="form-control" 
              value="<%= f.object.quality_type.name %>"
              readonly>
     </div>
     <div class="col-sm-3">
-      <%= f.input :kilos_totales, wrapper: :vertical_input_group, label: false %>  
+      <%= f.input :kilos_totales, wrapper: :vertical_input_group, label: false, 
+        input_html: { data: {column: 'kilogramos', 
+          increment: f.object.quality_type.is_to_increment} } %>  
     </div>
     <div class="col-sm-2">
-      <%= f.input :percentage, wrapper: :vertical_input_group, label: false %> 
+      <%= f.input :percentage, wrapper: :vertical_input_group, label: false,
+       input_html: { data: {column: 'porcentajes', 
+          increment: f.object.quality_type.is_to_increment} } %> 
     </div>
     <div class="col-sm-2">
-      <%= f.input :sacos, wrapper: :vertical_input_group, label: false %> 
+      <%= f.input :sacos, wrapper: :vertical_input_group, label: false,
+       input_html: { data: {column: 'sacos', 
+          increment: f.object.quality_type.is_to_increment} } %> 
     </div>
     <div class="col-sm-2">
-      <%= f.input :kilos_sacos, wrapper: :vertical_input_group, label: false %> 
+      <%= f.input :kilos_sacos, wrapper: :vertical_input_group, label: false,
+       input_html: { data: {column: 'kilogramos_sacos', 
+          increment: f.object.quality_type.is_to_increment} } %> 
     </div>
 </div>

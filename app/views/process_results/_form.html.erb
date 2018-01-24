@@ -12,6 +12,8 @@
 
 <%= f.error_notification %>    
 
+<%= f.input :salida_proceso_id, as: :hidden, value: process_result.salida_proceso_id %>
+
 <div class="row">
     <div class="col-sm-4">
       <div class="form-group">
@@ -117,23 +119,7 @@
 
 <br/>
 
-<div class="row">
-      <div class="col-sm-3" style="border: 1px solid black;">
-        <p class="lead text-center">CALIDADES</p>
-      </div>
-      <div class="col-sm-3 text-center" style="border: 1px solid black;">
-        <p class="lead">KILOGRAMOS</p>      
-      </div>
-      <div class="col-sm-2 text-center" style="border: 1px solid black;">
-        <p class="lead">%</p>            
-      </div>
-      <div class="col-sm-2 text-center" style="border: 1px solid black;">
-        <p class="lead">SACOS</p>                  
-      </div>
-      <div class="col-sm-2 text-center" style="border: 1px solid black;">
-        <p class="lead">KGS</p>                        
-      </div>
-</div>
+<%= render "headers_table_qualities" %>
 
 <div id='qualities'>          
     <%= f.simple_fields_for :qualities do |quality| %>
@@ -141,25 +127,7 @@
     <% end %>    
 </div>
 
-<div class="row">
-    <div class="col-sm-3">
-      <input type="text" class="form-control" 
-             value="TOTALES"
-             readonly>
-    </div>
-    <div class="col-sm-3">
-      <%= f.input :total_kilos_totales, wrapper: :vertical_input_group, label: false %>  
-    </div>
-    <div class="col-sm-2">
-      <%= f.input :total_porcentaje, wrapper: :vertical_input_group, label: false %> 
-    </div>
-    <div class="col-sm-2">
-      <%= f.input :total_sacos, wrapper: :vertical_input_group, label: false %> 
-    </div>
-    <div class="col-sm-2">
-      <%= f.input :total_kilos_sacos, wrapper: :vertical_input_group, label: false %> 
-    </div>
-</div>
+<%= render "totales_qualities", f: f %>
 
 <%#*Calidades Fin%>
 
@@ -173,6 +141,19 @@
       <%= f.input :observaciones %>            
     </div>
 </div>
+
+ <div class="row">
+      <div class="col-sm-9 col-sm-offset-3">
+         <%= button_tag(type: :submit, class: 'btn btn-primary') do %>
+        <i class="fa fa-check" aria-hidden="true"></i>    
+        <%= value_button_submit f.object %>
+      <% end %>
+        <%= link_to entradas_path, role: 'button', class: 'btn btn-default' do %> 
+        <i class="fa fa-remove" aria-hidden="true"></i> 
+        Cancelar
+      <% end %> 
+      </div>    
+    </div>  
 
 
 <% end %>

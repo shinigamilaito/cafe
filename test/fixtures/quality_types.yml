@@ -15,9 +15,9 @@
 one:
   name: MyString
   orden: 1
-  increment: MyString
+  is_to_increment: true
 
 two:
   name: MyString
-  orden: 1
-  increment: MyString
+  orden: 2
+  is_to_increment: true

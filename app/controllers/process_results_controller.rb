@@ -39,19 +39,19 @@ class ProcessResultsController < ApplicationController
   def edit
   end
 
-  # POST /clients
-  # POST /clients.json
+  # POST /process_results
+  # POST /process_results.json
   def create
-    @client = Client.new(client_params)
+    @process_result = ProcessResult.new(process_result_params)
 
     respond_to do |format|
-      if @client.save
-        flash[:success] = I18n.t('.clients.created')
-        format.html { redirect_to @client }
-        format.json { render :show, status: :created, location: @client }
+      if @process_result.save
+        flash[:success] = I18n.t('.process_result.created')
+        format.html { redirect_to @process_result }
+        format.json { render :show, status: :created, location: @process_result }
       else
         format.html { render :new }
-        format.json { render json: @client.errors, status: :unprocessable_entity }
+        format.json { render json: @process_result.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -84,13 +84,19 @@ class ProcessResultsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_client
-      @client = Client.find(params[:id])
+    def set_process_result
+      @process_result = ProcessResult.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def client_params
-      params.require(:client).permit(:legal_representative, :address, :organization, :persona_fisica)
+    def process_result_params
+      params.require(:process_result).permit(:salida_proceso_id, :date, :rango_lote, 
+          :fecha_inicio, :fecha_termino, :humedad, :fecha_inicio_humedad, 
+          :fecha_termino_humedad, :total_kilos_totales, :total_porcentaje, :total_sacos, 
+          :total_kilos_sacos, :rendimiento, :observaciones, 
+          qualities_attributes: [
+          :id, :quality_type_id, :kilos_totales, :percentage, :sacos, :kilos_sacos, 
+          :_destroy])
     end
     
     def invalid_process_result
