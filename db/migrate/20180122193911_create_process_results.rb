@@ -7,8 +7,8 @@ class CreateProcessResults < ActiveRecord::Migration[5.0]
       t.string :fecha_inicio
       t.string :fecha_termino
       t.string :humedad
-      t.string :fecha_inicio_humedad
-      t.string :fecha_termino_humedad
+      t.string :hora_inicio
+      t.string :hora_termino
       t.integer :equivalencia_sacos, limit: 8, default: 69
       t.string :total_kilos_totales
       t.string :total_porcentaje
