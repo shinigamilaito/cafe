@@ -86,7 +86,7 @@
     <div class="col-sm-4">
         <div class="form-group">
           <label>KGS A PROCESAR:</label>        
-          <input type="text" class="form-control" 
+          <input type="text" class="form-control" id="total-pergamino"
                value="<%= process_result.salida_proceso.total_kilogramos_netos %>"
                readonly>
         </div>
@@ -98,19 +98,19 @@
       <%= f.input :humedad, wrapper: :vertical_input_group %>
     </div>
     <div class="col-sm-4">
-      <%= f.input :fecha_inicio_humedad, wrapper: :vertical_input_group do %>
+      <%= f.input :hora_inicio, wrapper: :vertical_input_group do %>
             <span class="input-group-addon text-info">
-                <span class="glyphicon glyphicon-calendar text-info"></span>                  
+                <span class="glyphicon glyphicon-time text-info"></span>                  
             </span>
-            <%= f.input_field :fecha_inicio_humedad, as: :string, class: "form-control", readonly: true %>      
+            <%= f.input_field :hora_inicio, as: :string, class: "form-control", readonly: true %>      
         <% end %>
     </div>
     <div class="col-sm-4">
-      <%= f.input :fecha_termino_humedad, wrapper: :vertical_input_group do %>
+      <%= f.input :hora_termino, wrapper: :vertical_input_group do %>
             <span class="input-group-addon text-info">
-                <span class="glyphicon glyphicon-calendar text-info"></span>                  
+                <span class="glyphicon glyphicon-time text-info"></span>                  
             </span>
-            <%= f.input_field :fecha_termino_humedad, as: :string, class: "form-control", readonly: true %>      
+            <%= f.input_field :hora_termino, as: :string, class: "form-control", readonly: true %>      
         <% end %>
     </div>
 </div>
@@ -134,7 +134,7 @@
 <div class="row">
     
     <div class="col-sm-6">
-      <%= f.input :rendimiento %>      
+      <%= f.input :rendimiento, readonly: true %>      
     </div>
     
     <div class="col-sm-6">

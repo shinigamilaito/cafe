@@ -114,17 +114,17 @@ ActiveRecord::Schema.define(version: 20180122194603) do
     t.string   "fecha_inicio"
     t.string   "fecha_termino"
     t.string   "humedad"
-    t.string   "fecha_inicio_humedad"
-    t.string   "fecha_termino_humedad"
-    t.bigint   "equivalencia_sacos",    default: 69
+    t.string   "hora_inicio"
+    t.string   "hora_termino"
+    t.bigint   "equivalencia_sacos",  default: 69
     t.string   "total_kilos_totales"
     t.string   "total_porcentaje"
     t.string   "total_sacos"
     t.string   "total_kilos_sacos"
     t.string   "rendimiento"
     t.text     "observaciones"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.index ["salida_proceso_id"], name: "index_process_results_on_salida_proceso_id", using: :btree
   end
 

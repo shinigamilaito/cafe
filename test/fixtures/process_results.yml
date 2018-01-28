@@ -2,24 +2,24 @@
 #
 # Table name: process_results
 #
-#  id                    :integer          not null, primary key
-#  salida_proceso_id     :integer
-#  date                  :string
-#  rango_lote            :string
-#  fecha_inicio          :string
-#  fecha_termino         :string
-#  humedad               :string
-#  fecha_inicio_humedad  :string
-#  fecha_termino_humedad :string
-#  equivalencia_sacos    :integer          default(69)
-#  total_kilos_totales   :string
-#  total_porcentaje      :string
-#  total_sacos           :string
-#  total_kilos_sacos     :string
-#  rendimiento           :string
-#  observaciones         :string
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
+#  id                  :integer          not null, primary key
+#  salida_proceso_id   :integer
+#  date                :string
+#  rango_lote          :string
+#  fecha_inicio        :string
+#  fecha_termino       :string
+#  humedad             :string
+#  hora_inicio         :string
+#  hora_termino        :string
+#  equivalencia_sacos  :integer          default(69)
+#  total_kilos_totales :string
+#  total_porcentaje    :string
+#  total_sacos         :string
+#  total_kilos_sacos   :string
+#  rendimiento         :string
+#  observaciones       :text
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
@@ -30,9 +30,9 @@ one:
   rango_lote: MyString
   fecha_inicio: MyString
   fecha_termino: MyString
-  humedad: MyString
-  fecha_inicio_humedad: MyString
-  fecha_termino_humedad: MyString
+  humedad: '10'
+  hora_inicio: MyString
+  hora_termino: MyString
   equivalencia_sacos: 1
   total_kilos_totales: MyString
   total_porcentaje: MyString
@@ -47,9 +47,9 @@ two:
   rango_lote: MyString
   fecha_inicio: MyString
   fecha_termino: MyString
-  humedad: MyString
-  fecha_inicio_humedad: MyString
-  fecha_termino_humedad: MyString
+  humedad: '20'
+  hora_inicio: MyString
+  hora_termino: MyString
   equivalencia_sacos: 1
   total_kilos_totales: MyString
   total_porcentaje: MyString

@@ -72,8 +72,8 @@ es:
           fecha_inicio: 'INICIO:'
           fecha_termino: 'TERMINO:'
           humedad: 'H2O:'
-          fecha_inicio_humedad: 'INICIO HUMEDAD:'
-          fecha_termino_humedad: 'TERMINO HUMEDAD:'
+          hora_inicio: 'HORA INICIO:'
+          hora_termino: 'HORA TERMINO:'
           rendimiento: 'RENDIMIENTO:'
           observaciones: 'OBSERVACIONES:'
         

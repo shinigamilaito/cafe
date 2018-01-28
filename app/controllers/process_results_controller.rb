@@ -91,9 +91,9 @@ class ProcessResultsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def process_result_params
       params.require(:process_result).permit(:salida_proceso_id, :date, :rango_lote, 
-          :fecha_inicio, :fecha_termino, :humedad, :fecha_inicio_humedad, 
-          :fecha_termino_humedad, :total_kilos_totales, :total_porcentaje, :total_sacos, 
-          :total_kilos_sacos, :rendimiento, :observaciones, 
+          :fecha_inicio, :fecha_termino, :humedad, :hora_inicio, :hora_termino, 
+          :total_kilos_totales, :total_porcentaje, :total_sacos, :total_kilos_sacos,
+          :rendimiento, :observaciones, 
           qualities_attributes: [
           :id, :quality_type_id, :kilos_totales, :percentage, :sacos, :kilos_sacos, 
           :_destroy])

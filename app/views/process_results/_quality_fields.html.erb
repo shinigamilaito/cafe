@@ -13,17 +13,17 @@
     </div>
     <div class="col-sm-2">
       <%= f.input :percentage, wrapper: :vertical_input_group, label: false,
-       input_html: { data: {column: 'porcentajes', 
+       input_html: { readonly: 'readonly', data: {column: 'porcentajes', 
           increment: f.object.quality_type.is_to_increment} } %> 
     </div>
     <div class="col-sm-2">
       <%= f.input :sacos, wrapper: :vertical_input_group, label: false,
-       input_html: { data: {column: 'sacos', 
+       input_html: { readonly: 'readonly', data: {column: 'sacos', 
           increment: f.object.quality_type.is_to_increment} } %> 
     </div>
     <div class="col-sm-2">
       <%= f.input :kilos_sacos, wrapper: :vertical_input_group, label: false,
-       input_html: { data: {column: 'kilogramos_sacos', 
+       input_html: { readonly: 'readonly', data: {column: 'kilogramos_sacos', 
           increment: f.object.quality_type.is_to_increment} } %> 
     </div>
 </div>

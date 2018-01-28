@@ -13,8 +13,11 @@ $(function() {
     $('#process_result_date').parent().datetimepicker(formatDate);
     $('#process_result_fecha_inicio').parent().datetimepicker(formatDate);
     $('#process_result_fecha_termino').parent().datetimepicker(formatDate);
-    $('#process_result_fecha_inicio_humedad').parent().datetimepicker(formatDate);
-    $('#process_result_fecha_termino_humedad').parent().datetimepicker(formatDate);
+    
+    formatDate.format = "HH:mm";
+    
+    $('#process_result_hora_inicio').parent().datetimepicker(formatDate);
+    $('#process_result_hora_termino').parent().datetimepicker(formatDate);
     
 });
 //</editor-fold>
@@ -26,89 +29,69 @@ $(function() {
     var $colsPorcentajes = $("input[data-column='porcentajes'");
     var $colsSacos = $("input[data-column='sacos'");
     var $colsKilogramosSacos = $("input[data-column='kilogramos_sacos'");
+    var totalPergamino = Number($('#total-pergamino').val());
     
-    $colsKilogramos.keyup(function() {        
-        var valuesIncrement = [];
-        var valuesDecrement = [];
-               
-        $colsKilogramos.each(function(index, col) {
-            
-            if($(col).data('increment')) {
-                valuesIncrement.push(Number($(col).val())); 
-            } else {
-                valuesDecrement.push(Number($(col).val()));
-            }           
-        });
+    $colsKilogramos.keyup(function() {   
+        var $currentKilogramosInput = $(this);
+        var kilogramos = Number($currentKilogramosInput.val());                        
+        var columns = obtainElementsInRow($currentKilogramosInput);
         
-        $("input[data-column='kilogramos_totales'")
-                .val(obtainTotal(valuesIncrement) - obtainTotal(valuesDecrement));
+        var porcentaje = ((kilogramos / totalPergamino) * 100).toFixed(1);
+        var sacos = (kilogramos / 69).toFixed();
+        var kilogramosSacos = kilogramos % 69;
+        
+        columns['saco'].val(sacos);
+        columns['porcentaje'].val(porcentaje);
+        columns['kilogramosSaco'].val(kilogramosSacos);
+        
+        calculateTotales($colsKilogramos, $("input[data-column='kilogramos_totales'"));
+        calculateTotales($colsPorcentajes, $("input[data-column='porcentajes_totales'"));
+        calculateTotales($colsSacos, $("input[data-column='sacos_totales'"));
+        calculateTotales($colsKilogramosSacos, $("input[data-column='kilogramos_sacos_totales'"));
+        
+        $("#process_result_rendimiento").val($("input[data-column='porcentajes_totales'").val() + " %");
         
         return;
     });
-    
-    $colsPorcentajes.keyup(function() {        
-        var valuesIncrement = [];
-        var valuesDecrement = [];
-               
-        $colsPorcentajes.each(function(index, col) {
-            
-            if($(col).data('increment')) {
-                valuesIncrement.push(Number($(col).val())); 
-            } else {
-                valuesDecrement.push(Number($(col).val()));
-            }           
-        });
-        
-        $("input[data-column='porcentajes_totales'")
-                .val(obtainTotal(valuesIncrement) - obtainTotal(valuesDecrement));
-        
-        return;
-    });
-    
-    $colsSacos.keyup(function() {        
-        var valuesIncrement = [];
-        var valuesDecrement = [];
-               
-        $colsSacos.each(function(index, col) {
-            
-            if($(col).data('increment')) {
-                valuesIncrement.push(Number($(col).val())); 
-            } else {
-                valuesDecrement.push(Number($(col).val()));
-            }           
-        });
-        
-        $("input[data-column='sacos_totales'")
-                .val(obtainTotal(valuesIncrement) - obtainTotal(valuesDecrement));
-        
-        return;
-    });
-    
-    $colsKilogramosSacos.keyup(function() {        
-        var valuesIncrement = [];
-        var valuesDecrement = [];
-               
-        $colsKilogramosSacos.each(function(index, col) {
-            
-            if($(col).data('increment')) {
-                valuesIncrement.push(Number($(col).val())); 
-            } else {
-                valuesDecrement.push(Number($(col).val()));
-            }           
-        });
-        
-        $("input[data-column='kilogramos_sacos_totales'")
-                .val(obtainTotal(valuesIncrement) - obtainTotal(valuesDecrement));
-        
-        return;
-    });
-    
 });
 
 function obtainTotal(arrValues) {
     return arrValues.reduce(function(total, elem) {
         return total + elem;
     });
+}
+
+function obtainElementsInRow($colKilogramos) {
+    var $porcentaje = nextInputColumn($colKilogramos.parents(".col-sm-3"));
+    var $saco = nextInputColumn($porcentaje.parents(".col-sm-2"));
+    var $kilogramosSaco = nextInputColumn($saco.parents(".col-sm-2"));
+    
+    return {
+        'porcentaje': $porcentaje,
+        'saco': $saco,
+        'kilogramosSaco': $kilogramosSaco
+    };
+    
+    function nextInputColumn($inputColumnParent) {
+        return $inputColumnParent.next().find("input");
+    }
+}
+
+function calculateTotales($columnsArray, $target) {    
+    var totalIncrement = 0.0;
+    var totalDecrement = 0.0;
+    $columnsArray.each(function(index, col) {  
+        var $col = $(col);
+        if($col.data('increment')) {
+            totalIncrement += Number($col.val()); 
+        } else {
+            totalDecrement += Number($col.val());
+        }           
+    });
+    
+    $target.val((totalIncrement - totalDecrement).toFixed(1));
+    
+    return;
 }
 
 //</editor-fold>
