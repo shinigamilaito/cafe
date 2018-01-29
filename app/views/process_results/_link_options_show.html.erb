@@ -1,0 +1,14 @@
+<div class="col-sm-12 btn-group">
+  <%= link_to process_results_path, class: "btn btn-ghost btn-gray pull-right" do %>        
+    <i class="fa fa-mail-reply" aria-hidden="true"></i>                                      
+    <%= t('process_results.show.back_link') %>
+  <% end %>  
+  <%= link_to process_result, method: :delete, class: "btn btn-ghost btn-red pull-right", data: {confirm: '¿Está usted seguro?'} do %>
+    <i class="fa fa-remove" aria-hidden="true"></i>                                      
+    <%= t('process_results.show.delete_link')  %>
+  <% end %>  
+  <%= link_to edit_process_result_path(process_result), class: "btn btn-ghost btn-blue pull-right" do %>
+    <i class="fa fa-pencil" aria-hidden="true"></i>        
+    <%= t('process_results.show.edit_link') %>
+  <% end %>    
+</div>

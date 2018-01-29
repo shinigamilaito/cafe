@@ -8,16 +8,9 @@ class ProcessResultsController < ApplicationController
     @clients = Client.validos.order(:legal_representative).page(params[:page])    
   end
 
-  # GET /clients/1
-  # GET /clients/1.json
+  # GET /process_results/1
+  # GET /process_results/1.json
   def show
-    @cart_salida_proceso.destroy  if @cart_salida_proceso.id == session[:cart_salida_proceso_id] # Las salidas deben ser por cliente
-    @cart_salida_bodega.destroy  if @cart_salida_bodega.id == session[:cart_salida_bodega_id]
-    session[:cart_salida_proceso_id] = nil
-    session[:cart_salida_bodega_id] = nil
-    @line_item_salida_proceso = LineItemSalidaProceso.new
-    @line_item_salida_bodega = LineItemSalidaBodega.new    
-    @merma = Merma.new
   end
 
   # GET /process_results/new?id_salida_proceso=1

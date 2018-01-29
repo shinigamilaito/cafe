@@ -1,0 +1,118 @@
+<div class="row">
+  <div class="col-sm-6">
+      <table class="table table-striped">
+        <tbody>        
+            <tr>
+                <td><strong><%= t('.date') %></strong></td>
+                <td><%= process_result.date %></td>
+            </tr>
+            <tr>
+                <td><strong><%= t('.rango_lote') %></strong></td>
+                <td><%= process_result.rango_lote %></td>
+            </tr>
+            <tr>
+                <td><strong><%= t('.fecha_inicio') %></strong></td>
+                <td><%= process_result.fecha_inicio %></td>
+            </tr>
+            <tr>
+                <td><strong><%= t('.fecha_termino') %></strong></td>
+                <td><%= process_result.fecha_termino %></td>
+            </tr>
+            <tr>
+                <td><strong><%=  t('.humedad') %></strong></td>
+                <td><%= process_result.humedad %></td>
+            </tr>         
+            <tr>
+                <td><strong><%=  t('.hora_inicio') %></strong></td>
+                <td><%= process_result.hora_inicio %></td>
+            </tr>         
+            <tr>
+                <td><strong><%=  t('.hora_termino') %></strong></td>
+                <td><%= process_result.hora_termino %></td>
+            </tr>         
+            <tr>
+                <td><strong><%=  t('.created_at') %></strong></td>
+                <td><%= l(process_result.created_at, format: :medium) %></td>
+            </tr>                              
+            <tr>
+                <td><strong><%=  t('.updated_at') %></strong></td>
+                <td><%= l(process_result.updated_at, format: :medium) %></td>
+            </tr> 
+        </tbody>
+      </table>
+  </div>
+  <div class="col-sm-6">
+      <table class="table table-striped">
+        <tbody>    
+            <tr>
+                <td><strong><%=  t('.equivalencia_sacos') %></strong></td>
+                <td><%= "#{number_with_precision(process_result.equivalencia_sacos, precision: 2)} Kgs" %></td>
+            </tr>         
+            <tr>
+                <td><strong><%=  t('.total_kilos_totales') %></strong></td>
+                <td><%= "#{number_with_precision(process_result.total_kilos_totales, precision: 2)} Kgs" %></td>
+            </tr>         
+            <tr>
+                <td><strong><%=  t('.total_porcentaje') %></strong></td>
+                <td><%= "#{number_with_precision(process_result.total_porcentaje, precision: 2)} %" %></td>
+            </tr>         
+            <tr>
+                <td><strong><%=  t('.total_sacos') %></strong></td>
+                <td><%= "#{number_with_precision(process_result.total_sacos, precision: 2)} Sacos" %></td>
+            </tr>      
+            <tr>
+                <td><strong><%=  t('.total_kilos_sacos') %></strong></td>
+                <td><%= "#{number_with_precision(process_result.total_kilos_sacos, precision: 2)} Kgs" %></td>
+            </tr>      
+            <tr>
+                <td><strong><%=  t('.rendimiento') %></strong></td>
+                <td><%= "#{number_with_precision(process_result.rendimiento, precision: 2)} " %></td>
+            </tr>     
+            <tr>
+                <td><strong><%=  t('.observaciones') %></strong></td>
+                <td><%= process_result.observaciones %></td>
+            </tr>   
+        </tbody>
+      </table>
+  </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <h3 class="title-md hr text-center text-uppercase text-center">
+          Calidades          
+        </h3>
+    </div>
+</div>
+
+<div class="row-code wrapper_partida_tabs">
+  <div class="row row-pills row-pills-left" role="tabpanel">
+    <div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked" role="tablist">
+        <% process_result.qualities.each_with_index do |quality, index| %>
+          <% if index.zero? %>
+            <li role="presentation" class="active">
+          <% else %>
+            <li role="presentation">
+          <% end %>
+              <a href="#quality<%= quality.id %>" aria-controls="quality<%= quality.id%>" role="tab" data-toggle="tab"><%= quality.quality_type.name %></a>
+          </li>
+        <% end %>                      
+    </ul>
+    </div>
+    <div class="col-md-9">
+      <div class="tab-content">
+          <% process_result.qualities.each_with_index do |quality, index| %>
+            <% if index.zero? %>
+            <div role="tabpanel" class="tab-pane fade in active" id="quality<%= quality.id %>">
+          <% else %>
+            <div role="tabpanel" class="tab-pane fade in" id="quality<%= quality.id %>">
+          <% end %>
+            <%= render quality %>
+            </div>
+          <% end %>                        
+      </div>
+    </div>
+  </div>
+</div>

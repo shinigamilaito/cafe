@@ -1,0 +1,20 @@
+<table class="table table-striped">
+    <tbody>        
+        <tr>
+            <td><strong><%= t('.kilos_totales') %></strong></td>
+            <td><%= "#{number_with_precision(quality.kilos_totales, precision: 2)} Kgs " %></td>
+        </tr>
+        <tr>
+            <td><strong><%=  t('.percentage') %></strong></td>
+            <td><%= "#{number_with_precision(quality.percentage, precision: 2)} %" %></td>
+        </tr>                              
+        <tr>
+            <td><strong><%= t('.sacos') %></strong></td>
+            <td><%= "#{number_with_precision(quality.sacos, precision: 2)} Sacos" %></td>
+        </tr>
+        <tr>
+            <td><strong><%= t('.kilos_sacos') %></strong></td>
+            <td><%= "#{number_with_precision(quality.kilos_sacos, precision: 2)} Kgs" %></td>
+        </tr>        
+    </tbody>
+</table>

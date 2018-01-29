@@ -55,9 +55,14 @@ class ProcessResultTest < ActiveSupport::TestCase
     process_result = ProcessResult.new
     
     assert process_result.invalid?
+    assert process_result.errors[:date].any?
     assert process_result.errors[:humedad].any?
     assert process_result.errors[:hora_inicio].any?
-    assert process_result.errors[:hora_termino].any?    
+    assert process_result.errors[:hora_termino].any? 
+    assert process_result.errors[:total_kilos_totales].any?
+    assert process_result.errors[:total_porcentaje].any?
+    assert process_result.errors[:total_sacos].any?
+    assert process_result.errors[:total_kilos_sacos].any?
   end
      
   test "debe obtener los kilos totales" do

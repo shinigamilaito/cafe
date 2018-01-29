@@ -119,9 +119,39 @@ es:
       delete_link: 'Eliminar'
       
   process_results:
-    created: Resultado de proceso creado exitosamente.    
+    created: Resultado de salida a proceso creado exitosamente.    
     new:
-      title: 'Resultado de Proceso'
+      title: Resultado de Salida a Proceso
+    show:
+      title: Resultado de Salida a Proceso
+      edit_link: Editar
+      delete_link: Eliminar
+      back_link: Resultados de Salidas a Proceso
+      
+    process_result:
+      date: 'Fecha:'
+      rango_lote: 'Rango de Lote:'
+      humedad: 'Humedad:'
+      hora_inicio: 'Hora de Inicio:'
+      hora_termino: 'Hora de Término:'
+      fecha_inicio: 'Fecha de Inicio:'
+      fecha_termino: 'Fecha de Termino:'
+      equivalencia_sacos: 'Equivalencia (Sacos):'
+      total_kilos_totales: 'Total Kilogramos:'
+      total_porcentaje: 'Total Porcentaje:'
+      total_sacos: 'Total Sacos:'
+      total_kilos_sacos: 'Total Kg:'
+      rendimiento: 'Rendimiento:'
+      observaciones: 'Observaciones:'
+      created_at: 'Creado el:'
+      updated_at: 'Actualizado el:'
+      
+  qualities: 
+    quality:
+      kilos_totales: 'Kilogramos:'
+      percentage: 'Porcentaje:'
+      sacos: 'Sacos:'
+      kilos_sacos: 'Kgs:'
       
   devise:
     sessions:
@@ -296,6 +326,7 @@ es:
         taken: ya existe
         too_short: 'es demasiado corto, por lo menos %{count} números'
         inclusion: 'no se encuentra en el rango correcto'
+        not_a_number: 'debe ser un numero'
         
     attributes:
         merma:

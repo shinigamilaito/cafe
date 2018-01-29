@@ -1,0 +1,25 @@
+<div class="row">
+    <div class='col-sm-12'>
+        <h1 class='title-md hr text-center text-uppercase'>
+            <%= t('.title') + ": #{padded_zeros_numero_entrada(@process_result.salida_proceso.numero_salida)}"   %>
+        </h1>
+    </div>
+</div>
+
+<div class="row mt-20 mb-30">
+    <div class="col-sm-12">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-tabs-shop" role="tablist">
+            <li class="active">
+                <a href="#specifications" role="tab" data-toggle="tab">Información Resultado</a>
+            </li>           
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content tab-content-shop">
+            <div class="tab-pane fade in active tab-shop-item" id="specifications">
+                <%= render 'link_options_show', process_result: @process_result %>
+                <%= render @process_result %>
+            </div>            
+        </div>
+    </div>
+</div>

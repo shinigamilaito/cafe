@@ -29,8 +29,13 @@ class ProcessResult < ApplicationRecord
   
   belongs_to :salida_proceso  
   
-  validates :humedad, :hora_inicio, :hora_termino, presence: true
-    
+  validates :date, :humedad, :hora_inicio, :hora_termino, presence: true
+  
+  validates :total_kilos_totales, numericality: true
+  validates :total_porcentaje, numericality: true
+  validates :total_sacos, numericality: true
+  validates :total_kilos_sacos, numericality: true
+      
   def colocar_kilos_totales
     kilos_totales_arr = self.qualities.map do |quality|
       BigDecimal.new(quality.kilos_totales)
