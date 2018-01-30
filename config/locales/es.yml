@@ -119,7 +119,16 @@ es:
       delete_link: 'Eliminar'
       
   process_results:
-    created: Resultado de salida a proceso creado exitosamente.    
+    created: Resultado de salida a proceso creado exitosamente. 
+    index:      
+      title: Resultados de Salidas a Proceso
+      process_results:
+        salida_proceso: No. de Salida
+        date: Fecha
+        rango_lote: Rango de Lote
+        fecha_inicio: Fecha de Inicio
+        fecha_termino: Fecha de Termino
+        options: Opciones
     new:
       title: Resultado de Salida a Proceso
     show:
@@ -252,6 +261,7 @@ es:
     observaciones: 'Observaciones:'
     created_at: 'Creado el:'
     back_link_proceso: Ver Salidas a Proceso
+    new_process_result_link: Registrar Resultado
     back_link_bodega: Ver Salidas de Bodega
     show:
       title_bodega: Datos de la Salida de la Bodega

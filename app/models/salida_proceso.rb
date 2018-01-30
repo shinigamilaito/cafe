@@ -19,9 +19,12 @@ class SalidaProceso < ApplicationRecord
   include Salidas
   
   belongs_to :client
+    
   has_many :line_item_salida_procesos, dependent: :destroy
   has_many :partidas, through: :line_item_salida_procesos
   has_many :entradas, through: :partidas
+  
+  has_one :process_result
   
   validate :same_type_coffee
   

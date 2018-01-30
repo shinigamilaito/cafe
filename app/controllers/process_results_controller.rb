@@ -5,7 +5,7 @@ class ProcessResultsController < ApplicationController
   # GET /process_results
   # GET /process_results.json
   def index    
-    @clients = Client.validos.order(:legal_representative).page(params[:page])    
+    @process_results = ProcessResult.order(:created_at).page(params[:page])  
   end
 
   # GET /process_results/1
@@ -16,16 +16,23 @@ class ProcessResultsController < ApplicationController
   # GET /process_results/new?id_salida_proceso=1
   def new
     @salida_proceso = SalidaProceso.find(params[:id_salida_proceso])
-    @process_result = ProcessResult.new
     
-    # Colocar la lista de calidades
-    QualityType.all.each do |quality_type| 
-      quality = Quality.new(kilos_totales: '0', percentage: '0', sacos: 0, kilos_sacos: 0)
-      quality.quality_type = quality_type
-      @process_result.qualities << quality
-    end 
+    if @salida_proceso.process_result      
+      flash[:danger] = 'Ya existe un resultado registrado para esta salida.'
+      redirect_to @salida_proceso      
+    else
+      @process_result = ProcessResult.new
     
-    @process_result.salida_proceso = @salida_proceso
+      # Colocar la lista de calidades
+      QualityType.all.each do |quality_type| 
+        quality = Quality.new(kilos_totales: '0', percentage: '0', sacos: 0, kilos_sacos: 0)
+        quality.quality_type = quality_type
+        @process_result.qualities << quality
+      end 
+    
+      @process_result.salida_proceso = @salida_proceso
+    end
+    
   end
 
   # GET /clients/1/edit

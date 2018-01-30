@@ -25,7 +25,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  salida_proceso_id: one
+  salida_proceso: one
   date: MyString
   rango_lote: MyString
   fecha_inicio: MyString
@@ -41,19 +41,3 @@ one:
   rendimiento: MyString
   observaciones: MyString
 
-two:
-  salida_proceso_id: two
-  date: MyString
-  rango_lote: MyString
-  fecha_inicio: MyString
-  fecha_termino: MyString
-  humedad: '20'
-  hora_inicio: MyString
-  hora_termino: MyString
-  equivalencia_sacos: 1
-  total_kilos_totales: MyString
-  total_porcentaje: MyString
-  total_sacos: MyString
-  total_kilos_sacos: MyString
-  rendimiento: MyString
-  observaciones: MyString
