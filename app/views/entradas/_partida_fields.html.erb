@@ -1,50 +1,56 @@
-<div class='nested-fields'>  
-        <%= f.input :identificador, input_html: {readonly: true, class: 'identificador'} %>  
-    
-	<%= f.input :kilogramos_brutos, wrapper: :horizontal_input_group do %>    	
-          <%= f.input_field :kilogramos_brutos, class: 'form-control kilogramos-brutos' %>    
-          <span class="input-group-addon">Kgs</span>
-  	<% end %>
-	
-        <h3 class="title-md text-center title-striped no-margin text-info">Bultos</h3>  
-        
-            <%= f.input :numero_sacos, wrapper: :horizontal_input_group do %>    	
-              <%= f.input_field :numero_sacos, as: :string, class: 'form-control numero-sacos' %>
-              <span class="input-group-addon">Sacos</span>
-            <% end %>  
+<div class='nested-fields'>
+  <% if @entrada.new_record? %>
+    <%= f.hidden_field :identificador, value: f.object.identificador_new_record, class: 'identificador' %>
+    <%= f.input :identificador_string, input_html: {value: "UNT #{@entrada.numero_entrada}-#{f.object.identificador_new_record}", readonly: true, class: 'identificador_string'} %>
+  <% else %>
+    <%= f.hidden_field :identificador, class: 'identificador' %>
+    <%= f.input :identificador_string, readonly: true, input_html: {class: 'identificador_string'} %>
+  <% end %>
 
-            <%= f.input :numero_bolsas, wrapper: :horizontal_input_group do %>    	
-              <%= f.input_field :numero_bolsas, as: :string, class: 'form-control numero-bolsas' %>
-              <span class="input-group-addon">Bolsas</span>
-            <% end %>  
-        
-         <h3 class="title-md text-center title-striped no-margin"></h3> 
-         
-        <%= f.input :tara, wrapper: :horizontal_input_group do %>
-          <%= f.input_field :tara, class: 'form-control tara', readonly: true %>
-          <span class="input-group-addon">Kgs</span>
-        <% end %>
+  <%= f.input :kilogramos_brutos, wrapper: :horizontal_input_group do %>
+    <%= f.input_field :kilogramos_brutos, class: 'form-control kilogramos-brutos' %>
+    <span class="input-group-addon">Kgs</span>
+  <% end %>
 
-	<%= f.input :kilogramos_netos, wrapper: :horizontal_input_group do %>
-		<%= f.input_field :kilogramos_netos, class: "form-control kilogramos-netos", readonly: true %>
-		<span class="input-group-addon">Kgs</span>
-	<% end %>
+  <h3 class="title-md text-center title-striped no-margin text-info">Bultos</h3>
 
-        <%= f.input :humedad, wrapper: :horizontal_input_group do %>
-          <%= f.input_field :humedad, class: "form-control humedad" %>
-          <span class="input-group-addon">%</span>          
-	<% end %>        
-          
-	<%= f.input :type_coffee_id, collection: f.object.tipos_cafes, prompt: :translate %>  
-	<%= f.input :calidad_cafe %>  	          
-        <%= f.input :observaciones %>
-                
-        <div class="row">
-          <div class="col-sm-9 col-sm-offset-3">
-              <%= link_to_remove_association f, class: 'btn btn-rounded btn-red pull-right' do %>
-                <i class="fa fa-trash"  aria-hidden="true"></i>
-                Quitar
-              <% end %>
-          </div>                
-        </div>
+  <%= f.input :numero_sacos, wrapper: :horizontal_input_group do %>
+  <%= f.input_field :numero_sacos, as: :string, class: 'form-control numero-sacos' %>
+  <span class="input-group-addon">Sacos</span>
+  <% end %>
+
+  <%= f.input :numero_bolsas, wrapper: :horizontal_input_group do %>
+  <%= f.input_field :numero_bolsas, as: :string, class: 'form-control numero-bolsas' %>
+  <span class="input-group-addon">Bolsas</span>
+  <% end %>
+
+  <h3 class="title-md text-center title-striped no-margin"></h3>
+
+  <%= f.input :tara, wrapper: :horizontal_input_group do %>
+  <%= f.input_field :tara, class: 'form-control tara', readonly: true %>
+  <span class="input-group-addon">Kgs</span>
+  <% end %>
+
+  <%= f.input :kilogramos_netos, wrapper: :horizontal_input_group do %>
+  <%= f.input_field :kilogramos_netos, class: "form-control kilogramos-netos", readonly: true %>
+  <span class="input-group-addon">Kgs</span>
+  <% end %>
+
+  <%= f.input :humedad, wrapper: :horizontal_input_group do %>
+  <%= f.input_field :humedad, class: "form-control humedad" %>
+  <span class="input-group-addon">%</span>
+  <% end %>
+
+  <%= f.input :type_coffee_id, collection: f.object.tipos_cafes, prompt: :translate %>
+  <%= f.input :calidad_cafe %>
+  <%= f.input :observaciones %>
+
+  <div class="row">
+    <div class="col-sm-9 col-sm-offset-3">
+      <%= link_to_remove_association f, class: 'btn btn-rounded btn-red pull-right' do %>
+      <i class="fa fa-trash"  aria-hidden="true"></i>
+      Quitar
+      <% end %>
+    </div>
+  </div>
 </div>

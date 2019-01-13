@@ -1,8 +1,8 @@
 <table class="table table-striped">
-    <tbody>                
+    <tbody>
         <tr>
             <td><strong><%= t('partidas.partida.identificador') %></strong></td>
-            <td><%= padded_zeros_numero_entrada(line_item_salida.partida.identificador) %></td>
+            <td><%= line_item_salida.partida.identificador_string %></td>
         </tr>
         <tr>
             <td><strong><%= t('partidas.partida.tipo_cafe') %></strong></td>
@@ -23,6 +23,6 @@
         <tr>
             <td><strong><%=  t('salidas.created_at') %></strong></td>
             <td><%= l(line_item_salida.created_at, format: :medium) %></td>
-        </tr>                                      
+        </tr>
     </tbody>
 </table>

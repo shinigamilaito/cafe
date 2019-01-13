@@ -9,59 +9,59 @@
       #datetime: :multi_select_horizontal
     } do |f| %>
     <%= f.error_notification %>
-    
+
     <%= f.input :id, as: :hidden %>
 
     <%= f.input :numero_entrada, readonly: true %>
-    
+
     <%= f.input :date, wrapper: :horizontal_input_group, input_group_span_html: { class: "datetimepicker_for_date" } do %>
       <span class="input-group-addon text-info"><span class="glyphicon glyphicon-calendar text-info"></span></span>
-      <%= f.input_field :date, as: :string, class: "form-control", readonly: true %>      
+      <%= f.input_field :date, as: :string, class: "form-control", readonly: true %>
     <% end %>
 
     <%= f.input :entregado_por %>
-    
-    <%= f.input :client_id, collection: entrada.tipos_clientes.map {|client| [client.organization, client.id]},           
+
+    <%= f.input :client_id, collection: entrada.tipos_clientes.map {|client| [client.organization, client.id]},
           prompt: :translate %>
-    
+
     <%= f.input :numero_entrada_cliente, input_html: { readonly: true } %>
-      
+
     <%= f.input :driver %>
-    
-    <div class="row add-partidas">        
+
+    <div class="row add-partidas">
       <div class="col-sm-7 col-sm-offset-3">
         <h3 class="title-md hr-before mt-10">
-          <%= t('.partidas_title') %>         
+          <%= t('.partidas_title') %>
           <span class="badge badge-partidas"><%= @entrada.total_partidas %></span>
-        </h2>                    
+        </h2>
       </div>
       <div class="col-sm-2">
-         <%= link_to_add_association f, :partidas, 'data-association-insertion-node': '#partidas', 'data-association-insertion-method': :prepend, class: 'btn btn-rounded btn-blue pull-right' do %> 
+         <%= link_to_add_association f, :partidas, 'data-association-insertion-node': '#partidas', 'data-association-insertion-method': :prepend, class: 'btn btn-rounded btn-blue pull-right' do %>
             <i class="fa fa-plus"  aria-hidden="true"></i>
             Añadir
           <% end %>
       </div>
     </div>
 
-    <div id='partidas'>          
+    <div id='partidas'>
       <%= f.simple_fields_for :partidas do |partida| %>
         <%= render 'partida_fields', f: partida %>
-      <% end %>    
+      <% end %>
     </div>
 
     <div class="row">
       <div class="col-sm-9 col-sm-offset-3">
          <%= button_tag(type: :submit, class: 'btn btn-primary') do %>
-        <i class="fa fa-check" aria-hidden="true"></i>    
+        <i class="fa fa-check" aria-hidden="true"></i>
         <%= value_button_submit f.object %>
       <% end %>
-        <%= link_to entradas_path, role: 'button', class: 'btn btn-default' do %> 
-        <i class="fa fa-remove" aria-hidden="true"></i> 
+        <%= link_to entradas_path, role: 'button', class: 'btn btn-default' do %>
+        <i class="fa fa-remove" aria-hidden="true"></i>
         Cancelar
-      <% end %> 
-      </div>    
-    </div>  
-      
-  <% end %>
-</div>
+      <% end %>
+      </div>
+    </div>
 
+  <% end %>
+  <p id="total_partidas" style="display: none;"><%= Partida.count - @entrada.partidas.count %></p>
+</div>

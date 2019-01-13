@@ -3,14 +3,16 @@
 var $partidasLink = $('.add_fields');
 var $totalPartidasBadge = $('.badge');
 var partidas;
-$(function () {    
-    
+$(function () {
+
     if($('#formulario-entradas').length) {
         /**
         ** Se agregan las partidas a las entradas
         */
         $partidasLink = $('.add_fields');
         $totalPartidasBadge = $('.badge');
+        totalPartidasServer = parseInt($('#total_partidas').html());
+        $entrada = $("#entrada_numero_entrada");
         partidas = {
 
             minimum: 1,
@@ -21,23 +23,26 @@ $(function () {
 
             initialize: function() {
                 this.$partidas = [];
-                var $partidaDiv = $('.nested-fields');            
+                var $partidaDiv = $('.nested-fields');
                 var that = this;
                 for(var i = $partidaDiv.length - 1, j = 0; i >= 0; i--, j++) {
                     that.$partidas[j] = $($partidaDiv[i]);
-                }                
+                }
                 this.actualizarTotalPartidas();
+
+                console.log("Total partidas Server: " + totalPartidasServer);
+
                 return;
             },
 
-            add: function($partida) {            
+            add: function($partida) {
                 this.$partidas.push($partida);
                 this.asignarNumero($partida);
                 this.actualizarTotalPartidas();
                 return;
-            },      
+            },
 
-            show: function() {            
+            show: function() {
                 this.$partidas.forEach(function($partida) {
                     console.log($partida);
                 });
@@ -61,7 +66,7 @@ $(function () {
             },
 
             notDeleteFirst: function() {
-                var $removePartidaLink = this.$partidas[0].find('.remove_fields');        
+                var $removePartidaLink = this.$partidas[0].find('.remove_fields');
                 $removePartidaLink.remove();
                 return;
             },
@@ -77,7 +82,10 @@ $(function () {
              */
             asignarNumero: function($partida) {
                 var $identificadorInput = this.obtenerIdentificadorInput($partida);
-                $identificadorInput.val(this.size());                
+                var $identificadorStringInput = this.obtenerIdentificadorStringInput($partida);
+                console.log("pasa por aqiu");
+                $identificadorInput.val(this.size() + totalPartidasServer);
+                $identificadorStringInput.val("UNT " + $entrada.val() + "-" + $identificadorInput.val());
                 return;
             },
 
@@ -90,7 +98,10 @@ $(function () {
                 var that = this;
                 that.$partidas.forEach(function($partida, index) {
                     var $identificadorInput = that.obtenerIdentificadorInput($partida);
-                    $identificadorInput.val(index + 1);                
+                    var $identificadorStringInput = that.obtenerIdentificadorStringInput($partida);
+                    $identificadorInput.val(index + 1);
+                    $identificadorStringInput.val("UNT " + $entrada.val() + "-" + $identificadorInput.val());
+
                     return;
                 });
                 return;
@@ -100,14 +111,18 @@ $(function () {
                 return $partida.find('.identificador');
             },
 
+            obtenerIdentificadorStringInput: function($partida) {
+                return $partida.find('.identificador_string');
+            },
+
             /**
              * Actualiza el total de las partidas que se muestran en la interfaz
              * @returns {undefined}
              */
-            actualizarTotalPartidas: function() {                   
-                $totalPartidasBadge.text(this.size());            
+            actualizarTotalPartidas: function() {
+                $totalPartidasBadge.text(this.size());
                 return;
-            }        
+            }
         };
 
         partidas.initialize();
@@ -115,7 +130,7 @@ $(function () {
         partidas.notDeleteFirst();
         disableAddPartidaLink();
     }
-    
+
     $('#partidas').on('cocoon:after-insert', function(e, insertedPartida) {
         partidas.add(insertedPartida);
         partidas.show();
@@ -123,17 +138,17 @@ $(function () {
         disableAddPartidaLink();
 
         return;
-    });   
+    });
 
     $('#partidas').on('cocoon:before-remove', function(e, deletedPartida) {
 
-        partidas.remove(deletedPartida);        
+        partidas.remove(deletedPartida);
         if (partidas.size() < partidas.maximum) {
             enableAddPartidaLink($partidasLink);
         }
 
-        return;            
-    });   
+        return;
+    });
 
     function disableAddPartidaLink() {
         if (partidas.size() >= partidas.maximum) {
@@ -146,11 +161,11 @@ $(function () {
             return;
         }
     }
-    
+
     function enableAddPartidaLink($partidasLink) {
         $partidasLink.removeClass('disabled');
         return;
-    }    
+    }
 });
 
 //</editor-fold>
@@ -160,185 +175,185 @@ $(function () {
 var partida;
 
 $(function() {
-    
+
     /**
      * Objeto que almacena el numero de sacos, numero de bolsas y el valor de la tara.
      * Obtiene el valor de los kilogramos netos a partir de los kilogramos brutos y tara
      * @type type
-     */        
+     */
     partida = {
         $numeroSacos: null,
-        
+
         $numeroBolsas: null,
-        
+
         $tara: null,
-        
+
         $kilogramosBrutos: null,
-        
+
         $kilogramosNetos: null,
-        
-        obtenerValorTara: function() {    
+
+        obtenerValorTara: function() {
           var totalSacos = parseFloat(this.$numeroSacos.val());
-          var totalBolsas = parseFloat(this.$numeroBolsas.val()) * 0.100;          
-          var valor_tara = (totalSacos + totalBolsas);  
-          
+          var totalBolsas = parseFloat(this.$numeroBolsas.val()) * 0.100;
+          var valor_tara = (totalSacos + totalBolsas);
+
           if (isNaN(totalSacos) || isNaN(totalBolsas)) {
               return;
           }
-          
-          this.$tara.val(valor_tara.toFixed(2));  
+
+          this.$tara.val(valor_tara.toFixed(2));
           this.$tara.change(); // Trick to trigger change event and update input kilogramos netos
           return;
         },
-        
-        obtenerValorKilogramosNetos: function() {             
+
+        obtenerValorKilogramosNetos: function() {
           var kilogramosBrutos = parseFloat(this.$kilogramosBrutos.val());
-          var tara = parseFloat(this.$tara.val());          
-          var difference = kilogramosBrutos - tara;  
-          
+          var tara = parseFloat(this.$tara.val());
+          var difference = kilogramosBrutos - tara;
+
           if (isNaN(kilogramosBrutos) || isNaN(tara)) {
               return;
           }
-          
-          this.$kilogramosNetos.val(difference.toFixed(2));  
+
+          this.$kilogramosNetos.val(difference.toFixed(2));
           return;
         }
     };
-    
+
     /**
      * Funcion que observa por cambios en el campo numero de sacos
      */
-    $(document).on('keyup', '.numero-sacos', partida, function() {       
-        
+    $(document).on('keyup', '.numero-sacos', partida, function() {
+
         var $numeroSacosInput = $(this);
         var $padre = $numeroSacosInput.closest('.nested-fields');
-        
+
         partida.$numeroSacos = $numeroSacosInput;
         partida.$numeroBolsas = findNumeroBolsas($padre);
         partida.$tara = findTara($padre);
-        
+
         return partida.obtenerValorTara();
     });
-    
+
     /**
      * Funcion que observa por cambios en el campo numero de bolsas
      */
-    $(document).on('keyup', '.numero-bolsas', partida, function() {       
-        
+    $(document).on('keyup', '.numero-bolsas', partida, function() {
+
         var $numeroBolsasInput = $(this);
         var $padre = $numeroBolsasInput.closest('.nested-fields');
-        
+
         partida.$numeroBolsas = $numeroBolsasInput;
         partida.$numeroSacos = findNumeroSacos($padre);
         partida.$tara = findTara($padre);
-        
+
         return partida.obtenerValorTara();
     });
-    
+
     /**
      * Funcion que observa por cambios en el campo kilogramos brutos
      */
-    $(document).on('keyup', '.kilogramos-brutos', partida, function() {       
-        
+    $(document).on('keyup', '.kilogramos-brutos', partida, function() {
+
         var $kilogramosBrutosInput = $(this);
         var $padre = $kilogramosBrutosInput.closest('.nested-fields');
-        
+
         partida.$kilogramosBrutos = $kilogramosBrutosInput;
         partida.$tara = findTara($padre);
         partida.$kilogramosNetos = findKilogramosNetos($padre);
-        
+
         return partida.obtenerValorKilogramosNetos();
     });
-    
+
     /**
      * Funcion que observa por cambios en el campo tara
      */
-    $(document).on('change', '.tara', partida, function() {               
+    $(document).on('change', '.tara', partida, function() {
         var $taraInput = $(this);
         var $padre = $taraInput.closest('.nested-fields');
-        
+
         partida.$tara = $taraInput;
         partida.$kilogramosBrutos = findKilogramosBrutos($padre);
         partida.$kilogramosNetos = findKilogramosNetos($padre);
-        
+
         return partida.obtenerValorKilogramosNetos();
     });
-    
+
     function findNumeroSacos($padre) {
         var $numeroSacosInput = $padre.find('.numero-sacos');
         return $numeroSacosInput;
     }
-    
+
     function findTara($padre) {
-        var $taraInput = $padre.find('.tara');        
+        var $taraInput = $padre.find('.tara');
         return $taraInput;
     }
-    
+
     function findNumeroBolsas($padre) {
-        var $numeroBolsasInput = $padre.find('.numero-bolsas');        
+        var $numeroBolsasInput = $padre.find('.numero-bolsas');
         return $numeroBolsasInput;
     }
-    
+
     function findKilogramosNetos($padre) {
-        var $kilogramosNetosInput = $padre.find('.kilogramos-netos');        
+        var $kilogramosNetosInput = $padre.find('.kilogramos-netos');
         return $kilogramosNetosInput;
     }
-    
+
     function findKilogramosBrutos($padre) {
         var $kilogramosNetosInput = $padre.find('.kilogramos-brutos');
         return $kilogramosNetosInput;
     }
-    
+
 });
 
 //</editor-fold>
 
 //<editor-fold desc="Configuracion de picker hora-fecha, agregación de mascara">
 $(function() {
-    
+
     /**
      * Configuración de picker hora-fecha
      */
     $('.datetimepicker_for_date').datetimepicker({
         format: "DD/MM/YYYY",
         sideBySide: true,
-        ignoreReadonly: true        
+        ignoreReadonly: true
     });
     $('#entrada_date').mask('00/00/0000 00:00');
-    
+
     /**
      * Configuración de mascara para kilogramos brutos, tara,
      * kilogramos netos, numero bultos
      */
     var formatKilogramos = "##0.00";
-    var formatBultos = "##0";    
+    var formatBultos = "##0";
     var formatHumedad = "00.00";
-    
+
     $('.kilogramos-brutos').mask(formatKilogramos, {reverse: true});
     addMask($('.container'), ".kilogramos-brutos", formatKilogramos);
-    
+
     $('.tara').mask(formatKilogramos, {reverse: true});
     addMask($('.container'), ".tara", formatKilogramos);
-        
+
     $('.kilogramos-netos').mask(formatKilogramos, {reverse: true});
     addMask($('.container'), ".kilogramos-netos", formatKilogramos);
-        
+
     $('.numero-sacos').mask(formatBultos, {reverse: true});
     addMask($('.container'), ".numero-sacos", formatBultos);
-    
+
     $('.numero-bolsas').mask(formatBultos, {reverse: true});
     addMask($('.container'), ".numero-bolsas", formatBultos);
-    
+
     $('.humedad').mask(formatHumedad, {reverse: true});
     addMask($('.container'), ".humedad", formatHumedad);
-    
+
     function addMask($container, element, format) {
         $container.arrive(element, function() {
             var $newElement = $(this);
             $newElement.mask(format, {reverse: true});
         });
     }
-    
+
 });
 
 //</editor-fold>
@@ -348,44 +363,44 @@ $(function() {
  * Realiza la petición para obtener el total de entradas por organizacion
  */
 var entrada;
-$(function () {    
-    
+$(function () {
+
     if($('#formulario-entradas').length) {
-        
+
         /**
         * Objeto que almacena el cliente, numero de entrada por cliente
         * @type type
-        */    
+        */
         entrada = {
             $idInput: $('#entrada_id'),
-            
+
             $clienteInput: $('#entrada_client_id'),
-        
+
             $numeroEntradaClienteInput: $('#entrada_numero_entrada_cliente'),
-            
+
             obtenerValorEntradaCliente: function() {
                 var datosEnviar = {
-                    id: this.$idInput.val(), 
+                    id: this.$idInput.val(),
                     idCliente: this.$clienteInput.val()
                 };
                 var that = this;
-                var jqxhr = $.getJSON("/entradas/numero_entrada_cliente", 
+                var jqxhr = $.getJSON("/entradas/numero_entrada_cliente",
                     datosEnviar, function(data) {
                     that.asignarValorEntrada(data.numero_entrada);
                 });
             },
-            
+
             asignarValorEntrada: function(numeroEntradaCliente) {
               this.$numeroEntradaClienteInput.val(numeroEntradaCliente);
-              
+
               return;
             }
         };
-        
+
         /**
         * Funcion que observa por cambios en el campo cliente
         */
-        $(document).on('change', '#entrada_client_id', entrada, function() {       
+        $(document).on('change', '#entrada_client_id', entrada, function() {
             entrada.obtenerValorEntradaCliente();
             return;
         });

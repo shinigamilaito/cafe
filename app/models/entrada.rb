@@ -18,40 +18,42 @@
 class Entrada < ApplicationRecord
   scope :validas, -> { where(delete_logical: false) }
   scope :numero_entrada_ascendente, -> { order("numero_entrada ASC") }
-  
-  has_many :partidas, dependent: :destroy, inverse_of: :entrada  
+
+  has_many :partidas, dependent: :destroy, inverse_of: :entrada
   has_many :line_item_salida_procesos, through: :partidas
-  has_many :line_item_salida_bodegas, through: :partidas 
-  accepts_nested_attributes_for :partidas, allow_destroy: true  
+  has_many :line_item_salida_bodegas, through: :partidas
+  accepts_nested_attributes_for :partidas, allow_destroy: true
   belongs_to :client
 
   validates :date, :numero_entrada, :driver, :entregado_por, presence: :true
-  validates :date, uniqueness: {scope: [:numero_entrada]} 
+  validates :date, uniqueness: {scope: [:numero_entrada]}
   validates :numero_entrada, uniqueness: true
   validates :client_id, presence: true
-  
+
   before_create :asignar_numero_entrada, :asignar_numero_entrada_por_cliente
   after_save :actualiza_numero_partidas
-    
+
+
+
   def asignar_numero_entrada
     ultima_entrada = Entrada.order("created_at DESC").first
     if ultima_entrada
       self.numero_entrada = ultima_entrada.numero_entrada + 1
     else
-      self.numero_entrada = 1
-    end    
+      self.numero_entrada = 100
+    end
   end
-  
+
   def asignar_numero_entrada_por_cliente
     ultima_entrada = Entrada.where("client_id = ?", self.client_id).order("created_at DESC").first
      if ultima_entrada
       self.numero_entrada_cliente = ultima_entrada.numero_entrada_cliente + 1
     else
       self.numero_entrada_cliente = 1
-    end    
+    end
   end
-  
-  def actualiza_numero_partidas        
+
+  def actualiza_numero_partidas
     self.update_columns(total_partidas: self.total_partidas)
   end
 

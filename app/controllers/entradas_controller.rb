@@ -111,13 +111,13 @@ class EntradasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entrada_params
-      params.require(:entrada).permit(:client_id,:total_partidas, :date, :numero_entrada, 
+      params.require(:entrada).permit(:client_id,:total_partidas, :date, :numero_entrada,
           :numero_entrada_cliente, :driver, :entregado_por, partidas_attributes: [
-          :id, :identificador, :kilogramos_brutos, :numero_sacos, :numero_bolsas, 
-          :tara, :kilogramos_netos, :humedad, :type_coffee_id, :observaciones, 
+          :id, :identificador, :identificador_string, :kilogramos_brutos, :numero_sacos, :numero_bolsas,
+          :tara, :kilogramos_netos, :humedad, :type_coffee_id, :observaciones,
           :calidad_cafe, :_destroy])
     end
-    
+
     def check_entrada_not_have_partidas_with_salidas
       if @entrada.tiene_partidas_con_salidas
         logger.error "Attempt to change entrada not modificable #{params[:id]}"

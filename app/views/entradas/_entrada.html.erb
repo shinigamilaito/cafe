@@ -19,34 +19,34 @@
         <tr>
             <td><strong><%=  t('.driver') %></strong></td>
             <td><%= entrada.driver %></td>
-        </tr>         
+        </tr>
         <tr>
             <td><strong><%=  t('.total_kilogramos_brutos') %></strong></td>
             <td><%= "#{number_with_precision(entrada.total_kilos_brutos, precision: 2)} Kgs" %></td>
-        </tr>         
+        </tr>
         <tr>
             <td><strong><%=  t('.total_tara') %></strong></td>
             <td><%= "#{number_with_precision(entrada.total_tara, precision: 2)} Kgs" %></td>
-        </tr>         
+        </tr>
         <tr>
             <td><strong><%=  t('.total_kilogramos_netos') %></strong></td>
             <td><%= "#{number_with_precision(entrada.total_kilos_netos, precision: 2)} Kgs" %></td>
-        </tr>         
+        </tr>
         <tr>
             <td><strong><%=  t('.created_at') %></strong></td>
             <td><%= l(entrada.created_at, format: :medium) %></td>
-        </tr>                              
+        </tr>
         <tr>
             <td><strong><%=  t('.updated_at') %></strong></td>
             <td><%= l(entrada.updated_at, format: :medium) %></td>
-        </tr>                              
+        </tr>
     </tbody>
 </table>
 
 <div class="row">
     <div class="col-sm-12">
         <h3 class="title-md hr text-center text-uppercase text-center">
-          Partidas 
+          Partidas
           <span class="badge"><%= entrada.partidas.size %></span>
           <%= render "cart_salida_procesos/menu_cart_salida", cart_salida_proceso: @cart_salida_proceso %>
           <%= render "cart_salida_bodegas/menu_cart_salida", cart_salida_bodega: @cart_salida_bodega %>
@@ -64,9 +64,9 @@
           <% else %>
             <li role="presentation">
           <% end %>
-              <a href="#partida<%= partida.id %>" aria-controls="partida<%= partida.id%>" role="tab" data-toggle="tab"><%= "Partida - #{padded_zeros_numero_entrada(partida.identificador)}" %></a>
+              <a href="#partida<%= partida.id %>" aria-controls="partida<%= partida.id%>" role="tab" data-toggle="tab"><%= partida.identificador_string %></a>
           </li>
-        <% end %>                      
+        <% end %>
     </ul>
     </div>
     <div class="col-md-9">
@@ -79,7 +79,7 @@
           <% end %>
             <%= render partida %>
             </div>
-          <% end %>                        
+          <% end %>
       </div>
     </div>
   </div>

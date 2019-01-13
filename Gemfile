@@ -11,7 +11,7 @@ gem 'rails', '~> 5.0.5'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 
-# Using angular 
+# Using angular
 # gem 'angularjs-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
@@ -53,14 +53,14 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'annotate', git: 'https://github.com/ctran/annotate_models.git'
+  #gem 'annotate', git: 'https://github.com/ctran/annotate_models.git'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-gem 'devise'
+#gem 'devise'
 #gem 'bootstrap-sass', '~> 3.3.0'
 
 gem 'simple_form'
@@ -70,3 +70,5 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'jquery_mask_rails', '~> 0.1.0'
 gem 'kaminari' #Pagination
 gem 'devise'
+
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
