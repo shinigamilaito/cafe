@@ -1,10 +1,10 @@
 <div class='nested-fields'>
   <% if @entrada.new_record? %>
     <%= f.hidden_field :identificador, value: f.object.identificador_new_record, class: 'identificador' %>
-    <%= f.input :identificador_string, input_html: {value: "UNT #{@entrada.numero_entrada}-#{f.object.identificador_new_record}", readonly: true, class: 'identificador_string'} %>
+    <%= f.input :identificador_with_format, input_html: {value: "UNT #{@entrada.numero_entrada}-#{f.object.identificador_new_record}", readonly: true, class: 'identificador_string'} %>
   <% else %>
     <%= f.hidden_field :identificador, class: 'identificador' %>
-    <%= f.input :identificador_string, readonly: true, input_html: {class: 'identificador_string'} %>
+    <%= f.input :identificador_with_format, readonly: true, input_html: {class: 'identificador_string'} %>
   <% end %>
 
   <%= f.input :kilogramos_brutos, wrapper: :horizontal_input_group do %>
