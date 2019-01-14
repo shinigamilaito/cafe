@@ -113,7 +113,7 @@ class EntradasController < ApplicationController
     def entrada_params
       params.require(:entrada).permit(:client_id,:total_partidas, :date, :numero_entrada,
           :numero_entrada_cliente, :driver, :entregado_por, partidas_attributes: [
-          :id, :identificador, :identificador_string, :kilogramos_brutos, :numero_sacos, :numero_bolsas,
+          :id, :identificador, :identificador_with_format, :kilogramos_brutos, :numero_sacos, :numero_bolsas,
           :tara, :kilogramos_netos, :humedad, :type_coffee_id, :observaciones,
           :calidad_cafe, :_destroy])
     end
