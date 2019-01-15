@@ -234,9 +234,10 @@ es:
       back_link: 'Entradas'
       print_report_link: 'Recibo'
 
-  partidas: 
+  partidas:
     partida:
       identificador: 'Número de Partida:'
+      identificador_with_format: 'Número de Partida:'
       kilogramos_brutos: 'Kilogramos Brutos:'
       bultos: 'Bultos:'
       sacos: 'Sacos:'

@@ -31,11 +31,12 @@ es:
         numero_entrada: 'Número:'
         numero_entrada_cliente: 'Número de Entrada por Organización:'
         client_id: 'Organización:'
-        driver: 'Chofer:' 
+        driver: 'Chofer:'
         entregado_por: 'Entregado por:'
 
       partidas:
         identificador: 'Número:'
+        identificador_with_format: 'Número:'
         kilogramos_brutos: 'Kilogramos Brutos:'
         numero_bultos: 'Número de Bultos:'
         tara: 'Tara:'
