@@ -19,18 +19,16 @@ namespace :db do
 
   desc "Cleaning the system. Only clients and type_coffees will exist."
   task cleaning_tables: :environment do
+    tables = [
+      Quality, ProcessResult, Merma, LineItemSalidaBodega, LineItemSalidaProceso,
+      CartSalidaBodega, CartSalidaProceso, SalidaBodega, SalidaProceso,
+      Partida, Entrada
+    ]
     p "Destroying datas"
-    Quality.destroy_all
-    ProcessResult.destroy_all
-    Merma.destroy_all
-    LineItemSalidaBodega.destroy_all
-    LineItemSalidaProceso.destroy_all
-    CartSalidaBodega.destroy_all
-    CartSalidaProceso.destroy_all
-    SalidaBodega.destroy_all
-    SalidaProceso.destroy_all
-    Partida.destroy_all    
-    Entrada.destroy_all
+    tables.each do |table|
+      table.destroy_all
+      ActiveRecord::Base.connection.reset_pk_sequence!(table.to_s.pluralize)
+    end
     p "Datas destroyed"
   end
 
@@ -46,7 +44,7 @@ namespace :db do
     QualityType.create!(name: "MANCHA ELECTRONICA", orden: 7)
     QualityType.create!(name: "BARREDURAS", orden: 8)
     QualityType.create!(name: "PURGA (PERGAMINO)", orden: 9)
-    QualityType.create!(name: "MERMA", orden: 10, is_to_increment: false)   
+    QualityType.create!(name: "MERMA", orden: 10, is_to_increment: false)
   end
-  
+
 end
