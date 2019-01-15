@@ -47,6 +47,11 @@ class Partida < ApplicationRecord
   def identificador_new_record
       return Partida.count + 1    
   end
+  
+  # Delete this method, change for implemented. 
+  def identificador_string
+    return identificador_with_format
+  end
 
   # Obtiene los tipos de cafe que estan disponibles para las
   # partidas, los cuale se consideran no son historicos
