@@ -27,7 +27,7 @@ namespace :db do
     p "Destroying datas"
     tables.each do |table|
       table.destroy_all
-      ActiveRecord::Base.connection.reset_pk_sequence!(table.to_s.pluralize)
+      ActiveRecord::Base.connection.reset_pk_sequence!(table.to_s.underscore.pluralize)
     end
     p "Datas destroyed"
   end
