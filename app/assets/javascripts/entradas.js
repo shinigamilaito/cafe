@@ -99,7 +99,7 @@ $(function () {
                 that.$partidas.forEach(function($partida, index) {
                     var $identificadorInput = that.obtenerIdentificadorInput($partida);
                     var $identificadorStringInput = that.obtenerIdentificadorStringInput($partida);
-                    $identificadorInput.val(index + 1);
+                    $identificadorInput.val(index + 1 + totalPartidasServer);
                     $identificadorStringInput.val("UNT " + $entrada.val() + "-" + $identificadorInput.val());
 
                     return;

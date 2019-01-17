@@ -64,7 +64,7 @@
           <% else %>
             <li role="presentation">
           <% end %>
-              <a href="#partida<%= partida.id %>" aria-controls="partida<%= partida.id%>" role="tab" data-toggle="tab"><%= partida.identificador_string %></a>
+              <a href="#partida<%= partida.id %>" aria-controls="partida<%= partida.id%>" role="tab" data-toggle="tab"><%= partida.identificador_with_format %></a>
           </li>
         <% end %>
     </ul>

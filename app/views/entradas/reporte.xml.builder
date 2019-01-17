@@ -18,7 +18,7 @@ xml.entrada do
   xml.partidas do
     @entrada.partidas.order("identificador ASC").each do |partida|
       xml.partida do
-        xml.numero_partida partida.identificador_string
+        xml.numero_partida partida.identificador_with_format
         xml.kilogramos_brutos number_with_precision(partida.kilogramos_brutos, precision: 2)
         xml.tara number_with_precision(partida.tara, precision: 2)
         xml.kilogramos_netos number_with_precision(partida.kilogramos_netos, precision: 2)

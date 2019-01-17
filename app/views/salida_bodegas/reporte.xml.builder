@@ -19,7 +19,7 @@ xml.salida do
     @salida_bodega.line_item_salida_bodegas.order("created_at ASC").each do |item_salida|
       xml.item do
         xml.numero_entrada padded_zeros_numero_entrada(item_salida.partida.entrada.numero_entrada)
-        xml.numero_partida item_salida.partida.identificador_string
+        xml.numero_partida item_salida.partida.identificador_with_format
         xml.kilogramos_brutos number_with_precision(item_salida.partida.kilogramos_brutos, precision: 2)
         xml.tara number_with_precision(item_salida.partida.tara, precision: 2)
         xml.kilogramos_netos number_with_precision(item_salida.total_kilogramos_netos, precision: 2)

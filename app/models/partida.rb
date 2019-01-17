@@ -45,12 +45,7 @@ class Partida < ApplicationRecord
   before_destroy :ensure_not_referenced_by_any_line_item_salida
 
   def identificador_new_record
-      return Partida.count + 1    
-  end
-  
-  # Delete this method, change for implemented. 
-  def identificador_string
-    return identificador_with_format
+      return Partida.count + 1
   end
 
   # Obtiene los tipos de cafe que estan disponibles para las
