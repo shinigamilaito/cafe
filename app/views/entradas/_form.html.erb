@@ -44,7 +44,7 @@
     </div>
 
     <div id='partidas'>
-      <%= f.simple_fields_for :partidas, entrada.partidas.order("partidas.identificador = ?", "desc") do |partida| %>
+      <%= f.simple_fields_for :partidas, entrada.partidas.order("partidas.identificador DESC") do |partida| %>
         <%= render 'partida_fields', f: partida %>
       <% end %>
     </div>
