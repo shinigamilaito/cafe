@@ -10,7 +10,7 @@ xml.salida do
   xml.imagen asset_url('logo/logo_cafe.jpg')
   xml.cliente do
     xml.representante_legal @salida_proceso.client.legal_representative
-    xml.organizacion @salida_proceso.clien_t.organization
+    xml.organizacion @salida_proceso.client.organization
   end
   xml.item_salidas do
     @salida_proceso.line_item_salida_procesos.order("created_at ASC").each do |item_salida|
