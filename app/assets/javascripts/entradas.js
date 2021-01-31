@@ -186,6 +186,8 @@ $(function() {
 
         $numeroBolsas: null,
 
+        $numeroCostalillas: null,
+
         $tara: null,
 
         $kilogramosBrutos: null,
@@ -194,10 +196,11 @@ $(function() {
 
         obtenerValorTara: function() {
           var totalSacos = parseFloat(this.$numeroSacos.val());
-          var totalBolsas = parseFloat(this.$numeroBolsas.val()) * 0.100;
-          var valor_tara = (totalSacos + totalBolsas);
+          var totalBolsas = parseFloat(this.$numeroBolsas.val()) * 0.200;
+          var totalCostalillas = parseFloat(this.$numeroCostalillas.val()) * 0.100;
+          var valor_tara = (totalSacos + totalBolsas + totalCostalillas);
 
-          if (isNaN(totalSacos) || isNaN(totalBolsas)) {
+          if (isNaN(totalSacos) || isNaN(totalBolsas) || isNaN(totalCostalillas)) {
               return;
           }
 
@@ -231,6 +234,7 @@ $(function() {
         partida.$numeroSacos = $numeroSacosInput;
         partida.$numeroBolsas = findNumeroBolsas($padre);
         partida.$tara = findTara($padre);
+        partida.$numeroCostalillas = findNumeroCostalillas($padre);
 
         return partida.obtenerValorTara();
     });
@@ -244,6 +248,23 @@ $(function() {
         var $padre = $numeroBolsasInput.closest('.nested-fields');
 
         partida.$numeroBolsas = $numeroBolsasInput;
+        partida.$numeroSacos = findNumeroSacos($padre);
+        partida.$tara = findTara($padre);
+        partida.$numeroCostalillas = findNumeroCostalillas($padre);
+
+        return partida.obtenerValorTara();
+    });
+
+    /**
+     * Funcion que observa por cambios en el campo numero de costalillas
+     */
+    $(document).on('keyup', '.numero-costalillas', partida, function() {
+
+        var $numeroCostalillasInput = $(this);
+        var $padre = $numeroCostalillasInput.closest('.nested-fields');
+
+        partida.$numeroCostalillas = $numeroCostalillasInput;
+        partida.$numeroBolsas = findNumeroBolsas($padre);
         partida.$numeroSacos = findNumeroSacos($padre);
         partida.$tara = findTara($padre);
 
@@ -292,6 +313,11 @@ $(function() {
     function findNumeroBolsas($padre) {
         var $numeroBolsasInput = $padre.find('.numero-bolsas');
         return $numeroBolsasInput;
+    }
+
+    function findNumeroCostalillas($padre) {
+        var $numeroCostalillasInput = $padre.find('.numero-costalillas');
+        return $numeroCostalillasInput;
     }
 
     function findKilogramosNetos($padre) {

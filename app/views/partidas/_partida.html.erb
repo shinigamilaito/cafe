@@ -23,6 +23,10 @@
             <td><%= render "partidas/bolsas", partida: partida %></td>
         </tr>
         <tr>
+          <td><strong><%=  "Costalillas:" %></strong></td>
+          <td><%= "#{number_with_precision(partida.numero_costalillas, precision: 2)} Costalillas" %></td>
+        </tr>
+        <tr>
             <td><strong><%=  t('.kilogramos_brutos') %></strong></td>
             <td><%= "#{number_with_precision(partida.kilogramos_brutos, precision: 2)} Kgs" %></td>
         </tr>                              

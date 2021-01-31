@@ -24,6 +24,11 @@
   <span class="input-group-addon">Bolsas</span>
   <% end %>
 
+  <%= f.input :numero_costalillas, wrapper: :horizontal_input_group do %>
+    <%= f.input_field :numero_costalillas, as: :string, class: 'form-control numero-costalillas' %>
+    <span class="input-group-addon">Costalillas</span>
+  <% end %>
+
   <h3 class="title-md text-center title-striped no-margin"></h3>
 
   <%= f.input :tara, wrapper: :horizontal_input_group do %>
