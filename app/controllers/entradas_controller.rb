@@ -76,6 +76,8 @@ class EntradasController < ApplicationController
   end
   
   def reporte
+    p params
+    @offset = params[:offset]
     xml_data = render_to_string('reporte.xml.builder', layout: false)    
     send_file_pdf("Entrada#{@entrada.numero_entrada}", "entradas", xml_data, "entrada")
   end
